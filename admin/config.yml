@@ -104,75 +104,87 @@ collections:
   # ── OFFRES ───────────────────────────────
   - name: "offres"
     label: "💼 Offres de service"
-    file: "content/pages/offres.json"
-    fields:
-      - label: "Offres"
-        name: "items"
-        widget: "list"
+    files:
+      - label: "Liste des offres"
+        name: "offres-list"
+        file: "content/pages/offres.json"
         fields:
-          - { label: "Catégorie",       name: "categorie",   widget: "string" }
-          - { label: "Titre",           name: "titre",       widget: "string" }
-          - { label: "Description",     name: "description", widget: "text" }
-          - { label: "Label du bouton", name: "cta_label",   widget: "string" }
+          - label: "Offres"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Catégorie",       name: "categorie",   widget: "string" }
+              - { label: "Titre",           name: "titre",       widget: "string" }
+              - { label: "Description",     name: "description", widget: "text" }
+              - { label: "Label du bouton", name: "cta_label",   widget: "string" }
 
   # ── CAS CLIENTS ──────────────────────────
   - name: "cas-clients"
     label: "🏆 Cas clients"
-    file: "content/pages/cas-clients.json"
-    fields:
-      - label: "Cas clients"
-        name: "items"
-        widget: "list"
+    files:
+      - label: "Liste des cas clients"
+        name: "cas-clients-list"
+        file: "content/pages/cas-clients.json"
         fields:
-          - { label: "Titre",       name: "titre",       widget: "string" }
-          - { label: "Citation",    name: "citation",    widget: "text" }
-          - { label: "Description", name: "description", widget: "text" }
-          - label: "Résultats chiffrés"
-            name: "resultats"
+          - label: "Cas clients"
+            name: "items"
             widget: "list"
             fields:
-              - { label: "Chiffre", name: "chiffre", widget: "string" }
-              - { label: "Label",   name: "label",   widget: "string" }
+              - { label: "Titre",       name: "titre",       widget: "string" }
+              - { label: "Citation",    name: "citation",    widget: "text" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Résultats chiffrés"
+                name: "resultats"
+                widget: "list"
+                fields:
+                  - { label: "Chiffre", name: "chiffre", widget: "string" }
+                  - { label: "Label",   name: "label",   widget: "string" }
 
   # ── PRINCIPES ────────────────────────────
   - name: "principes"
     label: "🧭 Principes fondateurs"
-    file: "content/pages/principes.json"
-    fields:
-      - label: "Principes"
-        name: "items"
-        widget: "list"
+    files:
+      - label: "Liste des principes"
+        name: "principes-list"
+        file: "content/pages/principes.json"
         fields:
-          - { label: "Icône",       name: "icon",        widget: "string" }
-          - { label: "Titre",       name: "titre",       widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
+          - label: "Principes"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Icône",       name: "icon",        widget: "string" }
+              - { label: "Titre",       name: "titre",       widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
 
   # ── RECRUTEMENT ──────────────────────────
   - name: "recrutement"
     label: "👥 Recrutement"
-    file: "content/pages/recrutement.json"
-    fields:
-      - { label: "Titre page",  name: "titre",     widget: "string" }
-      - { label: "Sous-titre",  name: "soustitre", widget: "text" }
-      - { label: "Introduction",name: "intro",     widget: "text" }
-      - { label: "Tagline vert",name: "tagline",   widget: "string" }
-      - label: "Engagements"
-        name: "engagements"
-        widget: "list"
+    files:
+      - label: "Page recrutement"
+        name: "recrutement-page"
+        file: "content/pages/recrutement.json"
         fields:
-          - { label: "Icône",  name: "icon",  widget: "string" }
-          - { label: "Titre",  name: "titre", widget: "string" }
-          - { label: "Texte",  name: "texte", widget: "text" }
-      - label: "Profils recherchés"
-        name: "profils"
-        widget: "list"
-        fields:
-          - { label: "Icône",       name: "icon",        widget: "string" }
-          - { label: "Titre",       name: "titre",       widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-      - label: "Processus recrutement"
-        name: "processus"
-        widget: "list"
-        fields:
-          - { label: "Titre",       name: "titre",       widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Titre page",   name: "titre",     widget: "string" }
+          - { label: "Sous-titre",   name: "soustitre", widget: "text" }
+          - { label: "Introduction", name: "intro",     widget: "text" }
+          - { label: "Tagline vert", name: "tagline",   widget: "string" }
+          - label: "Engagements"
+            name: "engagements"
+            widget: "list"
+            fields:
+              - { label: "Icône",  name: "icon",  widget: "string" }
+              - { label: "Titre",  name: "titre", widget: "string" }
+              - { label: "Texte",  name: "texte", widget: "text" }
+          - label: "Profils recherchés"
+            name: "profils"
+            widget: "list"
+            fields:
+              - { label: "Icône",       name: "icon",        widget: "string" }
+              - { label: "Titre",       name: "titre",       widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - label: "Processus recrutement"
+            name: "processus"
+            widget: "list"
+            fields:
+              - { label: "Titre",       name: "titre",       widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
