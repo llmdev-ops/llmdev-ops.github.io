@@ -1,0 +1,16 @@
+{
+  "titre": "Une performance durable va bien au-delà des chiffres.",
+  "intro": "Chez Zen Value, nous adoptons une vision holistique de notre succès, combinant excellence opérationnelle et impact positif sur l'ensemble de nos parties prenantes : collaborateurs, clients, et l'environnement.",
+  "axe1_titre": "👥 En interne : l'Humain au Cœur",
+  "axe1_texte": "Nous choyons nos Citizens (nos collaborateurs) en cultivant un environnement unique basé sur l'entraide, la construction collective et l'inclusion. La diversité des perspectives est le moteur de l'innovation.",
+  "axe2_titre": "🏢 Auprès de nos clients : la Transformation Durable",
+  "axe2_texte": "Nous aidons nos clients à naviguer vers une performance pérenne grâce aux méthodologies Agiles, Lean et DevOps. Notre objectif : fluidifier leurs processus pour une productivité inscrite dans une vision à long terme, toujours responsable.",
+  "mesures": [
+    { "icon": "🌡️", "titre": "Suivi bien-être psychologique", "texte": "Météo hebdomadaire, questionnaire trimestriel Gallup, entretiens individualisés « Sanity Check »." },
+    { "icon": "🎓", "titre": "Mentoring interne",              "texte": "Mentoring à la demande pour la montée en compétences. Parrain/marraine volontaire pour l'intégration des nouveaux arrivants." },
+    { "icon": "⚖️", "titre": "Équilibre vie professionnelle",  "texte": "Aide à la parentalité, aménagement du temps de travail, télétravail facilité — avec indicateur d'équilibre intégré." },
+    { "icon": "🤝", "titre": "Cohésion d'équipe",              "texte": "Maintien du lien des équipes en mission grâce à des événements réguliers et une culture commune forte." },
+    { "icon": "🏥", "titre": "Mutuelle Santé",                 "texte": "Une mutuelle permettant à chacun de prendre soin de sa santé physique et mentale au quotidien." },
+    { "icon": "🎯", "titre": "Certification RSE 2025",         "texte": "Engagement vers la certification RSE en début 2025, pour accompagner nos clients de manière encore plus responsable." }
+  ]
+}

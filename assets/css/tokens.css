@@ -1,0 +1,38 @@
+/* ══════════════════════════════════════════
+   TOKENS — Charte graphique Zen Value
+   Source de vérité — charte officielle avril 2019
+   ══════════════════════════════════════════ */
+:root {
+  /* Couleurs principales (logo) */
+  --zv-green:     #aac335;
+  --zv-green-dk:  #8fa828;
+  --zv-green-lt:  #d4e07a;
+  --zv-green-bg:  #f3f7e0;
+  --zv-dark:      #414142;
+  --zv-gray:      #6b6b6d;
+  --zv-light:     #f8f8f8;
+  --zv-white:     #ffffff;
+
+  /* Palette complémentaire charte */
+  --cp-yellow:    #f1e3a6;
+  --cp-beige:     #d6cbbd;
+  --cp-sage:      #c7d4b7;
+  --cp-lavender:  #dbd3e8;
+  --cp-blue:      #cedff4;
+
+  /* Typographie */
+  --ff: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+
+  /* Espacement */
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  2rem;
+  --space-lg:  4rem;
+  --space-xl:  5.5rem;
+  --gutter:    8vw;
+
+  /* Misc */
+  --radius: 4px;
+  --shadow: 0 2px 24px rgba(65,65,66,.08);
+  --nav-h:  70px;
+}

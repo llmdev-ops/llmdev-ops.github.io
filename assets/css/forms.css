@@ -1,0 +1,52 @@
+/* ══════════════════════════════════════════
+   FORMS — Inputs, selects, textarea
+   ══════════════════════════════════════════ */
+
+form { display: flex; flex-direction: column; gap: 1.1rem; }
+
+.form-group { display: flex; flex-direction: column; gap: .32rem; }
+
+.form-group label {
+  font-size: .67rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--zv-gray);
+}
+
+.form-group input,
+.form-group select {
+  background: var(--zv-light);
+  border: none;
+  border-bottom: 2px solid rgba(65,65,66,.14);
+  padding: .72rem 0;
+  font-family: var(--ff); font-size: .92rem; color: var(--zv-dark);
+  outline: none; transition: border-color .2s;
+  border-radius: 0; width: 100%;
+}
+.form-group input:focus,
+.form-group select:focus { border-bottom-color: var(--zv-green); }
+
+.form-group textarea {
+  background: var(--zv-light);
+  border: 2px solid rgba(65,65,66,.1);
+  padding: .72rem;
+  font-family: var(--ff); font-size: .92rem; color: var(--zv-dark);
+  outline: none; transition: border-color .2s;
+  border-radius: var(--radius); width: 100%;
+  resize: vertical; min-height: 110px;
+}
+.form-group textarea:focus { border-color: var(--zv-green); }
+
+.form-success {
+  background: var(--zv-green-bg); border: 2px solid var(--zv-green);
+  color: var(--zv-green-dk); padding: 1rem 1.4rem;
+  border-radius: var(--radius); font-size: .88rem; font-weight: 600;
+  display: none;
+}
+.form-success.visible { display: block; }
+
+.form-error {
+  background: #fef2f2; border: 2px solid #ef4444;
+  color: #b91c1c; padding: 1rem 1.4rem;
+  border-radius: var(--radius); font-size: .88rem;
+  display: none;
+}
+.form-error.visible { display: block; }

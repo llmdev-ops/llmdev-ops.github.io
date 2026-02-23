@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "categorie": "Accompagnements",
+      "titre": "Coaching & Conseil sur mesure",
+      "description": "Coaching Agile, conseil stratégique, Scrum Masters et Product Owners — des experts qui s'impliquent concrètement dans vos projets.",
+      "cta_label": "Voir le cas client"
+    },
+    {
+      "categorie": "Transformation",
+      "titre": "Résultats mesurables & ROI tangible",
+      "description": "Cycles courts de 4 semaines, points de mesure précis, décisions basées sur les données. Chaque étape produit des résultats quantifiables.",
+      "cta_label": "Voir le cas client"
+    },
+    {
+      "categorie": "Efficacité",
+      "titre": "Efficacité opérationnelle",
+      "description": "Fluidification des flux, optimisation des ressources, réduction des temps d'arrêt — transformation orientée résultats concrets et observables.",
+      "cta_label": "Voir le cas client"
+    },
+    {
+      "categorie": "Design & Portfolio",
+      "titre": "Design de service & PPM",
+      "description": "Repensez vos processus, vos expériences client et la gestion de votre portfolio produits/projets pour créer une valeur durable.",
+      "cta_label": "En savoir plus"
+    }
+  ]
+}

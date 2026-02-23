@@ -1,0 +1,48 @@
+{
+  "items": [
+    {
+      "titre": "Transformation avec Résultats Mesurables",
+      "citation": "J'ai fortement investi sur ma transformation et je n'ai que des slides. Il n'y a aucun résultat quantitatif et concret sur nos performances.",
+      "description": "Approche itérative par cycles de 4 semaines. Décisions basées sur des données, communication transparente à chaque étape.",
+      "resultats": [
+        { "chiffre": "30–60%", "label": "Réduction du Time to Market" },
+        { "chiffre": "+40%",   "label": "Vélocité des équipes Scrum" },
+        { "chiffre": "+40%",   "label": "Prédictibilité des engagements" },
+        { "chiffre": "+15→+56","label": "Amélioration du NPS client" }
+      ]
+    },
+    {
+      "titre": "Efficacité Opérationnelle",
+      "citation": "Nous avons investi significativement mais nous n'avons pas encore vu de résultats tangibles sur l'efficacité de nos opérations.",
+      "description": "Cycles de 3 semaines, évaluation continue, décisions éclairées par des données concrètes et optimisation en temps réel.",
+      "resultats": [
+        { "chiffre": "+50%", "label": "Efficacité opérationnelle" },
+        { "chiffre": "-35%", "label": "Temps d'arrêt des processus" },
+        { "chiffre": "+25%", "label": "Productivité équipes" },
+        { "chiffre": "+20%", "label": "Satisfaction des employés" }
+      ]
+    },
+    {
+      "titre": "Transformation du Service Client",
+      "citation": "Nous avons implémenté de nouvelles politiques pour améliorer notre service client, pourtant les retours des clients restent invariés.",
+      "description": "Approche centrée client, cycles de 3 semaines, mesures précises et continues pour ajuster les processus en temps réel.",
+      "resultats": [
+        { "chiffre": "+45%",   "label": "Résolution au premier contact" },
+        { "chiffre": "-40%",   "label": "Temps de traitement des requêtes" },
+        { "chiffre": "+25 pts","label": "Score de satisfaction CSAT" },
+        { "chiffre": "+30",    "label": "Amélioration NPS" }
+      ]
+    },
+    {
+      "titre": "Experts Agiles Pragmatiques",
+      "citation": "Je recherche des experts agiles pragmatiques pour m'aider au déploiement intelligent de l'agilité au sein de l'organisation.",
+      "description": "Consultants impliqués, cycles courts, indicateurs de valeur et de performance clairs à chaque étape.",
+      "resultats": [
+        { "chiffre": "+35%", "label": "Vélocité des équipes Scrum" },
+        { "chiffre": "-40%", "label": "Délai de mise en œuvre" },
+        { "chiffre": "+45%", "label": "Prédictibilité des livrables" },
+        { "chiffre": "+25%", "label": "Engagement équipes" }
+      ]
+    }
+  ]
+}

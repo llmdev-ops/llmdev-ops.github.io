@@ -1,0 +1,178 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+# Format JSON pour tous les fichiers
+# L'interface admin sera accessible sur zenvalue.fr/admin
+
+collections:
+
+  # ── PARAMÈTRES GÉNÉRAUX ──────────────────
+  - name: "settings"
+    label: "⚙️ Paramètres"
+    files:
+      - label: "Informations de contact"
+        name: "global"
+        file: "content/settings/global.json"
+        fields:
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Adresse", name: "adresse", widget: "string" }
+          - { label: "Nom LinkedIn", name: "linkedin", widget: "string" }
+          - { label: "URL LinkedIn", name: "linkedin_url", widget: "string" }
+          - { label: "Copyright footer", name: "copyright", widget: "string" }
+
+      - label: "Chiffres clés (bande résultats)"
+        name: "resultats"
+        file: "content/settings/resultats.json"
+        fields:
+          - { label: "Résultat 1 — Chiffre", name: "r1_chiffre", widget: "string" }
+          - { label: "Résultat 1 — Label",   name: "r1_label",   widget: "string" }
+          - { label: "Résultat 2 — Chiffre", name: "r2_chiffre", widget: "string" }
+          - { label: "Résultat 2 — Label",   name: "r2_label",   widget: "string" }
+          - { label: "Résultat 3 — Chiffre", name: "r3_chiffre", widget: "string" }
+          - { label: "Résultat 3 — Label",   name: "r3_label",   widget: "string" }
+          - { label: "Résultat 4 — Chiffre", name: "r4_chiffre", widget: "string" }
+          - { label: "Résultat 4 — Label",   name: "r4_label",   widget: "string" }
+
+  # ── PAGES ────────────────────────────────
+  - name: "pages"
+    label: "📄 Pages"
+    files:
+      - label: "Accueil"
+        name: "accueil"
+        file: "content/pages/accueil.json"
+        fields:
+          - { label: "Accroche (petit texte haut)", name: "eyebrow",   widget: "string" }
+          - { label: "Tagline ligne 1",             name: "tagline1",  widget: "string" }
+          - { label: "Tagline ligne 2 (italique)",  name: "tagline2",  widget: "string" }
+          - { label: "Sous-titre",                  name: "soustitre", widget: "text" }
+          - { label: "Bouton principal",            name: "cta1",      widget: "string" }
+          - { label: "Bouton secondaire",           name: "cta2",      widget: "string" }
+          - { label: "Badge (côté sombre)",         name: "badge",     widget: "string" }
+          - { label: "Citation (côté sombre)",      name: "quote",     widget: "text" }
+          - { label: "Stat 1 — Chiffre",            name: "stat1_num",   widget: "string" }
+          - { label: "Stat 1 — Label",              name: "stat1_label", widget: "string" }
+          - { label: "Stat 2 — Chiffre",            name: "stat2_num",   widget: "string" }
+          - { label: "Stat 2 — Label",              name: "stat2_label", widget: "string" }
+          - { label: "Stat 3 — Chiffre",            name: "stat3_num",   widget: "string" }
+          - { label: "Stat 3 — Label",              name: "stat3_label", widget: "string" }
+
+      - label: "Qui sommes-nous"
+        name: "qsn"
+        file: "content/pages/qui-sommes-nous.json"
+        fields:
+          - { label: "Discours (paragraphe 1)", name: "discours1", widget: "text" }
+          - { label: "Discours (paragraphe 2)", name: "discours2", widget: "text" }
+          - { label: "Discours (paragraphe 3)", name: "discours3", widget: "text" }
+          - { label: "Notre vision",            name: "vision",    widget: "text" }
+          - { label: "Notre mission",           name: "mission",   widget: "text" }
+          - { label: "Histoire (paragraphe 1)", name: "histoire1", widget: "text" }
+          - { label: "Histoire (paragraphe 2)", name: "histoire2", widget: "text" }
+          - { label: "Histoire (paragraphe 3)", name: "histoire3", widget: "text" }
+
+      - label: "Formation"
+        name: "formation"
+        file: "content/pages/formation.json"
+        fields:
+          - { label: "Titre page",          name: "titre",         widget: "string" }
+          - { label: "Sous-titre",          name: "soustitre",     widget: "text" }
+          - { label: "Texte Qualiopi 1",    name: "texte1",        widget: "text" }
+          - { label: "Texte Qualiopi 2",    name: "texte2",        widget: "text" }
+          - { label: "URL catalogue",       name: "catalogue_url", widget: "string" }
+
+      - label: "RSE"
+        name: "rse"
+        file: "content/pages/rse.json"
+        fields:
+          - { label: "Titre page",  name: "titre", widget: "string" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - { label: "Axe 1 — Titre", name: "axe1_titre", widget: "string" }
+          - { label: "Axe 1 — Texte", name: "axe1_texte", widget: "text" }
+          - { label: "Axe 2 — Titre", name: "axe2_titre", widget: "string" }
+          - { label: "Axe 2 — Texte", name: "axe2_texte", widget: "text" }
+          - label: "Mesures concrètes"
+            name: "mesures"
+            widget: "list"
+            fields:
+              - { label: "Icône",  name: "icon",  widget: "string" }
+              - { label: "Titre",  name: "titre", widget: "string" }
+              - { label: "Texte",  name: "texte", widget: "text" }
+
+  # ── OFFRES ───────────────────────────────
+  - name: "offres"
+    label: "💼 Offres de service"
+    file: "content/pages/offres.json"
+    fields:
+      - label: "Offres"
+        name: "items"
+        widget: "list"
+        fields:
+          - { label: "Catégorie",       name: "categorie",   widget: "string" }
+          - { label: "Titre",           name: "titre",       widget: "string" }
+          - { label: "Description",     name: "description", widget: "text" }
+          - { label: "Label du bouton", name: "cta_label",   widget: "string" }
+
+  # ── CAS CLIENTS ──────────────────────────
+  - name: "cas-clients"
+    label: "🏆 Cas clients"
+    file: "content/pages/cas-clients.json"
+    fields:
+      - label: "Cas clients"
+        name: "items"
+        widget: "list"
+        fields:
+          - { label: "Titre",       name: "titre",       widget: "string" }
+          - { label: "Citation",    name: "citation",    widget: "text" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Résultats chiffrés"
+            name: "resultats"
+            widget: "list"
+            fields:
+              - { label: "Chiffre", name: "chiffre", widget: "string" }
+              - { label: "Label",   name: "label",   widget: "string" }
+
+  # ── PRINCIPES ────────────────────────────
+  - name: "principes"
+    label: "🧭 Principes fondateurs"
+    file: "content/pages/principes.json"
+    fields:
+      - label: "Principes"
+        name: "items"
+        widget: "list"
+        fields:
+          - { label: "Icône",       name: "icon",        widget: "string" }
+          - { label: "Titre",       name: "titre",       widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+
+  # ── RECRUTEMENT ──────────────────────────
+  - name: "recrutement"
+    label: "👥 Recrutement"
+    file: "content/pages/recrutement.json"
+    fields:
+      - { label: "Titre page",  name: "titre",     widget: "string" }
+      - { label: "Sous-titre",  name: "soustitre", widget: "text" }
+      - { label: "Introduction",name: "intro",     widget: "text" }
+      - { label: "Tagline vert",name: "tagline",   widget: "string" }
+      - label: "Engagements"
+        name: "engagements"
+        widget: "list"
+        fields:
+          - { label: "Icône",  name: "icon",  widget: "string" }
+          - { label: "Titre",  name: "titre", widget: "string" }
+          - { label: "Texte",  name: "texte", widget: "text" }
+      - label: "Profils recherchés"
+        name: "profils"
+        widget: "list"
+        fields:
+          - { label: "Icône",       name: "icon",        widget: "string" }
+          - { label: "Titre",       name: "titre",       widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+      - label: "Processus recrutement"
+        name: "processus"
+        widget: "list"
+        fields:
+          - { label: "Titre",       name: "titre",       widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }

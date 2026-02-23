@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "icon": "📊",
+      "titre": "Valeur mesurable",
+      "description": "Chaque initiative est accompagnée de métriques précises pour évaluer le progrès et les performances de façon explicite."
+    },
+    {
+      "icon": "🔄",
+      "titre": "Valeur pérenne",
+      "description": "Nous accompagnons les individus et organisations vers l'autonomie dans la recherche continue de valeur sur le long terme."
+    },
+    {
+      "icon": "🌍",
+      "titre": "Valeur responsable",
+      "description": "Les enjeux sociétaux, économiques et environnementaux sont systématiquement intégrés à nos démarches."
+    },
+    {
+      "icon": "🧘",
+      "titre": "Sérénité",
+      "description": "Un environnement calme et équilibré, sans pression excessive, permettant à chacun d'apprendre, d'évoluer et de s'épanouir."
+    },
+    {
+      "icon": "🤝",
+      "titre": "Respect",
+      "description": "La diversité des compétences et des points de vue au cœur de nos interactions, favorisant collaboration et innovation."
+    },
+    {
+      "icon": "💡",
+      "titre": "Confiance",
+      "description": "Chaque membre se sent soutenu et motivé pour donner le meilleur de lui-même grâce à la confiance mutuelle."
+    },
+    {
+      "icon": "🔬",
+      "titre": "Droit à l'erreur",
+      "description": "Les erreurs sont des opportunités d'apprentissage et de croissance, avec des processus d'amélioration continue."
+    }
+  ]
+}
