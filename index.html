@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zen Value — Let's find a Zen Way to Value</title>
+  <meta name="description" content="Cabinet de conseil et organisme de formation spécialisé dans la performance opérationnelle, pérenne et responsable." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <!-- CSS — dans l'ordre de dépendance -->
+  <link rel="stylesheet" href="/assets/css/tokens.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/navigation.css" />
+  <link rel="stylesheet" href="/assets/css/animations.css" />
+  <link rel="stylesheet" href="/assets/css/forms.css" />
+
+  <!-- Netlify Identity (pour l'accès /admin) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => document.location.href = "/admin/");
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+
+<!-- ══════ NAVIGATION ══════ -->
+<nav id="navbar">
+  <a href="#" class="logo" onclick="showPage('accueil');return false;">
+    <img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="nav-logo-img" />
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#" onclick="showPage('offres');return false;"       data-page="offres">Nos Offres</a></li>
+    <li><a href="#" onclick="showPage('qsn');return false;"          data-page="qsn">Qui sommes-nous</a></li>
+    <li><a href="#" onclick="showPage('formation');return false;"    data-page="formation">Formation</a></li>
+    <li><a href="#" onclick="showPage('recrutement');return false;"  data-page="recrutement">Recrutement</a></li>
+    <li><a href="#" onclick="showPage('rse');return false;"          data-page="rse">Engagements RSE</a></li>
+    <li><a href="#" onclick="showPage('contact');return false;"      data-page="contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE ACCUEIL
+═══════════════════════════════════════ -->
+<div class="page active" id="page-accueil">
+
+  <div class="hero">
+    <div class="hero-left">
+      <div class="eyebrow" data-cms="accueil.eyebrow">Cabinet de conseil & organisme de formation</div>
+      <h1 class="hero-tagline">
+        <span data-cms="accueil.tagline1">Let's find a</span><br/>
+        <em data-cms="accueil.tagline2">Zen Way to Value.</em>
+      </h1>
+      <p class="hero-sub" data-cms="accueil.soustitre">Performance opérationnelle, pérenne et responsable.</p>
+      <div class="hero-btns">
+        <a href="#" onclick="showPage('qsn');return false;" class="btn btn-primary" data-cms="accueil.cta1">Découvrez-nous</a>
+        <a href="#" onclick="showPage('offres');return false;" class="btn btn-outline" data-cms="accueil.cta2">Nos offres</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num" data-cms="accueil.stat1_num">+15</div><div class="stat-label" data-cms="accueil.stat1_label">Ans d'expertise</div></div>
+        <div><div class="stat-num" data-cms="accueil.stat2_num">50+</div><div class="stat-label" data-cms="accueil.stat2_label">Organisations accompagnées</div></div>
+        <div><div class="stat-num" data-cms="accueil.stat3_num">Qualiopi</div><div class="stat-label" data-cms="accueil.stat3_label">Certifié formation</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-circle"></div>
+      <div class="hero-right-inner">
+        <div class="hero-badge" data-cms="accueil.badge">Lean · Agile · TLS · DevOps</div>
+        <div class="hero-quote-area">
+          <div class="hero-quote-line"></div>
+          <p class="hero-quote" data-cms="accueil.quote">"Être performant et générer de la valeur n'a jamais été aussi <strong>Zen.</strong>"</p>
+          <div class="hero-quote-author">La philosophie Zen Value</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logos clients -->
+  <div class="clients-band">
+    <p>Ils nous font confiance</p>
+    <div class="clients-logos">
+      <!-- Remplacer les placeholders par de vrais logos via le CMS -->
+      <div class="client-ph" style="width:80px"></div>
+      <div class="client-ph" style="width:50px"></div>
+      <div class="client-ph" style="width:100px"></div>
+      <div class="client-ph" style="width:64px"></div>
+      <div class="client-ph" style="width:84px"></div>
+    </div>
+  </div>
+
+  <!-- 3 Piliers -->
+  <div class="section bg-white">
+    <div class="section-tag reveal">Notre promesse</div>
+    <h2 class="reveal">Maîtrisez votre <em>performance</em></h2>
+    <p class="lead reveal">Une performance maîtrisée grâce à la mesure, pérenne et vous permettant d'adresser les grands enjeux sociétaux et environnementaux de demain.</p>
+    <div class="cards-3">
+      <div class="card reveal"><div class="card-icon">📐</div><h3>Excellence Opérationnelle</h3><p>Nous agissons concrètement sur le delivery — fiabilisation des engagements, accélération des cycles, amélioration de la qualité.</p></div>
+      <div class="card reveal"><div class="card-icon">♻️</div><h3>Pérennisation de la valeur</h3><p>Nous accompagnons le changement continu pour rendre les organisations autonomes dans leur création de valeur sur le long terme.</p></div>
+      <div class="card reveal"><div class="card-icon">🌱</div><h3>Responsabilité</h3><p>Parce que la performance ne peut pas être uniquement économique — nous intégrons les enjeux écologiques, éthiques et sociétaux.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:2.8rem;">
+      <a href="#" onclick="showPage('offres');return false;" class="btn btn-primary reveal">Découvrez nos offres conseil et formation</a>
+    </div>
+  </div>
+
+  <!-- Co-construction + RSE -->
+  <div class="section bg-yellow">
+    <div class="two-col-center">
+      <div class="reveal">
+        <div class="section-tag">Rejoignez l'aventure</div>
+        <h2>Construisons <em>Zen Value</em> avec vous.</h2>
+        <p class="lead" style="margin-top:.7rem;">Soyez acteur de votre performance et venez découvrir notre modèle basé sur la transparence, la co-construction et le bien-être.</p>
+        <a href="#" onclick="showPage('recrutement');return false;" class="btn btn-dark" style="margin-top:1.6rem;">Rejoignez-nous</a>
+      </div>
+      <div class="reveal">
+        <div class="section-tag">RSE</div>
+        <h2>Vers une performance <em>toujours plus responsable</em></h2>
+        <p class="lead" style="margin-top:.7rem;">Parce que la performance ne peut pas être uniquement économique — elle doit également être sociétale et environnementale.</p>
+        <a href="#" onclick="showPage('rse');return false;" class="btn btn-outline" style="margin-top:1.6rem;">Nos engagements RSE</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div class="reveal">
+      <div class="section-tag muted">Passons à l'action</div>
+      <h2>Prêt à construire <em>votre réussite ?</em></h2>
+      <p class="cta-desc">Discutons de vos enjeux lors d'un premier échange sans engagement.</p>
+    </div>
+    <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal">Prendre contact</a>
+  </div>
+
+  <footer>
+    <a href="#" class="footer-logo" onclick="showPage('accueil');return false;">
+      <img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" />
+    </a>
+    <div class="footer-links">
+      <a href="#">Politique de confidentialité</a>
+      <a href="#">CGV</a>
+      <a href="#">Mentions légales</a>
+    </div>
+    <div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div>
+  </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE NOS OFFRES
+═══════════════════════════════════════ -->
+<div class="page" id="page-offres">
+  <div class="section bg-white">
+    <div class="section-tag reveal">Nos offres de service</div>
+    <h2 class="reveal">Plus que des promesses,<br/><em>des preuves concrètes.</em></h2>
+    <p class="lead reveal">Nos clients sont notre priorité, et leurs succès sont notre fierté.</p>
+    <!-- Injecté par cms-loader.js -->
+    <div class="offres-grid" id="offres-container"></div>
+  </div>
+
+  <div class="results-band">
+    <div class="section-tag on-dark center reveal">Résultats mesurés chez nos clients</div>
+    <div class="results-grid">
+      <div class="result-item reveal"><div class="result-num" data-cms="resultats.r1_chiffre">-60%</div><div class="result-label" data-cms="resultats.r1_label">Time to market</div></div>
+      <div class="result-item reveal"><div class="result-num" data-cms="resultats.r2_chiffre">+40%</div><div class="result-label" data-cms="resultats.r2_label">Vélocité Scrum</div></div>
+      <div class="result-item reveal"><div class="result-num" data-cms="resultats.r3_chiffre">+50%</div><div class="result-label" data-cms="resultats.r3_label">Efficacité opérationnelle</div></div>
+      <div class="result-item reveal"><div class="result-num" data-cms="resultats.r4_chiffre">+56</div><div class="result-label" data-cms="resultats.r4_label">NPS client</div></div>
+    </div>
+  </div>
+
+  <div class="section bg-light">
+    <div class="section-tag reveal">Études de cas</div>
+    <h2 class="reveal">Ils ont transformé leur <em>organisation avec nous</em></h2>
+    <!-- Injecté par cms-loader.js -->
+    <div class="cas-grid" id="cas-container"></div>
+  </div>
+
+  <div class="cta-band">
+    <div class="reveal"><h2>Ces résultats pourraient <em>être les vôtres.</em></h2><p class="cta-desc">Parlons de vos enjeux sans engagement.</p></div>
+    <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal">Démarrer l'échange</a>
+  </div>
+  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE QUI SOMMES-NOUS
+═══════════════════════════════════════ -->
+<div class="page" id="page-qsn">
+  <div class="discours-box">
+    <div class="discours-inner">
+      <div class="section-tag on-dark reveal">Notre mission</div>
+      <h2 class="on-dark reveal">Le <em>Zen Way to Value</em></h2>
+      <p class="discours-p reveal" data-cms="qsn.discours1"></p>
+      <p class="discours-p reveal" data-cms="qsn.discours2"></p>
+      <div class="dim-row reveal">
+        <div class="dim-pill">📐 Excellence Opérationnelle</div>
+        <div class="dim-pill">♻️ Pérennisation de la valeur</div>
+        <div class="dim-pill">🌱 Responsabilité</div>
+      </div>
+      <p class="discours-p reveal" data-cms="qsn.discours3"></p>
+    </div>
+  </div>
+
+  <div class="section bg-white">
+    <div class="two-col">
+      <div>
+        <div class="section-tag reveal">Notre vision</div>
+        <h2 class="reveal" style="font-size:clamp(1.5rem,2.1vw,2.1rem);">"<span data-cms="qsn.vision">Construire un avenir où les entreprises atteignent une performance mesurable et pérenne</span>"</h2>
+        <p class="body-text reveal" data-cms="qsn.mission" style="margin-top:1rem;"></p>
+        <p style="font-size:1rem;font-weight:700;color:var(--zv-green);margin-top:1.4rem;" class="reveal">Let's find a Zen Way to Value.</p>
+      </div>
+      <div>
+        <div class="section-tag reveal">Nos outils</div>
+        <h2 style="font-size:clamp(1.45rem,1.9vw,1.9rem);" class="reveal">Des frameworks reconnus,<br/><em>sans dogmatisme</em></h2>
+        <div style="margin-top:1.4rem;" class="reveal">
+          <span class="tag-pill">Agile / Scrum</span><span class="tag-pill">Lean</span>
+          <span class="tag-pill">TLS</span><span class="tag-pill">DevOps</span>
+          <span class="tag-pill">Théorie des Contraintes</span><span class="tag-pill">Six Sigma</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section bg-light">
+    <div class="section-tag reveal">Ce qui nous guide</div>
+    <h2 class="reveal">Nos principes <em>fondateurs</em></h2>
+    <!-- Injecté par cms-loader.js -->
+    <div class="principes-grid" id="principes-container"></div>
+  </div>
+
+  <div class="section bg-white">
+    <div style="max-width:740px;">
+      <div class="section-tag reveal">Notre histoire</div>
+      <h2 class="reveal">Une organisation <em>apprenante</em>, depuis le premier jour</h2>
+      <p class="body-text reveal" data-cms="qsn.histoire1"></p>
+      <p class="body-text reveal" data-cms="qsn.histoire2"></p>
+      <p class="body-text reveal" data-cms="qsn.histoire3"></p>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <div class="reveal"><h2>Envie de <em>construire avec nous ?</em></h2><p class="cta-desc">Découvrez nos offres ou rejoignez l'équipe Zen Value.</p></div>
+    <div class="cta-btns reveal">
+      <a href="#" onclick="showPage('offres');return false;" class="btn btn-dark">Nos offres</a>
+      <a href="#" onclick="showPage('recrutement');return false;" class="btn btn-ghost-dark">Nous rejoindre</a>
+    </div>
+  </div>
+  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE FORMATION
+═══════════════════════════════════════ -->
+<div class="page" id="page-formation">
+  <div class="section bg-dark">
+    <div class="section-tag muted reveal">Organisme de formation certifié</div>
+    <h2 class="on-dark reveal" data-cms="formation.titre">Développez vos compétences avec Zen Value</h2>
+    <p class="lead on-dark reveal" data-cms="formation.soustitre" style="margin-top:.7rem;"></p>
+    <div class="qualiopi-badge reveal">
+      <div class="qualiopi-badge-icon">🏅</div>
+      <div class="qualiopi-badge-text">
+        <strong>Certifié Qualiopi</strong>
+        <span style="color:rgba(255,255,255,.5);">Certification française de qualité des organismes de formation</span>
+      </div>
+    </div>
+  </div>
+  <div class="section bg-white">
+    <div style="max-width:700px;">
+      <div class="section-tag reveal">Pourquoi Qualiopi ?</div>
+      <h2 class="reveal" style="font-size:clamp(1.55rem,2.2vw,2.2rem);">Un gage de <em>qualité reconnu</em></h2>
+      <p class="body-text reveal" data-cms="formation.texte1" style="margin-top:1rem;"></p>
+      <p class="body-text reveal" data-cms="formation.texte2"></p>
+    </div>
+  </div>
+  <div class="cta-band" style="grid-template-columns:1fr;text-align:center;">
+    <div class="reveal">
+      <div class="section-tag muted center">Notre catalogue complet</div>
+      <h2>Découvrez toutes <em>nos formations</em></h2>
+      <p class="cta-desc" style="max-width:480px;margin:0 auto 2rem;">Retrouvez l'ensemble de notre catalogue — Agile, Lean, Leadership, TLS et bien plus.</p>
+      <a href="https://zenvalue.catalogueformpro.com/" target="_blank" data-cms-href="formation.catalogue" class="btn btn-dark">Accéder au catalogue →</a>
+    </div>
+  </div>
+  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE RECRUTEMENT
+═══════════════════════════════════════ -->
+<div class="page" id="page-recrutement">
+  <div class="section bg-dark">
+    <div class="section-tag muted reveal">Nous rejoindre</div>
+    <h2 class="on-dark reveal" data-cms="recrutement.titre">Grandir, s'épanouir et innover ensemble.</h2>
+    <p class="lead on-dark reveal" data-cms="recrutement.soustitre" style="margin-top:.7rem;"></p>
+    <p style="color:var(--zv-green);font-size:1rem;font-weight:700;margin-top:1.6rem;font-style:italic;" class="reveal" data-cms="recrutement.tagline"></p>
+  </div>
+
+  <div class="section bg-white">
+    <div class="section-tag reveal">Nos engagements pour vous</div>
+    <h2 class="reveal">Ce qui nous rend <em>différents</em></h2>
+    <div class="engagements-grid" id="engagements-container"></div>
+  </div>
+
+  <div class="section bg-sage">
+    <div class="section-tag reveal">Nos convictions</div>
+    <h2 class="reveal">Nous croyons en <em>l'inclusion et la diversité</em></h2>
+    <div class="profils-grid" id="profils-container"></div>
+  </div>
+
+  <div class="section bg-light">
+    <div class="section-tag reveal">Un processus humain et inclusif</div>
+    <h2 class="reveal">Notre processus de <em>recrutement</em></h2>
+    <div class="processus-steps" id="processus-container"></div>
+  </div>
+
+  <div class="cta-band">
+    <div class="reveal"><h2>Prêt·e à grandir <em>avec nous ?</em></h2><p class="cta-desc">Rejoignez une communauté engagée.</p></div>
+    <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal">Postuler</a>
+  </div>
+  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE RSE
+═══════════════════════════════════════ -->
+<div class="page" id="page-rse">
+  <div class="section bg-sage">
+    <div class="section-tag reveal">RSE</div>
+    <h2 class="reveal" data-cms="rse.titre">Une performance durable va bien au-delà des chiffres.</h2>
+    <p class="lead reveal" data-cms="rse.intro" style="margin-top:.7rem;"></p>
+    <div class="rse-cards">
+      <div class="rse-card reveal"><h3 data-cms="rse.axe1_titre"></h3><p data-cms="rse.axe1_texte"></p></div>
+      <div class="rse-card reveal"><h3 data-cms="rse.axe2_titre"></h3><p data-cms="rse.axe2_texte"></p></div>
+    </div>
+  </div>
+
+  <div class="section bg-white">
+    <div class="section-tag reveal">Nos actions concrètes depuis 2024</div>
+    <h2 class="reveal">Des mesures <em>tangibles</em> pour le bien-être</h2>
+    <div class="rse-mesures-grid" id="mesures-container"></div>
+  </div>
+
+  <div class="cta-band">
+    <div class="reveal"><h2>La performance responsable,<br/><em>c'est notre engagement.</em></h2><p class="cta-desc">En travaillant avec nous, vous accompagnez une organisation qui intègre ces valeurs au quotidien.</p></div>
+    <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal">Discutons-en</a>
+  </div>
+  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE CONTACT
+═══════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="section bg-white">
+    <div class="contact-inner">
+      <div>
+        <div class="section-tag reveal">Parlons de votre projet</div>
+        <h2 class="reveal">Construisons ensemble <em>votre réussite</em></h2>
+        <p class="lead reveal" style="margin-top:.7rem;">Discutons de vos enjeux lors d'un premier échange sans engagement.</p>
+        <div class="contact-details">
+          <div class="contact-detail reveal">
+            <div class="detail-icon">📍</div>
+            <div><div class="detail-label">Bureaux</div><div class="detail-value" data-cms="global.adresse">Paris, XXème arrondissement</div></div>
+          </div>
+          <div class="contact-detail reveal">
+            <div class="detail-icon">✉️</div>
+            <div><div class="detail-label">Email</div><div class="detail-value"><a data-cms-href="global.email" data-cms="global.email" href="mailto:contact@zenvalue.fr">contact@zenvalue.fr</a></div></div>
+          </div>
+          <div class="contact-detail reveal">
+            <div class="detail-icon" style="font-size:.62rem;font-weight:800;">in</div>
+            <div><div class="detail-label">LinkedIn</div><div class="detail-value"><a data-cms-href="global.linkedin" data-cms="global.linkedin" href="#">Zen Value</a></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulaire Netlify -->
+      <div class="reveal">
+        <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display:none;"><input name="bot-field" /></p>
+
+          <div class="form-group"><label for="nom">Nom & Prénom</label><input id="nom" type="text" name="nom" placeholder="Marie Martin" required /></div>
+          <div class="form-group"><label for="email">Email professionnel</label><input id="email" type="email" name="email" placeholder="marie@entreprise.fr" required /></div>
+          <div class="form-group"><label for="organisation">Organisation</label><input id="organisation" type="text" name="organisation" placeholder="Votre entreprise" /></div>
+          <div class="form-group">
+            <label for="sujet">Sujet</label>
+            <select id="sujet" name="sujet">
+              <option value="">Choisir un sujet…</option>
+              <option>Accompagnement / Conseil</option>
+              <option>Formation</option>
+              <option>Recrutement</option>
+              <option>Partenariat</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="message">Votre message</label><textarea id="message" name="message" placeholder="Décrivez brièvement votre contexte et vos enjeux…" required></textarea></div>
+
+          <div id="form-success" class="form-success">✓ Message envoyé ! Nous vous répondrons sous 48h.</div>
+          <div id="form-error" class="form-error">Une erreur est survenue. Écrivez-nous directement à contact@zenvalue.fr</div>
+
+          <button type="submit" class="btn btn-primary btn-full" style="margin-top:.4rem;">Envoyer le message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a><a href="#">Cookies</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
+</div>
+
+
+<!-- ══════ SCRIPTS ══════ -->
+<!-- Ordre important : animations en premier (observeReveals doit exister avant cms-loader) -->
+<script src="/assets/js/animations.js"></script>
+<script src="/assets/js/router.js"></script>
+<script src="/assets/js/cms-loader.js"></script>
+<script src="/assets/js/nav.js"></script>
+
+</body>
+</html>
