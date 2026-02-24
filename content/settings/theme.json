@@ -1,7 +1,7 @@
 {
-  "couleur_primaire": "#aac335",
-  "couleur_sombre": "#414142",
-  "palette_complementaire": "yellow",
+  "couleur_primaire": "#cce454",
+  "couleur_sombre": "#6b6bfa",
+  "palette_complementaire": "lavender",
   "typographie": "jakarta",
   "sections_alternees": true,
   "couleur_accent": "#f1e3a6",
@@ -9,5 +9,5 @@
   "hero_fond_droite": "dark",
   "ombre_activee": true,
   "typographie_custom_url": "",
-  "preset": "ocean"
+  "preset": "custom"
 }
