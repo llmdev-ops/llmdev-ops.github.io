@@ -26,7 +26,8 @@ body {
 .bg-light   { background: var(--zv-light); }
 .bg-dark    { background: var(--zv-dark); }
 .bg-green   { background: var(--zv-green); }
-.bg-yellow  { background: var(--cp-yellow); }
+.bg-accent  { background: var(--accent-section, var(--cp-yellow)); }
+
 .bg-sage    { background: var(--cp-sage); }
 .bg-blue    { background: var(--cp-blue); }
 
@@ -56,6 +57,13 @@ body {
   justify-content: space-between;
   padding: 3.5rem 3.2rem;
 }
+/* Variantes fond hero-right selon thème */
+.hero-right.hero-bg-dark   { background: var(--zv-dark); }
+.hero-right.hero-bg-green  { background: var(--zv-green); }
+.hero-right.hero-bg-accent { background: var(--accent-section, var(--cp-yellow)); }
+
+.hero-right { background: var(--zv-dark); } /* fallback */
+
 .hero-circle {
   position: absolute; top: -55px; right: -55px;
   width: 250px; height: 250px;
