@@ -1,13 +1,10 @@
 {
+  "preset": "custom",
   "couleur_primaire": "#cce454",
-  "couleur_sombre": "#6b6bfa",
+  "couleur_sombre": "#6767c1",
   "palette_complementaire": "lavender",
   "typographie": "jakarta",
-  "sections_alternees": true,
-  "couleur_accent": "#f1e3a6",
-  "rayon_boutons": "4",
-  "hero_fond_droite": "dark",
+  "rayon_boutons": 4,
   "ombre_activee": true,
-  "typographie_custom_url": "",
-  "preset": "zenvalue"
+  "hero_fond_droite": "dark"
 }
