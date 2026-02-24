@@ -4,7 +4,7 @@
   "couleur_sombre": "#6767c1",
   "palette_complementaire": "lavender",
   "typographie": "jakarta",
-  "rayon_boutons": 4,
+  "rayon_boutons": 7,
   "ombre_activee": true,
-  "hero_fond_droite": "dark"
+  "hero_fond_droite": "green"
 }
