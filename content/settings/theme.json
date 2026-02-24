@@ -1,18 +1,10 @@
 {
-  "preset": "zenvalue",
-
-  "couleur_primaire": "#aac335",
-  "couleur_sombre": "#414142",
-  "couleur_accent": "#f1e3a6",
-
-  "palette_complementaire": "yellow",
-
+  "preset": "custom",
+  "couleur_primaire": "#febb2a",
+  "couleur_sombre": "#8e8efb",
+  "palette_complementaire": "lavender",
   "typographie": "jakarta",
-  "typographie_custom_url": "",
-
-  "rayon_boutons": "4",
+  "rayon_boutons": 4,
   "ombre_activee": true,
-
-  "hero_fond_droite": "dark",
-  "sections_alternees": true
+  "hero_fond_droite": "dark"
 }
