@@ -117,7 +117,7 @@ function applyTheme(raw) {
 
 // ── Chargement ───────────────────────────
 async function loadTheme() {
-  const url = '/content/settings/theme.json?_=' + Date.now();
+  const url = 'content/settings/theme.json?_=' + Date.now();
   console.info('[ZV Theme] Chargement depuis :', url);
 
   try {
