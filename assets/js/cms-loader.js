@@ -5,10 +5,7 @@
    ══════════════════════════════════════════ */
 
 // Utilitaire : fetch JSON avec gestion d'erreur
-const _BASE = document.baseURI.replace(//[^/]*$/, '/');
-
 async function loadJSON(path) {
-  path = path.startsWith('/') ? _BASE + path.slice(1) : path;
   try {
     const res = await fetch(path);
     if (!res.ok) throw new Error(`HTTP ${res.status} — ${path}`);
@@ -33,7 +30,7 @@ function inject(key, value) {
 
 // ── ACCUEIL ──────────────────────────────
 async function loadAccueil() {
-  const d = await loadJSON('/content/pages/accueil.json');
+  const d = await loadJSON('content/pages/accueil.json');
   if (!d) return;
   inject('accueil.eyebrow',    d.eyebrow);
   inject('accueil.tagline1',   d.tagline1);
@@ -53,7 +50,7 @@ async function loadAccueil() {
 
 // ── PARAMÈTRES GLOBAUX ────────────────────
 async function loadGlobal() {
-  const d = await loadJSON('/content/settings/global.json');
+  const d = await loadJSON('content/settings/global.json');
   if (!d) return;
   inject('global.email',      d.email);
   inject('global.adresse',    d.adresse);
@@ -70,7 +67,7 @@ async function loadGlobal() {
 
 // ── CHIFFRES CLÉS ─────────────────────────
 async function loadResultats() {
-  const d = await loadJSON('/content/settings/resultats.json');
+  const d = await loadJSON('content/settings/resultats.json');
   if (!d) return;
   ['r1','r2','r3','r4'].forEach(k => {
     inject(`resultats.${k}_chiffre`, d[`${k}_chiffre`]);
@@ -80,7 +77,7 @@ async function loadResultats() {
 
 // ── QUI SOMMES-NOUS ───────────────────────
 async function loadQSN() {
-  const d = await loadJSON('/content/pages/qui-sommes-nous.json');
+  const d = await loadJSON('content/pages/qui-sommes-nous.json');
   if (!d) return;
   inject('qsn.discours1',   d.discours1);
   inject('qsn.discours2',   d.discours2);
@@ -94,7 +91,7 @@ async function loadQSN() {
 
 // ── PRINCIPES ─────────────────────────────
 async function loadPrincipes() {
-  const d = await loadJSON('/content/pages/principes.json');
+  const d = await loadJSON('content/pages/principes.json');
   if (!d || !d.items) return;
   const container = document.getElementById('principes-container');
   if (!container) return;
@@ -108,7 +105,7 @@ async function loadPrincipes() {
 
 // ── OFFRES ────────────────────────────────
 async function loadOffres() {
-  const d = await loadJSON('/content/pages/offres.json');
+  const d = await loadJSON('content/pages/offres.json');
   if (!d || !d.items) return;
   const container = document.getElementById('offres-container');
   if (!container) return;
@@ -124,7 +121,7 @@ async function loadOffres() {
 
 // ── CAS CLIENTS ───────────────────────────
 async function loadCasClients() {
-  const d = await loadJSON('/content/pages/cas-clients.json');
+  const d = await loadJSON('content/pages/cas-clients.json');
   if (!d || !d.items) return;
   const container = document.getElementById('cas-container');
   if (!container) return;
@@ -145,7 +142,7 @@ async function loadCasClients() {
 
 // ── FORMATION ─────────────────────────────
 async function loadFormation() {
-  const d = await loadJSON('/content/pages/formation.json');
+  const d = await loadJSON('content/pages/formation.json');
   if (!d) return;
   inject('formation.titre',       d.titre);
   inject('formation.soustitre',   d.soustitre);
@@ -159,7 +156,7 @@ async function loadFormation() {
 
 // ── RECRUTEMENT ───────────────────────────
 async function loadRecrutement() {
-  const d = await loadJSON('/content/pages/recrutement.json');
+  const d = await loadJSON('content/pages/recrutement.json');
   if (!d) return;
   inject('recrutement.titre',    d.titre);
   inject('recrutement.soustitre',d.soustitre);
@@ -210,7 +207,7 @@ async function loadRecrutement() {
 
 // ── RSE ───────────────────────────────────
 async function loadRSE() {
-  const d = await loadJSON('/content/pages/rse.json');
+  const d = await loadJSON('content/pages/rse.json');
   if (!d) return;
   inject('rse.titre',    d.titre);
   inject('rse.intro',    d.intro);
