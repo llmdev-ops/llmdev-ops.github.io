@@ -26,9 +26,11 @@ body {
 .bg-light   { background: var(--zv-light); }
 .bg-dark    { background: var(--zv-dark); }
 .bg-green   { background: var(--zv-green); }
-.bg-accent  { background: var(--accent-section, var(--cp-yellow)); }
 
-.bg-sage    { background: var(--cp-sage); }
+/* Ces deux classes répondent au choix de palette dans le CMS */
+.bg-yellow  { background: var(--accent-section); }
+.bg-sage    { background: var(--accent-section-alt); }
+.bg-accent  { background: var(--accent-section); }
 .bg-blue    { background: var(--cp-blue); }
 
 /* Hero */
@@ -68,13 +70,13 @@ body {
   position: absolute; top: -55px; right: -55px;
   width: 250px; height: 250px;
   border-radius: 50%;
-  border: 1px solid rgba(170,195,53,.16);
+  border: 1px solid var(--hero-circle-color, rgba(170,195,53,.16));
 }
 .hero-circle::after {
   content: '';
   position: absolute; inset: 35px;
   border-radius: 50%;
-  border: 1px solid rgba(170,195,53,.08);
+  border: 1px solid var(--hero-circle-color-inner, rgba(170,195,53,.08));
 }
 
 /* Grilles */
