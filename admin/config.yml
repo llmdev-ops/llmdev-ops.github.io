@@ -10,6 +10,117 @@ public_folder: "/assets/images/uploads"
 
 collections:
 
+  # ── THÈME GRAPHIQUE ───────────────────────
+  - name: "theme"
+    label: "🎨 Thème graphique"
+    files:
+      - label: "Personnalisation visuelle"
+        name: "theme-settings"
+        file: "content/settings/theme.json"
+        fields:
+
+          - label: "Preset de thème"
+            name: "preset"
+            widget: "select"
+            hint: "Choisissez un thème prédéfini, ou sélectionnez 'Personnalisé' pour configurer manuellement."
+            options:
+              - { label: "✳️  Zen Value (défaut)",  value: "zenvalue" }
+              - { label: "🌊 Océan",                value: "ocean"    }
+              - { label: "🌿 Terre",                value: "earth"    }
+              - { label: "🌸 Bloom",                value: "bloom"    }
+              - { label: "✏️  Personnalisé",         value: "custom"   }
+            default: "zenvalue"
+
+          - label: "━━ Couleurs ━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            name: "sep_colors"
+            widget: "hidden"
+            default: ""
+
+          - label: "Couleur primaire"
+            name: "couleur_primaire"
+            widget: "color"
+            hint: "Couleur principale du site (boutons, accents, logo). Charte officielle : #aac335"
+            default: "#aac335"
+            enableAlpha: false
+
+          - label: "Couleur sombre (texte & fonds foncés)"
+            name: "couleur_sombre"
+            widget: "color"
+            hint: "Couleur des titres, nav, sections dark. Charte officielle : #414142"
+            default: "#414142"
+            enableAlpha: false
+
+          - label: "Palette complémentaire"
+            name: "palette_complementaire"
+            widget: "select"
+            hint: "Couleur de fond des sections secondaires (co-construction, RSE…)"
+            options:
+              - { label: "🟡 Jaune doux   #f1e3a6", value: "yellow"   }
+              - { label: "🟤 Beige naturel #d6cbbd", value: "beige"    }
+              - { label: "🟢 Vert sauge   #c7d4b7", value: "sage"     }
+              - { label: "🟣 Lavande      #dbd3e8", value: "lavender" }
+              - { label: "🔵 Bleu ciel    #cedff4", value: "blue"     }
+            default: "yellow"
+
+          - label: "━━ Typographie ━━━━━━━━━━━━━━━━━━━━━━━"
+            name: "sep_typo"
+            widget: "hidden"
+            default: ""
+
+          - label: "Police de caractères"
+            name: "typographie"
+            widget: "select"
+            hint: "Plus Jakarta Sans est l'équivalent web le plus proche de Gilroy (charte officielle)."
+            options:
+              - { label: "Plus Jakarta Sans — équivalent Gilroy ✓", value: "jakarta" }
+              - { label: "Inter — neutre et lisible",               value: "inter"   }
+              - { label: "DM Sans — doux et moderne",               value: "dm"      }
+              - { label: "Outfit — géométrique et aéré",            value: "outfit"  }
+              - { label: "Police personnalisée (URL ci-dessous)",   value: "custom"  }
+            default: "jakarta"
+
+          - label: "URL Google Fonts (police personnalisée)"
+            name: "typographie_custom_url"
+            widget: "string"
+            required: false
+            hint: "Uniquement si 'Police personnalisée' est sélectionnée. Ex: https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700"
+            default: ""
+
+          - label: "Nom CSS de la police personnalisée"
+            name: "typographie_custom_family"
+            widget: "string"
+            required: false
+            hint: "Ex: 'Montserrat', sans-serif"
+            default: ""
+
+          - label: "━━ Style & Effets ━━━━━━━━━━━━━━━━━━━━"
+            name: "sep_style"
+            widget: "hidden"
+            default: ""
+
+          - label: "Arrondi des boutons (px)"
+            name: "rayon_boutons"
+            widget: "number"
+            hint: "0 = angles droits, 4 = légèrement arrondi (défaut), 24 = très arrondi"
+            value_type: "int"
+            min: 0
+            max: 40
+            default: 4
+
+          - label: "Activer les ombres portées"
+            name: "ombre_activee"
+            widget: "boolean"
+            default: true
+
+          - label: "Fond de la section hero (côté droit)"
+            name: "hero_fond_droite"
+            widget: "select"
+            options:
+              - { label: "Anthracite (défaut)", value: "dark"   }
+              - { label: "Couleur primaire",    value: "green"  }
+              - { label: "Couleur accent",      value: "accent" }
+            default: "dark"
+
   # ── PARAMÈTRES GÉNÉRAUX ──────────────────
   - name: "settings"
     label: "⚙️ Paramètres"
