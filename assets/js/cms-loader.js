@@ -5,7 +5,10 @@
    ══════════════════════════════════════════ */
 
 // Utilitaire : fetch JSON avec gestion d'erreur
+const _BASE = document.baseURI.replace(//[^/]*$/, '/');
+
 async function loadJSON(path) {
+  path = path.startsWith('/') ? _BASE + path.slice(1) : path;
   try {
     const res = await fetch(path);
     if (!res.ok) throw new Error(`HTTP ${res.status} — ${path}`);
