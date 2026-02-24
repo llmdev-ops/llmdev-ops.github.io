@@ -5,13 +5,37 @@
 [build]
   publish = "."
 
-# Redirections pour la navigation SPA
+# ── Redirections ──
+# Les fichiers réels ont toujours priorité sur les redirects Netlify.
+# Ces règles explicites garantissent que les JSON/assets ne sont jamais
+# interceptés par le fallback SPA.
+
 [[redirects]]
-  from = "/*"
-  to   = "/index.html"
+  from   = "/content/*"
+  to     = "/content/:splat"
+  status = 200
+  force  = false
+
+[[redirects]]
+  from   = "/assets/*"
+  to     = "/assets/:splat"
+  status = 200
+  force  = false
+
+[[redirects]]
+  from   = "/admin/*"
+  to     = "/admin/:splat"
+  status = 200
+  force  = false
+
+# SPA fallback — toujours en dernier
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
   status = 200
 
-# En-têtes de sécurité
+# ── En-têtes ──
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -20,14 +44,26 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy        = "strict-origin-when-cross-origin"
 
-# Cache long pour les assets statiques
+# CSS + images : cache long
 [[headers]]
-  for = "/assets/*"
+  for = "/assets/css/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Pas de cache pour le contenu JSON (CMS)
+[[headers]]
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# JS : toujours re-vérifié (pour que les mises à jour soient prises en compte)
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Contenu CMS : jamais mis en cache
 [[headers]]
   for = "/content/*"
   [headers.values]
-    Cache-Control = "no-cache"
+    Cache-Control = "no-store, no-cache, must-revalidate"
+    Pragma        = "no-cache"
