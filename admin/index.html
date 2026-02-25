@@ -339,9 +339,48 @@ function rTheme(d) {
   const presets = [{k:'zenvalue',c:'#aac335',n:'Zen Value',s:'Charte officielle'},{k:'ocean',c:'#2e7cf6',n:'Océan',s:'Bleu professionnel'},{k:'earth',c:'#8b6f4e',n:'Terre',s:'Chaleureux'},{k:'bloom',c:'#9b59b6',n:'Bloom',s:'Créatif'}];
   const pals = [{k:'yellow',c:'#f1e3a6'},{k:'beige',c:'#d6cbbd'},{k:'sage',c:'#c7d4b7'},{k:'lavender',c:'#dbd3e8'},{k:'blue',c:'#cedff4'}];
   const isCustom = d.preset==='custom';
+  const prevPrimary = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset].couleur_primaire : (d.couleur_primaire||'#aac335');
+  const prevDark    = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset].couleur_sombre   : (d.couleur_sombre  ||'#414142');
+  const prevPal     = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset].palette_complementaire : (d.palette_complementaire||'yellow');
+  const prevPalColor = ADMIN_PALETTES[prevPal]||'#f1e3a6';
+  const hex2 = h => { const x=h.replace('#',''); return {r:parseInt(x.slice(0,2),16),g:parseInt(x.slice(2,4),16),b:parseInt(x.slice(4,6),16)}; };
+  const c = hex2(prevPrimary);
+  const lightBg = 'rgb('+Math.round(c.r+(255-c.r)*.82)+','+Math.round(c.g+(255-c.g)*.82)+','+Math.round(c.b+(255-c.b)*.82)+')';
+
   return `
     <div class="section-title">🎨 Thème graphique</div>
     <div class="section-desc">Choisissez un preset ou configurez manuellement les couleurs.</div>
+
+    <div class="form-card" style="margin-bottom:1.2rem;">
+      <div class="form-card-title">Aperçu en temps réel</div>
+      <div style="display:flex;gap:.8rem;align-items:stretch;flex-wrap:wrap;">
+        <div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
+          <div id="preview-primary" style="height:52px;background:${prevPrimary};display:flex;align-items:center;justify-content:center;">
+            <span style="color:white;font-size:.7rem;font-weight:700;letter-spacing:.05em;" id="preview-primary-lbl">${prevPrimary}</span>
+          </div>
+          <div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Couleur principale</div>
+        </div>
+        <div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
+          <div id="preview-dark" style="height:52px;background:${prevDark};display:flex;align-items:center;justify-content:center;">
+            <span style="color:white;font-size:.7rem;font-weight:700;letter-spacing:.05em;" id="preview-dark-lbl">${prevDark}</span>
+          </div>
+          <div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Couleur sombre</div>
+        </div>
+        <div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
+          <div id="preview-accent" style="height:52px;background:${prevPalColor};"></div>
+          <div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Palette accent</div>
+        </div>
+        <div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
+          <div id="preview-light" style="height:52px;background:${lightBg};"></div>
+          <div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Fond clair</div>
+        </div>
+      </div>
+      <div style="margin-top:1rem;border-radius:8px;overflow:hidden;border:1px solid var(--border);">
+        <div id="preview-btn" style="display:inline-block;padding:.55rem 1.4rem;border-radius:4px;font-size:.8rem;font-weight:700;color:white;background:${prevPrimary};margin:.8rem;">Bouton exemple</div>
+        <span style="font-size:.85rem;color:${prevPrimary};font-weight:600;margin-left:.5rem;">Lien exemple</span>
+      </div>
+    </div>
+
     ${card('Preset', `
       <div class="preset-grid">
         ${presets.map(p=>`<div class="preset-card ${d.preset===p.k?'selected':''}" onclick="pickPreset('${p.k}',this)"><div class="preset-dot" style="background:${p.c}"></div><div><div class="preset-name">${p.n}</div><div class="preset-sub">${p.s}</div></div></div>`).join('')}
@@ -510,20 +549,82 @@ function addEngagement(id)  { addToList(id||'list-engagements', ['icon','titre',
 function addProfil(id)      { addToList(id||'list-profils',     ['icon','titre','description']); }
 
 /* ── THEME HELPERS ── */
+/* ── PRESETS DATA (miroir du theme-loader) ── */
+const ADMIN_PRESETS = {
+  zenvalue: { couleur_primaire:'#aac335', couleur_sombre:'#414142', palette_complementaire:'yellow' },
+  ocean:    { couleur_primaire:'#2e7cf6', couleur_sombre:'#1a2332', palette_complementaire:'blue' },
+  earth:    { couleur_primaire:'#8b6f4e', couleur_sombre:'#2c2016', palette_complementaire:'beige' },
+  bloom:    { couleur_primaire:'#9b59b6', couleur_sombre:'#2d1b3d', palette_complementaire:'lavender' },
+};
+const ADMIN_PALETTES = {
+  yellow:'#f1e3a6', beige:'#d6cbbd', sage:'#c7d4b7', lavender:'#dbd3e8', blue:'#cedff4'
+};
+
+function updatePreview(primary, dark, palKey) {
+  const p = document.getElementById('preview-primary');
+  const d = document.getElementById('preview-dark');
+  const a = document.getElementById('preview-accent');
+  const l = document.getElementById('preview-light');
+  const b = document.getElementById('preview-btn');
+  if (!p) return;
+  const pal = ADMIN_PALETTES[palKey] || '#f1e3a6';
+  const hex2 = h => { const x=h.replace('#',''); return {r:parseInt(x.slice(0,2),16),g:parseInt(x.slice(2,4),16),b:parseInt(x.slice(4,6),16)}; };
+  const c = hex2(primary);
+  const lightBg = 'rgb(' + Math.round(c.r+(255-c.r)*.82) + ',' + Math.round(c.g+(255-c.g)*.82) + ',' + Math.round(c.b+(255-c.b)*.82) + ')';
+  p.style.background = primary;
+  d.style.background = dark;
+  a.style.background = pal;
+  l.style.background = lightBg;
+  if (b) b.style.background = primary;
+  document.getElementById('preview-primary-lbl').textContent = primary;
+  document.getElementById('preview-dark-lbl').textContent = dark;
+}
+
 function pickPreset(key, el) {
   document.querySelectorAll('.preset-card').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
   document.getElementById('preset-val').value = key;
   const block = document.getElementById('custom-block');
   if (block) { block.style.opacity = key==='custom'?'1':'.4'; block.style.pointerEvents = key==='custom'?'auto':'none'; }
+  // Aperçu temps réel
+  if (key !== 'custom' && ADMIN_PRESETS[key]) {
+    const p = ADMIN_PRESETS[key];
+    updatePreview(p.couleur_primaire, p.couleur_sombre, p.palette_complementaire);
+    // Mettre à jour les champs couleur
+    const cp = document.getElementById('cp'); const hp = document.getElementById('hp');
+    const cd = document.getElementById('cd'); const hd = document.getElementById('hd');
+    if (cp) { cp.value = p.couleur_primaire; hp.value = p.couleur_primaire; }
+    if (cd) { cd.value = p.couleur_sombre;   hd.value = p.couleur_sombre; }
+    // Palette
+    document.querySelectorAll('.palette-chip').forEach(c=>c.classList.remove('selected'));
+    document.querySelectorAll('.palette-chip').forEach(c=>{ if(c.title===p.palette_complementaire) c.classList.add('selected'); });
+    document.getElementById('pal-val').value = p.palette_complementaire;
+  }
 }
 function pickPal(key, el) {
   document.querySelectorAll('.palette-chip').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
   document.getElementById('pal-val').value = key;
+  const primary = document.getElementById('hp')?.value || '#aac335';
+  const dark    = document.getElementById('hd')?.value || '#414142';
+  updatePreview(primary, dark, key);
 }
-function syncHex(pickerId, hexId, val) { document.getElementById(hexId).value = val; }
-function syncPicker(pickerId, val) { if(/^#[0-9a-fA-F]{6}$/.test(val)) document.getElementById(pickerId).value = val; }
+function syncHex(pickerId, hexId, val) {
+  document.getElementById(hexId).value = val;
+  const primary = document.getElementById('hp')?.value || '#aac335';
+  const dark    = document.getElementById('hd')?.value || '#414142';
+  const palKey  = document.getElementById('pal-val')?.value || 'yellow';
+  updatePreview(primary, dark, palKey);
+}
+function syncPicker(pickerId, val) {
+  if(/^#[0-9a-fA-F]{6}$/.test(val)) {
+    document.getElementById(pickerId).value = val;
+    const primary = document.getElementById('hp')?.value || '#aac335';
+    const dark    = document.getElementById('hd')?.value || '#414142';
+    const palKey  = document.getElementById('pal-val')?.value || 'yellow';
+    updatePreview(primary, dark, palKey);
+  }
+}
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
 
 /* ── COLLECT ── */
