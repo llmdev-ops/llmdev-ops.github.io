@@ -1,8 +1,8 @@
 {
-  "preset": "custom",
-  "couleur_primaire": "#febb2a",
-  "couleur_sombre": "#8e8efb",
-  "palette_complementaire": "lavender",
+  "preset": "zenvalue",
+  "couleur_primaire": "#aac335",
+  "couleur_sombre": "#414142",
+  "palette_complementaire": "yellow",
   "typographie": "jakarta",
   "rayon_boutons": 4,
   "ombre_activee": true,
