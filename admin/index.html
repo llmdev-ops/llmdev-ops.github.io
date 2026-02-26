@@ -779,6 +779,10 @@ function pickPreset(key, el) {
   }
 }
 
+function onRangeChange(el) {
+  var lbl = document.getElementById('rv');
+  if (lbl) lbl.textContent = el.value;
+}
 function onPickerChange(el) {
   var target = document.getElementById(el.getAttribute('data-target'));
   if (target) target.value = el.value;
@@ -899,7 +903,7 @@ function rTheme(d) {
           ADMIN_FONTS.map(function(f) { return '<option value="'+f[0]+'" '+(font===f[0]?'selected':'')+'>'+f[1]+'</option>'; }).join('') +
         '</select></div>' +
       '<div class="field"><label>Arrondi boutons — <span id="rv">'+radius+'</span>px</label>' +
-        '<input type="range" name="rayon_boutons" min="0" max="40" value="'+radius+'" oninput="document.getElementById('rv').textContent=this.value" /></div>'
+        '<input type="range" name="rayon_boutons" id="range-radius" min="0" max="40" value="'+radius+'" oninput="onRangeChange(this)" /></div>'
     );
 }
 
