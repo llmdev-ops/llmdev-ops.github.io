@@ -1092,7 +1092,7 @@ function rMedias() {
         return '<div class="media-tab ' + (f.key === mediaTab ? 'active' : '') + '" data-key="' + f.key + '" onclick="switchMediaTab(this.dataset.key)">' + f.label + '</div>';
       }).join('') +
     '</div>' +
-    '<div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event)">' +
+    '<div class="dropzone" id="dropzone" onclick="document.getElementById("file-input").click()" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event)">' +
       '<input type="file" id="file-input" multiple accept="image/*" onchange="onFileSelect(event)" />' +
       '<div class="dropzone-icon">📁</div>' +
       '<div class="dropzone-text">Glissez vos images ici ou <strong>cliquez pour selectionner</strong><br/><span style="font-size:.75rem;">JPG, PNG, WebP, SVG, AVIF</span></div>' +
@@ -1164,6 +1164,7 @@ function copyMediaUrl(url, card) {
   });
 }
 
+function onDropzoneClick() { document.getElementById("file-input").click(); }
 function onDragOver(e) { e.preventDefault(); document.getElementById('dropzone').classList.add('drag-over'); }
 function onDragLeave(e) { document.getElementById('dropzone').classList.remove('drag-over'); }
 function onDrop(e) {
