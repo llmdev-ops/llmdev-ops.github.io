@@ -1,10 +1,10 @@
 {
-  "preset": "zenvalue",
-  "couleur_primaire": "#aac335",
-  "couleur_sombre": "#414142",
-  "palette_complementaire": "yellow",
-  "typographie": "jakarta",
-  "rayon_boutons": 4,
+  "preset": "custom",
+  "couleur_primaire": "#b2f74a",
+  "couleur_sombre": "#5c5a5e",
+  "palette_complementaire": "blue",
+  "typographie": "dm",
+  "rayon_boutons": 6,
   "ombre_activee": true,
   "hero_fond_droite": "dark"
 }
