@@ -15,28 +15,37 @@
     }
     body { font-family: var(--ff); background: var(--light); color: var(--dark); font-size: 15px; line-height: 1.6; }
 
-    /* LOGIN */
-    #login-screen { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:2rem; }
-    .login-box { background:white; border-radius:12px; padding:2.8rem 2.4rem; box-shadow:0 4px 32px rgba(0,0,0,.08); width:100%; max-width:440px; }
-    .login-logo { height:36px; margin-bottom:2rem; }
-    .login-box h1 { font-size:1.3rem; font-weight:800; margin-bottom:.4rem; }
-    .login-box > p { font-size:.87rem; color:var(--gray); margin-bottom:1.8rem; }
-    .login-box label { display:block; font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray); margin-bottom:.35rem; }
-    .login-box input { width:100%; padding:.7rem .9rem; border:2px solid var(--border); border-radius:var(--radius); font-family:var(--ff); font-size:.9rem; outline:none; transition:border-color .2s; margin-bottom:1rem; }
-    .login-box input:focus { border-color:var(--green); }
-    .login-hint { font-size:.78rem; color:var(--gray); margin-bottom:1.4rem; line-height:1.5; }
-    .login-hint a { color:var(--green); }
-    .login-error { background:#fef2f2; border:1.5px solid #ef4444; color:#b91c1c; padding:.7rem 1rem; border-radius:var(--radius); font-size:.84rem; margin-top:.8rem; display:none; }
+    /* ── ECRANS AUTH ── */
+    .auth-screen { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:2rem; }
+    .auth-box { background:white; border-radius:12px; padding:2.8rem 2.4rem; box-shadow:0 4px 32px rgba(0,0,0,.08); width:100%; max-width:460px; }
+    .auth-logo { height:36px; margin-bottom:2rem; }
+    .auth-box h1 { font-size:1.3rem; font-weight:800; margin-bottom:.4rem; }
+    .auth-box > p { font-size:.87rem; color:var(--gray); margin-bottom:1.8rem; }
+    .auth-label { display:block; font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray); margin-bottom:.35rem; }
+    .auth-input { width:100%; padding:.7rem .9rem; border:2px solid var(--border); border-radius:var(--radius); font-family:var(--ff); font-size:.9rem; outline:none; transition:border-color .2s; margin-bottom:1rem; }
+    .auth-input:focus { border-color:var(--green); }
+    .auth-error { background:#fef2f2; border:1.5px solid #ef4444; color:#b91c1c; padding:.7rem 1rem; border-radius:var(--radius); font-size:.84rem; margin-top:.8rem; display:none; }
+    .auth-divider { text-align:center; color:var(--gray); font-size:.78rem; margin:1.2rem 0; position:relative; }
+    .auth-divider::before { content:''; position:absolute; top:50%; left:0; right:0; height:1px; background:var(--border); }
+    .auth-divider span { position:relative; background:white; padding:0 .8rem; }
+    .code-toggle { font-size:.8rem; color:var(--green); cursor:pointer; text-decoration:underline; margin-bottom:1rem; display:block; }
+    .code-block { display:none; background:var(--light); border-radius:var(--radius); padding:1rem; margin-bottom:1rem; border:1px solid var(--border); }
+    .code-block p { font-size:.78rem; color:var(--gray); margin-bottom:.8rem; line-height:1.5; }
+    .role-badge { display:inline-block; font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:.2rem .6rem; border-radius:20px; }
+    .role-admin  { background:#fef9c3; color:#854d0e; }
+    .role-redacteur { background:#f0fdf4; color:#15803d; }
 
-    /* BUTTONS */
+    /* ── BUTTONS ── */
     .btn { display:inline-block; font-family:var(--ff); font-size:.78rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:.75rem 1.6rem; border-radius:var(--radius); border:none; cursor:pointer; transition:all .2s; text-decoration:none; }
     .btn-primary { background:var(--green); color:white; width:100%; text-align:center; }
     .btn-primary:hover { background:#8fa828; }
     .btn-sm { padding:.45rem .9rem; font-size:.7rem; }
     .btn-outline { background:transparent; color:var(--dark); border:2px solid var(--border); width:auto; }
     .btn-outline:hover { border-color:var(--green); color:var(--green); }
+    .btn-danger { background:#fee2e2; color:#dc2626; border:none; }
+    .btn-danger:hover { background:#fecaca; }
 
-    /* ADMIN LAYOUT */
+    /* ── ADMIN LAYOUT ── */
     #admin-screen { display:none; min-height:100vh; }
     .admin-header { background:white; border-bottom:2px solid var(--green); padding:0 2rem; height:60px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; box-shadow:0 1px 8px rgba(0,0,0,.04); }
     .admin-logo { height:28px; }
@@ -44,25 +53,25 @@
     .admin-user { font-size:.78rem; color:var(--gray); }
     .admin-layout { display:grid; grid-template-columns:230px 1fr; min-height:calc(100vh - 60px); }
 
-    /* SIDEBAR */
+    /* ── SIDEBAR ── */
     .sidebar { background:white; border-right:1px solid var(--border); padding:1.5rem 0; position:sticky; top:60px; height:calc(100vh - 60px); overflow-y:auto; }
     .sidebar-section { padding:.4rem 1.2rem; font-size:.63rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gray); opacity:.5; margin-top:1.2rem; }
     .sidebar-item { display:flex; align-items:center; gap:.6rem; padding:.62rem 1.4rem; font-size:.84rem; font-weight:500; color:var(--dark); cursor:pointer; transition:all .15s; border-left:3px solid transparent; }
     .sidebar-item:hover { background:#f3f7e0; color:var(--green); }
     .sidebar-item.active { background:#f3f7e0; color:var(--green); border-left-color:var(--green); font-weight:700; }
 
-    /* MAIN */
+    /* ── MAIN ── */
     .admin-content { overflow-y:auto; display:flex; flex-direction:column; min-height:calc(100vh - 60px); }
     .admin-main { padding:2rem 2.5rem; max-width:860px; flex:1; }
     .section-title { font-size:1.3rem; font-weight:800; margin-bottom:.3rem; }
     .section-desc { font-size:.85rem; color:var(--gray); margin-bottom:2rem; }
 
-    /* FORM */
+    /* ── FORM ── */
     .form-card { background:white; border-radius:10px; padding:1.8rem 2rem; margin-bottom:1.2rem; border:1px solid var(--border); }
     .form-card-title { font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--green); margin-bottom:1.2rem; padding-bottom:.6rem; border-bottom:1px solid var(--border); }
     .field { margin-bottom:1.1rem; }
     .field label { display:block; font-size:.71rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--gray); margin-bottom:.32rem; }
-    .field input[type=text],.field input[type=email],.field input[type=url],.field input[type=number],.field textarea,.field select { width:100%; padding:.62rem .8rem; border:1.5px solid var(--border); border-radius:var(--radius); font-family:var(--ff); font-size:.9rem; color:var(--dark); outline:none; transition:border-color .2s; background:white; }
+    .field input[type=text],.field input[type=email],.field input[type=url],.field input[type=number],.field input[type=password],.field textarea,.field select { width:100%; padding:.62rem .8rem; border:1.5px solid var(--border); border-radius:var(--radius); font-family:var(--ff); font-size:.9rem; color:var(--dark); outline:none; transition:border-color .2s; background:white; }
     .field input:focus,.field textarea:focus,.field select:focus { border-color:var(--green); }
     .field textarea { resize:vertical; min-height:90px; }
     .field input[type=color] { width:54px; height:36px; padding:.1rem; border:1.5px solid var(--border); border-radius:var(--radius); cursor:pointer; }
@@ -78,7 +87,7 @@
     .toggle input:checked + .toggle-slider { background:var(--green); }
     .toggle input:checked + .toggle-slider::before { transform:translateX(20px); }
 
-    /* PRESETS */
+    /* ── PRESETS ── */
     .preset-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.7rem; margin-bottom:1rem; }
     .preset-card { border:2px solid var(--border); border-radius:8px; padding:.9rem 1rem; cursor:pointer; transition:all .2s; display:flex; align-items:center; gap:.8rem; }
     .preset-card:hover { border-color:var(--green); background:#f3f7e0; }
@@ -87,13 +96,13 @@
     .preset-name { font-size:.84rem; font-weight:700; }
     .preset-sub  { font-size:.71rem; color:var(--gray); }
 
-    /* PALETTE */
+    /* ── PALETTE ── */
     .palette-grid { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem; }
     .palette-chip { width:36px; height:36px; border-radius:6px; border:3px solid transparent; cursor:pointer; transition:transform .15s,border-color .15s; }
     .palette-chip:hover { transform:scale(1.1); }
     .palette-chip.selected { border-color:var(--dark); }
 
-    /* LIST EDITOR */
+    /* ── LIST EDITOR ── */
     .list-items { display:flex; flex-direction:column; gap:.7rem; margin-bottom:.8rem; }
     .list-item { border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; }
     .list-item-header { display:flex; align-items:center; justify-content:space-between; padding:.7rem 1rem; background:var(--light); cursor:pointer; font-size:.87rem; font-weight:600; user-select:none; }
@@ -106,13 +115,26 @@
     .add-btn { display:flex; align-items:center; justify-content:center; gap:.5rem; font-size:.8rem; font-weight:700; color:var(--green); background:#f3f7e0; border:2px dashed var(--green); border-radius:var(--radius); padding:.6rem 1.2rem; cursor:pointer; width:100%; transition:background .2s; }
     .add-btn:hover { background:#eaf0c7; }
 
-    /* SAVE BAR */
+    /* ── SAVE BAR ── */
     .save-bar { background:white; border-top:1px solid var(--border); padding:1rem 2.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
     .save-status { font-size:.84rem; color:var(--gray); }
     .save-status.ok  { color:#16a34a; font-weight:600; }
     .save-status.err { color:#dc2626; font-weight:600; }
 
-    /* LOADER */
+    /* ── USER TABLE ── */
+    .user-table { width:100%; border-collapse:collapse; }
+    .user-table th { text-align:left; font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray); padding:.6rem 1rem; border-bottom:2px solid var(--border); }
+    .user-table td { padding:.8rem 1rem; border-bottom:1px solid var(--border); font-size:.88rem; vertical-align:middle; }
+    .user-table tr:last-child td { border-bottom:none; }
+    .user-table tr:hover td { background:#fafafa; }
+    .user-self td { background:#f3f7e0 !important; }
+
+    /* ── CODE ACCES ── */
+    .code-box { background:#1e1e2e; color:#a6e3a1; font-family:monospace; font-size:.82rem; padding:1rem 1.2rem; border-radius:6px; word-break:break-all; margin:1rem 0; cursor:pointer; position:relative; }
+    .code-box::after { content:'Cliquer pour copier'; position:absolute; top:.4rem; right:.8rem; font-size:.65rem; color:#6c7086; }
+    .code-box.copied::after { content:'Copie !'; color:#a6e3a1; }
+
+    /* ── LOADER ── */
     .overlay { display:none; position:fixed; inset:0; background:rgba(255,255,255,.75); z-index:999; align-items:center; justify-content:center; font-size:1rem; font-weight:700; color:var(--green); gap:.8rem; }
     .overlay.on { display:flex; }
     .spin { width:20px; height:20px; border:3px solid rgba(0,0,0,.1); border-top-color:var(--green); border-radius:50%; animation:spin .7s linear infinite; }
@@ -124,28 +146,52 @@
 <div class="overlay" id="overlay"><div class="spin"></div> Enregistrement…</div>
 
 <!-- ══ LOGIN ══ -->
-<div id="login-screen">
-  <div class="login-box">
-    <img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="login-logo" />
+<div id="login-screen" class="auth-screen">
+  <div class="auth-box">
+    <img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="auth-logo" />
     <h1>Administration</h1>
-    <p>Connectez-vous avec votre token GitHub pour modifier le site.</p>
+    <p>Connectez-vous avec votre email et mot de passe Zen Value.</p>
 
-    <label>Nom d'utilisateur GitHub</label>
-    <input id="gh-user" type="text" placeholder="votre-username" />
+    <label class="auth-label">Email</label>
+    <input id="login-email" class="auth-input" type="email" placeholder="prenom@zenvalue.fr" autocomplete="email" />
 
-    <label>Nom du dépôt</label>
-    <input id="gh-repo" type="text" placeholder="zenvalue-site" />
+    <label class="auth-label">Mot de passe</label>
+    <input id="login-pwd" class="auth-input" type="password" placeholder="••••••••" autocomplete="current-password" />
 
-    <label>Personal Access Token</label>
-    <input id="gh-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
-
-    <p class="login-hint">
-      Créer un token : <a href="https://github.com/settings/tokens/new?scopes=repo&description=ZenValue+Admin" target="_blank">github.com → Settings → Developer settings → Personal access tokens → Tokens (classic)</a><br/>
-      Cocher la permission <strong>repo</strong> puis copier le token.
-    </p>
+    <span class="code-toggle" onclick="toggleCode()">Premiere connexion sur cet appareil ? Entrez votre code d'acces</span>
+    <div class="code-block" id="code-block">
+      <p>Votre administrateur vous a transmis un code d'acces. Saisissez-le ci-dessous — il ne sera demande qu'une seule fois sur cet appareil.</p>
+      <label class="auth-label">Code d'acces</label>
+      <input id="login-code" class="auth-input" type="password" placeholder="Collez le code ici" />
+    </div>
 
     <button class="btn btn-primary" onclick="doLogin()">Connexion</button>
-    <div class="login-error" id="login-err"></div>
+    <div class="auth-error" id="login-err"></div>
+  </div>
+</div>
+
+<!-- ══ SETUP (premier admin) ══ -->
+<div id="setup-screen" class="auth-screen" style="display:none;">
+  <div class="auth-box">
+    <img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="auth-logo" />
+    <h1>Premier lancement</h1>
+    <p>Aucun utilisateur n'existe encore. Creez le premier compte administrateur.</p>
+
+    <label class="auth-label">Nom complet</label>
+    <input id="setup-name" class="auth-input" type="text" placeholder="Prenom Nom" />
+
+    <label class="auth-label">Email</label>
+    <input id="setup-email" class="auth-input" type="email" placeholder="prenom@zenvalue.fr" />
+
+    <label class="auth-label">Mot de passe</label>
+    <input id="setup-pwd" class="auth-input" type="password" placeholder="Choisissez un mot de passe solide" />
+
+    <label class="auth-label">Token GitHub (necessaire une seule fois)</label>
+    <input id="setup-token" class="auth-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
+    <p style="font-size:.75rem;color:var(--gray);margin-bottom:1rem;">github.com → Settings → Developer settings → Personal access tokens → permission repo</p>
+
+    <button class="btn btn-primary" onclick="doSetup()">Creer le compte administrateur</button>
+    <div class="auth-error" id="setup-err"></div>
   </div>
 </div>
 
@@ -154,45 +200,35 @@
   <header class="admin-header">
     <div style="display:flex;align-items:center;">
       <img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="admin-logo" />
-      <span class="admin-badge">Admin</span>
+      <span class="admin-badge" id="admin-role-badge">Admin</span>
     </div>
     <div style="display:flex;align-items:center;gap:1rem;">
       <span class="admin-user" id="admin-user-lbl"></span>
-      <button class="btn btn-sm btn-outline" onclick="doLogout()">Déconnexion</button>
+      <button class="btn btn-sm btn-outline" onclick="doLogout()">Deconnexion</button>
     </div>
   </header>
 
   <div class="admin-layout">
-    <aside class="sidebar">
-      <div class="sidebar-section">Paramètres</div>
-      <div class="sidebar-item active" data-sec="theme"       onclick="nav(this,'theme')">🎨 Thème graphique</div>
-      <div class="sidebar-item"        data-sec="global"      onclick="nav(this,'global')">⚙️ Contact & infos</div>
-      <div class="sidebar-item"        data-sec="resultats"   onclick="nav(this,'resultats')">📊 Chiffres clés</div>
-      <div class="sidebar-section">Pages</div>
-      <div class="sidebar-item"        data-sec="accueil"     onclick="nav(this,'accueil')">🏠 Accueil</div>
-      <div class="sidebar-item"        data-sec="qsn"         onclick="nav(this,'qsn')">👥 Qui sommes-nous</div>
-      <div class="sidebar-item"        data-sec="offres"      onclick="nav(this,'offres')">💼 Offres</div>
-      <div class="sidebar-item"        data-sec="cas"         onclick="nav(this,'cas')">🏆 Cas clients</div>
-      <div class="sidebar-item"        data-sec="principes"   onclick="nav(this,'principes')">🧭 Principes</div>
-      <div class="sidebar-item"        data-sec="formation"   onclick="nav(this,'formation')">🎓 Formation</div>
-      <div class="sidebar-item"        data-sec="recrutement" onclick="nav(this,'recrutement')">🙋 Recrutement</div>
-      <div class="sidebar-item"        data-sec="rse"         onclick="nav(this,'rse')">🌱 RSE</div>
+    <aside class="sidebar" id="sidebar">
+      <!-- Genere dynamiquement selon le role -->
     </aside>
 
     <div class="admin-content">
       <div class="admin-main" id="admin-main">
         <div style="color:#aaa;padding:2rem;">Chargement…</div>
       </div>
-      <div class="save-bar">
+      <div class="save-bar" id="save-bar">
         <span class="save-status" id="save-status"></span>
-        <button class="btn btn-primary" style="width:auto;padding:.7rem 2rem;" onclick="save()">💾 Enregistrer</button>
+        <button class="btn btn-primary" style="width:auto;padding:.7rem 2rem;" onclick="save()">Enregistrer</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-/* ── CONFIG ── */
+/* ════════════════════════════════════════════
+   CONSTANTES
+   ════════════════════════════════════════════ */
 const FILES = {
   theme:       'content/settings/theme.json',
   global:      'content/settings/global.json',
@@ -205,23 +241,37 @@ const FILES = {
   formation:   'content/pages/formation.json',
   recrutement: 'content/pages/recrutement.json',
   rse:         'content/pages/rse.json',
+  users:       'content/settings/users.json',
 };
 
-let GH = { user:'', repo:'', token:'' };
-let state = { section:'theme', data:{}, sha:'' };
+const GH_USER = 'llmdev-ops';
+const GH_REPO = 'llmdev-ops.github.io';
 
-/* ── GITHUB API ── */
+let GH_TOKEN = '';
+let session = null; // { email, name, role }
+let state = { section:'accueil', data:{}, sha:'' };
+
+/* ════════════════════════════════════════════
+   CRYPTO — SHA-256 via Web Crypto API
+   ════════════════════════════════════════════ */
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+/* ════════════════════════════════════════════
+   GITHUB API
+   ════════════════════════════════════════════ */
 function ghUrl(path) {
-  return `https://api.github.com/repos/${GH.user}/${GH.repo}/contents/${path}`;
+  return 'https://api.github.com/repos/' + GH_USER + '/' + GH_REPO + '/contents/' + path;
 }
 function ghHeaders() {
-  return { Authorization:`Bearer ${GH.token}`, Accept:'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28' };
+  return { Authorization: 'Bearer ' + GH_TOKEN, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' };
 }
 async function ghRead(path) {
-  const r = await fetch(ghUrl(path), { headers:ghHeaders() });
+  const r = await fetch(ghUrl(path), { headers: ghHeaders() });
   if (!r.ok) throw new Error('Lecture ' + path + ' HTTP ' + r.status);
   const d = await r.json();
-  // Decodage UTF-8 correct (atob seul corrompt les accents)
   const binary = atob(d.content.replace(/\n/g,''));
   const bytes = new Uint8Array(binary.length);
   for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
@@ -230,61 +280,237 @@ async function ghRead(path) {
 }
 async function ghWrite(path, data, sha) {
   const body = JSON.stringify({
-    message: `[Admin] ${path}`,
+    message: '[Admin] ' + path,
     content: btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2)))),
     sha
   });
-  const r = await fetch(ghUrl(path), { method:'PUT', headers:{...ghHeaders(),'Content-Type':'application/json'}, body });
-  if (!r.ok) { const e = await r.json(); throw new Error(e.message||`HTTP ${r.status}`); }
+  const r = await fetch(ghUrl(path), { method: 'PUT', headers: { ...ghHeaders(), 'Content-Type': 'application/json' }, body });
+  if (!r.ok) { const e = await r.json(); throw new Error(e.message || 'HTTP ' + r.status); }
+  return (await r.json()).content.sha;
+}
+async function ghExists(path) {
+  const r = await fetch(ghUrl(path), { headers: ghHeaders() });
+  return r.status === 200;
+}
+async function ghCreate(path, data) {
+  const body = JSON.stringify({
+    message: '[Admin] Init ' + path,
+    content: btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))))
+  });
+  const r = await fetch(ghUrl(path), { method: 'PUT', headers: { ...ghHeaders(), 'Content-Type': 'application/json' }, body });
+  if (!r.ok) { const e = await r.json(); throw new Error(e.message || 'HTTP ' + r.status); }
   return (await r.json()).content.sha;
 }
 
-/* ── AUTH ── */
-async function doLogin() {
-  const user  = document.getElementById('gh-user').value.trim();
-  const repo  = document.getElementById('gh-repo').value.trim();
-  const token = document.getElementById('gh-token').value.trim();
-  const err   = document.getElementById('login-err');
-  err.style.display = 'none';
-  if (!user||!repo||!token) { showErr('Tous les champs sont requis.'); return; }
-  GH = {user,repo,token};
-  const r = await fetch(`https://api.github.com/repos/${user}/${repo}`, {headers:ghHeaders()});
-  if (!r.ok) { showErr('Accès refusé. Vérifiez le token et le nom du dépôt.'); return; }
-  localStorage.setItem('zv_gh', JSON.stringify(GH));
-  startAdmin();
+/* ════════════════════════════════════════════
+   AUTH UTILS
+   ════════════════════════════════════════════ */
+function encodeToken(token) { return btoa(token); }
+function decodeToken(code)  { try { return atob(code.trim()); } catch(e) { return ''; } }
+
+function showErr(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.style.display = 'block';
 }
-function showErr(msg) {
-  const el = document.getElementById('login-err');
-  el.textContent = msg; el.style.display = 'block';
-}
-function doLogout() { localStorage.removeItem('zv_gh'); location.reload(); }
-function startAdmin() {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('admin-screen').style.display = 'block';
-  document.getElementById('admin-user-lbl').textContent = `${GH.user}/${GH.repo}`;
-  loadSection('theme');
+function hideErr(id) { document.getElementById(id).style.display = 'none'; }
+
+function toggleCode() {
+  const b = document.getElementById('code-block');
+  b.style.display = b.style.display === 'none' ? 'block' : 'none';
 }
 
-/* ── NAV ── */
+/* ════════════════════════════════════════════
+   SETUP (premier lancement)
+   ════════════════════════════════════════════ */
+async function checkFirstRun() {
+  // On a un token stocke ?
+  const stored = localStorage.getItem('zv_token');
+  if (!stored) {
+    // Pas de token — on ne peut pas verifier users.json
+    // Montrer le setup
+    showScreen('setup');
+    return;
+  }
+  GH_TOKEN = decodeToken(stored);
+  try {
+    const exists = await ghExists(FILES.users);
+    if (!exists) { showScreen('setup'); return; }
+    const { data } = await ghRead(FILES.users);
+    if (!data.users || data.users.length === 0) { showScreen('setup'); return; }
+    showScreen('login');
+  } catch(e) {
+    showScreen('login');
+  }
+}
+
+async function doSetup() {
+  hideErr('setup-err');
+  const name  = document.getElementById('setup-name').value.trim();
+  const email = document.getElementById('setup-email').value.trim().toLowerCase();
+  const pwd   = document.getElementById('setup-pwd').value;
+  const token = document.getElementById('setup-token').value.trim();
+
+  if (!name || !email || !pwd || !token) { showErr('setup-err', 'Tous les champs sont requis.'); return; }
+  if (!email.endsWith('@zenvalue.fr')) { showErr('setup-err', 'Email doit etre un @zenvalue.fr'); return; }
+  if (pwd.length < 8) { showErr('setup-err', 'Mot de passe minimum 8 caracteres.'); return; }
+
+  GH_TOKEN = token;
+  // Verifier que le token fonctionne
+  const test = await fetch('https://api.github.com/repos/' + GH_USER + '/' + GH_REPO, { headers: ghHeaders() });
+  if (!test.ok) { showErr('setup-err', 'Token GitHub invalide ou acces refuse.'); return; }
+
+  const hash = await sha256(pwd);
+  const users = { users: [{ email, name, role: 'admin', passwordHash: hash, createdAt: new Date().toISOString() }] };
+
+  try {
+    await ghCreate(FILES.users, users);
+    localStorage.setItem('zv_token', encodeToken(token));
+    session = { email, name, role: 'admin' };
+    localStorage.setItem('zv_session', JSON.stringify(session));
+    startAdmin();
+  } catch(e) {
+    showErr('setup-err', 'Erreur creation compte : ' + e.message);
+  }
+}
+
+/* ════════════════════════════════════════════
+   LOGIN
+   ════════════════════════════════════════════ */
+async function doLogin() {
+  hideErr('login-err');
+  const email = document.getElementById('login-email').value.trim().toLowerCase();
+  const pwd   = document.getElementById('login-pwd').value;
+  const code  = document.getElementById('login-code') ? document.getElementById('login-code').value.trim() : '';
+
+  if (!email || !pwd) { showErr('login-err', 'Email et mot de passe requis.'); return; }
+
+  // Si code d'acces fourni, l'utiliser comme token
+  if (code) {
+    const decoded = decodeToken(code);
+    if (!decoded || !decoded.startsWith('ghp_')) { showErr('login-err', 'Code d\'acces invalide.'); return; }
+    GH_TOKEN = decoded;
+    localStorage.setItem('zv_token', encodeToken(decoded));
+  } else {
+    const stored = localStorage.getItem('zv_token');
+    if (!stored) { showErr('login-err', 'Premiere connexion sur cet appareil : entrez votre code d\'acces.'); return; }
+    GH_TOKEN = decodeToken(stored);
+  }
+
+  // Verifier email + mot de passe contre users.json
+  try {
+    const { data } = await ghRead(FILES.users);
+    const hash = await sha256(pwd);
+    const user = (data.users || []).find(function(u) { return u.email === email && u.passwordHash === hash; });
+    if (!user) { showErr('login-err', 'Email ou mot de passe incorrect.'); return; }
+
+    session = { email: user.email, name: user.name, role: user.role };
+    localStorage.setItem('zv_session', JSON.stringify(session));
+    startAdmin();
+  } catch(e) {
+    showErr('login-err', 'Erreur de connexion : ' + e.message);
+  }
+}
+
+function doLogout() {
+  localStorage.removeItem('zv_session');
+  session = null;
+  showScreen('login');
+}
+
+/* ════════════════════════════════════════════
+   ECRANS
+   ════════════════════════════════════════════ */
+function showScreen(name) {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('setup-screen').style.display = 'none';
+  document.getElementById('admin-screen').style.display = 'none';
+  if (name === 'login') document.getElementById('login-screen').style.display = 'flex';
+  if (name === 'setup') document.getElementById('setup-screen').style.display = 'flex';
+  if (name === 'admin') document.getElementById('admin-screen').style.display = 'block';
+}
+
+function startAdmin() {
+  showScreen('admin');
+  document.getElementById('admin-user-lbl').textContent = session.name + ' (' + session.email + ')';
+  const badge = document.getElementById('admin-role-badge');
+  badge.textContent = session.role === 'admin' ? 'Admin' : 'Redacteur';
+  badge.style.background = session.role === 'admin' ? '#aac335' : '#16a34a';
+  buildSidebar();
+  // Section par defaut
+  const defaultSec = session.role === 'admin' ? 'theme' : 'accueil';
+  const firstItem = document.querySelector('.sidebar-item');
+  if (firstItem) nav(firstItem, defaultSec);
+}
+
+/* ════════════════════════════════════════════
+   SIDEBAR SELON ROLE
+   ════════════════════════════════════════════ */
+function buildSidebar() {
+  const isAdmin = session.role === 'admin';
+  const sidebar = document.getElementById('sidebar');
+  let html = '';
+
+  if (isAdmin) {
+    html += '<div class="sidebar-section">Parametres</div>';
+    html += '<div class="sidebar-item" data-sec="theme"       onclick="nav(this,\'theme\')">Theme graphique</div>';
+    html += '<div class="sidebar-item" data-sec="global"      onclick="nav(this,\'global\')">Contact et infos</div>';
+    html += '<div class="sidebar-item" data-sec="resultats"   onclick="nav(this,\'resultats\')">Chiffres cles</div>';
+    html += '<div class="sidebar-section">Utilisateurs</div>';
+    html += '<div class="sidebar-item" data-sec="users"       onclick="nav(this,\'users\')">Gestion utilisateurs</div>';
+  }
+
+  html += '<div class="sidebar-section">Pages</div>';
+  html += '<div class="sidebar-item" data-sec="accueil"     onclick="nav(this,\'accueil\')">Accueil</div>';
+  html += '<div class="sidebar-item" data-sec="qsn"         onclick="nav(this,\'qsn\')">Qui sommes-nous</div>';
+  html += '<div class="sidebar-item" data-sec="offres"      onclick="nav(this,\'offres\')">Offres</div>';
+  html += '<div class="sidebar-item" data-sec="cas"         onclick="nav(this,\'cas\')">Cas clients</div>';
+  html += '<div class="sidebar-item" data-sec="principes"   onclick="nav(this,\'principes\')">Principes</div>';
+  html += '<div class="sidebar-item" data-sec="formation"   onclick="nav(this,\'formation\')">Formation</div>';
+  html += '<div class="sidebar-item" data-sec="recrutement" onclick="nav(this,\'recrutement\')">Recrutement</div>';
+  html += '<div class="sidebar-item" data-sec="rse"         onclick="nav(this,\'rse\')">RSE</div>';
+
+  sidebar.innerHTML = html;
+}
+
+/* ════════════════════════════════════════════
+   NAVIGATION
+   ════════════════════════════════════════════ */
 function nav(el, sec) {
-  document.querySelectorAll('.sidebar-item').forEach(i=>i.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(function(i) { i.classList.remove('active'); });
   el.classList.add('active');
   loadSection(sec);
 }
+
 async function loadSection(sec) {
   state.section = sec;
   document.getElementById('save-status').textContent = '';
-  document.getElementById('admin-main').innerHTML = '<div style="padding:2rem;color:#aaa;"><span style="display:inline-block;width:18px;height:18px;border:2px solid #eee;border-top-color:#aac335;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:.5rem;"></span>Chargement…</div>';
+  document.getElementById('admin-main').innerHTML = '<div style="padding:2rem;color:#aaa;"><span style="display:inline-block;width:18px;height:18px;border:2px solid #eee;border-top-color:#aac335;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:.5rem;"></span>Chargement...</div>';
+  // Section users : pas de fichier a lire de la meme facon
+  if (sec === 'users') {
+    try {
+      const { data, sha } = await ghRead(FILES.users);
+      state.data = data; state.sha = sha;
+      document.getElementById('admin-main').innerHTML = rUsers(data);
+      document.getElementById('save-bar').style.display = 'none';
+    } catch(e) {
+      document.getElementById('admin-main').innerHTML = '<div style="padding:2rem;color:#dc2626;">Erreur : ' + e.message + '</div>';
+    }
+    return;
+  }
+  document.getElementById('save-bar').style.display = 'flex';
   try {
     const { data, sha } = await ghRead(FILES[sec]);
     state.data = data; state.sha = sha;
     render(sec, data);
   } catch(e) {
-    document.getElementById('admin-main').innerHTML = `<div style="padding:2rem;color:#dc2626;">❌ ${e.message}</div>`;
+    document.getElementById('admin-main').innerHTML = '<div style="padding:2rem;color:#dc2626;">Erreur : ' + e.message + '</div>';
   }
 }
 
-/* ── SAVE ── */
+/* ════════════════════════════════════════════
+   SAVE
+   ════════════════════════════════════════════ */
 async function save() {
   const status = document.getElementById('save-status');
   document.getElementById('overlay').classList.add('on');
@@ -293,41 +519,151 @@ async function save() {
     const data = collect();
     const newSha = await ghWrite(FILES[state.section], data, state.sha);
     state.sha = newSha; state.data = data;
-    status.textContent = '✓ Enregistré — mise à jour du site dans ~30 secondes';
+    status.textContent = 'Enregistre — mise a jour du site dans ~30 secondes';
     status.className = 'save-status ok';
   } catch(e) {
-    status.textContent = '✗ Erreur : ' + e.message;
+    status.textContent = 'Erreur : ' + e.message;
     status.className = 'save-status err';
   } finally {
     document.getElementById('overlay').classList.remove('on');
   }
 }
 
-/* ── RENDER ── */
-// Stockage temporaire des valeurs à injecter après rendu HTML
-let _fieldValues = {};
+/* ════════════════════════════════════════════
+   GESTION UTILISATEURS
+   ════════════════════════════════════════════ */
+function rUsers(d) {
+  const users = d.users || [];
+  const code = encodeToken(GH_TOKEN);
+  const rows = users.map(function(u) {
+    const isSelf = u.email === session.email;
+    return '<tr class="' + (isSelf ? 'user-self' : '') + '">' +
+      '<td><strong>' + esc(u.name) + '</strong>' + (isSelf ? ' <span style="font-size:.7rem;color:var(--green);">(vous)</span>' : '') + '</td>' +
+      '<td>' + esc(u.email) + '</td>' +
+      '<td><span class="role-badge role-' + u.role + '">' + (u.role === 'admin' ? 'Admin' : 'Redacteur') + '</span></td>' +
+      '<td>' + (isSelf ? '' : '<button class="btn btn-sm btn-danger" onclick="deleteUser(\'' + esc(u.email) + '\')">Supprimer</button>') + '</td>' +
+    '</tr>';
+  }).join('');
 
-function f(label, name, val, type='text', hint='') {
-  const h = hint ? `<div class="field-hint">${hint}</div>` : '';
-  // On stocke la valeur brute — elle sera injectée via JS après le rendu
-  _fieldValues[name] = val;
-  if (type==='textarea') return `<div class="field"><label>${label}</label><textarea name="${name}" data-fill="${name}"></textarea>${h}</div>`;
-  return `<div class="field"><label>${label}</label><input type="${type==='text'?'text':type}" name="${name}" data-fill="${name}" />${h}</div>`;
+  return '<div class="section-title">Gestion des utilisateurs</div>' +
+    '<div class="section-desc">Invitez des collaborateurs Zen Value et gerez leurs acces.</div>' +
+
+    '<div class="form-card">' +
+      '<div class="form-card-title">Code d\'acces a partager</div>' +
+      '<p style="font-size:.84rem;color:var(--gray);margin-bottom:.8rem;">Transmettez ce code par email a chaque nouvel utilisateur. Il devra le coller lors de sa premiere connexion, une seule fois sur son appareil.</p>' +
+      '<div class="code-box" id="access-code" onclick="copyCode()">' + code + '</div>' +
+      '<p style="font-size:.74rem;color:var(--gray);">Cliquez sur le code pour le copier. Ne partagez ce code que par email interne.</p>' +
+    '</div>' +
+
+    '<div class="form-card">' +
+      '<div class="form-card-title">Utilisateurs actuels</div>' +
+      '<table class="user-table"><thead><tr><th>Nom</th><th>Email</th><th>Role</th><th></th></tr></thead>' +
+      '<tbody>' + rows + '</tbody></table>' +
+    '</div>' +
+
+    '<div class="form-card">' +
+      '<div class="form-card-title">Ajouter un utilisateur</div>' +
+      '<div class="field-row">' +
+        '<div class="field"><label>Nom complet</label><input type="text" id="new-name" placeholder="Prenom Nom" /></div>' +
+        '<div class="field"><label>Email</label><input type="email" id="new-email" placeholder="prenom@zenvalue.fr" /></div>' +
+      '</div>' +
+      '<div class="field-row">' +
+        '<div class="field"><label>Mot de passe temporaire</label><input type="password" id="new-pwd" placeholder="Min. 8 caracteres" /></div>' +
+        '<div class="field"><label>Role</label><select id="new-role"><option value="redacteur">Redacteur — contenu des pages</option><option value="admin">Admin — tous les droits</option></select></div>' +
+      '</div>' +
+      '<button class="btn btn-primary" style="width:auto;padding:.7rem 2rem;margin-top:.5rem;" onclick="addUser()">Ajouter l\'utilisateur</button>' +
+      '<div id="user-msg" style="margin-top:.8rem;font-size:.84rem;display:none;"></div>' +
+    '</div>';
 }
-function frow(...fields) { return `<div class="field-row">${fields.join('')}</div>`; }
-function card(title, body) { return `<div class="form-card"><div class="form-card-title">${title}</div>${body}</div>`; }
 
-// Après injection du HTML, remplir les champs via JS (gère les caractères spéciaux nativement)
-function fillFields() {
-  document.querySelectorAll('[data-fill]').forEach(el => {
-    const key = el.getAttribute('data-fill');
-    const val = _fieldValues[key];
-    if (val === undefined || val === null) return;
-    if (el.tagName === 'TEXTAREA') el.value = String(val);
-    else el.value = String(val);
+async function addUser() {
+  const name  = document.getElementById('new-name').value.trim();
+  const email = document.getElementById('new-email').value.trim().toLowerCase();
+  const pwd   = document.getElementById('new-pwd').value;
+  const role  = document.getElementById('new-role').value;
+  const msg   = document.getElementById('user-msg');
+
+  msg.style.display = 'none';
+
+  if (!name || !email || !pwd) { showMsg(msg, 'Tous les champs sont requis.', false); return; }
+  if (!email.endsWith('@zenvalue.fr')) { showMsg(msg, 'Email doit etre @zenvalue.fr', false); return; }
+  if (pwd.length < 8) { showMsg(msg, 'Mot de passe minimum 8 caracteres.', false); return; }
+
+  const existing = (state.data.users || []).find(function(u) { return u.email === email; });
+  if (existing) { showMsg(msg, 'Cet email existe deja.', false); return; }
+
+  const hash = await sha256(pwd);
+  const newUser = { email, name, role, passwordHash: hash, createdAt: new Date().toISOString() };
+  const updated = { users: (state.data.users || []).concat([newUser]) };
+
+  try {
+    document.getElementById('overlay').classList.add('on');
+    const newSha = await ghWrite(FILES.users, updated, state.sha);
+    state.sha = newSha; state.data = updated;
+    showMsg(msg, 'Utilisateur ' + name + ' ajoute avec succes. Partagez-lui le code d\'acces ci-dessus.', true);
+    document.getElementById('admin-main').innerHTML = rUsers(updated);
+  } catch(e) {
+    showMsg(msg, 'Erreur : ' + e.message, false);
+  } finally {
+    document.getElementById('overlay').classList.remove('on');
+  }
+}
+
+async function deleteUser(email) {
+  if (!confirm('Supprimer ' + email + ' ?')) return;
+  const updated = { users: (state.data.users || []).filter(function(u) { return u.email !== email; }) };
+  try {
+    document.getElementById('overlay').classList.add('on');
+    const newSha = await ghWrite(FILES.users, updated, state.sha);
+    state.sha = newSha; state.data = updated;
+    document.getElementById('admin-main').innerHTML = rUsers(updated);
+  } catch(e) {
+    alert('Erreur : ' + e.message);
+  } finally {
+    document.getElementById('overlay').classList.remove('on');
+  }
+}
+
+function showMsg(el, txt, ok) {
+  el.textContent = txt;
+  el.style.color = ok ? '#16a34a' : '#dc2626';
+  el.style.display = 'block';
+}
+
+function copyCode() {
+  const code = document.getElementById('access-code').textContent;
+  navigator.clipboard.writeText(code).then(function() {
+    document.getElementById('access-code').classList.add('copied');
+    setTimeout(function() { document.getElementById('access-code').classList.remove('copied'); }, 2000);
   });
 }
 
+/* ════════════════════════════════════════════
+   RENDER (champs editables)
+   ════════════════════════════════════════════ */
+let _fieldValues = {};
+
+function f(label, name, val, type, hint) {
+  type = type || 'text'; hint = hint || '';
+  const h = hint ? '<div class="field-hint">' + hint + '</div>' : '';
+  _fieldValues[name] = val;
+  if (type === 'textarea') return '<div class="field"><label>' + label + '</label><textarea name="' + name + '" data-fill="' + name + '"></textarea>' + h + '</div>';
+  return '<div class="field"><label>' + label + '</label><input type="' + (type === 'text' ? 'text' : type) + '" name="' + name + '" data-fill="' + name + '" />' + h + '</div>';
+}
+function frow() {
+  return '<div class="field-row">' + Array.from(arguments).join('') + '</div>';
+}
+function card(title, body) {
+  return '<div class="form-card"><div class="form-card-title">' + title + '</div>' + body + '</div>';
+}
+function fillFields() {
+  document.querySelectorAll('[data-fill]').forEach(function(el) {
+    const key = el.getAttribute('data-fill');
+    const val = _fieldValues[key];
+    if (val === undefined || val === null) return;
+    el.value = String(val);
+  });
+}
 function render(sec, d) {
   _fieldValues = {};
   const renderers = { theme:rTheme, global:rGlobal, resultats:rResultats, accueil:rAccueil, qsn:rQSN, offres:rOffres, cas:rCas, principes:rPrincipes, formation:rFormation, recrutement:rRecrutement, rse:rRSE };
@@ -335,230 +671,16 @@ function render(sec, d) {
   fillFields();
 }
 
-function rTheme(d) {
-  const presets = [{k:'zenvalue',c:'#aac335',n:'Zen Value',s:'Charte officielle'},{k:'ocean',c:'#2e7cf6',n:'Océan',s:'Bleu professionnel'},{k:'earth',c:'#8b6f4e',n:'Terre',s:'Chaleureux'},{k:'bloom',c:'#9b59b6',n:'Bloom',s:'Créatif'}];
-  const pals = [{k:'yellow',c:'#f1e3a6'},{k:'beige',c:'#d6cbbd'},{k:'sage',c:'#c7d4b7'},{k:'lavender',c:'#dbd3e8'},{k:'blue',c:'#cedff4'}];
-  const isCustom = d.preset==='custom';
-  const prevPrimary = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset].couleur_primaire : (d.couleur_primaire||'#aac335');
-  const prevDark    = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset].couleur_sombre   : (d.couleur_sombre  ||'#414142');
-  const prevPal     = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset].palette_complementaire : (d.palette_complementaire||'yellow');
-  const prevPalColor = ADMIN_PALETTES[prevPal]||'#f1e3a6';
-  const hex2 = h => { const x=h.replace('#',''); return {r:parseInt(x.slice(0,2),16),g:parseInt(x.slice(2,4),16),b:parseInt(x.slice(4,6),16)}; };
-  const c = hex2(prevPrimary);
-  const lightBg = 'rgb('+Math.round(c.r+(255-c.r)*.82)+','+Math.round(c.g+(255-c.g)*.82)+','+Math.round(c.b+(255-c.b)*.82)+')';
-
-  return `
-    <div class="section-title">🎨 Thème graphique</div>
-    <div class="section-desc">Choisissez un preset ou configurez manuellement les couleurs.</div>
-
-    <div class="form-card" style="margin-bottom:1.2rem;">
-      <div class="form-card-title">Aperçu en temps réel</div>
-      <div style="display:flex;gap:.8rem;align-items:stretch;flex-wrap:wrap;">
-        <div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <div id="preview-primary" style="height:52px;background:${prevPrimary};display:flex;align-items:center;justify-content:center;">
-            <span style="color:white;font-size:.7rem;font-weight:700;letter-spacing:.05em;" id="preview-primary-lbl">${prevPrimary}</span>
-          </div>
-          <div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Couleur principale</div>
-        </div>
-        <div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <div id="preview-dark" style="height:52px;background:${prevDark};display:flex;align-items:center;justify-content:center;">
-            <span style="color:white;font-size:.7rem;font-weight:700;letter-spacing:.05em;" id="preview-dark-lbl">${prevDark}</span>
-          </div>
-          <div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Couleur sombre</div>
-        </div>
-        <div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <div id="preview-accent" style="height:52px;background:${prevPalColor};"></div>
-          <div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Palette accent</div>
-        </div>
-        <div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <div id="preview-light" style="height:52px;background:${lightBg};"></div>
-          <div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Fond clair</div>
-        </div>
-      </div>
-      <div style="margin-top:1rem;border-radius:8px;overflow:hidden;border:1px solid var(--border);">
-        <div id="preview-btn" style="display:inline-block;padding:.55rem 1.4rem;border-radius:4px;font-size:.8rem;font-weight:700;color:white;background:${prevPrimary};margin:.8rem;">Bouton exemple</div>
-        <span style="font-size:.85rem;color:${prevPrimary};font-weight:600;margin-left:.5rem;">Lien exemple</span>
-      </div>
-    </div>
-
-    ${card('Preset', `
-      <div class="preset-grid">
-        ${presets.map(p=>`<div class="preset-card ${d.preset===p.k?'selected':''}" onclick="pickPreset('${p.k}',this)"><div class="preset-dot" style="background:${p.c}"></div><div><div class="preset-name">${p.n}</div><div class="preset-sub">${p.s}</div></div></div>`).join('')}
-      </div>
-      <div class="preset-card ${isCustom?'selected':''}" style="margin-top:.5rem;max-width:210px;" onclick="pickPreset('custom',this)">
-        <div class="preset-dot" style="background:linear-gradient(135deg,#aac335,#9b59b6)"></div>
-        <div><div class="preset-name">✏️ Personnalisé</div><div class="preset-sub">Configurer librement</div></div>
-      </div>
-      <input type="hidden" name="preset" id="preset-val" value="${d.preset||'zenvalue'}" />
-    `)}
-    <div id="custom-block" style="${isCustom?'':'opacity:.4;pointer-events:none'}">
-      ${card('Couleurs', `
-        ${frow(
-          `<div class="field"><label>Couleur primaire</label><div class="color-row"><input type="color" id="cp" value="${d.couleur_primaire||'#aac335'}" oninput="syncHex('cp','hp',this.value)" /><input type="text" id="hp" name="couleur_primaire" value="${d.couleur_primaire||'#aac335'}" oninput="syncPicker('cp',this.value)" /></div></div>`,
-          `<div class="field"><label>Couleur sombre</label><div class="color-row"><input type="color" id="cd" value="${d.couleur_sombre||'#414142'}" oninput="syncHex('cd','hd',this.value)" /><input type="text" id="hd" name="couleur_sombre" value="${d.couleur_sombre||'#414142'}" oninput="syncPicker('cd',this.value)" /></div></div>`
-        )}
-        <div class="field" style="margin-top:.3rem;">
-          <label>Palette complémentaire</label>
-          <div class="palette-grid">
-            ${pals.map(p=>`<div class="palette-chip ${(d.palette_complementaire||'yellow')===p.k?'selected':''}" style="background:${p.c}" title="${p.k}" onclick="pickPal('${p.k}',this)"></div>`).join('')}
-          </div>
-          <input type="hidden" name="palette_complementaire" id="pal-val" value="${d.palette_complementaire||'yellow'}" />
-        </div>
-      `)}
-      ${card('Typographie & Style', `
-        <div class="field">
-          <label>Police</label>
-          <select name="typographie">
-            ${[['jakarta','Plus Jakarta Sans (≈ Gilroy)'],['inter','Inter'],['dm','DM Sans'],['outfit','Outfit']].map(([k,l])=>`<option value="${k}" ${d.typographie===k?'selected':''}>${l}</option>`).join('')}
-          </select>
-        </div>
-        <div class="field">
-          <label>Arrondi boutons — <span id="rv">${d.rayon_boutons||4}</span>px</label>
-          <input type="range" name="rayon_boutons" min="0" max="40" value="${d.rayon_boutons||4}" oninput="document.getElementById('rv').textContent=this.value" />
-        </div>
-        <div class="field">
-          <label>Ombres portées</label>
-          <div class="toggle-row">
-            <label class="toggle"><input type="checkbox" name="ombre_activee" ${d.ombre_activee!==false?'checked':''}/><span class="toggle-slider"></span></label>
-            <span style="font-size:.85rem">Activées</span>
-          </div>
-        </div>
-        <div class="field">
-          <label>Fond hero (panneau droit)</label>
-          <select name="hero_fond_droite">
-            <option value="dark"   ${(d.hero_fond_droite||'dark')==='dark'  ?'selected':''}>Anthracite (défaut)</option>
-            <option value="green"  ${d.hero_fond_droite==='green'  ?'selected':''}>Couleur primaire</option>
-            <option value="accent" ${d.hero_fond_droite==='accent' ?'selected':''}>Couleur accent</option>
-          </select>
-        </div>
-      `)}
-    </div>`;
-}
-
-function rGlobal(d) { return `<div class="section-title">⚙️ Contact & informations</div><div class="section-desc">Coordonnées affichées dans le footer et sur la page Contact.</div>${card('',`${f('Email','email',d.email)}${f('Adresse','adresse',d.adresse)}${f('Nom LinkedIn','linkedin',d.linkedin)}${f('URL LinkedIn','linkedin_url',d.linkedin_url)}${f('Copyright footer','copyright',d.copyright)}`)}`;
-}
-function rResultats(d) {
-  return `<div class="section-title">📊 Chiffres clés</div><div class="section-desc">Les 4 résultats mesurés chez vos clients.</div>
-    ${[1,2,3,4].map(n=>card(`Résultat ${n}`,frow(f('Chiffre',`r${n}_chiffre`,d[`r${n}_chiffre`]),f('Label',`r${n}_label`,d[`r${n}_label`])))).join('')}`;
-}
-function rAccueil(d) {
-  return `<div class="section-title">🏠 Accueil</div><div class="section-desc">Hero, stats et messages de la page d'accueil.</div>
-    ${card('Hero',`${f('Accroche','eyebrow',d.eyebrow)}${f('Tagline ligne 1','tagline1',d.tagline1)}${f('Tagline ligne 2 (italique)','tagline2',d.tagline2)}${f('Sous-titre','soustitre',d.soustitre,'textarea')}${frow(f('Bouton principal','cta1',d.cta1),f('Bouton secondaire','cta2',d.cta2))}`)}
-    ${card('Panneau sombre',`${f('Badge','badge',d.badge)}${f('Citation','quote',d.quote,'textarea')}`)}
-    ${card('Statistiques',`${frow(f('Stat 1 chiffre','stat1_num',d.stat1_num),f('Stat 1 label','stat1_label',d.stat1_label))}${frow(f('Stat 2 chiffre','stat2_num',d.stat2_num),f('Stat 2 label','stat2_label',d.stat2_label))}${frow(f('Stat 3 chiffre','stat3_num',d.stat3_num),f('Stat 3 label','stat3_label',d.stat3_label))}`)}`;
-}
-function rQSN(d) {
-  return `<div class="section-title">👥 Qui sommes-nous</div><div class="section-desc">Discours, vision et histoire.</div>
-    ${card('Discours',`${f('Paragraphe 1','discours1',d.discours1,'textarea')}${f('Paragraphe 2','discours2',d.discours2,'textarea')}${f('Paragraphe 3','discours3',d.discours3,'textarea')}`)}
-    ${card('Vision & Mission',`${f('Vision','vision',d.vision,'textarea')}${f('Mission','mission',d.mission,'textarea')}`)}
-    ${card('Histoire',`${f('Paragraphe 1','histoire1',d.histoire1,'textarea')}${f('Paragraphe 2','histoire2',d.histoire2,'textarea')}${f('Paragraphe 3','histoire3',d.histoire3,'textarea')}`)}`;
-}
-function rFormation(d) {
-  return `<div class="section-title">🎓 Formation</div>${card('',`${f('Titre','titre',d.titre)}${f('Sous-titre','soustitre',d.soustitre,'textarea')}${f('Texte Qualiopi 1','texte1',d.texte1,'textarea')}${f('Texte Qualiopi 2','texte2',d.texte2,'textarea')}${f('URL catalogue','catalogue_url',d.catalogue_url)}`)}`;
-}
-function rRSE(d) {
-  return `<div class="section-title">🌱 RSE</div>
-    ${card('',`${f('Titre','titre',d.titre)}${f('Introduction','intro',d.intro,'textarea')}${f('Axe 1 — Titre','axe1_titre',d.axe1_titre)}${f('Axe 1 — Texte','axe1_texte',d.axe1_texte,'textarea')}${f('Axe 2 — Titre','axe2_titre',d.axe2_titre)}${f('Axe 2 — Texte','axe2_texte',d.axe2_texte,'textarea')}`)}
-    ${listCard('Mesures concrètes','list-mesures',d.mesures||[],['icon','titre','texte'],'addMesure')}`;
-}
-function rOffres(d) {
-  return `<div class="section-title">💼 Offres</div>
-    ${listCard('Liste des offres','list-offres',d.items||[],['categorie','titre','description','cta_label'],'addOffre')}`;
-}
-function rCas(d) {
-  return `<div class="section-title">🏆 Cas clients</div>
-    <div class="form-card">
-      <div class="form-card-title">Liste des cas clients</div>
-      <div class="list-items" id="list-cas">
-        ${(d.items||[]).map((c,i)=>`
-          <div class="list-item">
-            <div class="list-item-header" onclick="toggleBody(this)">
-              <span>Cas ${i+1} — ${esc(c.titre)}</span>
-              <div class="item-actions"><button class="btn-icon" onclick="delItem(event,this)">🗑</button></div>
-            </div>
-            <div class="list-item-body">
-              ${f('Titre',`items[${i}].titre`,c.titre)}
-              ${f('Citation',`items[${i}].citation`,c.citation,'textarea')}
-              ${f('Description',`items[${i}].description`,c.description,'textarea')}
-              <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:var(--gray);margin:.8rem 0 .4rem;">Résultats</div>
-              ${(c.resultats||[]).map((r,j)=>frow(f('Chiffre',`items[${i}].resultats[${j}].chiffre`,r.chiffre),f('Label',`items[${i}].resultats[${j}].label`,r.label))).join('')}
-            </div>
-          </div>`).join('')}
-      </div>
-      <button class="add-btn" onclick="addCas()">+ Ajouter un cas client</button>
-    </div>`;
-}
-function rPrincipes(d) {
-  return `<div class="section-title">🧭 Principes fondateurs</div>
-    ${listCard('Principes','list-principes',d.items||[],['icon','titre','description'],'addPrincipe')}`;
-}
-function rRecrutement(d) {
-  return `<div class="section-title">🙋 Recrutement</div>
-    ${card('En-tête',`${f('Titre','titre',d.titre)}${f('Sous-titre','soustitre',d.soustitre,'textarea')}${f('Introduction','intro',d.intro,'textarea')}${f('Tagline','tagline',d.tagline)}`)}
-    ${listCard('Engagements','list-engagements',d.engagements||[],['icon','titre','texte'],'addEngagement')}
-    ${listCard('Profils recherchés','list-profils',d.profils||[],['icon','titre','description'],'addProfil')}`;
-}
-
-/* ── LIST CARD HELPER ── */
-function listCard(title, id, items, fields, addFn) {
-  const labels = {icon:'Icône (emoji)',titre:'Titre',description:'Description',texte:'Texte',categorie:'Catégorie',cta_label:'Label bouton'};
-  return `<div class="form-card">
-    <div class="form-card-title">${title}</div>
-    <div class="list-items" id="${id}">
-      ${items.map((item,i)=>`
-        <div class="list-item">
-          <div class="list-item-header" onclick="toggleBody(this)">
-            <span>${esc(item.icon||'')} ${esc(item.titre||item.categorie||'Élément '+(i+1))}</span>
-            <div class="item-actions">
-              <button class="btn-icon" onclick="moveUp(event,this)">↑</button>
-              <button class="btn-icon" onclick="moveDn(event,this)">↓</button>
-              <button class="btn-icon" onclick="delItem(event,this)">🗑</button>
-            </div>
-          </div>
-          <div class="list-item-body">
-            ${fields.map(fk=>fk==='texte'||fk==='description'?f(labels[fk]||fk,`${id.replace('list-','')}[${i}].${fk}`,item[fk],'textarea'):f(labels[fk]||fk,`${id.replace('list-','')}[${i}].${fk}`,item[fk])).join('')}
-          </div>
-        </div>`).join('')}
-    </div>
-    <button class="add-btn" onclick="${addFn}('${id}')">+ Ajouter</button>
-  </div>`;
-}
-
-/* ── LIST ACTIONS ── */
-function toggleBody(hdr) { hdr.nextElementSibling.classList.toggle('open'); }
-function delItem(e, btn) { e.stopPropagation(); if(confirm('Supprimer ?')) btn.closest('.list-item').remove(); }
-function moveUp(e, btn)  { e.stopPropagation(); const li=btn.closest('.list-item'); const prev=li.previousElementSibling; if(prev) li.parentNode.insertBefore(li,prev); }
-function moveDn(e, btn)  { e.stopPropagation(); const li=btn.closest('.list-item'); const next=li.nextElementSibling; if(next) li.parentNode.insertBefore(next,li); }
-
-function addToList(listId, fields) {
-  const labels = {icon:'Icône (emoji)',titre:'Titre',description:'Description',texte:'Texte',categorie:'Catégorie',cta_label:'Label bouton'};
-  const i = document.getElementById(listId).querySelectorAll('.list-item').length;
-  const body = fields.map(fk=>{
-    const type = (fk==='texte'||fk==='description')?'textarea':'text';
-    return `<div class="field"><label>${labels[fk]||fk}</label>${type==='textarea'?`<textarea name="new_${fk}"></textarea>`:`<input type="text" name="new_${fk}" />`}</div>`;
-  }).join('');
-  const html = `<div class="list-item"><div class="list-item-header" onclick="toggleBody(this)"><span>Nouvel élément</span><div class="item-actions"><button class="btn-icon" onclick="delItem(event,this)">🗑</button></div></div><div class="list-item-body open">${body}</div></div>`;
-  document.getElementById(listId).insertAdjacentHTML('beforeend', html);
-}
-
-function addOffre(id)       { addToList(id||'list-offres',      ['categorie','titre','description','cta_label']); }
-function addCas()           { addToList('list-cas',             ['titre','citation','description']); }
-function addPrincipe(id)    { addToList(id||'list-principes',   ['icon','titre','description']); }
-function addMesure(id)      { addToList(id||'list-mesures',     ['icon','titre','texte']); }
-function addEngagement(id)  { addToList(id||'list-engagements', ['icon','titre','texte']); }
-function addProfil(id)      { addToList(id||'list-profils',     ['icon','titre','description']); }
-
-/* ── THEME HELPERS ── */
-/* ── PRESETS DATA (miroir du theme-loader) ── */
+/* ════════════════════════════════════════════
+   PRESETS THEME
+   ════════════════════════════════════════════ */
 const ADMIN_PRESETS = {
   zenvalue: { couleur_primaire:'#aac335', couleur_sombre:'#414142', palette_complementaire:'yellow' },
   ocean:    { couleur_primaire:'#2e7cf6', couleur_sombre:'#1a2332', palette_complementaire:'blue' },
   earth:    { couleur_primaire:'#8b6f4e', couleur_sombre:'#2c2016', palette_complementaire:'beige' },
   bloom:    { couleur_primaire:'#9b59b6', couleur_sombre:'#2d1b3d', palette_complementaire:'lavender' },
 };
-const ADMIN_PALETTES = {
-  yellow:'#f1e3a6', beige:'#d6cbbd', sage:'#c7d4b7', lavender:'#dbd3e8', blue:'#cedff4'
-};
+const ADMIN_PALETTES = { yellow:'#f1e3a6', beige:'#d6cbbd', sage:'#c7d4b7', lavender:'#dbd3e8', blue:'#cedff4' };
 
 function updatePreview(primary, dark, palKey) {
   const p = document.getElementById('preview-primary');
@@ -568,83 +690,238 @@ function updatePreview(primary, dark, palKey) {
   const b = document.getElementById('preview-btn');
   if (!p) return;
   const pal = ADMIN_PALETTES[palKey] || '#f1e3a6';
-  const hex2 = h => { const x=h.replace('#',''); return {r:parseInt(x.slice(0,2),16),g:parseInt(x.slice(2,4),16),b:parseInt(x.slice(4,6),16)}; };
+  const hex2 = function(h) { const x=h.replace('#',''); return {r:parseInt(x.slice(0,2),16),g:parseInt(x.slice(2,4),16),b:parseInt(x.slice(4,6),16)}; };
   const c = hex2(primary);
-  const lightBg = 'rgb(' + Math.round(c.r+(255-c.r)*.82) + ',' + Math.round(c.g+(255-c.g)*.82) + ',' + Math.round(c.b+(255-c.b)*.82) + ')';
-  p.style.background = primary;
-  d.style.background = dark;
-  a.style.background = pal;
-  l.style.background = lightBg;
+  const lightBg = 'rgb('+Math.round(c.r+(255-c.r)*.82)+','+Math.round(c.g+(255-c.g)*.82)+','+Math.round(c.b+(255-c.b)*.82)+')';
+  p.style.background = primary; d.style.background = dark; a.style.background = pal; l.style.background = lightBg;
   if (b) b.style.background = primary;
   document.getElementById('preview-primary-lbl').textContent = primary;
   document.getElementById('preview-dark-lbl').textContent = dark;
 }
 
 function pickPreset(key, el) {
-  document.querySelectorAll('.preset-card').forEach(c=>c.classList.remove('selected'));
+  document.querySelectorAll('.preset-card').forEach(function(c) { c.classList.remove('selected'); });
   el.classList.add('selected');
   document.getElementById('preset-val').value = key;
   const block = document.getElementById('custom-block');
   if (block) { block.style.opacity = key==='custom'?'1':'.4'; block.style.pointerEvents = key==='custom'?'auto':'none'; }
-  // Aperçu temps réel
   if (key !== 'custom' && ADMIN_PRESETS[key]) {
     const p = ADMIN_PRESETS[key];
     updatePreview(p.couleur_primaire, p.couleur_sombre, p.palette_complementaire);
-    // Mettre à jour les champs couleur
     const cp = document.getElementById('cp'); const hp = document.getElementById('hp');
     const cd = document.getElementById('cd'); const hd = document.getElementById('hd');
     if (cp) { cp.value = p.couleur_primaire; hp.value = p.couleur_primaire; }
     if (cd) { cd.value = p.couleur_sombre;   hd.value = p.couleur_sombre; }
-    // Palette
-    document.querySelectorAll('.palette-chip').forEach(c=>c.classList.remove('selected'));
-    document.querySelectorAll('.palette-chip').forEach(c=>{ if(c.title===p.palette_complementaire) c.classList.add('selected'); });
+    document.querySelectorAll('.palette-chip').forEach(function(c) { c.classList.remove('selected'); });
+    document.querySelectorAll('.palette-chip').forEach(function(c) { if(c.title===p.palette_complementaire) c.classList.add('selected'); });
     document.getElementById('pal-val').value = p.palette_complementaire;
   }
 }
 function pickPal(key, el) {
-  document.querySelectorAll('.palette-chip').forEach(c=>c.classList.remove('selected'));
+  document.querySelectorAll('.palette-chip').forEach(function(c) { c.classList.remove('selected'); });
   el.classList.add('selected');
   document.getElementById('pal-val').value = key;
-  const primary = document.getElementById('hp')?.value || '#aac335';
-  const dark    = document.getElementById('hd')?.value || '#414142';
+  const primary = document.getElementById('hp') ? document.getElementById('hp').value : '#aac335';
+  const dark    = document.getElementById('hd') ? document.getElementById('hd').value : '#414142';
   updatePreview(primary, dark, key);
 }
 function syncHex(pickerId, hexId, val) {
   document.getElementById(hexId).value = val;
-  const primary = document.getElementById('hp')?.value || '#aac335';
-  const dark    = document.getElementById('hd')?.value || '#414142';
-  const palKey  = document.getElementById('pal-val')?.value || 'yellow';
+  const primary = document.getElementById('hp') ? document.getElementById('hp').value : '#aac335';
+  const dark    = document.getElementById('hd') ? document.getElementById('hd').value : '#414142';
+  const palKey  = document.getElementById('pal-val') ? document.getElementById('pal-val').value : 'yellow';
   updatePreview(primary, dark, palKey);
 }
 function syncPicker(pickerId, val) {
-  if(/^#[0-9a-fA-F]{6}$/.test(val)) {
+  if (/^#[0-9a-fA-F]{6}$/.test(val)) {
     document.getElementById(pickerId).value = val;
-    const primary = document.getElementById('hp')?.value || '#aac335';
-    const dark    = document.getElementById('hd')?.value || '#414142';
-    const palKey  = document.getElementById('pal-val')?.value || 'yellow';
+    const primary = document.getElementById('hp') ? document.getElementById('hp').value : '#aac335';
+    const dark    = document.getElementById('hd') ? document.getElementById('hd').value : '#414142';
+    const palKey  = document.getElementById('pal-val') ? document.getElementById('pal-val').value : 'yellow';
     updatePreview(primary, dark, palKey);
   }
 }
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
 
-/* ── COLLECT ── */
-function collect() {
-  const main = document.getElementById('admin-main');
-  const data = {};
+/* ════════════════════════════════════════════
+   RENDERERS THEME + PAGES
+   ════════════════════════════════════════════ */
+function rTheme(d) {
+  const presets = [{k:'zenvalue',c:'#aac335',n:'Zen Value',s:'Charte officielle'},{k:'ocean',c:'#2e7cf6',n:'Ocean',s:'Bleu professionnel'},{k:'earth',c:'#8b6f4e',n:'Terre',s:'Chaleureux'},{k:'bloom',c:'#9b59b6',n:'Bloom',s:'Creatif'}];
+  const pals = [{k:'yellow',c:'#f1e3a6'},{k:'beige',c:'#d6cbbd'},{k:'sage',c:'#c7d4b7'},{k:'lavender',c:'#dbd3e8'},{k:'blue',c:'#cedff4'}];
+  const isCustom = d.preset === 'custom';
+  const prevPrimary = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset].couleur_primaire : (d.couleur_primaire||'#aac335');
+  const prevDark    = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset].couleur_sombre   : (d.couleur_sombre  ||'#414142');
+  const prevPal     = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset].palette_complementaire : (d.palette_complementaire||'yellow');
+  const prevPalColor = ADMIN_PALETTES[prevPal]||'#f1e3a6';
+  const hex2 = function(h) { const x=h.replace('#',''); return {r:parseInt(x.slice(0,2),16),g:parseInt(x.slice(2,4),16),b:parseInt(x.slice(4,6),16)}; };
+  const c = hex2(prevPrimary);
+  const lightBg = 'rgb('+Math.round(c.r+(255-c.r)*.82)+','+Math.round(c.g+(255-c.g)*.82)+','+Math.round(c.b+(255-c.b)*.82)+')';
 
-  // Champs simples
-  main.querySelectorAll('[name]').forEach(el => {
-    const n = el.name;
-    if (!n || n.startsWith('new_')) return;
-    // Ignorer les champs de liste complexes
-    if (n.includes('[')) return;
+  return '<div class="section-title">Theme graphique</div>' +
+    '<div class="section-desc">Choisissez un preset ou configurez manuellement les couleurs.</div>' +
+    '<div class="form-card" style="margin-bottom:1.2rem;">' +
+      '<div class="form-card-title">Apercu en temps reel</div>' +
+      '<div style="display:flex;gap:.8rem;align-items:stretch;flex-wrap:wrap;">' +
+        '<div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);"><div id="preview-primary" style="height:52px;background:'+prevPrimary+';display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:.7rem;font-weight:700;" id="preview-primary-lbl">'+prevPrimary+'</span></div><div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Couleur principale</div></div>' +
+        '<div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);"><div id="preview-dark" style="height:52px;background:'+prevDark+';display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:.7rem;font-weight:700;" id="preview-dark-lbl">'+prevDark+'</span></div><div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Couleur sombre</div></div>' +
+        '<div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);"><div id="preview-accent" style="height:52px;background:'+prevPalColor+';"></div><div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Palette accent</div></div>' +
+        '<div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);"><div id="preview-light" style="height:52px;background:'+lightBg+';"></div><div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Fond clair</div></div>' +
+      '</div>' +
+      '<div style="margin-top:1rem;padding:.8rem;border:1px solid var(--border);border-radius:8px;">' +
+        '<span id="preview-btn" style="display:inline-block;padding:.55rem 1.4rem;border-radius:4px;font-size:.8rem;font-weight:700;color:white;background:'+prevPrimary+';">Bouton exemple</span>' +
+        '<span style="font-size:.85rem;color:'+prevPrimary+';font-weight:600;margin-left:1rem;">Lien exemple</span>' +
+      '</div>' +
+    '</div>' +
+    card('Preset',
+      '<div class="preset-grid">' +
+        presets.map(function(p) { return '<div class="preset-card ' + (d.preset===p.k?'selected':'') + '" onclick="pickPreset(\''+p.k+'\',this)"><div class="preset-dot" style="background:'+p.c+'"></div><div><div class="preset-name">'+p.n+'</div><div class="preset-sub">'+p.s+'</div></div></div>'; }).join('') +
+      '</div>' +
+      '<div class="preset-card ' + (isCustom?'selected':'') + '" style="margin-top:.5rem;max-width:210px;" onclick="pickPreset(\'custom\',this)">' +
+        '<div class="preset-dot" style="background:linear-gradient(135deg,#aac335,#9b59b6)"></div>' +
+        '<div><div class="preset-name">Personnalise</div><div class="preset-sub">Configurer librement</div></div>' +
+      '</div>' +
+      '<input type="hidden" name="preset" id="preset-val" value="' + (d.preset||'zenvalue') + '" />'
+    ) +
+    '<div id="custom-block" style="' + (isCustom?'':'opacity:.4;pointer-events:none') + '">' +
+      card('Couleurs',
+        frow(
+          '<div class="field"><label>Couleur primaire</label><div class="color-row"><input type="color" id="cp" value="' + (d.couleur_primaire||'#aac335') + '" oninput="syncHex(\'cp\',\'hp\',this.value)" /><input type="text" id="hp" name="couleur_primaire" value="' + (d.couleur_primaire||'#aac335') + '" oninput="syncPicker(\'cp\',this.value)" /></div></div>',
+          '<div class="field"><label>Couleur sombre</label><div class="color-row"><input type="color" id="cd" value="' + (d.couleur_sombre||'#414142') + '" oninput="syncHex(\'cd\',\'hd\',this.value)" /><input type="text" id="hd" name="couleur_sombre" value="' + (d.couleur_sombre||'#414142') + '" oninput="syncPicker(\'cd\',this.value)" /></div></div>'
+        ) +
+        '<div class="field" style="margin-top:.3rem;"><label>Palette complementaire</label>' +
+          '<div class="palette-grid">' +
+            pals.map(function(p) { return '<div class="palette-chip ' + ((d.palette_complementaire||'yellow')===p.k?'selected':'') + '" style="background:'+p.c+'" title="'+p.k+'" onclick="pickPal(\''+p.k+'\',this)"></div>'; }).join('') +
+          '</div>' +
+          '<input type="hidden" name="palette_complementaire" id="pal-val" value="' + (d.palette_complementaire||'yellow') + '" />' +
+        '</div>'
+      ) +
+      card('Typographie et Style',
+        '<div class="field"><label>Police</label><select name="typographie">' +
+          [['jakarta','Plus Jakarta Sans'],['inter','Inter'],['dm','DM Sans'],['outfit','Outfit']].map(function(k) { return '<option value="'+k[0]+'" '+(d.typographie===k[0]?'selected':'')+'>'+k[1]+'</option>'; }).join('') +
+        '</select></div>' +
+        '<div class="field"><label>Arrondi boutons — <span id="rv">' + (d.rayon_boutons||4) + '</span>px</label><input type="range" name="rayon_boutons" min="0" max="40" value="' + (d.rayon_boutons||4) + '" oninput="document.getElementById(\'rv\').textContent=this.value" /></div>' +
+        '<div class="field"><label>Ombres portees</label><div class="toggle-row"><label class="toggle"><input type="checkbox" name="ombre_activee" ' + (d.ombre_activee!==false?'checked':'') + '/><span class="toggle-slider"></span></label><span style="font-size:.85rem">Activees</span></div></div>'
+      ) +
+    '</div>';
+}
+
+function rGlobal(d) {
+  return '<div class="section-title">Contact et informations</div><div class="section-desc">Coordonnees affichees dans le footer et sur la page Contact.</div>' +
+    card('', f('Email','email',d.email) + f('Adresse','adresse',d.adresse) + f('Nom LinkedIn','linkedin',d.linkedin) + f('URL LinkedIn','linkedin_url',d.linkedin_url) + f('Copyright footer','copyright',d.copyright));
+}
+function rResultats(d) {
+  return '<div class="section-title">Chiffres cles</div><div class="section-desc">Les 4 resultats mesures chez vos clients.</div>' +
+    [1,2,3,4].map(function(n) { return card('Resultat '+n, frow(f('Chiffre','r'+n+'_chiffre',d['r'+n+'_chiffre']), f('Label','r'+n+'_label',d['r'+n+'_label']))); }).join('');
+}
+function rAccueil(d) {
+  return '<div class="section-title">Accueil</div><div class="section-desc">Hero, stats et messages de la page d\'accueil.</div>' +
+    card('Hero', f('Accroche','eyebrow',d.eyebrow) + f('Tagline ligne 1','tagline1',d.tagline1) + f('Tagline ligne 2 (italique)','tagline2',d.tagline2) + f('Sous-titre','soustitre',d.soustitre,'textarea') + frow(f('Bouton principal','cta1',d.cta1), f('Bouton secondaire','cta2',d.cta2))) +
+    card('Panneau sombre', f('Badge','badge',d.badge) + f('Citation','quote',d.quote,'textarea')) +
+    card('Statistiques', frow(f('Stat 1 chiffre','stat1_num',d.stat1_num), f('Stat 1 label','stat1_label',d.stat1_label)) + frow(f('Stat 2 chiffre','stat2_num',d.stat2_num), f('Stat 2 label','stat2_label',d.stat2_label)) + frow(f('Stat 3 chiffre','stat3_num',d.stat3_num), f('Stat 3 label','stat3_label',d.stat3_label)));
+}
+function rQSN(d) {
+  return '<div class="section-title">Qui sommes-nous</div><div class="section-desc">Discours, vision et histoire.</div>' +
+    card('Discours', f('Paragraphe 1','discours1',d.discours1,'textarea') + f('Paragraphe 2','discours2',d.discours2,'textarea') + f('Paragraphe 3','discours3',d.discours3,'textarea')) +
+    card('Vision et Mission', f('Vision','vision',d.vision,'textarea') + f('Mission','mission',d.mission,'textarea')) +
+    card('Histoire', f('Paragraphe 1','histoire1',d.histoire1,'textarea') + f('Paragraphe 2','histoire2',d.histoire2,'textarea') + f('Paragraphe 3','histoire3',d.histoire3,'textarea'));
+}
+function rFormation(d) {
+  return '<div class="section-title">Formation</div>' +
+    card('', f('Titre','titre',d.titre) + f('Sous-titre','soustitre',d.soustitre,'textarea') + f('Texte Qualiopi 1','texte1',d.texte1,'textarea') + f('Texte Qualiopi 2','texte2',d.texte2,'textarea') + f('URL catalogue','catalogue_url',d.catalogue_url));
+}
+function rRSE(d) {
+  return '<div class="section-title">RSE</div>' +
+    card('', f('Titre','titre',d.titre) + f('Introduction','intro',d.intro,'textarea') + f('Axe 1 Titre','axe1_titre',d.axe1_titre) + f('Axe 1 Texte','axe1_texte',d.axe1_texte,'textarea') + f('Axe 2 Titre','axe2_titre',d.axe2_titre) + f('Axe 2 Texte','axe2_texte',d.axe2_texte,'textarea')) +
+    listCard('Mesures concretes','list-mesures',d.mesures||[],['icon','titre','texte'],'addMesure');
+}
+function rOffres(d) {
+  return '<div class="section-title">Offres</div>' + listCard('Liste des offres','list-offres',d.items||[],['categorie','titre','description','cta_label'],'addOffre');
+}
+function rCas(d) {
+  return '<div class="section-title">Cas clients</div>' +
+    '<div class="form-card"><div class="form-card-title">Liste des cas clients</div>' +
+    '<div class="list-items" id="list-cas">' +
+      (d.items||[]).map(function(c,i) {
+        return '<div class="list-item"><div class="list-item-header" onclick="toggleBody(this)"><span>Cas '+(i+1)+' - '+esc(c.titre)+'</span><div class="item-actions"><button class="btn-icon" onclick="delItem(event,this)">X</button></div></div>' +
+          '<div class="list-item-body">' +
+            f('Titre','items['+i+'].titre',c.titre) + f('Citation','items['+i+'].citation',c.citation,'textarea') + f('Description','items['+i+'].description',c.description,'textarea') +
+            '<div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:var(--gray);margin:.8rem 0 .4rem;">Resultats</div>' +
+            (c.resultats||[]).map(function(r,j) { return frow(f('Chiffre','items['+i+'].resultats['+j+'].chiffre',r.chiffre), f('Label','items['+i+'].resultats['+j+'].label',r.label)); }).join('') +
+          '</div></div>';
+      }).join('') +
+    '</div><button class="add-btn" onclick="addCas()">+ Ajouter un cas client</button></div>';
+}
+function rPrincipes(d) {
+  return '<div class="section-title">Principes fondateurs</div>' + listCard('Principes','list-principes',d.items||[],['icon','titre','description'],'addPrincipe');
+}
+function rRecrutement(d) {
+  return '<div class="section-title">Recrutement</div>' +
+    card('En-tete', f('Titre','titre',d.titre) + f('Sous-titre','soustitre',d.soustitre,'textarea') + f('Introduction','intro',d.intro,'textarea') + f('Tagline','tagline',d.tagline)) +
+    listCard('Engagements','list-engagements',d.engagements||[],['icon','titre','texte'],'addEngagement') +
+    listCard('Profils recherches','list-profils',d.profils||[],['icon','titre','description'],'addProfil');
+}
+
+/* ════════════════════════════════════════════
+   LIST CARD HELPER
+   ════════════════════════════════════════════ */
+function listCard(title, id, items, fields, addFn) {
+  const labels = {icon:'Icone (emoji)',titre:'Titre',description:'Description',texte:'Texte',categorie:'Categorie',cta_label:'Label bouton'};
+  return '<div class="form-card"><div class="form-card-title">' + title + '</div>' +
+    '<div class="list-items" id="' + id + '">' +
+      items.map(function(item, i) {
+        return '<div class="list-item">' +
+          '<div class="list-item-header" onclick="toggleBody(this)"><span>' + esc(item.icon||'') + ' ' + esc(item.titre||item.categorie||'Element '+(i+1)) + '</span>' +
+          '<div class="item-actions"><button class="btn-icon" onclick="moveUp(event,this)">^</button><button class="btn-icon" onclick="moveDn(event,this)">v</button><button class="btn-icon" onclick="delItem(event,this)">X</button></div></div>' +
+          '<div class="list-item-body">' +
+            fields.map(function(fk) {
+              var type = (fk==='texte'||fk==='description') ? 'textarea' : 'text';
+              return f(labels[fk]||fk, id.replace('list-','')+'['+i+'].'+fk, item[fk], type);
+            }).join('') +
+          '</div></div>';
+      }).join('') +
+    '</div>' +
+    '<button class="add-btn" onclick="' + addFn + '(\'' + id + '\')">+ Ajouter</button></div>';
+}
+
+/* ════════════════════════════════════════════
+   LIST ACTIONS
+   ════════════════════════════════════════════ */
+function toggleBody(hdr) { hdr.nextElementSibling.classList.toggle('open'); }
+function delItem(e, btn) { e.stopPropagation(); if(confirm('Supprimer ?')) btn.closest('.list-item').remove(); }
+function moveUp(e, btn)  { e.stopPropagation(); var li=btn.closest('.list-item'); var prev=li.previousElementSibling; if(prev) li.parentNode.insertBefore(li,prev); }
+function moveDn(e, btn)  { e.stopPropagation(); var li=btn.closest('.list-item'); var next=li.nextElementSibling; if(next) li.parentNode.insertBefore(next,li); }
+
+function addToList(listId, fields) {
+  var labels = {icon:'Icone (emoji)',titre:'Titre',description:'Description',texte:'Texte',categorie:'Categorie',cta_label:'Label bouton'};
+  var body = fields.map(function(fk) {
+    var type = (fk==='texte'||fk==='description')?'textarea':'text';
+    return '<div class="field"><label>'+(labels[fk]||fk)+'</label>'+(type==='textarea'?'<textarea name="new_'+fk+'"></textarea>':'<input type="text" name="new_'+fk+'" />')+'</div>';
+  }).join('');
+  var html = '<div class="list-item"><div class="list-item-header" onclick="toggleBody(this)"><span>Nouvel element</span><div class="item-actions"><button class="btn-icon" onclick="delItem(event,this)">X</button></div></div><div class="list-item-body open">'+body+'</div></div>';
+  document.getElementById(listId).insertAdjacentHTML('beforeend', html);
+}
+function addOffre(id)      { addToList(id||'list-offres',      ['categorie','titre','description','cta_label']); }
+function addCas()          { addToList('list-cas',             ['titre','citation','description']); }
+function addPrincipe(id)   { addToList(id||'list-principes',   ['icon','titre','description']); }
+function addMesure(id)     { addToList(id||'list-mesures',     ['icon','titre','texte']); }
+function addEngagement(id) { addToList(id||'list-engagements', ['icon','titre','texte']); }
+function addProfil(id)     { addToList(id||'list-profils',     ['icon','titre','description']); }
+
+/* ════════════════════════════════════════════
+   COLLECT
+   ════════════════════════════════════════════ */
+function collect() {
+  var main = document.getElementById('admin-main');
+  var data = {};
+  main.querySelectorAll('[name]').forEach(function(el) {
+    var n = el.name;
+    if (!n || n.startsWith('new_') || n.includes('[')) return;
     if (el.type==='checkbox') data[n] = el.checked;
     else if (el.type==='range'||el.type==='number') data[n] = isNaN(Number(el.value)) ? el.value : Number(el.value);
     else data[n] = el.value;
   });
-
-  // Listes selon la section
-  const sec = state.section;
+  var sec = state.section;
   if (sec==='offres')      data.items      = collectList('list-offres',      ['categorie','titre','description','cta_label']);
   if (sec==='cas')         data.items      = collectCas();
   if (sec==='principes')   data.items      = collectList('list-principes',   ['icon','titre','description']);
@@ -654,40 +931,36 @@ function collect() {
     data.profils     = collectList('list-profils',     ['icon','titre','description']);
     data.processus   = state.data.processus || [];
   }
-
   return data;
 }
-
 function collectList(listId, fields) {
-  const container = document.getElementById(listId);
+  var container = document.getElementById(listId);
   if (!container) return [];
-  return Array.from(container.querySelectorAll('.list-item')).map(item => {
-    const obj = {};
-    item.querySelectorAll('[name]').forEach(el => {
-      // Extraire le nom du champ (dernière partie après le dernier point)
-      const key = el.name.split('.').pop().replace(/new_/,'');
+  return Array.from(container.querySelectorAll('.list-item')).map(function(item) {
+    var obj = {};
+    item.querySelectorAll('[name]').forEach(function(el) {
+      var key = el.name.split('.').pop().replace(/new_/,'');
       if (key && !key.includes('[')) obj[key] = el.value;
     });
     return obj;
   });
 }
-
 function collectCas() {
-  const container = document.getElementById('list-cas');
+  var container = document.getElementById('list-cas');
   if (!container) return [];
-  return Array.from(container.querySelectorAll('.list-item')).map(item => {
-    const obj = { titre:'', citation:'', description:'', resultats:[] };
-    item.querySelectorAll('[name]').forEach(el => {
-      const n = el.name;
+  return Array.from(container.querySelectorAll('.list-item')).map(function(item) {
+    var obj = { titre:'', citation:'', description:'', resultats:[] };
+    item.querySelectorAll('[name]').forEach(function(el) {
+      var n = el.name;
       if (n.includes('resultats')) {
-        const m = n.match(/resultats\[(\d+)\]\.(\w+)/);
+        var m = n.match(/resultats\[(\d+)\]\.(\w+)/);
         if (m) {
-          const ri = parseInt(m[1]);
+          var ri = parseInt(m[1]);
           while (obj.resultats.length <= ri) obj.resultats.push({chiffre:'',label:''});
           obj.resultats[ri][m[2]] = el.value;
         }
       } else {
-        const key = n.split('.').pop().replace(/new_/,'');
+        var key = n.split('.').pop().replace(/new_/,'');
         if (key && !key.includes('[')) obj[key] = el.value;
       }
     });
@@ -695,12 +968,25 @@ function collectCas() {
   });
 }
 
-/* ── INIT ── */
-window.addEventListener('DOMContentLoaded', () => {
+/* ════════════════════════════════════════════
+   INIT
+   ════════════════════════════════════════════ */
+window.addEventListener('DOMContentLoaded', function() {
+  // Recuperer token depuis localStorage
+  var storedToken = localStorage.getItem('zv_token');
+  if (storedToken) GH_TOKEN = decodeToken(storedToken);
+
+  // Recuperer session
   try {
-    const saved = localStorage.getItem('zv_gh');
-    if (saved) { GH = JSON.parse(saved); startAdmin(); }
-  } catch(e) { localStorage.removeItem('zv_gh'); }
+    var s = localStorage.getItem('zv_session');
+    if (s) session = JSON.parse(s);
+  } catch(e) { session = null; }
+
+  if (session && GH_TOKEN) {
+    startAdmin();
+  } else {
+    checkFirstRun();
+  }
 });
 </script>
 </body>
