@@ -1,35 +1,46 @@
 /* ══════════════════════════════════════════
-   TOKENS — Charte graphique Zen Value
-   Source de vérité — charte officielle avril 2019
+   TOKENS — Systeme 9 couleurs v4
    ══════════════════════════════════════════ */
 :root {
-  /* Couleurs principales (logo) */
-  --zv-green:     #aac335;
-  --zv-green-dk:  #8fa828;
-  --zv-green-lt:  #d4e07a;
-  --zv-green-bg:  #f3f7e0;
-  --zv-dark:      #414142;
-  --zv-gray:      #6b6b6d;
-  --zv-light:     #f8f8f8;
-  --zv-white:     #ffffff;
+  /* Couleur 1 (principale / action) */
+  --c1:  #AAC335;
+  --c1d: #6D7D22;
+  --c1l: #F1F6E2;
 
-  /* Palette complémentaire charte */
-  --cp-yellow:    #f1e3a6;
-  --cp-beige:     #d6cbbd;
-  --cp-sage:      #c7d4b7;
-  --cp-lavender:  #dbd3e8;
-  --cp-blue:      #cedff4;
+  /* Couleur 2 (structure / texte) */
+  --c2:  #404041;
+  --c2d: #14191E;
+  --c2l: #9CA3AF;
+
+  /* Couleur 3 (accent / energie) */
+  --c3:  #FF467C;
+  --c3d: #9D174D;
+  --c3l: #FFF1F6;
+
+  /* Aliases compatibilite */
+  --zv-green:    var(--c1);
+  --zv-green-dk: var(--c1d);
+  --zv-green-bg: var(--c1l);
+  --zv-dark:     var(--c2);
+  --zv-gray:     var(--c2l);
+  --accent:      var(--c3);
+  --accent-dk:   var(--c3d);
+  --accent-lt:   var(--c3l);
+
+  /* Fixes */
+  --zv-light: #f8f8f8;
+  --zv-white: #ffffff;
 
   /* Typographie */
   --ff: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
 
   /* Espacement */
-  --space-xs:  0.5rem;
-  --space-sm:  1rem;
-  --space-md:  2rem;
-  --space-lg:  4rem;
-  --space-xl:  5.5rem;
-  --gutter:    8vw;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 5.5rem;
+  --gutter:   8vw;
 
   /* Misc */
   --radius: 4px;
