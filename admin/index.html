@@ -139,6 +139,33 @@
     .overlay.on { display:flex; }
     .spin { width:20px; height:20px; border:3px solid rgba(0,0,0,.1); border-top-color:var(--green); border-radius:50%; animation:spin .7s linear infinite; }
     @keyframes spin { to { transform:rotate(360deg); } }
+
+    /* ── MEDIA LIBRARY ── */
+    .media-tabs { display:flex; gap:.4rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+    .media-tab { padding:.45rem 1rem; border-radius:20px; font-size:.75rem; font-weight:700; cursor:pointer; border:2px solid var(--border); background:white; color:var(--gray); transition:all .2s; }
+    .media-tab.active { border-color:var(--green); background:#f3f7e0; color:var(--green); }
+    .dropzone { border:2px dashed var(--border); border-radius:10px; padding:2.5rem; text-align:center; cursor:pointer; transition:all .2s; margin-bottom:1.5rem; background:white; }
+    .dropzone:hover,.dropzone.drag-over { border-color:var(--green); background:#f3f7e0; }
+    .dropzone-icon { font-size:2rem; margin-bottom:.8rem; }
+    .dropzone-text { font-size:.9rem; color:var(--gray); }
+    .dropzone-text strong { color:var(--green); }
+    .dropzone input[type=file] { display:none; }
+    .upload-progress { background:var(--light); border-radius:6px; padding:.8rem 1rem; margin-bottom:1rem; font-size:.84rem; display:none; }
+    .upload-progress.on { display:flex; align-items:center; gap:.8rem; }
+    .media-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:1rem; }
+    .media-card { border:2px solid var(--border); border-radius:8px; overflow:hidden; cursor:pointer; transition:all .2s; background:white; position:relative; }
+    .media-card:hover { border-color:var(--green); transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,.08); }
+    .media-card.copied { border-color:#16a34a; }
+    .media-thumb { width:100%; height:100px; object-fit:cover; display:block; background:var(--light); }
+    .media-thumb-svg { width:100%; height:100px; display:flex; align-items:center; justify-content:center; background:var(--light); font-size:2rem; }
+    .media-info { padding:.5rem .6rem; }
+    .media-name { font-size:.68rem; color:var(--gray); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .media-copy-tag { position:absolute; top:.4rem; right:.4rem; background:var(--green); color:white; font-size:.6rem; font-weight:700; padding:.15rem .4rem; border-radius:10px; display:none; }
+    .media-card.copied .media-copy-tag { display:block; }
+    .media-delete { position:absolute; top:.4rem; left:.4rem; background:rgba(220,38,38,.85); color:white; border:none; border-radius:50%; width:20px; height:20px; font-size:.65rem; cursor:pointer; display:none; align-items:center; justify-content:center; }
+    .media-card:hover .media-delete { display:flex; }
+    .media-empty { text-align:center; color:var(--gray); font-size:.88rem; padding:2rem; grid-column:1/-1; }
+
   </style>
 </head>
 <body>
@@ -469,6 +496,8 @@ function buildSidebar() {
     html += '<div class="sidebar-item" data-sec="resultats"   onclick="nav(this,\'resultats\')">Chiffres cles</div>';
     html += '<div class="sidebar-section">Utilisateurs</div>';
     html += '<div class="sidebar-item" data-sec="users"       onclick="nav(this,\'users\')">Gestion utilisateurs</div>';
+    html += '<div class="sidebar-section">Contenus</div>';
+    html += '<div class="sidebar-item" data-sec="medias"      onclick="nav(this,\'medias\')">Bibliotheque medias</div>';
   }
 
   html += '<div class="sidebar-section">Pages</div>';
@@ -498,6 +527,12 @@ async function loadSection(sec) {
   document.getElementById('save-status').textContent = '';
   document.getElementById('admin-main').innerHTML = '<div style="padding:2rem;color:#aaa;"><span style="display:inline-block;width:18px;height:18px;border:2px solid #eee;border-top-color:#aac335;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:.5rem;"></span>Chargement...</div>';
   // Section users : pas de fichier a lire de la meme facon
+  if (sec === 'medias') {
+    document.getElementById('save-bar').style.display = 'none';
+    document.getElementById('admin-main').innerHTML = rMedias();
+    initMedias();
+    return;
+  }
   if (sec === 'users') {
     try {
       const { data, sha } = await ghRead(FILES.users);
@@ -686,29 +721,46 @@ function render(sec, d) {
    PRESETS THEME
    ════════════════════════════════════════════ */
 const ADMIN_PRESETS = {
-  zenvalue: { couleur_primaire:'#aac335', couleur_sombre:'#414142', palette_complementaire:'yellow' },
-  ocean:    { couleur_primaire:'#2e7cf6', couleur_sombre:'#1a2332', palette_complementaire:'blue' },
-  earth:    { couleur_primaire:'#8b6f4e', couleur_sombre:'#2c2016', palette_complementaire:'beige' },
-  bloom:    { couleur_primaire:'#9b59b6', couleur_sombre:'#2d1b3d', palette_complementaire:'lavender' },
+  zenvalue: { c1:'#AAC335',c1d:'#6D7D22',c1l:'#F1F6E2', c2:'#404041',c2d:'#14191E',c2l:'#9CA3AF', c3:'#FF467C',c3d:'#9D174D',c3l:'#FFF1F6', typographie:'jakarta', rayon_boutons:4 },
+  ardoise:  { c1:'#2563EB',c1d:'#1E40AF',c1l:'#EFF6FF', c2:'#1E293B',c2d:'#0F172A',c2l:'#94A3B8', c3:'#F59E0B',c3d:'#B45309',c3l:'#FFFBEB', typographie:'inter',   rayon_boutons:6 },
+  mineral:  { c1:'#059669',c1d:'#047857',c1l:'#ECFDF5', c2:'#374151',c2d:'#111827',c2l:'#D1D5DB', c3:'#8B5CF6',c3d:'#6D28D9',c3l:'#F5F3FF', typographie:'manrope',  rayon_boutons:8 },
 };
-const ADMIN_PALETTES = { yellow:'#f1e3a6', beige:'#d6cbbd', sage:'#c7d4b7', lavender:'#dbd3e8', blue:'#cedff4' };
+const ADMIN_FONTS = [
+  ['jakarta',    'Plus Jakarta Sans'],['inter',      'Inter'],['josefin',    'Josefin Sans'],
+  ['roboto',     'Roboto'],           ['opensans',   'Open Sans'],['rubik',  'Rubik'],
+  ['dm',         'DM Sans'],          ['poppins',    'Poppins'],  ['lato',   'Lato'],
+  ['nunito',     'Nunito'],           ['ubuntu',     'Ubuntu'],   ['sourcesans','Source Sans 3'],
+  ['worksans',   'Work Sans'],        ['manrope',    'Manrope'],  ['raleway','Raleway'],
+  ['montserrat', 'Montserrat'],       ['playfair',   'Playfair Display'],
+  ['baskerville','Libre Baskerville'],['neuton',     'Neuton'],   ['lora',   'Lora'],
+  ['arvo',       'Arvo'],             ['outfit',     'Outfit'],
+];
 
-function updatePreview(primary, dark, palKey) {
-  const p = document.getElementById('preview-primary');
-  const d = document.getElementById('preview-dark');
-  const a = document.getElementById('preview-accent');
-  const l = document.getElementById('preview-light');
-  const b = document.getElementById('preview-btn');
-  if (!p) return;
-  const pal = ADMIN_PALETTES[palKey] || '#f1e3a6';
-  const hex2 = function(h) { const x=h.replace('#',''); return {r:parseInt(x.slice(0,2),16),g:parseInt(x.slice(2,4),16),b:parseInt(x.slice(4,6),16)}; };
-  const c = hex2(primary);
-  const lightBg = 'rgb('+Math.round(c.r+(255-c.r)*.82)+','+Math.round(c.g+(255-c.g)*.82)+','+Math.round(c.b+(255-c.b)*.82)+')';
-  p.style.background = primary; d.style.background = dark; a.style.background = pal; l.style.background = lightBg;
-  if (b) b.style.background = primary;
-  document.getElementById('preview-primary-lbl').textContent = primary;
-  document.getElementById('preview-dark-lbl').textContent = dark;
+function updatePreview(p) {
+  const els = {
+    c1:  document.getElementById('pv-c1'),
+    c1d: document.getElementById('pv-c1d'),
+    c1l: document.getElementById('pv-c1l'),
+    c2:  document.getElementById('pv-c2'),
+    c2d: document.getElementById('pv-c2d'),
+    c2l: document.getElementById('pv-c2l'),
+    c3:  document.getElementById('pv-c3'),
+    c3d: document.getElementById('pv-c3d'),
+    c3l: document.getElementById('pv-c3l'),
+    btn: document.getElementById('pv-btn'),
+    acc: document.getElementById('pv-acc'),
+  };
+  if (!els.c1) return;
+  const colors = { c1:p.c1||'#AAC335',c1d:p.c1d||'#6D7D22',c1l:p.c1l||'#F1F6E2',c2:p.c2||'#404041',c2d:p.c2d||'#14191E',c2l:p.c2l||'#9CA3AF',c3:p.c3||'#FF467C',c3d:p.c3d||'#9D174D',c3l:p.c3l||'#FFF1F6' };
+  Object.keys(colors).forEach(function(k) {
+    var el = els[k]; if (!el) return;
+    el.style.background = colors[k];
+    var lbl = document.getElementById('pv-'+k+'-lbl'); if (lbl) lbl.textContent = colors[k];
+  });
+  if (els.btn) { els.btn.style.background = colors.c1; els.btn.style.color = 'white'; }
+  if (els.acc) els.acc.style.color = colors.c3;
 }
+
 
 function pickPreset(key, el) {
   document.querySelectorAll('.preset-card').forEach(function(c) { c.classList.remove('selected'); });
@@ -717,105 +769,138 @@ function pickPreset(key, el) {
   const block = document.getElementById('custom-block');
   if (block) { block.style.opacity = key==='custom'?'1':'.4'; block.style.pointerEvents = key==='custom'?'auto':'none'; }
   if (key !== 'custom' && ADMIN_PRESETS[key]) {
+    updatePreview(ADMIN_PRESETS[key]);
+    // Mettre a jour les champs couleur
     const p = ADMIN_PRESETS[key];
-    updatePreview(p.couleur_primaire, p.couleur_sombre, p.palette_complementaire);
-    const cp = document.getElementById('cp'); const hp = document.getElementById('hp');
-    const cd = document.getElementById('cd'); const hd = document.getElementById('hd');
-    if (cp) { cp.value = p.couleur_primaire; hp.value = p.couleur_primaire; }
-    if (cd) { cd.value = p.couleur_sombre;   hd.value = p.couleur_sombre; }
-    document.querySelectorAll('.palette-chip').forEach(function(c) { c.classList.remove('selected'); });
-    document.querySelectorAll('.palette-chip').forEach(function(c) { if(c.title===p.palette_complementaire) c.classList.add('selected'); });
-    document.getElementById('pal-val').value = p.palette_complementaire;
+    ['c1','c1d','c1l','c2','c2d','c2l','c3','c3d','c3l'].forEach(function(k) {
+      var el2 = document.getElementById('inp-'+k); if (el2) el2.value = p[k]||'';
+      var cp  = document.getElementById('cp-'+k);  if (cp)  cp.value  = p[k]||'';
+    });
   }
 }
-function pickPal(key, el) {
-  document.querySelectorAll('.palette-chip').forEach(function(c) { c.classList.remove('selected'); });
-  el.classList.add('selected');
-  document.getElementById('pal-val').value = key;
-  const primary = document.getElementById('hp') ? document.getElementById('hp').value : '#aac335';
-  const dark    = document.getElementById('hd') ? document.getElementById('hd').value : '#414142';
-  updatePreview(primary, dark, key);
-}
-function syncHex(pickerId, hexId, val) {
-  document.getElementById(hexId).value = val;
-  const primary = document.getElementById('hp') ? document.getElementById('hp').value : '#aac335';
-  const dark    = document.getElementById('hd') ? document.getElementById('hd').value : '#414142';
-  const palKey  = document.getElementById('pal-val') ? document.getElementById('pal-val').value : 'yellow';
-  updatePreview(primary, dark, palKey);
-}
-function syncPicker(pickerId, val) {
+
+function syncColor(inputId, pickerId, k) {
+  var val = document.getElementById(inputId).value;
   if (/^#[0-9a-fA-F]{6}$/.test(val)) {
-    document.getElementById(pickerId).value = val;
-    const primary = document.getElementById('hp') ? document.getElementById('hp').value : '#aac335';
-    const dark    = document.getElementById('hd') ? document.getElementById('hd').value : '#414142';
-    const palKey  = document.getElementById('pal-val') ? document.getElementById('pal-val').value : 'yellow';
-    updatePreview(primary, dark, palKey);
+    var cp = document.getElementById(pickerId); if (cp) cp.value = val;
+    var p = getCurrentCustomColors(); updatePreview(p);
   }
 }
+function syncPicker2(pickerId, inputId) {
+  var val = document.getElementById(pickerId).value;
+  var inp = document.getElementById(inputId); if (inp) inp.value = val;
+  var p = getCurrentCustomColors(); updatePreview(p);
+}
+function getCurrentCustomColors() {
+  var keys = ['c1','c1d','c1l','c2','c2d','c2l','c3','c3d','c3l'];
+  var p = {};
+  keys.forEach(function(k) {
+    var el = document.getElementById('inp-'+k); p[k] = el ? el.value : '';
+  });
+  return p;
+}
+
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
 
 /* ════════════════════════════════════════════
    RENDERERS THEME + PAGES
    ════════════════════════════════════════════ */
 function rTheme(d) {
-  const presets = [{k:'zenvalue',c:'#aac335',n:'Zen Value',s:'Charte officielle'},{k:'ocean',c:'#2e7cf6',n:'Ocean',s:'Bleu professionnel'},{k:'earth',c:'#8b6f4e',n:'Terre',s:'Chaleureux'},{k:'bloom',c:'#9b59b6',n:'Bloom',s:'Creatif'}];
-  const pals = [{k:'yellow',c:'#f1e3a6'},{k:'beige',c:'#d6cbbd'},{k:'sage',c:'#c7d4b7'},{k:'lavender',c:'#dbd3e8'},{k:'blue',c:'#cedff4'}];
   const isCustom = d.preset === 'custom';
-  const prevPrimary = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset].couleur_primaire : (d.couleur_primaire||'#aac335');
-  const prevDark    = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset].couleur_sombre   : (d.couleur_sombre  ||'#414142');
-  const prevPal     = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset].palette_complementaire : (d.palette_complementaire||'yellow');
-  const prevPalColor = ADMIN_PALETTES[prevPal]||'#f1e3a6';
-  const hex2 = function(h) { const x=h.replace('#',''); return {r:parseInt(x.slice(0,2),16),g:parseInt(x.slice(2,4),16),b:parseInt(x.slice(4,6),16)}; };
-  const c = hex2(prevPrimary);
-  const lightBg = 'rgb('+Math.round(c.r+(255-c.r)*.82)+','+Math.round(c.g+(255-c.g)*.82)+','+Math.round(c.b+(255-c.b)*.82)+')';
+  const p = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset] : d;
+  const c1=p.c1||'#AAC335',c1d=p.c1d||'#6D7D22',c1l=p.c1l||'#F1F6E2';
+  const c2=p.c2||'#404041',c2d=p.c2d||'#14191E',c2l=p.c2l||'#9CA3AF';
+  const c3=p.c3||'#FF467C',c3d=p.c3d||'#9D174D',c3l=p.c3l||'#FFF1F6';
+  const font = p.typographie || d.typographie || 'jakarta';
+  const radius = p.rayon_boutons !== undefined ? p.rayon_boutons : (d.rayon_boutons || 4);
+
+  const presets = [
+    {k:'zenvalue', n:'Zen Value',  s:'Charte officielle', dot:['#AAC335','#404041','#FF467C']},
+    {k:'ardoise',  n:'Ardoise',    s:'Sobre et professionnel', dot:['#2563EB','#1E293B','#F59E0B']},
+    {k:'mineral',  n:'Mineral',    s:'Elegant et premium', dot:['#059669','#374151','#8B5CF6']},
+  ];
+
+  function colorField(label, k, val) {
+    return '<div class="field" style="flex:1;min-width:120px;">' +
+      '<label>' + label + '</label>' +
+      '<div style="display:flex;align-items:center;gap:.5rem;">' +
+        '<input type="color" id="cp-'+k+'" value="'+val+'" oninput="syncPicker2('cp-'+k+'','inp-'+k+'')" style="width:38px;height:32px;padding:.1rem;border:1.5px solid var(--border);border-radius:4px;cursor:pointer;" />' +
+        '<input type="text" id="inp-'+k+'" name="'+k+'" value="'+val+'" placeholder="#000000" oninput="syncColor('inp-'+k+'','cp-'+k+'',''+k+'')" style="font-size:.82rem;font-family:monospace;" />' +
+      '</div></div>';
+  }
+
+  function colorGroup(title, k, main, dark, light, accent) {
+    return '<div class="form-card" style="border-left:4px solid '+main+';margin-bottom:.8rem;">' +
+      '<div class="form-card-title" style="color:'+main+';">' + title + '</div>' +
+      '<div style="display:flex;gap:.8rem;flex-wrap:wrap;">' +
+        colorField('Principale', k, main) +
+        colorField('Foncee', k+'d', dark) +
+        colorField('Claire (fond)', k+'l', light) +
+      '</div></div>';
+  }
 
   return '<div class="section-title">Theme graphique</div>' +
-    '<div class="section-desc">Choisissez un preset ou configurez manuellement les couleurs.</div>' +
+    '<div class="section-desc">3 couleurs principales avec leurs declinaisons. Le blanc est la base — les couleurs viennent en accents subtils.</div>' +
+
+    // Apercu
     '<div class="form-card" style="margin-bottom:1.2rem;">' +
-      '<div class="form-card-title">Apercu en temps reel</div>' +
-      '<div style="display:flex;gap:.8rem;align-items:stretch;flex-wrap:wrap;">' +
-        '<div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);"><div id="preview-primary" style="height:52px;background:'+prevPrimary+';display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:.7rem;font-weight:700;" id="preview-primary-lbl">'+prevPrimary+'</span></div><div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Couleur principale</div></div>' +
-        '<div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);"><div id="preview-dark" style="height:52px;background:'+prevDark+';display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:.7rem;font-weight:700;" id="preview-dark-lbl">'+prevDark+'</span></div><div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Couleur sombre</div></div>' +
-        '<div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);"><div id="preview-accent" style="height:52px;background:'+prevPalColor+';"></div><div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Palette accent</div></div>' +
-        '<div style="flex:1;min-width:120px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);"><div id="preview-light" style="height:52px;background:'+lightBg+';"></div><div style="padding:.4rem .7rem;font-size:.68rem;color:var(--gray);">Fond clair</div></div>' +
+      '<div class="form-card-title">Apercu</div>' +
+      '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem;">' +
+        [['c1','Principale 1',c1],['c1d','Foncee',c1d],['c1l','Claire',c1l],
+         ['c2','Principale 2',c2],['c2d','Foncee',c2d],['c2l','Claire',c2l],
+         ['c3','Accent',c3],['c3d','Fonce',c3d],['c3l','Clair',c3l]].map(function(x) {
+          return '<div style="text-align:center;min-width:60px;">' +
+            '<div id="pv-'+x[0]+'" style="width:100%;height:36px;border-radius:6px;background:'+x[2]+';border:1px solid rgba(0,0,0,.06);margin-bottom:.3rem;"></div>' +
+            '<div id="pv-'+x[0]+'-lbl" style="font-size:.6rem;font-family:monospace;color:var(--gray);">'+x[2]+'</div>' +
+            '<div style="font-size:.58rem;color:var(--gray);opacity:.7;">'+x[1]+'</div>' +
+          '</div>';
+        }).join('') +
       '</div>' +
-      '<div style="margin-top:1rem;padding:.8rem;border:1px solid var(--border);border-radius:8px;">' +
-        '<span id="preview-btn" style="display:inline-block;padding:.55rem 1.4rem;border-radius:4px;font-size:.8rem;font-weight:700;color:white;background:'+prevPrimary+';">Bouton exemple</span>' +
-        '<span style="font-size:.85rem;color:'+prevPrimary+';font-weight:600;margin-left:1rem;">Lien exemple</span>' +
+      '<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:1rem 1.5rem;display:flex;align-items:center;gap:1.5rem;">' +
+        '<span id="pv-btn" style="display:inline-block;padding:.5rem 1.2rem;border-radius:var(--radius,4px);font-size:.8rem;font-weight:700;color:white;background:'+c1+';">Bouton</span>' +
+        '<span id="pv-acc" style="font-size:.9rem;font-weight:700;color:'+c3+';">Accent</span>' +
+        '<span style="font-size:.85rem;color:#888;">Texte courant</span>' +
+        '<span style="font-size:.85rem;font-weight:600;color:'+c2+';">Titre</span>' +
       '</div>' +
     '</div>' +
+
+    // Presets
     card('Preset',
-      '<div class="preset-grid">' +
-        presets.map(function(p) { return '<div class="preset-card ' + (d.preset===p.k?'selected':'') + '" onclick="pickPreset(\''+p.k+'\',this)"><div class="preset-dot" style="background:'+p.c+'"></div><div><div class="preset-name">'+p.n+'</div><div class="preset-sub">'+p.s+'</div></div></div>'; }).join('') +
+      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.7rem;margin-bottom:1rem;">' +
+        presets.map(function(pr) {
+          return '<div class="preset-card '+(d.preset===pr.k?'selected':'')+'" onclick="pickPreset(''+pr.k+'',this)">' +
+            '<div style="display:flex;gap:4px;margin-right:.7rem;">' +
+              pr.dot.map(function(col) { return '<div style="width:16px;height:16px;border-radius:50%;background:'+col+';"></div>'; }).join('') +
+            '</div>' +
+            '<div><div class="preset-name">'+pr.n+'</div><div class="preset-sub">'+pr.s+'</div></div>' +
+          '</div>';
+        }).join('') +
+        '<div class="preset-card '+(isCustom?'selected':'')+'" onclick="pickPreset('custom',this)">' +
+          '<div style="width:36px;height:16px;border-radius:8px;background:linear-gradient(90deg,#AAC335,#2563EB,#FF467C);margin-right:.7rem;"></div>' +
+          '<div><div class="preset-name">Personnalise</div><div class="preset-sub">9 couleurs libres</div></div>' +
+        '</div>' +
       '</div>' +
-      '<div class="preset-card ' + (isCustom?'selected':'') + '" style="margin-top:.5rem;max-width:210px;" onclick="pickPreset(\'custom\',this)">' +
-        '<div class="preset-dot" style="background:linear-gradient(135deg,#aac335,#9b59b6)"></div>' +
-        '<div><div class="preset-name">Personnalise</div><div class="preset-sub">Configurer librement</div></div>' +
-      '</div>' +
-      '<input type="hidden" name="preset" id="preset-val" value="' + (d.preset||'zenvalue') + '" />'
+      '<input type="hidden" name="preset" id="preset-val" value="'+(d.preset||'zenvalue')+'" />'
     ) +
-    '<div id="custom-block" style="' + (isCustom?'':'opacity:.4;pointer-events:none') + '">' +
-      card('Couleurs',
-        frow(
-          '<div class="field"><label>Couleur primaire</label><div class="color-row"><input type="color" id="cp" value="' + (d.couleur_primaire||'#aac335') + '" oninput="syncHex(\'cp\',\'hp\',this.value)" /><input type="text" id="hp" name="couleur_primaire" value="' + (d.couleur_primaire||'#aac335') + '" oninput="syncPicker(\'cp\',this.value)" /></div></div>',
-          '<div class="field"><label>Couleur sombre</label><div class="color-row"><input type="color" id="cd" value="' + (d.couleur_sombre||'#414142') + '" oninput="syncHex(\'cd\',\'hd\',this.value)" /><input type="text" id="hd" name="couleur_sombre" value="' + (d.couleur_sombre||'#414142') + '" oninput="syncPicker(\'cd\',this.value)" /></div></div>'
-        ) +
-        '<div class="field" style="margin-top:.3rem;"><label>Palette complementaire</label>' +
-          '<div class="palette-grid">' +
-            pals.map(function(p) { return '<div class="palette-chip ' + ((d.palette_complementaire||'yellow')===p.k?'selected':'') + '" style="background:'+p.c+'" title="'+p.k+'" onclick="pickPal(\''+p.k+'\',this)"></div>'; }).join('') +
-          '</div>' +
-          '<input type="hidden" name="palette_complementaire" id="pal-val" value="' + (d.palette_complementaire||'yellow') + '" />' +
-        '</div>'
-      ) +
-      card('Typographie et Style',
-        '<div class="field"><label>Police</label><select name="typographie">' +
-          [['jakarta','Plus Jakarta Sans'],['inter','Inter'],['dm','DM Sans'],['outfit','Outfit']].map(function(k) { return '<option value="'+k[0]+'" '+(d.typographie===k[0]?'selected':'')+'>'+k[1]+'</option>'; }).join('') +
+
+    // Couleurs custom
+    '<div id="custom-block" style="'+(isCustom?'':'opacity:.4;pointer-events:none')+'">' +
+      colorGroup('Couleur 1 — Action / Boutons / Liens', 'c1', c1, c1d, c1l) +
+      colorGroup('Couleur 2 — Structure / Titres / Fonds sombres', 'c2', c2, c2d, c2l) +
+      colorGroup('Couleur 3 — Accent / Energie / CTA secondaires', 'c3', c3, c3d, c3l) +
+    '</div>' +
+
+    // Typo + style
+    card('Typographie et style',
+      '<div class="field"><label>Police</label>' +
+        '<select name="typographie">' +
+          ADMIN_FONTS.map(function(f) { return '<option value="'+f[0]+'" '+(font===f[0]?'selected':'')+'>'+f[1]+'</option>'; }).join('') +
         '</select></div>' +
-        '<div class="field"><label>Arrondi boutons — <span id="rv">' + (d.rayon_boutons||4) + '</span>px</label><input type="range" name="rayon_boutons" min="0" max="40" value="' + (d.rayon_boutons||4) + '" oninput="document.getElementById(\'rv\').textContent=this.value" /></div>' +
-        '<div class="field"><label>Ombres portees</label><div class="toggle-row"><label class="toggle"><input type="checkbox" name="ombre_activee" ' + (d.ombre_activee!==false?'checked':'') + '/><span class="toggle-slider"></span></label><span style="font-size:.85rem">Activees</span></div></div>'
-      ) +
-    '</div>';
+      '<div class="field"><label>Arrondi boutons — <span id="rv">'+radius+'</span>px</label>' +
+        '<input type="range" name="rayon_boutons" min="0" max="40" value="'+radius+'" oninput="document.getElementById('rv').textContent=this.value" /></div>'
+    );
 }
+
 
 function rGlobal(d) {
   return '<div class="section-title">Contact et informations</div><div class="section-desc">Coordonnees affichees dans le footer et sur la page Contact.</div>' +
@@ -976,6 +1061,182 @@ function collectCas() {
       }
     });
     return obj;
+  });
+}
+
+
+/* ════════════════════════════════════════════
+   MEDIA LIBRARY
+   ════════════════════════════════════════════ */
+const MEDIA_FOLDERS = [
+  { key: 'illustrations', label: 'Illustrations', path: 'assets/images/illustrations/' },
+  { key: 'equipe',        label: 'Equipe',        path: 'assets/images/equipe/' },
+  { key: 'logos-clients', label: 'Logos clients', path: 'assets/images/logos-clients/' },
+  { key: 'logo',          label: 'Logo',          path: 'assets/images/logo/' },
+];
+const MEDIA_EXTS = ['jpg','jpeg','png','webp','svg','avif','gif'];
+let mediaTab = 'illustrations';
+let mediaFiles = {};
+
+function rMedias() {
+  return '<div class="section-title">Bibliotheque medias</div>' +
+    '<div class="section-desc">Uploadez et gerez vos images. Cliquez sur une image pour copier son URL.</div>' +
+    '<div class="media-tabs">' +
+      MEDIA_FOLDERS.map(function(f) {
+        return '<div class="media-tab ' + (f.key === mediaTab ? 'active' : '') + '" onclick="switchMediaTab('' + f.key + '')">' + f.label + '</div>';
+      }).join('') +
+    '</div>' +
+    '<div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event)">' +
+      '<input type="file" id="file-input" multiple accept="image/*" onchange="onFileSelect(event)" />' +
+      '<div class="dropzone-icon">📁</div>' +
+      '<div class="dropzone-text">Glissez vos images ici ou <strong>cliquez pour selectionner</strong><br/><span style="font-size:.75rem;">JPG, PNG, WebP, SVG, AVIF</span></div>' +
+    '</div>' +
+    '<div class="upload-progress" id="upload-progress"><div class="spin"></div><span id="upload-msg">Envoi en cours...</span></div>' +
+    '<div class="media-grid" id="media-grid"><div class="media-empty">Chargement...</div></div>';
+}
+
+async function initMedias() {
+  await loadMediaFolder(mediaTab);
+}
+
+function switchMediaTab(key) {
+  mediaTab = key;
+  document.querySelectorAll('.media-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.media-tab').forEach(function(t) {
+    if (t.textContent === MEDIA_FOLDERS.find(function(f) { return f.key === key; }).label) t.classList.add('active');
+  });
+  renderMediaGrid(key);
+  if (!mediaFiles[key]) loadMediaFolder(key);
+}
+
+async function loadMediaFolder(key) {
+  const folder = MEDIA_FOLDERS.find(function(f) { return f.key === key; });
+  if (!folder) return;
+  try {
+    const r = await fetch(ghUrl(folder.path), { headers: ghHeaders() });
+    if (r.status === 404) { mediaFiles[key] = []; renderMediaGrid(key); return; }
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const files = await r.json();
+    mediaFiles[key] = files.filter(function(f) {
+      const ext = f.name.split('.').pop().toLowerCase();
+      return MEDIA_EXTS.includes(ext);
+    });
+    renderMediaGrid(key);
+  } catch(e) {
+    document.getElementById('media-grid').innerHTML = '<div class="media-empty">Erreur chargement : ' + e.message + '</div>';
+  }
+}
+
+function renderMediaGrid(key) {
+  const grid = document.getElementById('media-grid');
+  if (!grid) return;
+  const files = mediaFiles[key] || [];
+  if (files.length === 0) {
+    grid.innerHTML = '<div class="media-empty">Aucune image dans ce dossier.<br/>Uploadez votre premiere image ci-dessus.</div>';
+    return;
+  }
+  grid.innerHTML = files.map(function(f) {
+    const url = 'https://llmdev-ops.github.io/' + f.path;
+    const ext = f.name.split('.').pop().toLowerCase();
+    const isSvg = ext === 'svg';
+    const thumb = isSvg
+      ? '<div class="media-thumb-svg">SVG</div>'
+      : '<img class="media-thumb" src="' + url + '" loading="lazy" onerror="this.style.display='none'" />';
+    return '<div class="media-card" onclick="copyMediaUrl('' + url + '', this)" data-sha="' + f.sha + '" data-path="' + f.path + '">' +
+      thumb +
+      '<button class="media-delete" onclick="deleteMedia(event, '' + f.path + '', '' + f.sha + '')" title="Supprimer">x</button>' +
+      '<span class="media-copy-tag">Copie !</span>' +
+      '<div class="media-info"><div class="media-name">' + f.name + '</div></div>' +
+    '</div>';
+  }).join('');
+}
+
+function copyMediaUrl(url, card) {
+  navigator.clipboard.writeText(url).then(function() {
+    card.classList.add('copied');
+    setTimeout(function() { card.classList.remove('copied'); }, 2000);
+  });
+}
+
+function onDragOver(e) { e.preventDefault(); document.getElementById('dropzone').classList.add('drag-over'); }
+function onDragLeave(e) { document.getElementById('dropzone').classList.remove('drag-over'); }
+function onDrop(e) {
+  e.preventDefault();
+  document.getElementById('dropzone').classList.remove('drag-over');
+  uploadFiles(Array.from(e.dataTransfer.files));
+}
+function onFileSelect(e) { uploadFiles(Array.from(e.target.files)); }
+
+async function uploadFiles(files) {
+  const images = files.filter(function(f) {
+    const ext = f.name.split('.').pop().toLowerCase();
+    return MEDIA_EXTS.includes(ext);
+  });
+  if (images.length === 0) return;
+
+  const folder = MEDIA_FOLDERS.find(function(f) { return f.key === mediaTab; });
+  const progress = document.getElementById('upload-progress');
+  const msg = document.getElementById('upload-msg');
+  progress.classList.add('on');
+
+  for (let i = 0; i < images.length; i++) {
+    const file = images[i];
+    msg.textContent = 'Envoi ' + (i+1) + '/' + images.length + ' : ' + file.name;
+    try {
+      const b64 = await fileToBase64(file);
+      const path = folder.path + file.name;
+      // Verifier si existe deja
+      let sha = null;
+      try {
+        const check = await fetch(ghUrl(path), { headers: ghHeaders() });
+        if (check.ok) { const d = await check.json(); sha = d.sha; }
+      } catch(e) {}
+
+      const body = JSON.stringify({
+        message: '[Admin] Upload ' + file.name,
+        content: b64,
+        ...(sha ? { sha } : {})
+      });
+      const r = await fetch(ghUrl(path), { method: 'PUT', headers: { ...ghHeaders(), 'Content-Type': 'application/json' }, body });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+
+      // Ajouter a la liste locale
+      if (!mediaFiles[mediaTab]) mediaFiles[mediaTab] = [];
+      const existing = mediaFiles[mediaTab].findIndex(function(f) { return f.name === file.name; });
+      const newFile = { name: file.name, path: path, sha: (await r.json()).content.sha };
+      if (existing >= 0) mediaFiles[mediaTab][existing] = newFile;
+      else mediaFiles[mediaTab].push(newFile);
+
+    } catch(e) {
+      alert('Erreur upload ' + file.name + ' : ' + e.message);
+    }
+  }
+
+  progress.classList.remove('on');
+  renderMediaGrid(mediaTab);
+}
+
+async function deleteMedia(e, path, sha) {
+  e.stopPropagation();
+  const name = path.split('/').pop();
+  if (!confirm('Supprimer ' + name + ' ?')) return;
+  try {
+    const body = JSON.stringify({ message: '[Admin] Delete ' + name, sha });
+    const r = await fetch(ghUrl(path), { method: 'DELETE', headers: { ...ghHeaders(), 'Content-Type': 'application/json' }, body });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    mediaFiles[mediaTab] = (mediaFiles[mediaTab] || []).filter(function(f) { return f.path !== path; });
+    renderMediaGrid(mediaTab);
+  } catch(err) {
+    alert('Erreur suppression : ' + err.message);
+  }
+}
+
+function fileToBase64(file) {
+  return new Promise(function(resolve, reject) {
+    const reader = new FileReader();
+    reader.onload = function(e) { resolve(e.target.result.split(',')[1]); };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
   });
 }
 
