@@ -1,11 +1,11 @@
 {
   "users": [
     {
-      "email": "mdodin@zenvalue.fr",
-      "name": "Mael Dodin",
+      "email": "llemolgat@zenvalue.fr",
+      "name": "Loic LLM",
       "role": "admin",
-      "passwordHash": "ff7ecc3016161c417fe6fe048e67193942a014620a9c9b16dfdca2432fbbaa44",
-      "createdAt": "2026-02-26T13:25:31.859Z"
+      "passwordHash": "e749581b6505fa851c3bd3dbf7bf1d95ade422bd399c14cd09cae5a539e4fdc4",
+      "createdAt": "2026-02-26T15:46:25.825Z"
     }
   ]
 }
