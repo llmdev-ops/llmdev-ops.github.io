@@ -3,8 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zen Value — Let's find a Zen Way to Value</title>
-  <meta name="description" content="Cabinet de conseil et organisme de formation spécialisé dans la performance opérationnelle, pérenne et responsable." />
+
+  <!-- ── SEO PRIMAIRE ── -->
+  <title>Zen Value — Cabinet de conseil & formation en performance opérationnelle</title>
+  <meta name="description" content="Zen Value est un cabinet de conseil et organisme de formation certifié Qualiopi, spécialisé dans la performance opérationnelle, Lean, Agile et Théorie des Contraintes. Paris." />
+  <meta name="keywords" content="cabinet conseil performance, organisme formation Qualiopi, Lean, Agile, Théorie des Contraintes, performance opérationnelle, transformation entreprise, Paris" />
+  <meta name="author" content="Zen Value" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://zenvalue.fr/" />
+
+  <!-- ── OPEN GRAPH (LinkedIn, Facebook, WhatsApp) ── -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="Zen Value" />
+  <meta property="og:url"         content="https://zenvalue.fr/" />
+  <meta property="og:title"       content="Zen Value — Cabinet de conseil & formation en performance opérationnelle" />
+  <meta property="og:description" content="Lean, Agile, Théorie des Contraintes — Zen Value accompagne les entreprises vers une performance mesurable, pérenne et responsable. Certifié Qualiopi." />
+  <meta property="og:image"       content="https://zenvalue.fr/assets/images/og-image.jpg" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale"      content="fr_FR" />
+
+  <!-- ── TWITTER / X ── -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Zen Value — Cabinet de conseil & formation en performance opérationnelle" />
+  <meta name="twitter:description" content="Lean, Agile, Théorie des Contraintes — Zen Value accompagne les entreprises vers une performance mesurable, pérenne et responsable." />
+  <meta name="twitter:image"       content="https://zenvalue.fr/assets/images/og-image.jpg" />
+
+  <!-- ── STRUCTURED DATA (Google) ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Zen Value",
+    "description": "Cabinet de conseil et organisme de formation spécialisé dans la performance opérationnelle, pérenne et responsable.",
+    "url": "https://zenvalue.fr",
+    "logo": "https://zenvalue.fr/assets/images/logo/logo_zen-value_H.avif",
+    "email": "contact@zenvalue.fr",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Paris",
+      "addressCountry": "FR"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/zen-value"
+    ],
+    "knowsAbout": ["Lean", "Agile", "Théorie des Contraintes", "Performance opérationnelle", "Formation professionnelle"],
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Certification Qualiopi"
+    }
+  }
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,15 +61,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
 
   <!-- CSS — dans l'ordre de dépendance -->
-  <link rel="stylesheet" href="/assets/css/tokens.css" />
-  <link rel="stylesheet" href="/assets/css/layout.css" />
-  <link rel="stylesheet" href="/assets/css/components.css" />
-  <link rel="stylesheet" href="/assets/css/navigation.css" />
-  <link rel="stylesheet" href="/assets/css/animations.css" />
-  <link rel="stylesheet" href="/assets/css/forms.css" />
-
-  <!-- Netlify Identity (pour l'accès /admin) -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/navigation.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/forms.css" />
   <script>
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
@@ -36,7 +82,7 @@
 <!-- ══════ NAVIGATION ══════ -->
 <nav id="navbar">
   <a href="#" class="logo" onclick="showPage('accueil');return false;">
-    <img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="nav-logo-img" />
+    <img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="nav-logo-img" />
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#" onclick="showPage('offres');return false;"       data-page="offres">Nos Offres</a></li>
@@ -144,7 +190,7 @@
 
   <footer>
     <a href="#" class="footer-logo" onclick="showPage('accueil');return false;">
-      <img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" />
+      <img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" />
     </a>
     <div class="footer-links">
       <a href="#">Politique de confidentialité</a>
@@ -189,7 +235,7 @@
     <div class="reveal"><h2>Ces résultats pourraient <em>être les vôtres.</em></h2><p class="cta-desc">Parlons de vos enjeux sans engagement.</p></div>
     <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal">Démarrer l'échange</a>
   </div>
-  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
+  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
 </div>
 
 
@@ -256,7 +302,7 @@
       <a href="#" onclick="showPage('recrutement');return false;" class="btn btn-ghost-dark">Nous rejoindre</a>
     </div>
   </div>
-  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
+  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
 </div>
 
 
@@ -292,7 +338,7 @@
       <a href="https://zenvalue.catalogueformpro.com/" target="_blank" data-cms-href="formation.catalogue" class="btn btn-dark">Accéder au catalogue →</a>
     </div>
   </div>
-  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
+  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
 </div>
 
 
@@ -329,7 +375,7 @@
     <div class="reveal"><h2>Prêt·e à grandir <em>avec nous ?</em></h2><p class="cta-desc">Rejoignez une communauté engagée.</p></div>
     <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal">Postuler</a>
   </div>
-  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
+  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
 </div>
 
 
@@ -357,7 +403,7 @@
     <div class="reveal"><h2>La performance responsable,<br/><em>c'est notre engagement.</em></h2><p class="cta-desc">En travaillant avec nous, vous accompagnez une organisation qui intègre ces valeurs au quotidien.</p></div>
     <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal">Discutons-en</a>
   </div>
-  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
+  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
 </div>
 
 
@@ -387,18 +433,25 @@
         </div>
       </div>
 
-      <!-- Formulaire Netlify -->
+      <!-- Formulaire Web3Forms -->
       <div class="reveal">
-        <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contact" />
-          <p style="display:none;"><input name="bot-field" /></p>
+        <form id="contact-form">
+          <input type="hidden" name="access_key" value="VOTRE_CLE_WEB3FORMS" />
+          <input type="hidden" name="subject" value="Nouveau message — Zen Value" />
+          <input type="hidden" name="from_name" value="Site Zen Value" />
+          <input type="checkbox" name="botcheck" style="display:none;" />
 
-          <div class="form-group"><label for="nom">Nom & Prénom</label><input id="nom" type="text" name="nom" placeholder="Marie Martin" required /></div>
-          <div class="form-group"><label for="email">Email professionnel</label><input id="email" type="email" name="email" placeholder="marie@entreprise.fr" required /></div>
-          <div class="form-group"><label for="organisation">Organisation</label><input id="organisation" type="text" name="organisation" placeholder="Votre entreprise" /></div>
+          <div class="form-row">
+            <div class="form-group"><label for="prenom">Prénom *</label><input id="prenom" type="text" name="prenom" placeholder="Marie" required /></div>
+            <div class="form-group"><label for="nom">Nom *</label><input id="nom" type="text" name="nom" placeholder="Martin" required /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label for="email">Email *</label><input id="email" type="email" name="email" placeholder="marie@entreprise.fr" required /></div>
+            <div class="form-group"><label for="telephone">Téléphone</label><input id="telephone" type="tel" name="telephone" placeholder="+33 6 00 00 00 00" /></div>
+          </div>
           <div class="form-group">
-            <label for="sujet">Sujet</label>
-            <select id="sujet" name="sujet">
+            <label for="sujet">Sujet *</label>
+            <select id="sujet" name="sujet" required>
               <option value="">Choisir un sujet…</option>
               <option>Accompagnement / Conseil</option>
               <option>Formation</option>
@@ -407,17 +460,17 @@
               <option>Autre</option>
             </select>
           </div>
-          <div class="form-group"><label for="message">Votre message</label><textarea id="message" name="message" placeholder="Décrivez brièvement votre contexte et vos enjeux…" required></textarea></div>
+          <div class="form-group"><label for="message">Message *</label><textarea id="message" name="message" placeholder="Décrivez brièvement votre contexte et vos enjeux…" required></textarea></div>
 
-          <div id="form-success" class="form-success">✓ Message envoyé ! Nous vous répondrons sous 48h.</div>
-          <div id="form-error" class="form-error">Une erreur est survenue. Écrivez-nous directement à contact@zenvalue.fr</div>
+          <div id="form-success" class="form-success" style="display:none;">✓ Message envoyé ! Nous vous répondrons sous 48h.</div>
+          <div id="form-error" class="form-error" style="display:none;">Une erreur est survenue. Écrivez-nous directement à <a href="mailto:contact@zenvalue.fr">contact@zenvalue.fr</a></div>
 
-          <button type="submit" class="btn btn-primary btn-full" style="margin-top:.4rem;">Envoyer le message</button>
+          <button type="submit" id="form-btn" class="btn btn-primary btn-full" style="margin-top:.4rem;">Envoyer le message</button>
         </form>
       </div>
     </div>
   </div>
-  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a><a href="#">Cookies</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
+  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a><a href="#">Cookies</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
 </div>
 
 
@@ -425,10 +478,47 @@
 <!-- Theme loader en premier : surcharge les variables CSS avant le rendu -->
 <script src="assets/js/theme-loader.js?v=10"></script>
 <!-- Ordre important : animations en premier (observeReveals doit exister avant cms-loader) -->
-<script src="/assets/js/animations.js"></script>
-<script src="/assets/js/router.js"></script>
-<script src="/assets/js/cms-loader.js"></script>
-<script src="/assets/js/nav.js"></script>
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/router.js"></script>
+<script src="assets/js/cms-loader.js"></script>
+<script src="assets/js/nav.js"></script>
+
+
+<script>
+/* ── FORMULAIRE WEB3FORMS ── */
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn     = document.getElementById('form-btn');
+  const success = document.getElementById('form-success');
+  const error   = document.getElementById('form-error');
+
+  success.style.display = 'none';
+  error.style.display   = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours…';
+
+  try {
+    const data = new FormData(this);
+    const res  = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: data
+    });
+    const json = await res.json();
+
+    if (json.success) {
+      success.style.display = 'block';
+      this.reset();
+    } else {
+      error.style.display = 'block';
+    }
+  } catch(err) {
+    error.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Envoyer le message';
+  }
+});
+</script>
 
 </body>
 </html>
