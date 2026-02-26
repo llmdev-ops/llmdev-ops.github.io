@@ -779,17 +779,18 @@ function pickPreset(key, el) {
   }
 }
 
-function syncColor(inputId, pickerId, k) {
-  var val = document.getElementById(inputId).value;
-  if (/^#[0-9a-fA-F]{6}$/.test(val)) {
-    var cp = document.getElementById(pickerId); if (cp) cp.value = val;
-    var p = getCurrentCustomColors(); updatePreview(p);
-  }
+function onPickerChange(el) {
+  var target = document.getElementById(el.getAttribute('data-target'));
+  if (target) target.value = el.value;
+  updatePreview(getCurrentCustomColors());
 }
-function syncPicker2(pickerId, inputId) {
-  var val = document.getElementById(pickerId).value;
-  var inp = document.getElementById(inputId); if (inp) inp.value = val;
-  var p = getCurrentCustomColors(); updatePreview(p);
+function onTextChange(el) {
+  var val = el.value;
+  if (/^#[0-9a-fA-F]{6}$/.test(val)) {
+    var picker = document.getElementById(el.getAttribute('data-picker'));
+    if (picker) picker.value = val;
+    updatePreview(getCurrentCustomColors());
+  }
 }
 function getCurrentCustomColors() {
   var keys = ['c1','c1d','c1l','c2','c2d','c2l','c3','c3d','c3l'];
@@ -824,8 +825,8 @@ function rTheme(d) {
     return '<div class="field" style="flex:1;min-width:120px;">' +
       '<label>' + label + '</label>' +
       '<div style="display:flex;align-items:center;gap:.5rem;">' +
-        '<input type="color" id="cp-'+k+'" value="'+val+'" oninput="syncPicker2('cp-'+k+'','inp-'+k+'')" style="width:38px;height:32px;padding:.1rem;border:1.5px solid var(--border);border-radius:4px;cursor:pointer;" />' +
-        '<input type="text" id="inp-'+k+'" name="'+k+'" value="'+val+'" placeholder="#000000" oninput="syncColor('inp-'+k+'','cp-'+k+'',''+k+'')" style="font-size:.82rem;font-family:monospace;" />' +
+        '<input type="color" id="cp-' + k + '" value="' + val + '" data-target="inp-' + k + '" oninput="onPickerChange(this)" style="width:38px;height:32px;padding:.1rem;border:1.5px solid var(--border);border-radius:4px;cursor:pointer;" />' +
+        '<input type="text" id="inp-' + k + '" name="' + k + '" value="' + val + '" data-picker="cp-' + k + '" placeholder="#000000" oninput="onTextChange(this)" style="font-size:.82rem;font-family:monospace;" />' +
       '</div></div>';
   }
 
