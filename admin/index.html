@@ -587,7 +587,7 @@ function rUsers(d) {
       '<td><strong>' + esc(u.name) + '</strong>' + (isSelf ? ' <span style="font-size:.7rem;color:var(--green);">(vous)</span>' : '') + '</td>' +
       '<td>' + esc(u.email) + '</td>' +
       '<td><span class="role-badge role-' + u.role + '">' + (u.role === 'admin' ? 'Admin' : 'Redacteur') + '</span></td>' +
-      '<td>' + (isSelf ? '' : '<button class="btn btn-sm btn-danger" onclick="deleteUser(\'' + esc(u.email) + '\')">Supprimer</button>') + '</td>' +
+      '<td>' + (isSelf ? '' : '<button class="btn btn-sm btn-danger" data-email="' + esc(u.email) + '" onclick="deleteUser(this.dataset.email)">Supprimer</button>') + '</td>' +
     '</tr>';
   }).join('');
 
@@ -869,14 +869,15 @@ function rTheme(d) {
     card('Preset',
       '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.7rem;margin-bottom:1rem;">' +
         presets.map(function(pr) {
-          return '<div class="preset-card '+(d.preset===pr.k?'selected':'')+'" onclick="pickPreset(''+pr.k+'',this)">' +
+          var sel = d.preset===pr.k ? 'selected' : '';
+          return '<div class="preset-card '+sel+'" data-preset="'+pr.k+'" onclick="pickPreset(this.dataset.preset,this)">' +
             '<div style="display:flex;gap:4px;margin-right:.7rem;">' +
               pr.dot.map(function(col) { return '<div style="width:16px;height:16px;border-radius:50%;background:'+col+';"></div>'; }).join('') +
             '</div>' +
             '<div><div class="preset-name">'+pr.n+'</div><div class="preset-sub">'+pr.s+'</div></div>' +
           '</div>';
         }).join('') +
-        '<div class="preset-card '+(isCustom?'selected':'')+'" onclick="pickPreset('custom',this)">' +
+        '<div class="preset-card '+(isCustom?'selected':'')+'" data-preset="custom" onclick="pickPreset(this.dataset.preset,this)">' +
           '<div style="width:36px;height:16px;border-radius:8px;background:linear-gradient(90deg,#AAC335,#2563EB,#FF467C);margin-right:.7rem;"></div>' +
           '<div><div class="preset-name">Personnalise</div><div class="preset-sub">9 couleurs libres</div></div>' +
         '</div>' +
@@ -978,7 +979,7 @@ function listCard(title, id, items, fields, addFn) {
           '</div></div>';
       }).join('') +
     '</div>' +
-    '<button class="add-btn" onclick="' + addFn + '(\'' + id + '\')">+ Ajouter</button></div>';
+    '<button class="add-btn" data-id="' + id + '" data-fn="' + addFn + '" onclick="window[this.dataset.fn](this.dataset.id)">+ Ajouter</button></div>';
 }
 
 /* ════════════════════════════════════════════
@@ -1084,7 +1085,7 @@ function rMedias() {
     '<div class="section-desc">Uploadez et gerez vos images. Cliquez sur une image pour copier son URL.</div>' +
     '<div class="media-tabs">' +
       MEDIA_FOLDERS.map(function(f) {
-        return '<div class="media-tab ' + (f.key === mediaTab ? 'active' : '') + '" onclick="switchMediaTab('' + f.key + '')">' + f.label + '</div>';
+        return '<div class="media-tab ' + (f.key === mediaTab ? 'active' : '') + '" data-key="' + f.key + '" onclick="switchMediaTab(this.dataset.key)">' + f.label + '</div>';
       }).join('') +
     '</div>' +
     '<div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event)">' +
@@ -1143,9 +1144,9 @@ function renderMediaGrid(key) {
     const thumb = isSvg
       ? '<div class="media-thumb-svg">SVG</div>'
       : '<img class="media-thumb" src="' + url + '" loading="lazy" onerror="this.style.display='none'" />';
-    return '<div class="media-card" onclick="copyMediaUrl('' + url + '', this)" data-sha="' + f.sha + '" data-path="' + f.path + '">' +
+    return '<div class="media-card" data-url="' + url + '" onclick="copyMediaUrl(this.dataset.url, this)" data-sha="' + f.sha + '" data-path="' + f.path + '">' +
       thumb +
-      '<button class="media-delete" onclick="deleteMedia(event, '' + f.path + '', '' + f.sha + '')" title="Supprimer">x</button>' +
+      '<button class="media-delete" data-path="' + f.path + '" data-sha="' + f.sha + '" onclick="deleteMedia(event,this.dataset.path,this.dataset.sha)" title="Supprimer">x</button>' +
       '<span class="media-copy-tag">Copie !</span>' +
       '<div class="media-info"><div class="media-name">' + f.name + '</div></div>' +
     '</div>';
