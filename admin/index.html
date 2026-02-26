@@ -364,7 +364,18 @@ async function doSetup() {
   const users = { users: [{ email, name, role: 'admin', passwordHash: hash, createdAt: new Date().toISOString() }] };
 
   try {
-    await ghCreate(FILES.users, users);
+    // Verifier si users.json existe deja (uploade vide)
+    let existingSha = null;
+    try {
+      const r = await fetch(ghUrl(FILES.users), { headers: ghHeaders() });
+      if (r.ok) { const d = await r.json(); existingSha = d.sha; }
+    } catch(e2) {}
+
+    if (existingSha) {
+      await ghWrite(FILES.users, users, existingSha);
+    } else {
+      await ghCreate(FILES.users, users);
+    }
     localStorage.setItem('zv_token', encodeToken(token));
     session = { email, name, role: 'admin' };
     localStorage.setItem('zv_session', JSON.stringify(session));
