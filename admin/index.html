@@ -15,7 +15,7 @@
     }
     body { font-family: var(--ff); background: var(--light); color: var(--dark); font-size: 15px; line-height: 1.6; }
 
-    /* ── ECRANS AUTH ── */
+    /* AUTH */
     .auth-screen { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:2rem; }
     .auth-box { background:white; border-radius:12px; padding:2.8rem 2.4rem; box-shadow:0 4px 32px rgba(0,0,0,.08); width:100%; max-width:460px; }
     .auth-logo { height:36px; margin-bottom:2rem; }
@@ -25,17 +25,14 @@
     .auth-input { width:100%; padding:.7rem .9rem; border:2px solid var(--border); border-radius:var(--radius); font-family:var(--ff); font-size:.9rem; outline:none; transition:border-color .2s; margin-bottom:1rem; }
     .auth-input:focus { border-color:var(--green); }
     .auth-error { background:#fef2f2; border:1.5px solid #ef4444; color:#b91c1c; padding:.7rem 1rem; border-radius:var(--radius); font-size:.84rem; margin-top:.8rem; display:none; }
-    .auth-divider { text-align:center; color:var(--gray); font-size:.78rem; margin:1.2rem 0; position:relative; }
-    .auth-divider::before { content:''; position:absolute; top:50%; left:0; right:0; height:1px; background:var(--border); }
-    .auth-divider span { position:relative; background:white; padding:0 .8rem; }
     .code-toggle { font-size:.8rem; color:var(--green); cursor:pointer; text-decoration:underline; margin-bottom:1rem; display:block; }
     .code-block { display:none; background:var(--light); border-radius:var(--radius); padding:1rem; margin-bottom:1rem; border:1px solid var(--border); }
     .code-block p { font-size:.78rem; color:var(--gray); margin-bottom:.8rem; line-height:1.5; }
     .role-badge { display:inline-block; font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:.2rem .6rem; border-radius:20px; }
-    .role-admin  { background:#fef9c3; color:#854d0e; }
+    .role-admin { background:#fef9c3; color:#854d0e; }
     .role-redacteur { background:#f0fdf4; color:#15803d; }
 
-    /* ── BUTTONS ── */
+    /* BUTTONS */
     .btn { display:inline-block; font-family:var(--ff); font-size:.78rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:.75rem 1.6rem; border-radius:var(--radius); border:none; cursor:pointer; transition:all .2s; text-decoration:none; }
     .btn-primary { background:var(--green); color:white; width:100%; text-align:center; }
     .btn-primary:hover { background:#8fa828; }
@@ -45,7 +42,7 @@
     .btn-danger { background:#fee2e2; color:#dc2626; border:none; }
     .btn-danger:hover { background:#fecaca; }
 
-    /* ── ADMIN LAYOUT ── */
+    /* ADMIN LAYOUT */
     #admin-screen { display:none; min-height:100vh; }
     .admin-header { background:white; border-bottom:2px solid var(--green); padding:0 2rem; height:60px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; box-shadow:0 1px 8px rgba(0,0,0,.04); }
     .admin-logo { height:28px; }
@@ -53,20 +50,20 @@
     .admin-user { font-size:.78rem; color:var(--gray); }
     .admin-layout { display:grid; grid-template-columns:230px 1fr; min-height:calc(100vh - 60px); }
 
-    /* ── SIDEBAR ── */
+    /* SIDEBAR */
     .sidebar { background:white; border-right:1px solid var(--border); padding:1.5rem 0; position:sticky; top:60px; height:calc(100vh - 60px); overflow-y:auto; }
     .sidebar-section { padding:.4rem 1.2rem; font-size:.63rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gray); opacity:.5; margin-top:1.2rem; }
     .sidebar-item { display:flex; align-items:center; gap:.6rem; padding:.62rem 1.4rem; font-size:.84rem; font-weight:500; color:var(--dark); cursor:pointer; transition:all .15s; border-left:3px solid transparent; }
     .sidebar-item:hover { background:#f3f7e0; color:var(--green); }
     .sidebar-item.active { background:#f3f7e0; color:var(--green); border-left-color:var(--green); font-weight:700; }
 
-    /* ── MAIN ── */
+    /* MAIN */
     .admin-content { overflow-y:auto; display:flex; flex-direction:column; min-height:calc(100vh - 60px); }
     .admin-main { padding:2rem 2.5rem; max-width:860px; flex:1; }
     .section-title { font-size:1.3rem; font-weight:800; margin-bottom:.3rem; }
     .section-desc { font-size:.85rem; color:var(--gray); margin-bottom:2rem; }
 
-    /* ── FORM ── */
+    /* FORM */
     .form-card { background:white; border-radius:10px; padding:1.8rem 2rem; margin-bottom:1.2rem; border:1px solid var(--border); }
     .form-card-title { font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--green); margin-bottom:1.2rem; padding-bottom:.6rem; border-bottom:1px solid var(--border); }
     .field { margin-bottom:1.1rem; }
@@ -80,29 +77,16 @@
     .field-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
     .field-hint { font-size:.74rem; color:var(--gray); margin-top:.22rem; line-height:1.4; }
     .toggle-row { display:flex; align-items:center; gap:.8rem; }
-    .toggle { position:relative; width:44px; height:24px; flex-shrink:0; }
-    .toggle input { opacity:0; width:0; height:0; }
-    .toggle-slider { position:absolute; inset:0; background:#ccc; border-radius:40px; cursor:pointer; transition:.3s; }
-    .toggle-slider::before { content:''; position:absolute; width:18px; height:18px; left:3px; bottom:3px; background:white; border-radius:50%; transition:.3s; }
-    .toggle input:checked + .toggle-slider { background:var(--green); }
-    .toggle input:checked + .toggle-slider::before { transform:translateX(20px); }
 
-    /* ── PRESETS ── */
-    .preset-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.7rem; margin-bottom:1rem; }
+    /* PRESETS */
+    .preset-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:.7rem; margin-bottom:1rem; }
     .preset-card { border:2px solid var(--border); border-radius:8px; padding:.9rem 1rem; cursor:pointer; transition:all .2s; display:flex; align-items:center; gap:.8rem; }
     .preset-card:hover { border-color:var(--green); background:#f3f7e0; }
     .preset-card.selected { border-color:var(--green); background:#f3f7e0; }
-    .preset-dot { width:26px; height:26px; border-radius:50%; flex-shrink:0; }
     .preset-name { font-size:.84rem; font-weight:700; }
     .preset-sub  { font-size:.71rem; color:var(--gray); }
 
-    /* ── PALETTE ── */
-    .palette-grid { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem; }
-    .palette-chip { width:36px; height:36px; border-radius:6px; border:3px solid transparent; cursor:pointer; transition:transform .15s,border-color .15s; }
-    .palette-chip:hover { transform:scale(1.1); }
-    .palette-chip.selected { border-color:var(--dark); }
-
-    /* ── LIST EDITOR ── */
+    /* LIST EDITOR */
     .list-items { display:flex; flex-direction:column; gap:.7rem; margin-bottom:.8rem; }
     .list-item { border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; }
     .list-item-header { display:flex; align-items:center; justify-content:space-between; padding:.7rem 1rem; background:var(--light); cursor:pointer; font-size:.87rem; font-weight:600; user-select:none; }
@@ -115,13 +99,13 @@
     .add-btn { display:flex; align-items:center; justify-content:center; gap:.5rem; font-size:.8rem; font-weight:700; color:var(--green); background:#f3f7e0; border:2px dashed var(--green); border-radius:var(--radius); padding:.6rem 1.2rem; cursor:pointer; width:100%; transition:background .2s; }
     .add-btn:hover { background:#eaf0c7; }
 
-    /* ── SAVE BAR ── */
+    /* SAVE BAR */
     .save-bar { background:white; border-top:1px solid var(--border); padding:1rem 2.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
     .save-status { font-size:.84rem; color:var(--gray); }
     .save-status.ok  { color:#16a34a; font-weight:600; }
     .save-status.err { color:#dc2626; font-weight:600; }
 
-    /* ── USER TABLE ── */
+    /* USER TABLE */
     .user-table { width:100%; border-collapse:collapse; }
     .user-table th { text-align:left; font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray); padding:.6rem 1rem; border-bottom:2px solid var(--border); }
     .user-table td { padding:.8rem 1rem; border-bottom:1px solid var(--border); font-size:.88rem; vertical-align:middle; }
@@ -129,18 +113,12 @@
     .user-table tr:hover td { background:#fafafa; }
     .user-self td { background:#f3f7e0 !important; }
 
-    /* ── CODE ACCES ── */
+    /* CODE ACCES */
     .code-box { background:#1e1e2e; color:#a6e3a1; font-family:monospace; font-size:.82rem; padding:1rem 1.2rem; border-radius:6px; word-break:break-all; margin:1rem 0; cursor:pointer; position:relative; }
     .code-box::after { content:'Cliquer pour copier'; position:absolute; top:.4rem; right:.8rem; font-size:.65rem; color:#6c7086; }
     .code-box.copied::after { content:'Copie !'; color:#a6e3a1; }
 
-    /* ── LOADER ── */
-    .overlay { display:none; position:fixed; inset:0; background:rgba(255,255,255,.75); z-index:999; align-items:center; justify-content:center; font-size:1rem; font-weight:700; color:var(--green); gap:.8rem; }
-    .overlay.on { display:flex; }
-    .spin { width:20px; height:20px; border:3px solid rgba(0,0,0,.1); border-top-color:var(--green); border-radius:50%; animation:spin .7s linear infinite; }
-    @keyframes spin { to { transform:rotate(360deg); } }
-
-    /* ── MEDIA LIBRARY ── */
+    /* MEDIA */
     .media-tabs { display:flex; gap:.4rem; margin-bottom:1.5rem; flex-wrap:wrap; }
     .media-tab { padding:.45rem 1rem; border-radius:20px; font-size:.75rem; font-weight:700; cursor:pointer; border:2px solid var(--border); background:white; color:var(--gray); transition:all .2s; }
     .media-tab.active { border-color:var(--green); background:#f3f7e0; color:var(--green); }
@@ -149,9 +127,8 @@
     .dropzone-icon { font-size:2rem; margin-bottom:.8rem; }
     .dropzone-text { font-size:.9rem; color:var(--gray); }
     .dropzone-text strong { color:var(--green); }
-    .dropzone input[type=file] { display:none; }
-    .upload-progress { background:var(--light); border-radius:6px; padding:.8rem 1rem; margin-bottom:1rem; font-size:.84rem; display:none; }
-    .upload-progress.on { display:flex; align-items:center; gap:.8rem; }
+    .upload-progress { background:var(--light); border-radius:6px; padding:.8rem 1rem; margin-bottom:1rem; font-size:.84rem; display:none; align-items:center; gap:.8rem; }
+    .upload-progress.on { display:flex; }
     .media-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:1rem; }
     .media-card { border:2px solid var(--border); border-radius:8px; overflow:hidden; cursor:pointer; transition:all .2s; background:white; position:relative; }
     .media-card:hover { border-color:var(--green); transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,.08); }
@@ -162,67 +139,62 @@
     .media-name { font-size:.68rem; color:var(--gray); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .media-copy-tag { position:absolute; top:.4rem; right:.4rem; background:var(--green); color:white; font-size:.6rem; font-weight:700; padding:.15rem .4rem; border-radius:10px; display:none; }
     .media-card.copied .media-copy-tag { display:block; }
-    .media-delete { position:absolute; top:.4rem; left:.4rem; background:rgba(220,38,38,.85); color:white; border:none; border-radius:50%; width:20px; height:20px; font-size:.65rem; cursor:pointer; display:none; align-items:center; justify-content:center; }
-    .media-card:hover .media-delete { display:flex; }
-    .media-empty { text-align:center; color:var(--gray); font-size:.88rem; padding:2rem; grid-column:1/-1; }
+    .media-delete-btn { position:absolute; top:.4rem; left:.4rem; background:rgba(220,38,38,.85); color:white; border:none; border-radius:50%; width:20px; height:20px; font-size:.65rem; cursor:pointer; display:none; align-items:center; justify-content:center; line-height:1; }
+    .media-card:hover .media-delete-btn { display:flex; }
 
+    /* LOADER */
+    .overlay { display:none; position:fixed; inset:0; background:rgba(255,255,255,.75); z-index:999; align-items:center; justify-content:center; font-size:1rem; font-weight:700; color:var(--green); gap:.8rem; }
+    .overlay.on { display:flex; }
+    .spin { width:20px; height:20px; border:3px solid rgba(0,0,0,.1); border-top-color:var(--green); border-radius:50%; animation:spin .7s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
   </style>
 </head>
 <body>
 
 <div class="overlay" id="overlay"><div class="spin"></div> Enregistrement…</div>
 
-<!-- ══ LOGIN ══ -->
+<!-- LOGIN -->
 <div id="login-screen" class="auth-screen">
   <div class="auth-box">
     <img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="auth-logo" />
     <h1>Administration</h1>
     <p>Connectez-vous avec votre email et mot de passe Zen Value.</p>
-
     <label class="auth-label">Email</label>
     <input id="login-email" class="auth-input" type="email" placeholder="prenom@zenvalue.fr" autocomplete="email" />
-
     <label class="auth-label">Mot de passe</label>
     <input id="login-pwd" class="auth-input" type="password" placeholder="••••••••" autocomplete="current-password" />
-
-    <span class="code-toggle" onclick="toggleCode()">Premiere connexion sur cet appareil ? Entrez votre code d'acces</span>
+    <span class="code-toggle" id="code-toggle-btn">Premiere connexion ? Entrez votre code d'acces</span>
     <div class="code-block" id="code-block">
       <p>Votre administrateur vous a transmis un code d'acces. Saisissez-le ci-dessous — il ne sera demande qu'une seule fois sur cet appareil.</p>
       <label class="auth-label">Code d'acces</label>
       <input id="login-code" class="auth-input" type="password" placeholder="Collez le code ici" />
     </div>
-
-    <button class="btn btn-primary" onclick="doLogin()">Connexion</button>
+    <button class="btn btn-primary" id="btn-login">Connexion</button>
     <div class="auth-error" id="login-err"></div>
   </div>
 </div>
 
-<!-- ══ SETUP (premier admin) ══ -->
+<!-- SETUP -->
 <div id="setup-screen" class="auth-screen" style="display:none;">
   <div class="auth-box">
     <img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="auth-logo" />
     <h1>Premier lancement</h1>
     <p>Aucun utilisateur n'existe encore. Creez le premier compte administrateur.</p>
-
     <label class="auth-label">Nom complet</label>
     <input id="setup-name" class="auth-input" type="text" placeholder="Prenom Nom" />
-
     <label class="auth-label">Email</label>
     <input id="setup-email" class="auth-input" type="email" placeholder="prenom@zenvalue.fr" />
-
     <label class="auth-label">Mot de passe</label>
     <input id="setup-pwd" class="auth-input" type="password" placeholder="Choisissez un mot de passe solide" />
-
-    <label class="auth-label">Token GitHub (necessaire une seule fois)</label>
+    <label class="auth-label">Token GitHub</label>
     <input id="setup-token" class="auth-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
     <p style="font-size:.75rem;color:var(--gray);margin-bottom:1rem;">github.com → Settings → Developer settings → Personal access tokens → permission repo</p>
-
-    <button class="btn btn-primary" onclick="doSetup()">Creer le compte administrateur</button>
+    <button class="btn btn-primary" id="btn-setup">Creer le compte administrateur</button>
     <div class="auth-error" id="setup-err"></div>
   </div>
 </div>
 
-<!-- ══ ADMIN ══ -->
+<!-- ADMIN -->
 <div id="admin-screen">
   <header class="admin-header">
     <div style="display:flex;align-items:center;">
@@ -231,144 +203,120 @@
     </div>
     <div style="display:flex;align-items:center;gap:1rem;">
       <span class="admin-user" id="admin-user-lbl"></span>
-      <button class="btn btn-sm btn-outline" onclick="doLogout()">Deconnexion</button>
+      <button class="btn btn-sm btn-outline" id="btn-logout">Deconnexion</button>
     </div>
   </header>
-
   <div class="admin-layout">
-    <aside class="sidebar" id="sidebar">
-      <!-- Genere dynamiquement selon le role -->
-    </aside>
-
+    <aside class="sidebar" id="sidebar"></aside>
     <div class="admin-content">
-      <div class="admin-main" id="admin-main">
-        <div style="color:#aaa;padding:2rem;">Chargement…</div>
-      </div>
+      <div class="admin-main" id="admin-main"><div style="padding:2rem;color:#aaa;">Chargement…</div></div>
       <div class="save-bar" id="save-bar">
         <span class="save-status" id="save-status"></span>
-        <button class="btn btn-primary" style="width:auto;padding:.7rem 2rem;" onclick="save()">Enregistrer</button>
+        <button class="btn btn-primary" id="btn-save" style="width:auto;padding:.7rem 2rem;">Enregistrer</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-/* ════════════════════════════════════════════
-   CONSTANTES
-   ════════════════════════════════════════════ */
-const FILES = {
-  theme:       'content/settings/theme.json',
-  global:      'content/settings/global.json',
-  resultats:   'content/settings/resultats.json',
-  accueil:     'content/pages/accueil.json',
-  qsn:         'content/pages/qui-sommes-nous.json',
-  offres:      'content/pages/offres.json',
-  cas:         'content/pages/cas-clients.json',
-  principes:   'content/pages/principes.json',
-  formation:   'content/pages/formation.json',
-  recrutement: 'content/pages/recrutement.json',
-  rse:         'content/pages/rse.json',
-  users:       'content/settings/users.json',
-};
-
+/* ══════════════════════════════════════════════════════
+   CONFIG
+══════════════════════════════════════════════════════ */
 const GH_USER = 'llmdev-ops';
 const GH_REPO = 'llmdev-ops.github.io';
+const FILES = {
+  theme:'content/settings/theme.json', global:'content/settings/global.json',
+  resultats:'content/settings/resultats.json', users:'content/settings/users.json',
+  accueil:'content/pages/accueil.json', qsn:'content/pages/qui-sommes-nous.json',
+  offres:'content/pages/offres.json', cas:'content/pages/cas-clients.json',
+  principes:'content/pages/principes.json', formation:'content/pages/formation.json',
+  recrutement:'content/pages/recrutement.json', rse:'content/pages/rse.json',
+};
+const ADMIN_PRESETS = {
+  zenvalue:{ c1:'#AAC335',c1d:'#6D7D22',c1l:'#F1F6E2', c2:'#404041',c2d:'#14191E',c2l:'#9CA3AF', c3:'#FF467C',c3d:'#9D174D',c3l:'#FFF1F6', typographie:'jakarta',rayon_boutons:4 },
+  ardoise: { c1:'#2563EB',c1d:'#1E40AF',c1l:'#EFF6FF', c2:'#1E293B',c2d:'#0F172A',c2l:'#94A3B8', c3:'#F59E0B',c3d:'#B45309',c3l:'#FFFBEB', typographie:'inter',  rayon_boutons:6 },
+  mineral: { c1:'#059669',c1d:'#047857',c1l:'#ECFDF5', c2:'#374151',c2d:'#111827',c2l:'#D1D5DB', c3:'#8B5CF6',c3d:'#6D28D9',c3l:'#F5F3FF', typographie:'manrope',rayon_boutons:8 },
+};
+const ADMIN_FONTS = [
+  ['jakarta','Plus Jakarta Sans'],['inter','Inter'],['josefin','Josefin Sans'],
+  ['roboto','Roboto'],['opensans','Open Sans'],['rubik','Rubik'],['dm','DM Sans'],
+  ['poppins','Poppins'],['lato','Lato'],['nunito','Nunito'],['ubuntu','Ubuntu'],
+  ['sourcesans','Source Sans 3'],['worksans','Work Sans'],['manrope','Manrope'],
+  ['raleway','Raleway'],['montserrat','Montserrat'],['playfair','Playfair Display'],
+  ['baskerville','Libre Baskerville'],['neuton','Neuton'],['lora','Lora'],
+  ['arvo','Arvo'],['outfit','Outfit'],
+];
 
 let GH_TOKEN = '';
-let session = null; // { email, name, role }
+let session = null;
 let state = { section:'accueil', data:{}, sha:'' };
+let mediaTab = 'illustrations';
+let mediaFiles = {};
+const MEDIA_FOLDERS = [
+  { key:'illustrations', label:'Illustrations', path:'assets/images/illustrations/' },
+  { key:'equipe',        label:'Equipe',        path:'assets/images/equipe/' },
+  { key:'logos-clients', label:'Logos clients', path:'assets/images/logos-clients/' },
+  { key:'logo',          label:'Logo',          path:'assets/images/logo/' },
+];
 
-/* ════════════════════════════════════════════
-   CRYPTO — SHA-256 via Web Crypto API
-   ════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   CRYPTO
+══════════════════════════════════════════════════════ */
 async function sha256(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
 }
 
-/* ════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════
    GITHUB API
-   ════════════════════════════════════════════ */
-function ghUrl(path) {
-  return 'https://api.github.com/repos/' + GH_USER + '/' + GH_REPO + '/contents/' + path;
-}
-function ghHeaders() {
-  return { Authorization: 'Bearer ' + GH_TOKEN, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' };
-}
+══════════════════════════════════════════════════════ */
+function ghUrl(p) { return 'https://api.github.com/repos/'+GH_USER+'/'+GH_REPO+'/contents/'+p; }
+function ghH()    { return { Authorization:'Bearer '+GH_TOKEN, Accept:'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28' }; }
 async function ghRead(path) {
-  const r = await fetch(ghUrl(path), { headers: ghHeaders() });
-  if (!r.ok) throw new Error('Lecture ' + path + ' HTTP ' + r.status);
+  const r = await fetch(ghUrl(path), { headers:ghH() });
+  if (!r.ok) throw new Error('Lecture '+path+' HTTP '+r.status);
   const d = await r.json();
-  const binary = atob(d.content.replace(/\n/g,''));
-  const bytes = new Uint8Array(binary.length);
-  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
-  const text = new TextDecoder('utf-8').decode(bytes);
-  return { data: JSON.parse(text), sha: d.sha };
+  const bytes = new Uint8Array(atob(d.content.replace(/\n/g,'')).split('').map(c=>c.charCodeAt(0)));
+  return { data:JSON.parse(new TextDecoder('utf-8').decode(bytes)), sha:d.sha };
 }
 async function ghWrite(path, data, sha) {
-  const body = JSON.stringify({
-    message: '[Admin] ' + path,
-    content: btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2)))),
-    sha
-  });
-  const r = await fetch(ghUrl(path), { method: 'PUT', headers: { ...ghHeaders(), 'Content-Type': 'application/json' }, body });
-  if (!r.ok) { const e = await r.json(); throw new Error(e.message || 'HTTP ' + r.status); }
+  const r = await fetch(ghUrl(path), { method:'PUT', headers:{...ghH(),'Content-Type':'application/json'},
+    body:JSON.stringify({ message:'[Admin] '+path, content:btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2)))), sha }) });
+  if (!r.ok) { const e=await r.json(); throw new Error(e.message||'HTTP '+r.status); }
   return (await r.json()).content.sha;
 }
-async function ghExists(path) {
-  const r = await fetch(ghUrl(path), { headers: ghHeaders() });
-  return r.status === 200;
-}
-async function ghCreate(path, data) {
-  const body = JSON.stringify({
-    message: '[Admin] Init ' + path,
-    content: btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))))
-  });
-  const r = await fetch(ghUrl(path), { method: 'PUT', headers: { ...ghHeaders(), 'Content-Type': 'application/json' }, body });
-  if (!r.ok) { const e = await r.json(); throw new Error(e.message || 'HTTP ' + r.status); }
+async function ghWriteNew(path, data, sha) {
+  const body = { message:'[Admin] '+path, content:btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2)))) };
+  if (sha) body.sha = sha;
+  const r = await fetch(ghUrl(path), { method:'PUT', headers:{...ghH(),'Content-Type':'application/json'}, body:JSON.stringify(body) });
+  if (!r.ok) { const e=await r.json(); throw new Error(e.message||'HTTP '+r.status); }
   return (await r.json()).content.sha;
 }
-
-/* ════════════════════════════════════════════
-   AUTH UTILS
-   ════════════════════════════════════════════ */
-function encodeToken(token) { return btoa(token); }
-function decodeToken(code)  { try { return atob(code.trim()); } catch(e) { return ''; } }
-
-function showErr(id, msg) {
-  const el = document.getElementById(id);
-  el.textContent = msg;
-  el.style.display = 'block';
-}
-function hideErr(id) { document.getElementById(id).style.display = 'none'; }
-
-function toggleCode() {
-  const b = document.getElementById('code-block');
-  b.style.display = b.style.display === 'none' ? 'block' : 'none';
+async function ghSha(path) {
+  try { const r=await fetch(ghUrl(path),{headers:ghH()}); return r.ok?(await r.json()).sha:null; } catch(e){ return null; }
 }
 
-/* ════════════════════════════════════════════
-   SETUP (premier lancement)
-   ════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   AUTH
+══════════════════════════════════════════════════════ */
+function encodeToken(t){ return btoa(t); }
+function decodeToken(c){ try{return atob(c.trim());}catch(e){return '';} }
+function showErr(id,msg){ const e=document.getElementById(id); e.textContent=msg; e.style.display='block'; }
+function hideErr(id){ document.getElementById(id).style.display='none'; }
+
 async function checkFirstRun() {
-  // On a un token stocke ?
   const stored = localStorage.getItem('zv_token');
-  if (!stored) {
-    // Pas de token — on ne peut pas verifier users.json
-    // Montrer le setup
-    showScreen('setup');
-    return;
-  }
+  if (!stored) { showScreen('setup'); return; }
   GH_TOKEN = decodeToken(stored);
   try {
-    const exists = await ghExists(FILES.users);
-    if (!exists) { showScreen('setup'); return; }
-    const { data } = await ghRead(FILES.users);
-    if (!data.users || data.users.length === 0) { showScreen('setup'); return; }
+    const r = await fetch(ghUrl(FILES.users), { headers:ghH() });
+    if (!r.ok) { showScreen('setup'); return; }
+    const d = await r.json();
+    const bytes = new Uint8Array(atob(d.content.replace(/\n/g,'')).split('').map(c=>c.charCodeAt(0)));
+    const users = JSON.parse(new TextDecoder('utf-8').decode(bytes));
+    if (!users.users || users.users.length===0) { showScreen('setup'); return; }
     showScreen('login');
-  } catch(e) {
-    showScreen('login');
-  }
+  } catch(e) { showScreen('login'); }
 }
 
 async function doSetup() {
@@ -377,77 +325,49 @@ async function doSetup() {
   const email = document.getElementById('setup-email').value.trim().toLowerCase();
   const pwd   = document.getElementById('setup-pwd').value;
   const token = document.getElementById('setup-token').value.trim();
-
-  if (!name || !email || !pwd || !token) { showErr('setup-err', 'Tous les champs sont requis.'); return; }
-  if (!email.endsWith('@zenvalue.fr')) { showErr('setup-err', 'Email doit etre un @zenvalue.fr'); return; }
-  if (pwd.length < 8) { showErr('setup-err', 'Mot de passe minimum 8 caracteres.'); return; }
-
+  if (!name||!email||!pwd||!token){ showErr('setup-err','Tous les champs sont requis.'); return; }
+  if (!email.endsWith('@zenvalue.fr')){ showErr('setup-err','Email doit etre @zenvalue.fr'); return; }
+  if (pwd.length<8){ showErr('setup-err','Mot de passe minimum 8 caracteres.'); return; }
   GH_TOKEN = token;
-  // Verifier que le token fonctionne
-  const test = await fetch('https://api.github.com/repos/' + GH_USER + '/' + GH_REPO, { headers: ghHeaders() });
-  if (!test.ok) { showErr('setup-err', 'Token GitHub invalide ou acces refuse.'); return; }
-
+  const test = await fetch('https://api.github.com/repos/'+GH_USER+'/'+GH_REPO, {headers:ghH()});
+  if (!test.ok){ showErr('setup-err','Token GitHub invalide.'); return; }
   const hash = await sha256(pwd);
-  const users = { users: [{ email, name, role: 'admin', passwordHash: hash, createdAt: new Date().toISOString() }] };
-
+  const users = { users:[{email,name,role:'admin',passwordHash:hash,createdAt:new Date().toISOString()}] };
   try {
-    // Verifier si users.json existe deja (uploade vide)
-    let existingSha = null;
-    try {
-      const r = await fetch(ghUrl(FILES.users), { headers: ghHeaders() });
-      if (r.ok) { const d = await r.json(); existingSha = d.sha; }
-    } catch(e2) {}
-
-    if (existingSha) {
-      await ghWrite(FILES.users, users, existingSha);
-    } else {
-      await ghCreate(FILES.users, users);
-    }
+    const existingSha = await ghSha(FILES.users);
+    await ghWriteNew(FILES.users, users, existingSha);
     localStorage.setItem('zv_token', encodeToken(token));
-    session = { email, name, role: 'admin' };
+    session = {email,name,role:'admin'};
     localStorage.setItem('zv_session', JSON.stringify(session));
     startAdmin();
-  } catch(e) {
-    showErr('setup-err', 'Erreur creation compte : ' + e.message);
-  }
+  } catch(e){ showErr('setup-err','Erreur : '+e.message); }
 }
 
-/* ════════════════════════════════════════════
-   LOGIN
-   ════════════════════════════════════════════ */
 async function doLogin() {
   hideErr('login-err');
   const email = document.getElementById('login-email').value.trim().toLowerCase();
   const pwd   = document.getElementById('login-pwd').value;
   const code  = document.getElementById('login-code') ? document.getElementById('login-code').value.trim() : '';
-
-  if (!email || !pwd) { showErr('login-err', 'Email et mot de passe requis.'); return; }
-
-  // Si code d'acces fourni, l'utiliser comme token
+  if (!email||!pwd){ showErr('login-err','Email et mot de passe requis.'); return; }
   if (code) {
     const decoded = decodeToken(code);
-    if (!decoded || !decoded.startsWith('ghp_')) { showErr('login-err', 'Code d\'acces invalide.'); return; }
+    if (!decoded||!decoded.startsWith('ghp_')){ showErr('login-err',"Code d'acces invalide."); return; }
     GH_TOKEN = decoded;
     localStorage.setItem('zv_token', encodeToken(decoded));
   } else {
     const stored = localStorage.getItem('zv_token');
-    if (!stored) { showErr('login-err', 'Premiere connexion sur cet appareil : entrez votre code d\'acces.'); return; }
+    if (!stored){ showErr('login-err',"Premiere connexion : entrez votre code d'acces."); return; }
     GH_TOKEN = decodeToken(stored);
   }
-
-  // Verifier email + mot de passe contre users.json
   try {
-    const { data } = await ghRead(FILES.users);
+    const {data} = await ghRead(FILES.users);
     const hash = await sha256(pwd);
-    const user = (data.users || []).find(function(u) { return u.email === email && u.passwordHash === hash; });
-    if (!user) { showErr('login-err', 'Email ou mot de passe incorrect.'); return; }
-
-    session = { email: user.email, name: user.name, role: user.role };
+    const user = (data.users||[]).find(u => u.email===email && u.passwordHash===hash);
+    if (!user){ showErr('login-err','Email ou mot de passe incorrect.'); return; }
+    session = {email:user.email, name:user.name, role:user.role};
     localStorage.setItem('zv_session', JSON.stringify(session));
     startAdmin();
-  } catch(e) {
-    showErr('login-err', 'Erreur de connexion : ' + e.message);
-  }
+  } catch(e){ showErr('login-err','Erreur : '+e.message); }
 }
 
 function doLogout() {
@@ -456,816 +376,646 @@ function doLogout() {
   showScreen('login');
 }
 
-/* ════════════════════════════════════════════
-   ECRANS
-   ════════════════════════════════════════════ */
 function showScreen(name) {
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('setup-screen').style.display = 'none';
   document.getElementById('admin-screen').style.display = 'none';
-  if (name === 'login') document.getElementById('login-screen').style.display = 'flex';
-  if (name === 'setup') document.getElementById('setup-screen').style.display = 'flex';
-  if (name === 'admin') document.getElementById('admin-screen').style.display = 'block';
+  if (name==='login') document.getElementById('login-screen').style.display = 'flex';
+  if (name==='setup') document.getElementById('setup-screen').style.display = 'flex';
+  if (name==='admin') document.getElementById('admin-screen').style.display = 'block';
 }
 
 function startAdmin() {
   showScreen('admin');
-  document.getElementById('admin-user-lbl').textContent = session.name + ' (' + session.email + ')';
+  document.getElementById('admin-user-lbl').textContent = session.name+' ('+session.email+')';
   const badge = document.getElementById('admin-role-badge');
-  badge.textContent = session.role === 'admin' ? 'Admin' : 'Redacteur';
-  badge.style.background = session.role === 'admin' ? '#aac335' : '#16a34a';
+  badge.textContent = session.role==='admin' ? 'Admin' : 'Redacteur';
+  badge.style.background = session.role==='admin' ? '#aac335' : '#16a34a';
   buildSidebar();
-  // Section par defaut
-  const defaultSec = session.role === 'admin' ? 'theme' : 'accueil';
+  const defaultSec = session.role==='admin' ? 'theme' : 'accueil';
   const firstItem = document.querySelector('.sidebar-item');
-  if (firstItem) nav(firstItem, defaultSec);
+  if (firstItem) navTo(defaultSec);
 }
 
-/* ════════════════════════════════════════════
-   SIDEBAR SELON ROLE
-   ════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   SIDEBAR (HTML statique, event delegation)
+══════════════════════════════════════════════════════ */
 function buildSidebar() {
-  const isAdmin = session.role === 'admin';
-  const sidebar = document.getElementById('sidebar');
+  const isAdmin = session.role==='admin';
   let html = '';
-
   if (isAdmin) {
     html += '<div class="sidebar-section">Parametres</div>';
-    html += '<div class="sidebar-item" data-sec="theme"       onclick="nav(this,\'theme\')">Theme graphique</div>';
-    html += '<div class="sidebar-item" data-sec="global"      onclick="nav(this,\'global\')">Contact et infos</div>';
-    html += '<div class="sidebar-item" data-sec="resultats"   onclick="nav(this,\'resultats\')">Chiffres cles</div>';
-    html += '<div class="sidebar-section">Utilisateurs</div>';
-    html += '<div class="sidebar-item" data-sec="users"       onclick="nav(this,\'users\')">Gestion utilisateurs</div>';
+    html += '<div class="sidebar-item" data-sec="theme">Theme graphique</div>';
+    html += '<div class="sidebar-item" data-sec="global">Contact et infos</div>';
+    html += '<div class="sidebar-item" data-sec="resultats">Chiffres cles</div>';
     html += '<div class="sidebar-section">Contenus</div>';
-    html += '<div class="sidebar-item" data-sec="medias"      onclick="nav(this,\'medias\')">Bibliotheque medias</div>';
+    html += '<div class="sidebar-item" data-sec="medias">Bibliotheque medias</div>';
+    html += '<div class="sidebar-section">Utilisateurs</div>';
+    html += '<div class="sidebar-item" data-sec="users">Gestion utilisateurs</div>';
   }
-
   html += '<div class="sidebar-section">Pages</div>';
-  html += '<div class="sidebar-item" data-sec="accueil"     onclick="nav(this,\'accueil\')">Accueil</div>';
-  html += '<div class="sidebar-item" data-sec="qsn"         onclick="nav(this,\'qsn\')">Qui sommes-nous</div>';
-  html += '<div class="sidebar-item" data-sec="offres"      onclick="nav(this,\'offres\')">Offres</div>';
-  html += '<div class="sidebar-item" data-sec="cas"         onclick="nav(this,\'cas\')">Cas clients</div>';
-  html += '<div class="sidebar-item" data-sec="principes"   onclick="nav(this,\'principes\')">Principes</div>';
-  html += '<div class="sidebar-item" data-sec="formation"   onclick="nav(this,\'formation\')">Formation</div>';
-  html += '<div class="sidebar-item" data-sec="recrutement" onclick="nav(this,\'recrutement\')">Recrutement</div>';
-  html += '<div class="sidebar-item" data-sec="rse"         onclick="nav(this,\'rse\')">RSE</div>';
-
-  sidebar.innerHTML = html;
+  ['accueil','qsn','offres','cas','principes','formation','recrutement','rse'].forEach(function(sec) {
+    var labels = {accueil:'Accueil',qsn:'Qui sommes-nous',offres:'Offres',cas:'Cas clients',principes:'Principes',formation:'Formation',recrutement:'Recrutement',rse:'RSE'};
+    html += '<div class="sidebar-item" data-sec="'+sec+'">'+labels[sec]+'</div>';
+  });
+  document.getElementById('sidebar').innerHTML = html;
 }
 
-/* ════════════════════════════════════════════
-   NAVIGATION
-   ════════════════════════════════════════════ */
-function nav(el, sec) {
-  document.querySelectorAll('.sidebar-item').forEach(function(i) { i.classList.remove('active'); });
-  el.classList.add('active');
+function navTo(sec) {
+  document.querySelectorAll('.sidebar-item').forEach(function(i){ i.classList.remove('active'); });
+  var el = document.querySelector('.sidebar-item[data-sec="'+sec+'"]');
+  if (el) el.classList.add('active');
   loadSection(sec);
 }
 
+/* ══════════════════════════════════════════════════════
+   NAVIGATION + LOAD
+══════════════════════════════════════════════════════ */
 async function loadSection(sec) {
   state.section = sec;
   document.getElementById('save-status').textContent = '';
-  document.getElementById('admin-main').innerHTML = '<div style="padding:2rem;color:#aaa;"><span style="display:inline-block;width:18px;height:18px;border:2px solid #eee;border-top-color:#aac335;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:.5rem;"></span>Chargement...</div>';
-  // Section users : pas de fichier a lire de la meme facon
-  if (sec === 'medias') {
+  document.getElementById('admin-main').innerHTML = '<div style="padding:2rem;color:#aaa;display:flex;align-items:center;gap:.8rem;"><div class="spin"></div>Chargement...</div>';
+  if (sec==='medias') {
     document.getElementById('save-bar').style.display = 'none';
     document.getElementById('admin-main').innerHTML = rMedias();
     initMedias();
     return;
   }
-  if (sec === 'users') {
+  if (sec==='users') {
+    document.getElementById('save-bar').style.display = 'none';
     try {
-      const { data, sha } = await ghRead(FILES.users);
-      state.data = data; state.sha = sha;
+      const {data,sha} = await ghRead(FILES.users);
+      state.data=data; state.sha=sha;
       document.getElementById('admin-main').innerHTML = rUsers(data);
-      document.getElementById('save-bar').style.display = 'none';
-    } catch(e) {
-      document.getElementById('admin-main').innerHTML = '<div style="padding:2rem;color:#dc2626;">Erreur : ' + e.message + '</div>';
-    }
+    } catch(e) { document.getElementById('admin-main').innerHTML = '<div style="padding:2rem;color:#dc2626;">Erreur : '+e.message+'</div>'; }
     return;
   }
   document.getElementById('save-bar').style.display = 'flex';
   try {
-    const { data, sha } = await ghRead(FILES[sec]);
-    state.data = data; state.sha = sha;
-    render(sec, data);
-  } catch(e) {
-    document.getElementById('admin-main').innerHTML = '<div style="padding:2rem;color:#dc2626;">Erreur : ' + e.message + '</div>';
-  }
+    const {data,sha} = await ghRead(FILES[sec]);
+    state.data=data; state.sha=sha;
+    render(sec,data);
+  } catch(e) { document.getElementById('admin-main').innerHTML = '<div style="padding:2rem;color:#dc2626;">Erreur : '+e.message+'</div>'; }
 }
 
-/* ════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════
    SAVE
-   ════════════════════════════════════════════ */
-async function save() {
+══════════════════════════════════════════════════════ */
+async function doSave() {
   const status = document.getElementById('save-status');
   document.getElementById('overlay').classList.add('on');
-  status.textContent = ''; status.className = 'save-status';
+  status.textContent=''; status.className='save-status';
   try {
     const data = collect();
     const newSha = await ghWrite(FILES[state.section], data, state.sha);
-    state.sha = newSha; state.data = data;
-    status.textContent = 'Enregistre — mise a jour du site dans ~30 secondes';
-    status.className = 'save-status ok';
-  } catch(e) {
-    status.textContent = 'Erreur : ' + e.message;
-    status.className = 'save-status err';
-  } finally {
-    document.getElementById('overlay').classList.remove('on');
-  }
+    state.sha=newSha; state.data=data;
+    status.textContent='Enregistre — mise a jour dans ~30s';
+    status.className='save-status ok';
+  } catch(e) { status.textContent='Erreur : '+e.message; status.className='save-status err'; }
+  finally { document.getElementById('overlay').classList.remove('on'); }
 }
 
-/* ════════════════════════════════════════════
-   GESTION UTILISATEURS
-   ════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   USERS
+══════════════════════════════════════════════════════ */
 function rUsers(d) {
-  const users = d.users || [];
+  const users = d.users||[];
   const code = encodeToken(GH_TOKEN);
-  const rows = users.map(function(u) {
-    const isSelf = u.email === session.email;
-    return '<tr class="' + (isSelf ? 'user-self' : '') + '">' +
-      '<td><strong>' + esc(u.name) + '</strong>' + (isSelf ? ' <span style="font-size:.7rem;color:var(--green);">(vous)</span>' : '') + '</td>' +
-      '<td>' + esc(u.email) + '</td>' +
-      '<td><span class="role-badge role-' + u.role + '">' + (u.role === 'admin' ? 'Admin' : 'Redacteur') + '</span></td>' +
-      '<td>' + (isSelf ? '' : '<button class="btn btn-sm btn-danger" data-email="' + esc(u.email) + '" onclick="deleteUser(this.dataset.email)">Supprimer</button>') + '</td>' +
-    '</tr>';
+  let rows = users.map(function(u) {
+    const isSelf = u.email===session.email;
+    const delBtn = isSelf ? '' : '<button class="btn btn-sm btn-danger" data-action="del-user" data-email="'+esc(u.email)+'">Supprimer</button>';
+    const self = isSelf ? ' <span style="font-size:.7rem;color:var(--green);">(vous)</span>' : '';
+    const roleCls = u.role==='admin' ? 'role-admin' : 'role-redacteur';
+    const roleLabel = u.role==='admin' ? 'Admin' : 'Redacteur';
+    return '<tr'+(isSelf?' class="user-self"':'')+'>'
+      +'<td><strong>'+esc(u.name)+'</strong>'+self+'</td>'
+      +'<td>'+esc(u.email)+'</td>'
+      +'<td><span class="role-badge '+roleCls+'">'+roleLabel+'</span></td>'
+      +'<td>'+delBtn+'</td>'
+      +'</tr>';
   }).join('');
 
-  return '<div class="section-title">Gestion des utilisateurs</div>' +
-    '<div class="section-desc">Invitez des collaborateurs Zen Value et gerez leurs acces.</div>' +
-
-    '<div class="form-card">' +
-      '<div class="form-card-title">Code d\'acces a partager</div>' +
-      '<p style="font-size:.84rem;color:var(--gray);margin-bottom:.8rem;">Transmettez ce code par email a chaque nouvel utilisateur. Il devra le coller lors de sa premiere connexion, une seule fois sur son appareil.</p>' +
-      '<div class="code-box" id="access-code" onclick="copyCode()">' + code + '</div>' +
-      '<p style="font-size:.74rem;color:var(--gray);">Cliquez sur le code pour le copier. Ne partagez ce code que par email interne.</p>' +
-    '</div>' +
-
-    '<div class="form-card">' +
-      '<div class="form-card-title">Utilisateurs actuels</div>' +
-      '<table class="user-table"><thead><tr><th>Nom</th><th>Email</th><th>Role</th><th></th></tr></thead>' +
-      '<tbody>' + rows + '</tbody></table>' +
-    '</div>' +
-
-    '<div class="form-card">' +
-      '<div class="form-card-title">Ajouter un utilisateur</div>' +
-      '<div class="field-row">' +
-        '<div class="field"><label>Nom complet</label><input type="text" id="new-name" placeholder="Prenom Nom" /></div>' +
-        '<div class="field"><label>Email</label><input type="email" id="new-email" placeholder="prenom@zenvalue.fr" /></div>' +
-      '</div>' +
-      '<div class="field-row">' +
-        '<div class="field"><label>Mot de passe temporaire</label><input type="password" id="new-pwd" placeholder="Min. 8 caracteres" /></div>' +
-        '<div class="field"><label>Role</label><select id="new-role"><option value="redacteur">Redacteur — contenu des pages</option><option value="admin">Admin — tous les droits</option></select></div>' +
-      '</div>' +
-      '<button class="btn btn-primary" style="width:auto;padding:.7rem 2rem;margin-top:.5rem;" onclick="addUser()">Ajouter l\'utilisateur</button>' +
-      '<div id="user-msg" style="margin-top:.8rem;font-size:.84rem;display:none;"></div>' +
-    '</div>';
+  return '<div class="section-title">Gestion des utilisateurs</div>'
+    +'<div class="section-desc">Invitez des collaborateurs Zen Value et gerez leurs acces.</div>'
+    +'<div class="form-card">'
+      +'<div class="form-card-title">Code d\'acces a partager</div>'
+      +'<p style="font-size:.84rem;color:var(--gray);margin-bottom:.8rem;">Transmettez ce code par email a chaque nouvel utilisateur pour sa premiere connexion.</p>'
+      +'<div class="code-box" id="access-code" data-action="copy-code">'+code+'</div>'
+      +'<p style="font-size:.74rem;color:var(--gray);">Cliquez pour copier.</p>'
+    +'</div>'
+    +'<div class="form-card">'
+      +'<div class="form-card-title">Utilisateurs</div>'
+      +'<table class="user-table"><thead><tr><th>Nom</th><th>Email</th><th>Role</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>'
+    +'</div>'
+    +'<div class="form-card">'
+      +'<div class="form-card-title">Ajouter un utilisateur</div>'
+      +'<div class="field-row">'
+        +'<div class="field"><label>Nom complet</label><input type="text" id="new-name" placeholder="Prenom Nom" /></div>'
+        +'<div class="field"><label>Email</label><input type="email" id="new-email" placeholder="prenom@zenvalue.fr" /></div>'
+      +'</div>'
+      +'<div class="field-row">'
+        +'<div class="field"><label>Mot de passe temporaire</label><input type="password" id="new-pwd" placeholder="Min. 8 caracteres" /></div>'
+        +'<div class="field"><label>Role</label><select id="new-role"><option value="redacteur">Redacteur</option><option value="admin">Admin</option></select></div>'
+      +'</div>'
+      +'<button class="btn btn-primary" data-action="add-user" style="width:auto;padding:.7rem 2rem;margin-top:.5rem;">Ajouter</button>'
+      +'<div id="user-msg" style="margin-top:.8rem;font-size:.84rem;display:none;"></div>'
+    +'</div>';
 }
 
 async function addUser() {
-  const name  = document.getElementById('new-name').value.trim();
-  const email = document.getElementById('new-email').value.trim().toLowerCase();
-  const pwd   = document.getElementById('new-pwd').value;
-  const role  = document.getElementById('new-role').value;
-  const msg   = document.getElementById('user-msg');
-
-  msg.style.display = 'none';
-
-  if (!name || !email || !pwd) { showMsg(msg, 'Tous les champs sont requis.', false); return; }
-  if (!email.endsWith('@zenvalue.fr')) { showMsg(msg, 'Email doit etre @zenvalue.fr', false); return; }
-  if (pwd.length < 8) { showMsg(msg, 'Mot de passe minimum 8 caracteres.', false); return; }
-
-  const existing = (state.data.users || []).find(function(u) { return u.email === email; });
-  if (existing) { showMsg(msg, 'Cet email existe deja.', false); return; }
-
+  const name=document.getElementById('new-name').value.trim();
+  const email=document.getElementById('new-email').value.trim().toLowerCase();
+  const pwd=document.getElementById('new-pwd').value;
+  const role=document.getElementById('new-role').value;
+  const msg=document.getElementById('user-msg');
+  msg.style.display='none';
+  if (!name||!email||!pwd){ showMsg(msg,'Tous les champs sont requis.',false); return; }
+  if (!email.endsWith('@zenvalue.fr')){ showMsg(msg,'Email doit etre @zenvalue.fr',false); return; }
+  if (pwd.length<8){ showMsg(msg,'Mot de passe minimum 8 caracteres.',false); return; }
+  if ((state.data.users||[]).find(u=>u.email===email)){ showMsg(msg,'Cet email existe deja.',false); return; }
   const hash = await sha256(pwd);
-  const newUser = { email, name, role, passwordHash: hash, createdAt: new Date().toISOString() };
-  const updated = { users: (state.data.users || []).concat([newUser]) };
-
+  const updated = { users:(state.data.users||[]).concat([{email,name,role,passwordHash:hash,createdAt:new Date().toISOString()}]) };
   try {
     document.getElementById('overlay').classList.add('on');
     const newSha = await ghWrite(FILES.users, updated, state.sha);
-    state.sha = newSha; state.data = updated;
-    showMsg(msg, 'Utilisateur ' + name + ' ajoute avec succes. Partagez-lui le code d\'acces ci-dessus.', true);
+    state.sha=newSha; state.data=updated;
     document.getElementById('admin-main').innerHTML = rUsers(updated);
-  } catch(e) {
-    showMsg(msg, 'Erreur : ' + e.message, false);
-  } finally {
-    document.getElementById('overlay').classList.remove('on');
-  }
+    document.getElementById('user-msg') && showMsg(document.getElementById('user-msg'), name+' ajoute avec succes.', true);
+  } catch(e){ showMsg(msg,'Erreur : '+e.message,false); }
+  finally { document.getElementById('overlay').classList.remove('on'); }
 }
 
 async function deleteUser(email) {
-  if (!confirm('Supprimer ' + email + ' ?')) return;
-  const updated = { users: (state.data.users || []).filter(function(u) { return u.email !== email; }) };
+  if (!confirm('Supprimer '+email+' ?')) return;
+  const updated = { users:(state.data.users||[]).filter(u=>u.email!==email) };
   try {
     document.getElementById('overlay').classList.add('on');
     const newSha = await ghWrite(FILES.users, updated, state.sha);
-    state.sha = newSha; state.data = updated;
+    state.sha=newSha; state.data=updated;
     document.getElementById('admin-main').innerHTML = rUsers(updated);
-  } catch(e) {
-    alert('Erreur : ' + e.message);
-  } finally {
-    document.getElementById('overlay').classList.remove('on');
-  }
+  } catch(e){ alert('Erreur : '+e.message); }
+  finally { document.getElementById('overlay').classList.remove('on'); }
 }
 
-function showMsg(el, txt, ok) {
-  el.textContent = txt;
-  el.style.color = ok ? '#16a34a' : '#dc2626';
-  el.style.display = 'block';
-}
+function showMsg(el,txt,ok) { el.textContent=txt; el.style.color=ok?'#16a34a':'#dc2626'; el.style.display='block'; }
 
-function copyCode() {
-  const code = document.getElementById('access-code').textContent;
-  navigator.clipboard.writeText(code).then(function() {
-    document.getElementById('access-code').classList.add('copied');
-    setTimeout(function() { document.getElementById('access-code').classList.remove('copied'); }, 2000);
-  });
-}
-
-/* ════════════════════════════════════════════
-   RENDER (champs editables)
-   ════════════════════════════════════════════ */
-let _fieldValues = {};
-
-function f(label, name, val, type, hint) {
-  type = type || 'text'; hint = hint || '';
-  const h = hint ? '<div class="field-hint">' + hint + '</div>' : '';
-  _fieldValues[name] = val;
-  if (type === 'textarea') return '<div class="field"><label>' + label + '</label><textarea name="' + name + '" data-fill="' + name + '"></textarea>' + h + '</div>';
-  return '<div class="field"><label>' + label + '</label><input type="' + (type === 'text' ? 'text' : type) + '" name="' + name + '" data-fill="' + name + '" />' + h + '</div>';
-}
-function frow() {
-  return '<div class="field-row">' + Array.from(arguments).join('') + '</div>';
-}
-function card(title, body) {
-  return '<div class="form-card"><div class="form-card-title">' + title + '</div>' + body + '</div>';
-}
-function fillFields() {
-  document.querySelectorAll('[data-fill]').forEach(function(el) {
-    const key = el.getAttribute('data-fill');
-    const val = _fieldValues[key];
-    if (val === undefined || val === null) return;
-    el.value = String(val);
-  });
-}
-function render(sec, d) {
-  _fieldValues = {};
-  const renderers = { theme:rTheme, global:rGlobal, resultats:rResultats, accueil:rAccueil, qsn:rQSN, offres:rOffres, cas:rCas, principes:rPrincipes, formation:rFormation, recrutement:rRecrutement, rse:rRSE };
-  document.getElementById('admin-main').innerHTML = renderers[sec] ? renderers[sec](d) : '<p style="padding:2rem">Section inconnue</p>';
-  fillFields();
-}
-
-/* ════════════════════════════════════════════
-   PRESETS THEME
-   ════════════════════════════════════════════ */
-const ADMIN_PRESETS = {
-  zenvalue: { c1:'#AAC335',c1d:'#6D7D22',c1l:'#F1F6E2', c2:'#404041',c2d:'#14191E',c2l:'#9CA3AF', c3:'#FF467C',c3d:'#9D174D',c3l:'#FFF1F6', typographie:'jakarta', rayon_boutons:4 },
-  ardoise:  { c1:'#2563EB',c1d:'#1E40AF',c1l:'#EFF6FF', c2:'#1E293B',c2d:'#0F172A',c2l:'#94A3B8', c3:'#F59E0B',c3d:'#B45309',c3l:'#FFFBEB', typographie:'inter',   rayon_boutons:6 },
-  mineral:  { c1:'#059669',c1d:'#047857',c1l:'#ECFDF5', c2:'#374151',c2d:'#111827',c2l:'#D1D5DB', c3:'#8B5CF6',c3d:'#6D28D9',c3l:'#F5F3FF', typographie:'manrope',  rayon_boutons:8 },
-};
-const ADMIN_FONTS = [
-  ['jakarta',    'Plus Jakarta Sans'],['inter',      'Inter'],['josefin',    'Josefin Sans'],
-  ['roboto',     'Roboto'],           ['opensans',   'Open Sans'],['rubik',  'Rubik'],
-  ['dm',         'DM Sans'],          ['poppins',    'Poppins'],  ['lato',   'Lato'],
-  ['nunito',     'Nunito'],           ['ubuntu',     'Ubuntu'],   ['sourcesans','Source Sans 3'],
-  ['worksans',   'Work Sans'],        ['manrope',    'Manrope'],  ['raleway','Raleway'],
-  ['montserrat', 'Montserrat'],       ['playfair',   'Playfair Display'],
-  ['baskerville','Libre Baskerville'],['neuton',     'Neuton'],   ['lora',   'Lora'],
-  ['arvo',       'Arvo'],             ['outfit',     'Outfit'],
-];
-
+/* ══════════════════════════════════════════════════════
+   THEME
+══════════════════════════════════════════════════════ */
 function updatePreview(p) {
-  const els = {
-    c1:  document.getElementById('pv-c1'),
-    c1d: document.getElementById('pv-c1d'),
-    c1l: document.getElementById('pv-c1l'),
-    c2:  document.getElementById('pv-c2'),
-    c2d: document.getElementById('pv-c2d'),
-    c2l: document.getElementById('pv-c2l'),
-    c3:  document.getElementById('pv-c3'),
-    c3d: document.getElementById('pv-c3d'),
-    c3l: document.getElementById('pv-c3l'),
-    btn: document.getElementById('pv-btn'),
-    acc: document.getElementById('pv-acc'),
-  };
-  if (!els.c1) return;
-  const colors = { c1:p.c1||'#AAC335',c1d:p.c1d||'#6D7D22',c1l:p.c1l||'#F1F6E2',c2:p.c2||'#404041',c2d:p.c2d||'#14191E',c2l:p.c2l||'#9CA3AF',c3:p.c3||'#FF467C',c3d:p.c3d||'#9D174D',c3l:p.c3l||'#FFF1F6' };
-  Object.keys(colors).forEach(function(k) {
-    var el = els[k]; if (!el) return;
-    el.style.background = colors[k];
-    var lbl = document.getElementById('pv-'+k+'-lbl'); if (lbl) lbl.textContent = colors[k];
-  });
-  if (els.btn) { els.btn.style.background = colors.c1; els.btn.style.color = 'white'; }
-  if (els.acc) els.acc.style.color = colors.c3;
-}
-
-
-function pickPreset(key, el) {
-  document.querySelectorAll('.preset-card').forEach(function(c) { c.classList.remove('selected'); });
-  el.classList.add('selected');
-  document.getElementById('preset-val').value = key;
-  const block = document.getElementById('custom-block');
-  if (block) { block.style.opacity = key==='custom'?'1':'.4'; block.style.pointerEvents = key==='custom'?'auto':'none'; }
-  if (key !== 'custom' && ADMIN_PRESETS[key]) {
-    updatePreview(ADMIN_PRESETS[key]);
-    // Mettre a jour les champs couleur
-    const p = ADMIN_PRESETS[key];
-    ['c1','c1d','c1l','c2','c2d','c2l','c3','c3d','c3l'].forEach(function(k) {
-      var el2 = document.getElementById('inp-'+k); if (el2) el2.value = p[k]||'';
-      var cp  = document.getElementById('cp-'+k);  if (cp)  cp.value  = p[k]||'';
-    });
-  }
-}
-
-function onRangeChange(el) {
-  var lbl = document.getElementById('rv');
-  if (lbl) lbl.textContent = el.value;
-}
-function onPickerChange(el) {
-  var target = document.getElementById(el.getAttribute('data-target'));
-  if (target) target.value = el.value;
-  updatePreview(getCurrentCustomColors());
-}
-function onTextChange(el) {
-  var val = el.value;
-  if (/^#[0-9a-fA-F]{6}$/.test(val)) {
-    var picker = document.getElementById(el.getAttribute('data-picker'));
-    if (picker) picker.value = val;
-    updatePreview(getCurrentCustomColors());
-  }
-}
-function getCurrentCustomColors() {
   var keys = ['c1','c1d','c1l','c2','c2d','c2l','c3','c3d','c3l'];
-  var p = {};
   keys.forEach(function(k) {
-    var el = document.getElementById('inp-'+k); p[k] = el ? el.value : '';
+    var sw = document.getElementById('pv-'+k); if (sw) sw.style.background = p[k]||'';
+    var lb = document.getElementById('pv-'+k+'-lbl'); if (lb) lb.textContent = p[k]||'';
+  });
+  var btn = document.getElementById('pv-btn'); if (btn) { btn.style.background=p.c1; btn.style.color='white'; }
+  var acc = document.getElementById('pv-acc'); if (acc) acc.style.color = p.c3;
+}
+
+function getCustomColors() {
+  var p={};
+  ['c1','c1d','c1l','c2','c2d','c2l','c3','c3d','c3l'].forEach(function(k){
+    var el=document.getElementById('inp-'+k); if(el) p[k]=el.value;
   });
   return p;
 }
 
-function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+function selectPreset(key) {
+  document.querySelectorAll('.preset-card').forEach(function(c){ c.classList.remove('selected'); });
+  var el = document.querySelector('.preset-card[data-preset="'+key+'"]'); if (el) el.classList.add('selected');
+  var pv = document.getElementById('preset-val'); if (pv) pv.value=key;
+  var block = document.getElementById('custom-block');
+  if (block) { block.style.opacity=key==='custom'?'1':'.4'; block.style.pointerEvents=key==='custom'?'auto':'none'; }
+  if (key!=='custom' && ADMIN_PRESETS[key]) {
+    var p = ADMIN_PRESETS[key];
+    ['c1','c1d','c1l','c2','c2d','c2l','c3','c3d','c3l'].forEach(function(k){
+      var inp=document.getElementById('inp-'+k); if(inp) inp.value=p[k]||'';
+      var cp=document.getElementById('cp-'+k);  if(cp)  cp.value=p[k]||'';
+    });
+    updatePreview(p);
+  }
+}
 
-/* ════════════════════════════════════════════
-   RENDERERS THEME + PAGES
-   ════════════════════════════════════════════ */
 function rTheme(d) {
-  const isCustom = d.preset === 'custom';
-  const p = (d.preset && d.preset !== 'custom' && ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset] : d;
-  const c1=p.c1||'#AAC335',c1d=p.c1d||'#6D7D22',c1l=p.c1l||'#F1F6E2';
-  const c2=p.c2||'#404041',c2d=p.c2d||'#14191E',c2l=p.c2l||'#9CA3AF';
-  const c3=p.c3||'#FF467C',c3d=p.c3d||'#9D174D',c3l=p.c3l||'#FFF1F6';
-  const font = p.typographie || d.typographie || 'jakarta';
-  const radius = p.rayon_boutons !== undefined ? p.rayon_boutons : (d.rayon_boutons || 4);
-
-  const presets = [
-    {k:'zenvalue', n:'Zen Value',  s:'Charte officielle', dot:['#AAC335','#404041','#FF467C']},
-    {k:'ardoise',  n:'Ardoise',    s:'Sobre et professionnel', dot:['#2563EB','#1E293B','#F59E0B']},
-    {k:'mineral',  n:'Mineral',    s:'Elegant et premium', dot:['#059669','#374151','#8B5CF6']},
+  var isCustom = d.preset==='custom';
+  var p = (d.preset&&d.preset!=='custom'&&ADMIN_PRESETS[d.preset]) ? ADMIN_PRESETS[d.preset] : d;
+  var c1=p.c1||'#AAC335', c1d=p.c1d||'#6D7D22', c1l=p.c1l||'#F1F6E2';
+  var c2=p.c2||'#404041', c2d=p.c2d||'#14191E', c2l=p.c2l||'#9CA3AF';
+  var c3=p.c3||'#FF467C', c3d=p.c3d||'#9D174D', c3l=p.c3l||'#FFF1F6';
+  var font = p.typographie||d.typographie||'jakarta';
+  var radius = p.rayon_boutons!==undefined ? p.rayon_boutons : (d.rayon_boutons||4);
+  var presets = [
+    {k:'zenvalue',n:'Zen Value',s:'Charte officielle',dots:['#AAC335','#404041','#FF467C']},
+    {k:'ardoise', n:'Ardoise',  s:'Sobre et pro',     dots:['#2563EB','#1E293B','#F59E0B']},
+    {k:'mineral', n:'Mineral',  s:'Elegant premium',  dots:['#059669','#374151','#8B5CF6']},
   ];
 
+  function swatch(id,val,label) {
+    return '<div style="text-align:center;min-width:60px;">'
+      +'<div id="pv-'+id+'" style="height:36px;border-radius:6px;background:'+val+';border:1px solid rgba(0,0,0,.06);margin-bottom:.3rem;"></div>'
+      +'<div id="pv-'+id+'-lbl" style="font-size:.6rem;font-family:monospace;color:var(--gray);">'+val+'</div>'
+      +'<div style="font-size:.58rem;color:var(--gray);opacity:.7;">'+label+'</div>'
+    +'</div>';
+  }
   function colorField(label, k, val) {
-    return '<div class="field" style="flex:1;min-width:120px;">' +
-      '<label>' + label + '</label>' +
-      '<div style="display:flex;align-items:center;gap:.5rem;">' +
-        '<input type="color" id="cp-' + k + '" value="' + val + '" data-target="inp-' + k + '" oninput="onPickerChange(this)" style="width:38px;height:32px;padding:.1rem;border:1.5px solid var(--border);border-radius:4px;cursor:pointer;" />' +
-        '<input type="text" id="inp-' + k + '" name="' + k + '" value="' + val + '" data-picker="cp-' + k + '" placeholder="#000000" oninput="onTextChange(this)" style="font-size:.82rem;font-family:monospace;" />' +
-      '</div></div>';
+    return '<div class="field" style="flex:1;min-width:120px;">'
+      +'<label>'+label+'</label>'
+      +'<div style="display:flex;align-items:center;gap:.5rem;">'
+        +'<input type="color" id="cp-'+k+'" data-pair="inp-'+k+'" value="'+val+'" style="width:38px;height:32px;padding:.1rem;border:1.5px solid var(--border);border-radius:4px;cursor:pointer;" />'
+        +'<input type="text"  id="inp-'+k+'" name="'+k+'" data-pair="cp-'+k+'" value="'+val+'" placeholder="#000000" style="font-size:.82rem;font-family:monospace;" />'
+      +'</div>'
+    +'</div>';
+  }
+  function colorGroup(title, k, main, dark, light) {
+    return '<div class="form-card" style="border-left:4px solid '+main+';margin-bottom:.8rem;">'
+      +'<div class="form-card-title" style="color:'+main+';">'+title+'</div>'
+      +'<div style="display:flex;gap:.8rem;flex-wrap:wrap;">'
+        +colorField('Principale',k,main)+colorField('Foncee',k+'d',dark)+colorField('Claire (fond)',k+'l',light)
+      +'</div></div>';
   }
 
-  function colorGroup(title, k, main, dark, light, accent) {
-    return '<div class="form-card" style="border-left:4px solid '+main+';margin-bottom:.8rem;">' +
-      '<div class="form-card-title" style="color:'+main+';">' + title + '</div>' +
-      '<div style="display:flex;gap:.8rem;flex-wrap:wrap;">' +
-        colorField('Principale', k, main) +
-        colorField('Foncee', k+'d', dark) +
-        colorField('Claire (fond)', k+'l', light) +
-      '</div></div>';
-  }
-
-  return '<div class="section-title">Theme graphique</div>' +
-    '<div class="section-desc">3 couleurs principales avec leurs declinaisons. Le blanc est la base — les couleurs viennent en accents subtils.</div>' +
-
+  var html = '<div class="section-title">Theme graphique</div>'
+    +'<div class="section-desc">3 couleurs principales avec leurs declinaisons. Le blanc est la base.</div>'
     // Apercu
-    '<div class="form-card" style="margin-bottom:1.2rem;">' +
-      '<div class="form-card-title">Apercu</div>' +
-      '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem;">' +
-        [['c1','Principale 1',c1],['c1d','Foncee',c1d],['c1l','Claire',c1l],
-         ['c2','Principale 2',c2],['c2d','Foncee',c2d],['c2l','Claire',c2l],
-         ['c3','Accent',c3],['c3d','Fonce',c3d],['c3l','Clair',c3l]].map(function(x) {
-          return '<div style="text-align:center;min-width:60px;">' +
-            '<div id="pv-'+x[0]+'" style="width:100%;height:36px;border-radius:6px;background:'+x[2]+';border:1px solid rgba(0,0,0,.06);margin-bottom:.3rem;"></div>' +
-            '<div id="pv-'+x[0]+'-lbl" style="font-size:.6rem;font-family:monospace;color:var(--gray);">'+x[2]+'</div>' +
-            '<div style="font-size:.58rem;color:var(--gray);opacity:.7;">'+x[1]+'</div>' +
-          '</div>';
-        }).join('') +
-      '</div>' +
-      '<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:1rem 1.5rem;display:flex;align-items:center;gap:1.5rem;">' +
-        '<span id="pv-btn" style="display:inline-block;padding:.5rem 1.2rem;border-radius:var(--radius,4px);font-size:.8rem;font-weight:700;color:white;background:'+c1+';">Bouton</span>' +
-        '<span id="pv-acc" style="font-size:.9rem;font-weight:700;color:'+c3+';">Accent</span>' +
-        '<span style="font-size:.85rem;color:#888;">Texte courant</span>' +
-        '<span style="font-size:.85rem;font-weight:600;color:'+c2+';">Titre</span>' +
-      '</div>' +
-    '</div>' +
-
+    +'<div class="form-card">'
+      +'<div class="form-card-title">Apercu</div>'
+      +'<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem;">'
+        +swatch('c1',c1,'C1')+swatch('c1d',c1d,'C1 fonce')+swatch('c1l',c1l,'C1 clair')
+        +swatch('c2',c2,'C2')+swatch('c2d',c2d,'C2 fonce')+swatch('c2l',c2l,'C2 clair')
+        +swatch('c3',c3,'C3')+swatch('c3d',c3d,'C3 fonce')+swatch('c3l',c3l,'C3 clair')
+      +'</div>'
+      +'<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:1rem 1.5rem;display:flex;align-items:center;gap:1.5rem;">'
+        +'<span id="pv-btn" style="display:inline-block;padding:.5rem 1.2rem;border-radius:4px;font-size:.8rem;font-weight:700;color:white;background:'+c1+';">Bouton</span>'
+        +'<span id="pv-acc" style="font-size:.9rem;font-weight:700;color:'+c3+';">Accent</span>'
+        +'<span style="font-size:.85rem;color:#888;">Texte courant</span>'
+      +'</div>'
+    +'</div>'
     // Presets
-    card('Preset',
-      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.7rem;margin-bottom:1rem;">' +
-        presets.map(function(pr) {
-          var sel = d.preset===pr.k ? 'selected' : '';
-          return '<div class="preset-card '+sel+'" data-preset="'+pr.k+'" onclick="pickPreset(this.dataset.preset,this)">' +
-            '<div style="display:flex;gap:4px;margin-right:.7rem;">' +
-              pr.dot.map(function(col) { return '<div style="width:16px;height:16px;border-radius:50%;background:'+col+';"></div>'; }).join('') +
-            '</div>' +
-            '<div><div class="preset-name">'+pr.n+'</div><div class="preset-sub">'+pr.s+'</div></div>' +
-          '</div>';
-        }).join('') +
-        '<div class="preset-card '+(isCustom?'selected':'')+'" data-preset="custom" onclick="pickPreset(this.dataset.preset,this)">' +
-          '<div style="width:36px;height:16px;border-radius:8px;background:linear-gradient(90deg,#AAC335,#2563EB,#FF467C);margin-right:.7rem;"></div>' +
-          '<div><div class="preset-name">Personnalise</div><div class="preset-sub">9 couleurs libres</div></div>' +
-        '</div>' +
-      '</div>' +
-      '<input type="hidden" name="preset" id="preset-val" value="'+(d.preset||'zenvalue')+'" />'
-    ) +
-
+    +'<div class="form-card"><div class="form-card-title">Preset</div>'
+      +'<div class="preset-grid">'
+        +presets.map(function(pr) {
+          return '<div class="preset-card'+(d.preset===pr.k?' selected':'')+'" data-preset="'+pr.k+'" data-action="pick-preset">'
+            +'<div style="display:flex;gap:4px;margin-right:.7rem;">'
+              +pr.dots.map(function(col){ return '<div style="width:16px;height:16px;border-radius:50%;background:'+col+';"></div>'; }).join('')
+            +'</div>'
+            +'<div><div class="preset-name">'+pr.n+'</div><div class="preset-sub">'+pr.s+'</div></div>'
+          +'</div>';
+        }).join('')
+        +'<div class="preset-card'+(isCustom?' selected':'')+'" data-preset="custom" data-action="pick-preset">'
+          +'<div style="width:36px;height:16px;border-radius:8px;background:linear-gradient(90deg,#AAC335,#2563EB,#FF467C);margin-right:.7rem;"></div>'
+          +'<div><div class="preset-name">Personnalise</div><div class="preset-sub">9 couleurs libres</div></div>'
+        +'</div>'
+      +'</div>'
+      +'<input type="hidden" name="preset" id="preset-val" value="'+(d.preset||'zenvalue')+'" />'
+    +'</div>'
     // Couleurs custom
-    '<div id="custom-block" style="'+(isCustom?'':'opacity:.4;pointer-events:none')+'">' +
-      colorGroup('Couleur 1 — Action / Boutons / Liens', 'c1', c1, c1d, c1l) +
-      colorGroup('Couleur 2 — Structure / Titres / Fonds sombres', 'c2', c2, c2d, c2l) +
-      colorGroup('Couleur 3 — Accent / Energie / CTA secondaires', 'c3', c3, c3d, c3l) +
-    '</div>' +
-
-    // Typo + style
-    card('Typographie et style',
-      '<div class="field"><label>Police</label>' +
-        '<select name="typographie">' +
-          ADMIN_FONTS.map(function(f) { return '<option value="'+f[0]+'" '+(font===f[0]?'selected':'')+'>'+f[1]+'</option>'; }).join('') +
-        '</select></div>' +
-      '<div class="field"><label>Arrondi boutons — <span id="rv">'+radius+'</span>px</label>' +
-        '<input type="range" name="rayon_boutons" id="range-radius" min="0" max="40" value="'+radius+'" oninput="onRangeChange(this)" /></div>'
-    );
+    +'<div id="custom-block" style="'+(isCustom?'':'opacity:.4;pointer-events:none')+'">'
+      +colorGroup('Couleur 1 — Action / Boutons','c1',c1,c1d,c1l)
+      +colorGroup('Couleur 2 — Structure / Titres','c2',c2,c2d,c2l)
+      +colorGroup('Couleur 3 — Accent / Energie','c3',c3,c3d,c3l)
+    +'</div>'
+    // Typo
+    +'<div class="form-card"><div class="form-card-title">Typographie et style</div>'
+      +'<div class="field"><label>Police</label><select name="typographie">'
+        +ADMIN_FONTS.map(function(f){ return '<option value="'+f[0]+'"'+(font===f[0]?' selected':'')+'>'+f[1]+'</option>'; }).join('')
+      +'</select></div>'
+      +'<div class="field"><label>Arrondi boutons — <span id="rv">'+radius+'</span>px</label>'
+        +'<input type="range" name="rayon_boutons" id="range-radius" min="0" max="40" value="'+radius+'" />'
+      +'</div>'
+    +'</div>';
+  return html;
 }
 
-
-function rGlobal(d) {
-  return '<div class="section-title">Contact et informations</div><div class="section-desc">Coordonnees affichees dans le footer et sur la page Contact.</div>' +
-    card('', f('Email','email',d.email) + f('Adresse','adresse',d.adresse) + f('Nom LinkedIn','linkedin',d.linkedin) + f('URL LinkedIn','linkedin_url',d.linkedin_url) + f('Copyright footer','copyright',d.copyright));
-}
-function rResultats(d) {
-  return '<div class="section-title">Chiffres cles</div><div class="section-desc">Les 4 resultats mesures chez vos clients.</div>' +
-    [1,2,3,4].map(function(n) { return card('Resultat '+n, frow(f('Chiffre','r'+n+'_chiffre',d['r'+n+'_chiffre']), f('Label','r'+n+'_label',d['r'+n+'_label']))); }).join('');
-}
-function rAccueil(d) {
-  return '<div class="section-title">Accueil</div><div class="section-desc">Hero, stats et messages de la page d\'accueil.</div>' +
-    card('Hero', f('Accroche','eyebrow',d.eyebrow) + f('Tagline ligne 1','tagline1',d.tagline1) + f('Tagline ligne 2 (italique)','tagline2',d.tagline2) + f('Sous-titre','soustitre',d.soustitre,'textarea') + frow(f('Bouton principal','cta1',d.cta1), f('Bouton secondaire','cta2',d.cta2))) +
-    card('Panneau sombre', f('Badge','badge',d.badge) + f('Citation','quote',d.quote,'textarea')) +
-    card('Statistiques', frow(f('Stat 1 chiffre','stat1_num',d.stat1_num), f('Stat 1 label','stat1_label',d.stat1_label)) + frow(f('Stat 2 chiffre','stat2_num',d.stat2_num), f('Stat 2 label','stat2_label',d.stat2_label)) + frow(f('Stat 3 chiffre','stat3_num',d.stat3_num), f('Stat 3 label','stat3_label',d.stat3_label)));
-}
-function rQSN(d) {
-  return '<div class="section-title">Qui sommes-nous</div><div class="section-desc">Discours, vision et histoire.</div>' +
-    card('Discours', f('Paragraphe 1','discours1',d.discours1,'textarea') + f('Paragraphe 2','discours2',d.discours2,'textarea') + f('Paragraphe 3','discours3',d.discours3,'textarea')) +
-    card('Vision et Mission', f('Vision','vision',d.vision,'textarea') + f('Mission','mission',d.mission,'textarea')) +
-    card('Histoire', f('Paragraphe 1','histoire1',d.histoire1,'textarea') + f('Paragraphe 2','histoire2',d.histoire2,'textarea') + f('Paragraphe 3','histoire3',d.histoire3,'textarea'));
-}
-function rFormation(d) {
-  return '<div class="section-title">Formation</div>' +
-    card('', f('Titre','titre',d.titre) + f('Sous-titre','soustitre',d.soustitre,'textarea') + f('Texte Qualiopi 1','texte1',d.texte1,'textarea') + f('Texte Qualiopi 2','texte2',d.texte2,'textarea') + f('URL catalogue','catalogue_url',d.catalogue_url));
-}
-function rRSE(d) {
-  return '<div class="section-title">RSE</div>' +
-    card('', f('Titre','titre',d.titre) + f('Introduction','intro',d.intro,'textarea') + f('Axe 1 Titre','axe1_titre',d.axe1_titre) + f('Axe 1 Texte','axe1_texte',d.axe1_texte,'textarea') + f('Axe 2 Titre','axe2_titre',d.axe2_titre) + f('Axe 2 Texte','axe2_texte',d.axe2_texte,'textarea')) +
-    listCard('Mesures concretes','list-mesures',d.mesures||[],['icon','titre','texte'],'addMesure');
-}
-function rOffres(d) {
-  return '<div class="section-title">Offres</div>' + listCard('Liste des offres','list-offres',d.items||[],['categorie','titre','description','cta_label'],'addOffre');
-}
-function rCas(d) {
-  return '<div class="section-title">Cas clients</div>' +
-    '<div class="form-card"><div class="form-card-title">Liste des cas clients</div>' +
-    '<div class="list-items" id="list-cas">' +
-      (d.items||[]).map(function(c,i) {
-        return '<div class="list-item"><div class="list-item-header" onclick="toggleBody(this)"><span>Cas '+(i+1)+' - '+esc(c.titre)+'</span><div class="item-actions"><button class="btn-icon" onclick="delItem(event,this)">X</button></div></div>' +
-          '<div class="list-item-body">' +
-            f('Titre','items['+i+'].titre',c.titre) + f('Citation','items['+i+'].citation',c.citation,'textarea') + f('Description','items['+i+'].description',c.description,'textarea') +
-            '<div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:var(--gray);margin:.8rem 0 .4rem;">Resultats</div>' +
-            (c.resultats||[]).map(function(r,j) { return frow(f('Chiffre','items['+i+'].resultats['+j+'].chiffre',r.chiffre), f('Label','items['+i+'].resultats['+j+'].label',r.label)); }).join('') +
-          '</div></div>';
-      }).join('') +
-    '</div><button class="add-btn" onclick="addCas()">+ Ajouter un cas client</button></div>';
-}
-function rPrincipes(d) {
-  return '<div class="section-title">Principes fondateurs</div>' + listCard('Principes','list-principes',d.items||[],['icon','titre','description'],'addPrincipe');
-}
-function rRecrutement(d) {
-  return '<div class="section-title">Recrutement</div>' +
-    card('En-tete', f('Titre','titre',d.titre) + f('Sous-titre','soustitre',d.soustitre,'textarea') + f('Introduction','intro',d.intro,'textarea') + f('Tagline','tagline',d.tagline)) +
-    listCard('Engagements','list-engagements',d.engagements||[],['icon','titre','texte'],'addEngagement') +
-    listCard('Profils recherches','list-profils',d.profils||[],['icon','titre','description'],'addProfil');
-}
-
-/* ════════════════════════════════════════════
-   LIST CARD HELPER
-   ════════════════════════════════════════════ */
-function listCard(title, id, items, fields, addFn) {
-  const labels = {icon:'Icone (emoji)',titre:'Titre',description:'Description',texte:'Texte',categorie:'Categorie',cta_label:'Label bouton'};
-  return '<div class="form-card"><div class="form-card-title">' + title + '</div>' +
-    '<div class="list-items" id="' + id + '">' +
-      items.map(function(item, i) {
-        return '<div class="list-item">' +
-          '<div class="list-item-header" onclick="toggleBody(this)"><span>' + esc(item.icon||'') + ' ' + esc(item.titre||item.categorie||'Element '+(i+1)) + '</span>' +
-          '<div class="item-actions"><button class="btn-icon" onclick="moveUp(event,this)">^</button><button class="btn-icon" onclick="moveDn(event,this)">v</button><button class="btn-icon" onclick="delItem(event,this)">X</button></div></div>' +
-          '<div class="list-item-body">' +
-            fields.map(function(fk) {
-              var type = (fk==='texte'||fk==='description') ? 'textarea' : 'text';
-              return f(labels[fk]||fk, id.replace('list-','')+'['+i+'].'+fk, item[fk], type);
-            }).join('') +
-          '</div></div>';
-      }).join('') +
-    '</div>' +
-    '<button class="add-btn" data-id="' + id + '" data-fn="' + addFn + '" onclick="window[this.dataset.fn](this.dataset.id)">+ Ajouter</button></div>';
-}
-
-/* ════════════════════════════════════════════
-   LIST ACTIONS
-   ════════════════════════════════════════════ */
-function toggleBody(hdr) { hdr.nextElementSibling.classList.toggle('open'); }
-function delItem(e, btn) { e.stopPropagation(); if(confirm('Supprimer ?')) btn.closest('.list-item').remove(); }
-function moveUp(e, btn)  { e.stopPropagation(); var li=btn.closest('.list-item'); var prev=li.previousElementSibling; if(prev) li.parentNode.insertBefore(li,prev); }
-function moveDn(e, btn)  { e.stopPropagation(); var li=btn.closest('.list-item'); var next=li.nextElementSibling; if(next) li.parentNode.insertBefore(next,li); }
-
-function addToList(listId, fields) {
-  var labels = {icon:'Icone (emoji)',titre:'Titre',description:'Description',texte:'Texte',categorie:'Categorie',cta_label:'Label bouton'};
-  var body = fields.map(function(fk) {
-    var type = (fk==='texte'||fk==='description')?'textarea':'text';
-    return '<div class="field"><label>'+(labels[fk]||fk)+'</label>'+(type==='textarea'?'<textarea name="new_'+fk+'"></textarea>':'<input type="text" name="new_'+fk+'" />')+'</div>';
-  }).join('');
-  var html = '<div class="list-item"><div class="list-item-header" onclick="toggleBody(this)"><span>Nouvel element</span><div class="item-actions"><button class="btn-icon" onclick="delItem(event,this)">X</button></div></div><div class="list-item-body open">'+body+'</div></div>';
-  document.getElementById(listId).insertAdjacentHTML('beforeend', html);
-}
-function addOffre(id)      { addToList(id||'list-offres',      ['categorie','titre','description','cta_label']); }
-function addCas()          { addToList('list-cas',             ['titre','citation','description']); }
-function addPrincipe(id)   { addToList(id||'list-principes',   ['icon','titre','description']); }
-function addMesure(id)     { addToList(id||'list-mesures',     ['icon','titre','texte']); }
-function addEngagement(id) { addToList(id||'list-engagements', ['icon','titre','texte']); }
-function addProfil(id)     { addToList(id||'list-profils',     ['icon','titre','description']); }
-
-/* ════════════════════════════════════════════
-   COLLECT
-   ════════════════════════════════════════════ */
-function collect() {
-  var main = document.getElementById('admin-main');
-  var data = {};
-  main.querySelectorAll('[name]').forEach(function(el) {
-    var n = el.name;
-    if (!n || n.startsWith('new_') || n.includes('[')) return;
-    if (el.type==='checkbox') data[n] = el.checked;
-    else if (el.type==='range'||el.type==='number') data[n] = isNaN(Number(el.value)) ? el.value : Number(el.value);
-    else data[n] = el.value;
-  });
-  var sec = state.section;
-  if (sec==='offres')      data.items      = collectList('list-offres',      ['categorie','titre','description','cta_label']);
-  if (sec==='cas')         data.items      = collectCas();
-  if (sec==='principes')   data.items      = collectList('list-principes',   ['icon','titre','description']);
-  if (sec==='rse')         data.mesures    = collectList('list-mesures',      ['icon','titre','texte']);
-  if (sec==='recrutement') {
-    data.engagements = collectList('list-engagements', ['icon','titre','texte']);
-    data.profils     = collectList('list-profils',     ['icon','titre','description']);
-    data.processus   = state.data.processus || [];
-  }
-  return data;
-}
-function collectList(listId, fields) {
-  var container = document.getElementById(listId);
-  if (!container) return [];
-  return Array.from(container.querySelectorAll('.list-item')).map(function(item) {
-    var obj = {};
-    item.querySelectorAll('[name]').forEach(function(el) {
-      var key = el.name.split('.').pop().replace(/new_/,'');
-      if (key && !key.includes('[')) obj[key] = el.value;
-    });
-    return obj;
-  });
-}
-function collectCas() {
-  var container = document.getElementById('list-cas');
-  if (!container) return [];
-  return Array.from(container.querySelectorAll('.list-item')).map(function(item) {
-    var obj = { titre:'', citation:'', description:'', resultats:[] };
-    item.querySelectorAll('[name]').forEach(function(el) {
-      var n = el.name;
-      if (n.includes('resultats')) {
-        var m = n.match(/resultats\[(\d+)\]\.(\w+)/);
-        if (m) {
-          var ri = parseInt(m[1]);
-          while (obj.resultats.length <= ri) obj.resultats.push({chiffre:'',label:''});
-          obj.resultats[ri][m[2]] = el.value;
-        }
-      } else {
-        var key = n.split('.').pop().replace(/new_/,'');
-        if (key && !key.includes('[')) obj[key] = el.value;
-      }
-    });
-    return obj;
-  });
-}
-
-
-/* ════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════
    MEDIA LIBRARY
-   ════════════════════════════════════════════ */
-const MEDIA_FOLDERS = [
-  { key: 'illustrations', label: 'Illustrations', path: 'assets/images/illustrations/' },
-  { key: 'equipe',        label: 'Equipe',        path: 'assets/images/equipe/' },
-  { key: 'logos-clients', label: 'Logos clients', path: 'assets/images/logos-clients/' },
-  { key: 'logo',          label: 'Logo',          path: 'assets/images/logo/' },
-];
-const MEDIA_EXTS = ['jpg','jpeg','png','webp','svg','avif','gif'];
-let mediaTab = 'illustrations';
-let mediaFiles = {};
-
+══════════════════════════════════════════════════════ */
 function rMedias() {
-  return '<div class="section-title">Bibliotheque medias</div>' +
-    '<div class="section-desc">Uploadez et gerez vos images. Cliquez sur une image pour copier son URL.</div>' +
-    '<div class="media-tabs">' +
-      MEDIA_FOLDERS.map(function(f) {
-        return '<div class="media-tab ' + (f.key === mediaTab ? 'active' : '') + '" data-key="' + f.key + '" onclick="switchMediaTab(this.dataset.key)">' + f.label + '</div>';
-      }).join('') +
-    '</div>' +
-    '<div class="dropzone" id="dropzone" onclick="document.getElementById("file-input").click()" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event)">' +
-      '<input type="file" id="file-input" multiple accept="image/*" onchange="onFileSelect(event)" />' +
-      '<div class="dropzone-icon">📁</div>' +
-      '<div class="dropzone-text">Glissez vos images ici ou <strong>cliquez pour selectionner</strong><br/><span style="font-size:.75rem;">JPG, PNG, WebP, SVG, AVIF</span></div>' +
-    '</div>' +
-    '<div class="upload-progress" id="upload-progress"><div class="spin"></div><span id="upload-msg">Envoi en cours...</span></div>' +
-    '<div class="media-grid" id="media-grid"><div class="media-empty">Chargement...</div></div>';
+  return '<div class="section-title">Bibliotheque medias</div>'
+    +'<div class="section-desc">Uploadez et gerez vos images. Cliquez sur une image pour copier son URL.</div>'
+    +'<div class="media-tabs" id="media-tabs">'
+      +MEDIA_FOLDERS.map(function(f){ return '<div class="media-tab'+(f.key===mediaTab?' active':'')+'" data-key="'+f.key+'" data-action="media-tab">'+f.label+'</div>'; }).join('')
+    +'</div>'
+    +'<div class="dropzone" id="dropzone">'
+      +'<input type="file" id="file-input" multiple accept="image/*" />'
+      +'<div class="dropzone-icon">📁</div>'
+      +'<div class="dropzone-text">Glissez vos images ici ou <strong>cliquez pour selectionner</strong><br><span style="font-size:.75rem;">JPG, PNG, WebP, SVG, AVIF</span></div>'
+    +'</div>'
+    +'<div class="upload-progress" id="upload-progress"><div class="spin"></div><span id="upload-msg">Envoi en cours...</span></div>'
+    +'<div class="media-grid" id="media-grid"><div style="padding:2rem;color:#aaa;">Chargement...</div></div>';
 }
 
-async function initMedias() {
-  await loadMediaFolder(mediaTab);
+function initMedias() {
+  var dz = document.getElementById('dropzone');
+  var fi = document.getElementById('file-input');
+  if (dz) {
+    dz.addEventListener('click', function(){ fi && fi.click(); });
+    dz.addEventListener('dragover', function(e){ e.preventDefault(); dz.classList.add('drag-over'); });
+    dz.addEventListener('dragleave', function(){ dz.classList.remove('drag-over'); });
+    dz.addEventListener('drop', function(e){ e.preventDefault(); dz.classList.remove('drag-over'); uploadFiles(Array.from(e.dataTransfer.files)); });
+  }
+  if (fi) fi.addEventListener('change', function(e){ uploadFiles(Array.from(e.target.files)); });
+  loadMediaFolder(mediaTab);
 }
 
 function switchMediaTab(key) {
   mediaTab = key;
-  document.querySelectorAll('.media-tab').forEach(function(t) { t.classList.remove('active'); });
-  document.querySelectorAll('.media-tab').forEach(function(t) {
-    if (t.textContent === MEDIA_FOLDERS.find(function(f) { return f.key === key; }).label) t.classList.add('active');
-  });
+  document.querySelectorAll('.media-tab').forEach(function(t){ t.classList.toggle('active', t.dataset.key===key); });
   renderMediaGrid(key);
   if (!mediaFiles[key]) loadMediaFolder(key);
 }
 
 async function loadMediaFolder(key) {
-  const folder = MEDIA_FOLDERS.find(function(f) { return f.key === key; });
+  var folder = MEDIA_FOLDERS.find(function(f){ return f.key===key; });
   if (!folder) return;
   try {
-    const r = await fetch(ghUrl(folder.path), { headers: ghHeaders() });
-    if (r.status === 404) { mediaFiles[key] = []; renderMediaGrid(key); return; }
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    const files = await r.json();
-    mediaFiles[key] = files.filter(function(f) {
-      const ext = f.name.split('.').pop().toLowerCase();
-      return MEDIA_EXTS.includes(ext);
-    });
+    var r = await fetch(ghUrl(folder.path), {headers:ghH()});
+    if (r.status===404){ mediaFiles[key]=[]; renderMediaGrid(key); return; }
+    if (!r.ok) throw new Error('HTTP '+r.status);
+    var files = await r.json();
+    var exts = ['jpg','jpeg','png','webp','svg','avif','gif'];
+    mediaFiles[key] = files.filter(function(f){ return exts.includes(f.name.split('.').pop().toLowerCase()); });
     renderMediaGrid(key);
-  } catch(e) {
-    document.getElementById('media-grid').innerHTML = '<div class="media-empty">Erreur chargement : ' + e.message + '</div>';
-  }
+  } catch(e){ document.getElementById('media-grid').innerHTML = '<div style="padding:2rem;color:#dc2626;">Erreur : '+e.message+'</div>'; }
 }
 
 function renderMediaGrid(key) {
-  const grid = document.getElementById('media-grid');
-  if (!grid) return;
-  const files = mediaFiles[key] || [];
-  if (files.length === 0) {
-    grid.innerHTML = '<div class="media-empty">Aucune image dans ce dossier.<br/>Uploadez votre premiere image ci-dessus.</div>';
-    return;
-  }
-  grid.innerHTML = files.map(function(f) {
-    const url = 'https://llmdev-ops.github.io/' + f.path;
-    const ext = f.name.split('.').pop().toLowerCase();
-    const isSvg = ext === 'svg';
-    const thumb = isSvg
+  var grid = document.getElementById('media-grid'); if (!grid) return;
+  var files = mediaFiles[key]||[];
+  if (!files.length){ grid.innerHTML='<div style="padding:2rem;color:#aaa;grid-column:1/-1;">Aucune image. Uploadez votre premiere image ci-dessus.</div>'; return; }
+  grid.innerHTML = files.map(function(f){
+    var url = 'https://llmdev-ops.github.io/'+f.path;
+    var ext = f.name.split('.').pop().toLowerCase();
+    var thumb = ext==='svg'
       ? '<div class="media-thumb-svg">SVG</div>'
-      : '<img class="media-thumb" src="' + url + '" loading="lazy" onerror="this.style.display='none'" />';
-    return '<div class="media-card" data-url="' + url + '" onclick="copyMediaUrl(this.dataset.url, this)" data-sha="' + f.sha + '" data-path="' + f.path + '">' +
-      thumb +
-      '<button class="media-delete" data-path="' + f.path + '" data-sha="' + f.sha + '" onclick="deleteMedia(event,this.dataset.path,this.dataset.sha)" title="Supprimer">x</button>' +
-      '<span class="media-copy-tag">Copie !</span>' +
-      '<div class="media-info"><div class="media-name">' + f.name + '</div></div>' +
-    '</div>';
+      : '<img class="media-thumb" src="'+url+'" loading="lazy" />';
+    return '<div class="media-card" data-action="copy-media" data-url="'+url+'">'
+      +thumb
+      +'<button class="media-delete-btn" data-action="del-media" data-path="'+f.path+'" data-sha="'+f.sha+'">x</button>'
+      +'<span class="media-copy-tag">Copie !</span>'
+      +'<div class="media-info"><div class="media-name">'+f.name+'</div></div>'
+    +'</div>';
   }).join('');
 }
 
-function copyMediaUrl(url, card) {
-  navigator.clipboard.writeText(url).then(function() {
-    card.classList.add('copied');
-    setTimeout(function() { card.classList.remove('copied'); }, 2000);
-  });
-}
-
-function onDropzoneClick() { document.getElementById("file-input").click(); }
-function onDragOver(e) { e.preventDefault(); document.getElementById('dropzone').classList.add('drag-over'); }
-function onDragLeave(e) { document.getElementById('dropzone').classList.remove('drag-over'); }
-function onDrop(e) {
-  e.preventDefault();
-  document.getElementById('dropzone').classList.remove('drag-over');
-  uploadFiles(Array.from(e.dataTransfer.files));
-}
-function onFileSelect(e) { uploadFiles(Array.from(e.target.files)); }
-
 async function uploadFiles(files) {
-  const images = files.filter(function(f) {
-    const ext = f.name.split('.').pop().toLowerCase();
-    return MEDIA_EXTS.includes(ext);
-  });
-  if (images.length === 0) return;
-
-  const folder = MEDIA_FOLDERS.find(function(f) { return f.key === mediaTab; });
-  const progress = document.getElementById('upload-progress');
-  const msg = document.getElementById('upload-msg');
+  var exts = ['jpg','jpeg','png','webp','svg','avif','gif'];
+  var images = files.filter(function(f){ return exts.includes(f.name.split('.').pop().toLowerCase()); });
+  if (!images.length) return;
+  var folder = MEDIA_FOLDERS.find(function(f){ return f.key===mediaTab; });
+  var progress = document.getElementById('upload-progress');
+  var msg = document.getElementById('upload-msg');
   progress.classList.add('on');
-
-  for (let i = 0; i < images.length; i++) {
-    const file = images[i];
-    msg.textContent = 'Envoi ' + (i+1) + '/' + images.length + ' : ' + file.name;
+  for (var i=0; i<images.length; i++) {
+    var file = images[i];
+    if (msg) msg.textContent = 'Envoi '+(i+1)+'/'+images.length+' : '+file.name;
     try {
-      const b64 = await fileToBase64(file);
-      const path = folder.path + file.name;
-      // Verifier si existe deja
-      let sha = null;
-      try {
-        const check = await fetch(ghUrl(path), { headers: ghHeaders() });
-        if (check.ok) { const d = await check.json(); sha = d.sha; }
-      } catch(e) {}
-
-      const body = JSON.stringify({
-        message: '[Admin] Upload ' + file.name,
-        content: b64,
-        ...(sha ? { sha } : {})
-      });
-      const r = await fetch(ghUrl(path), { method: 'PUT', headers: { ...ghHeaders(), 'Content-Type': 'application/json' }, body });
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-
-      // Ajouter a la liste locale
-      if (!mediaFiles[mediaTab]) mediaFiles[mediaTab] = [];
-      const existing = mediaFiles[mediaTab].findIndex(function(f) { return f.name === file.name; });
-      const newFile = { name: file.name, path: path, sha: (await r.json()).content.sha };
-      if (existing >= 0) mediaFiles[mediaTab][existing] = newFile;
-      else mediaFiles[mediaTab].push(newFile);
-
-    } catch(e) {
-      alert('Erreur upload ' + file.name + ' : ' + e.message);
-    }
+      var b64 = await fileToBase64(file);
+      var path = folder.path+file.name;
+      var existingSha = await ghSha(path);
+      var body = {message:'[Admin] Upload '+file.name, content:b64};
+      if (existingSha) body.sha = existingSha;
+      var r = await fetch(ghUrl(path), {method:'PUT', headers:{...ghH(),'Content-Type':'application/json'}, body:JSON.stringify(body)});
+      if (!r.ok) throw new Error('HTTP '+r.status);
+      var resp = await r.json();
+      if (!mediaFiles[mediaTab]) mediaFiles[mediaTab]=[];
+      var idx = mediaFiles[mediaTab].findIndex(function(x){ return x.name===file.name; });
+      var nf = {name:file.name, path:path, sha:resp.content.sha};
+      if (idx>=0) mediaFiles[mediaTab][idx]=nf; else mediaFiles[mediaTab].push(nf);
+    } catch(e){ alert('Erreur upload '+file.name+' : '+e.message); }
   }
-
   progress.classList.remove('on');
   renderMediaGrid(mediaTab);
 }
 
-async function deleteMedia(e, path, sha) {
-  e.stopPropagation();
-  const name = path.split('/').pop();
-  if (!confirm('Supprimer ' + name + ' ?')) return;
+async function deleteMedia(path, sha) {
+  var name = path.split('/').pop();
+  if (!confirm('Supprimer '+name+' ?')) return;
   try {
-    const body = JSON.stringify({ message: '[Admin] Delete ' + name, sha });
-    const r = await fetch(ghUrl(path), { method: 'DELETE', headers: { ...ghHeaders(), 'Content-Type': 'application/json' }, body });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    mediaFiles[mediaTab] = (mediaFiles[mediaTab] || []).filter(function(f) { return f.path !== path; });
+    var r = await fetch(ghUrl(path), {method:'DELETE', headers:{...ghH(),'Content-Type':'application/json'}, body:JSON.stringify({message:'[Admin] Delete '+name,sha})});
+    if (!r.ok) throw new Error('HTTP '+r.status);
+    mediaFiles[mediaTab] = (mediaFiles[mediaTab]||[]).filter(function(f){ return f.path!==path; });
     renderMediaGrid(mediaTab);
-  } catch(err) {
-    alert('Erreur suppression : ' + err.message);
-  }
+  } catch(e){ alert('Erreur suppression : '+e.message); }
 }
 
 function fileToBase64(file) {
-  return new Promise(function(resolve, reject) {
-    const reader = new FileReader();
-    reader.onload = function(e) { resolve(e.target.result.split(',')[1]); };
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
+  return new Promise(function(resolve, reject){
+    var r = new FileReader();
+    r.onload = function(e){ resolve(e.target.result.split(',')[1]); };
+    r.onerror = reject;
+    r.readAsDataURL(file);
   });
 }
 
-/* ════════════════════════════════════════════
-   INIT
-   ════════════════════════════════════════════ */
-window.addEventListener('DOMContentLoaded', function() {
-  // Recuperer token depuis localStorage
-  var storedToken = localStorage.getItem('zv_token');
-  if (storedToken) GH_TOKEN = decodeToken(storedToken);
+/* ══════════════════════════════════════════════════════
+   FORM RENDER
+══════════════════════════════════════════════════════ */
+var _fv = {};
+function f(label, name, val, type, hint) {
+  type=type||'text'; hint=hint||'';
+  _fv[name] = val;
+  var h = hint ? '<div class="field-hint">'+hint+'</div>' : '';
+  if (type==='textarea') return '<div class="field"><label>'+label+'</label><textarea name="'+name+'" data-fill="'+name+'"></textarea>'+h+'</div>';
+  return '<div class="field"><label>'+label+'</label><input type="text" name="'+name+'" data-fill="'+name+'" />'+h+'</div>';
+}
+function frow() { return '<div class="field-row">'+Array.from(arguments).join('')+'</div>'; }
+function card(title,body) { return '<div class="form-card"><div class="form-card-title">'+title+'</div>'+body+'</div>'; }
+function fillFields() {
+  document.querySelectorAll('[data-fill]').forEach(function(el){
+    var v=_fv[el.getAttribute('data-fill')];
+    if (v!==undefined&&v!==null) el.value=String(v);
+  });
+}
+function render(sec, d) {
+  _fv={};
+  var renderers = {theme:rTheme,global:rGlobal,resultats:rResultats,accueil:rAccueil,qsn:rQSN,offres:rOffres,cas:rCas,principes:rPrincipes,formation:rFormation,recrutement:rRecrutement,rse:rRSE};
+  document.getElementById('admin-main').innerHTML = renderers[sec] ? renderers[sec](d) : '<p style="padding:2rem">Section inconnue</p>';
+  fillFields();
+}
 
-  // Recuperer session
-  try {
-    var s = localStorage.getItem('zv_session');
-    if (s) session = JSON.parse(s);
-  } catch(e) { session = null; }
+/* ══════════════════════════════════════════════════════
+   PAGE RENDERERS
+══════════════════════════════════════════════════════ */
+function rGlobal(d) {
+  return '<div class="section-title">Contact et informations</div><div class="section-desc">Coordonnees footer et page Contact.</div>'
+    +card('',f('Email','email',d.email)+f('Adresse','adresse',d.adresse)+f('LinkedIn','linkedin',d.linkedin)+f('URL LinkedIn','linkedin_url',d.linkedin_url)+f('Copyright','copyright',d.copyright));
+}
+function rResultats(d) {
+  return '<div class="section-title">Chiffres cles</div>'
+    +[1,2,3,4].map(function(n){ return card('Resultat '+n, frow(f('Chiffre','r'+n+'_chiffre',d['r'+n+'_chiffre']),f('Label','r'+n+'_label',d['r'+n+'_label']))); }).join('');
+}
+function rAccueil(d) {
+  return '<div class="section-title">Accueil</div>'
+    +card('Hero',f('Accroche','eyebrow',d.eyebrow)+f('Tagline 1','tagline1',d.tagline1)+f('Tagline 2 (italique)','tagline2',d.tagline2)+f('Sous-titre','soustitre',d.soustitre,'textarea')+frow(f('Bouton principal','cta1',d.cta1),f('Bouton secondaire','cta2',d.cta2)))
+    +card('Panneau sombre',f('Badge','badge',d.badge)+f('Citation','quote',d.quote,'textarea'))
+    +card('Statistiques',frow(f('Stat 1 chiffre','stat1_num',d.stat1_num),f('Stat 1 label','stat1_label',d.stat1_label))+frow(f('Stat 2 chiffre','stat2_num',d.stat2_num),f('Stat 2 label','stat2_label',d.stat2_label))+frow(f('Stat 3 chiffre','stat3_num',d.stat3_num),f('Stat 3 label','stat3_label',d.stat3_label)));
+}
+function rQSN(d) {
+  return '<div class="section-title">Qui sommes-nous</div>'
+    +card('Discours',f('Para 1','discours1',d.discours1,'textarea')+f('Para 2','discours2',d.discours2,'textarea')+f('Para 3','discours3',d.discours3,'textarea'))
+    +card('Vision et Mission',f('Vision','vision',d.vision,'textarea')+f('Mission','mission',d.mission,'textarea'))
+    +card('Histoire',f('Para 1','histoire1',d.histoire1,'textarea')+f('Para 2','histoire2',d.histoire2,'textarea')+f('Para 3','histoire3',d.histoire3,'textarea'));
+}
+function rFormation(d) {
+  return '<div class="section-title">Formation</div>'
+    +card('',f('Titre','titre',d.titre)+f('Sous-titre','soustitre',d.soustitre,'textarea')+f('Texte Qualiopi 1','texte1',d.texte1,'textarea')+f('Texte Qualiopi 2','texte2',d.texte2,'textarea')+f('URL catalogue','catalogue_url',d.catalogue_url));
+}
+function rRSE(d) {
+  return '<div class="section-title">RSE</div>'
+    +card('',f('Titre','titre',d.titre)+f('Introduction','intro',d.intro,'textarea')+f('Axe 1 Titre','axe1_titre',d.axe1_titre)+f('Axe 1 Texte','axe1_texte',d.axe1_texte,'textarea')+f('Axe 2 Titre','axe2_titre',d.axe2_titre)+f('Axe 2 Texte','axe2_texte',d.axe2_texte,'textarea'))
+    +listCard('Mesures concretes','list-mesures',d.mesures||[],['icon','titre','texte'],'mesures');
+}
+function rOffres(d) {
+  return '<div class="section-title">Offres</div>'
+    +listCard('Liste des offres','list-offres',d.items||[],['categorie','titre','description','cta_label'],'offres');
+}
+function rCas(d) {
+  return '<div class="section-title">Cas clients</div>'
+    +listCard('Cas clients','list-cas',d.items||[],['titre','citation','description'],'cas');
+}
+function rPrincipes(d) {
+  return '<div class="section-title">Principes</div>'
+    +listCard('Principes','list-principes',d.items||[],['icon','titre','description'],'principes');
+}
+function rRecrutement(d) {
+  return '<div class="section-title">Recrutement</div>'
+    +card('En-tete',f('Titre','titre',d.titre)+f('Sous-titre','soustitre',d.soustitre,'textarea')+f('Introduction','intro',d.intro,'textarea')+f('Tagline','tagline',d.tagline))
+    +listCard('Engagements','list-engagements',d.engagements||[],['icon','titre','texte'],'engagements')
+    +listCard('Profils recherches','list-profils',d.profils||[],['icon','titre','description'],'profils');
+}
 
-  if (session && GH_TOKEN) {
-    startAdmin();
-  } else {
-    checkFirstRun();
+/* ══════════════════════════════════════════════════════
+   LIST CARD
+══════════════════════════════════════════════════════ */
+function listCard(title, listId, items, fields, addKey) {
+  var labels={icon:'Icone (emoji)',titre:'Titre',description:'Description',texte:'Texte',categorie:'Categorie',cta_label:'Label bouton',citation:'Citation'};
+  var itemsHtml = items.map(function(item,i){
+    var header = esc(item.icon||'')+' '+esc(item.titre||item.categorie||'Element '+(i+1));
+    var fieldsHtml = fields.map(function(fk){
+      var type=(fk==='texte'||fk==='description'||fk==='citation')?'textarea':'text';
+      return f(labels[fk]||fk, listId+'.'+i+'.'+fk, item[fk], type);
+    }).join('');
+    return '<div class="list-item">'
+      +'<div class="list-item-header" data-action="toggle-body">'
+        +'<span>'+header+'</span>'
+        +'<div class="item-actions">'
+          +'<button class="btn-icon" data-action="move-up" title="Monter">↑</button>'
+          +'<button class="btn-icon" data-action="move-dn" title="Descendre">↓</button>'
+          +'<button class="btn-icon" data-action="del-item" title="Supprimer">✕</button>'
+        +'</div>'
+      +'</div>'
+      +'<div class="list-item-body">'+fieldsHtml+'</div>'
+    +'</div>';
+  }).join('');
+  return '<div class="form-card"><div class="form-card-title">'+title+'</div>'
+    +'<div class="list-items" id="'+listId+'">'+itemsHtml+'</div>'
+    +'<button class="add-btn" data-action="add-item" data-list="'+listId+'" data-fields="'+fields.join(',')+'" data-addkey="'+addKey+'">+ Ajouter</button>'
+  +'</div>';
+}
+
+function addListItem(listId, fields) {
+  var labels={icon:'Icone (emoji)',titre:'Titre',description:'Description',texte:'Texte',categorie:'Categorie',cta_label:'Label bouton',citation:'Citation'};
+  var fieldsHtml = fields.map(function(fk){
+    var type=(fk==='texte'||fk==='description'||fk==='citation')?'textarea':'text';
+    return '<div class="field"><label>'+(labels[fk]||fk)+'</label>'+(type==='textarea'?'<textarea></textarea>':'<input type="text" />')+'</div>';
+  }).join('');
+  var html = '<div class="list-item">'
+    +'<div class="list-item-header" data-action="toggle-body">'
+      +'<span>Nouvel element</span>'
+      +'<div class="item-actions">'
+        +'<button class="btn-icon" data-action="del-item">✕</button>'
+      +'</div>'
+    +'</div>'
+    +'<div class="list-item-body open">'+fieldsHtml+'</div>'
+  +'</div>';
+  var container = document.getElementById(listId);
+  if (container) { container.insertAdjacentHTML('beforeend', html); }
+}
+
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+
+/* ══════════════════════════════════════════════════════
+   COLLECT
+══════════════════════════════════════════════════════ */
+function collect() {
+  var data={};
+  document.querySelectorAll('#admin-main [name]').forEach(function(el){
+    var n=el.name; if(!n||n.includes('.')) return;
+    if (el.type==='checkbox') data[n]=el.checked;
+    else if (el.type==='range'||el.type==='number') data[n]=isNaN(Number(el.value))?el.value:Number(el.value);
+    else data[n]=el.value;
+  });
+  var sec=state.section;
+  if (sec==='offres')      data.items       = collectList('list-offres',      ['categorie','titre','description','cta_label']);
+  if (sec==='cas')         data.items       = collectList('list-cas',         ['titre','citation','description']);
+  if (sec==='principes')   data.items       = collectList('list-principes',   ['icon','titre','description']);
+  if (sec==='rse')         data.mesures     = collectList('list-mesures',     ['icon','titre','texte']);
+  if (sec==='recrutement') { data.engagements=collectList('list-engagements',['icon','titre','texte']); data.profils=collectList('list-profils',['icon','titre','description']); data.processus=state.data.processus||[]; }
+  return data;
+}
+function collectList(listId, fields) {
+  var container=document.getElementById(listId); if(!container) return [];
+  return Array.from(container.querySelectorAll('.list-item')).map(function(item){
+    var obj={}, inputs=item.querySelectorAll('input[type=text],textarea');
+    fields.forEach(function(fk,i){ if(inputs[i]) obj[fk]=inputs[i].value; });
+    return obj;
+  });
+}
+
+/* ══════════════════════════════════════════════════════
+   DELEGATION D'EVENEMENTS — point d'entree unique
+══════════════════════════════════════════════════════ */
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('[data-action]');
+  if (!el) return;
+  var action = el.dataset.action;
+
+  if (action==='pick-preset')  { selectPreset(el.dataset.preset); return; }
+  if (action==='del-user')     { deleteUser(el.dataset.email); return; }
+  if (action==='add-user')     { addUser(); return; }
+  if (action==='copy-code')    { navigator.clipboard.writeText(document.getElementById('access-code').textContent).then(function(){ el.classList.add('copied'); setTimeout(function(){ el.classList.remove('copied'); },2000); }); return; }
+  if (action==='media-tab')    { switchMediaTab(el.dataset.key); return; }
+  if (action==='copy-media')   { navigator.clipboard.writeText(el.dataset.url).then(function(){ el.classList.add('copied'); setTimeout(function(){ el.classList.remove('copied'); },2000); }); return; }
+  if (action==='del-media')    { e.stopPropagation(); deleteMedia(el.dataset.path, el.dataset.sha); return; }
+  if (action==='toggle-body')  { var body=el.nextElementSibling; if(body) body.classList.toggle('open'); return; }
+  if (action==='del-item')     { e.stopPropagation(); if(confirm('Supprimer ?')) el.closest('.list-item').remove(); return; }
+  if (action==='move-up')      { e.stopPropagation(); var li=el.closest('.list-item'); var prev=li.previousElementSibling; if(prev&&prev.classList.contains('list-item')) li.parentNode.insertBefore(li,prev); return; }
+  if (action==='move-dn')      { e.stopPropagation(); var li=el.closest('.list-item'); var next=li.nextElementSibling; if(next) li.parentNode.insertBefore(next,li); return; }
+  if (action==='add-item')     { addListItem(el.dataset.list, el.dataset.fields.split(',')); return; }
+});
+
+document.addEventListener('input', function(e) {
+  var el = e.target;
+  // Range rayon boutons
+  if (el.id==='range-radius') { var lbl=document.getElementById('rv'); if(lbl) lbl.textContent=el.value; return; }
+  // Color picker / text sync
+  if (el.dataset.pair) {
+    var pair=document.getElementById(el.dataset.pair);
+    if (!pair) return;
+    if (el.type==='color') { pair.value=el.value; }
+    else if (/^#[0-9a-fA-F]{6}$/.test(el.value)) { pair.value=el.value; }
+    updatePreview(getCustomColors());
   }
+});
+
+/* STATIC BUTTONS */
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('btn-login')  && document.getElementById('btn-login').addEventListener('click', doLogin);
+  document.getElementById('btn-setup')  && document.getElementById('btn-setup').addEventListener('click', doSetup);
+  document.getElementById('btn-logout') && document.getElementById('btn-logout').addEventListener('click', doLogout);
+  document.getElementById('btn-save')   && document.getElementById('btn-save').addEventListener('click', doSave);
+  document.getElementById('code-toggle-btn') && document.getElementById('code-toggle-btn').addEventListener('click', function(){
+    var b=document.getElementById('code-block'); b.style.display=b.style.display==='none'||!b.style.display?'block':'none';
+  });
+  document.getElementById('sidebar') && document.getElementById('sidebar').addEventListener('click', function(e){
+    var item=e.target.closest('.sidebar-item'); if(item&&item.dataset.sec) navTo(item.dataset.sec);
+  });
+
+  // Restore session
+  var storedToken=localStorage.getItem('zv_token');
+  if (storedToken) GH_TOKEN=decodeToken(storedToken);
+  try { var s=localStorage.getItem('zv_session'); if(s) session=JSON.parse(s); } catch(e){ session=null; }
+  if (session&&GH_TOKEN) startAdmin(); else checkFirstRun();
 });
 </script>
 </body>
