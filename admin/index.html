@@ -147,6 +147,62 @@
     .overlay.on { display:flex; }
     .spin { width:20px; height:20px; border:3px solid rgba(0,0,0,.1); border-top-color:var(--green); border-radius:50%; animation:spin .7s linear infinite; }
     @keyframes spin { to { transform:rotate(360deg); } }
+
+    /* ── DEPLOY STATUS ── */
+    .deploy-pill { display:inline-flex; align-items:center; gap:.45rem; font-size:.72rem; font-weight:700; padding:.3rem .8rem; border-radius:20px; transition:all .3s; cursor:default; text-decoration:none; }
+    .deploy-pill:hover { opacity:.85; }
+    .deploy-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+    .deploy-ok   { background:#f0fdf4; color:#15803d; }
+    .deploy-ok   .deploy-dot { background:#16a34a; box-shadow:0 0 0 2px rgba(22,163,74,.2); }
+    .deploy-run  { background:#fefce8; color:#854d0e; }
+    .deploy-run  .deploy-dot { background:#eab308; animation:pulse 1s infinite; }
+    .deploy-err  { background:#fef2f2; color:#b91c1c; }
+    .deploy-err  .deploy-dot { background:#dc2626; }
+    .deploy-idle { background:#f8f8f8; color:#aaa; }
+    .deploy-idle .deploy-dot { background:#d1d5db; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.4; } }
+
+    /* ── SITE LINK ── */
+    .site-link { display:inline-flex; align-items:center; gap:.4rem; font-size:.75rem; font-weight:600; color:var(--gray); padding:.3rem .8rem; border:1.5px solid var(--border); border-radius:20px; text-decoration:none; transition:all .2s; }
+    .site-link:hover { border-color:var(--green); color:var(--green); background:#f3f7e0; }
+    .site-link svg { width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:2; }
+
+    /* ── TOAST ── */
+    .toast-wrap { position:fixed; bottom:1.5rem; right:1.5rem; z-index:9999; display:flex; flex-direction:column; gap:.5rem; pointer-events:none; }
+    .toast { display:flex; align-items:center; gap:.7rem; padding:.75rem 1.1rem; border-radius:8px; font-size:.84rem; font-weight:600; box-shadow:0 4px 20px rgba(0,0,0,.15); transform:translateX(120%); transition:transform .3s cubic-bezier(.22,1,.36,1); pointer-events:auto; max-width:320px; }
+    .toast.show { transform:translateX(0); }
+    .toast-ok  { background:#1a2e1a; color:#86efac; border-left:3px solid #16a34a; }
+    .toast-err { background:#2e1a1a; color:#fca5a5; border-left:3px solid #dc2626; }
+    .toast-info{ background:#1a1f2e; color:#93c5fd; border-left:3px solid #3b82f6; }
+    .toast-icon { font-size:1rem; flex-shrink:0; }
+
+    /* ── DIRTY BADGE ── */
+    .sidebar-item .dirty-dot { width:6px; height:6px; border-radius:50%; background:#f59e0b; margin-left:auto; flex-shrink:0; display:none; }
+    .sidebar-item.dirty .dirty-dot { display:block; }
+
+    /* ── SAVE BAR AMÉLIORÉE ── */
+    .save-bar { background:white; border-top:2px solid var(--border); padding:.85rem 2.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; transition:border-color .3s; }
+    .save-bar.has-changes { border-top-color:#f59e0b; background:#fffbeb; }
+    .save-bar-left { display:flex; align-items:center; gap:.8rem; }
+    .save-last { font-size:.78rem; color:var(--gray); }
+    .unsaved-badge { font-size:.72rem; font-weight:700; background:#fef3c7; color:#b45309; padding:.2rem .6rem; border-radius:20px; border:1px solid #fde68a; }
+    .save-btn-wrap { display:flex; align-items:center; gap:.7rem; }
+
+    /* ── DASHBOARD ── */
+    .dash-welcome { font-size:1.5rem; font-weight:800; margin-bottom:.3rem; }
+    .dash-sub { font-size:.9rem; color:var(--gray); margin-bottom:2rem; }
+    .dash-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin-bottom:2rem; }
+    .dash-card { background:white; border:1.5px solid var(--border); border-radius:10px; padding:1.3rem 1.4rem; cursor:pointer; transition:all .2s; display:flex; flex-direction:column; gap:.5rem; }
+    .dash-card:hover { border-color:var(--green); transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,.07); }
+    .dash-card-icon { font-size:1.4rem; }
+    .dash-card-title { font-size:.88rem; font-weight:700; color:var(--dark); }
+    .dash-card-desc { font-size:.76rem; color:var(--gray); line-height:1.45; }
+    .dash-status-box { background:white; border:1.5px solid var(--border); border-radius:10px; padding:1.4rem 1.8rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+    .dash-status-title { font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray); margin-bottom:.5rem; }
+    .dash-last-deploy { font-size:.82rem; color:var(--dark); font-weight:500; }
+
+    /* ── HEADER EXTRAS ── */
+    .header-center { display:flex; align-items:center; gap:.8rem; }
   </style>
 </head>
 <body>
@@ -194,16 +250,29 @@
   </div>
 </div>
 
+<!-- TOAST CONTAINER -->
+<div class="toast-wrap" id="toast-wrap"></div>
+
 <!-- ADMIN -->
 <div id="admin-screen">
   <header class="admin-header">
-    <div style="display:flex;align-items:center;">
+    <div style="display:flex;align-items:center;gap:.8rem;">
       <img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="admin-logo" />
       <span class="admin-badge" id="admin-role-badge">Admin</span>
     </div>
-    <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="header-center">
+      <a href="https://llmdev-ops.github.io/" target="_blank" class="site-link" id="site-link" title="Voir le site en ligne">
+        <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        zenvalue.fr
+      </a>
+      <a href="https://llmdev-ops.github.io/" target="_blank" class="deploy-pill deploy-idle" id="deploy-status" title="Statut de publication">
+        <span class="deploy-dot"></span>
+        <span id="deploy-label">Vérification…</span>
+      </a>
+    </div>
+    <div style="display:flex;align-items:center;gap:.8rem;">
       <span class="admin-user" id="admin-user-lbl"></span>
-      <button class="btn btn-sm btn-outline" id="btn-logout">Deconnexion</button>
+      <button class="btn btn-sm btn-outline" id="btn-logout">Déconnexion</button>
     </div>
   </header>
   <div class="admin-layout">
@@ -211,8 +280,16 @@
     <div class="admin-content">
       <div class="admin-main" id="admin-main"><div style="padding:2rem;color:#aaa;">Chargement…</div></div>
       <div class="save-bar" id="save-bar">
-        <span class="save-status" id="save-status"></span>
-        <button class="btn btn-primary" id="btn-save" style="width:auto;padding:.7rem 2rem;">Enregistrer</button>
+        <div class="save-bar-left">
+          <span class="save-last" id="save-last"></span>
+          <span class="unsaved-badge" id="unsaved-badge" style="display:none;">● Modifications non sauvegardées</span>
+        </div>
+        <div class="save-btn-wrap">
+          <button class="btn btn-sm btn-outline" id="btn-discard" style="display:none;" title="Annuler les modifications">Annuler</button>
+          <button class="btn btn-primary" id="btn-save" style="width:auto;padding:.7rem 2.2rem;font-size:.84rem;">
+            Enregistrer
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -392,40 +469,114 @@ function startAdmin() {
   badge.textContent = session.role==='admin' ? 'Admin' : 'Redacteur';
   badge.style.background = session.role==='admin' ? '#aac335' : '#16a34a';
   buildSidebar();
-  const defaultSec = session.role==='admin' ? 'theme' : 'accueil';
-  const firstItem = document.querySelector('.sidebar-item');
-  if (firstItem) navTo(defaultSec);
+  navTo('dashboard');
+  checkDeployStatus();
+  // Poll déploiement toutes les 2 min
+  setInterval(checkDeployStatus, 120000);
 }
 
 /* ══════════════════════════════════════════════════════
    SIDEBAR (HTML statique, event delegation)
 ══════════════════════════════════════════════════════ */
 function buildSidebar() {
-  const isAdmin = session.role==='admin';
-  let html = '';
-  if (isAdmin) {
-    html += '<div class="sidebar-section">Parametres</div>';
-    html += '<div class="sidebar-item" data-sec="theme">Theme graphique</div>';
-    html += '<div class="sidebar-item" data-sec="global">Contact et infos</div>';
-    html += '<div class="sidebar-item" data-sec="resultats">Chiffres cles</div>';
-    html += '<div class="sidebar-section">Contenus</div>';
-    html += '<div class="sidebar-item" data-sec="medias">Bibliotheque medias</div>';
-    html += '<div class="sidebar-section">Utilisateurs</div>';
-    html += '<div class="sidebar-item" data-sec="users">Gestion utilisateurs</div>';
+  var isAdmin = session.role === 'admin';
+  var icons = {
+    dashboard:'🏠', theme:'🎨', global:'📋', resultats:'📊', medias:'🖼️', users:'👥',
+    accueil:'🏠', qsn:'💡', offres:'🛠️', cas:'📁', principes:'🧭',
+    formation:'🎓', recrutement:'🤝', rse:'🌱'
+  };
+  var labels = {
+    dashboard:'Tableau de bord', theme:'Thème graphique', global:'Contact et infos',
+    resultats:'Chiffres clés', medias:'Bibliothèque médias', users:'Utilisateurs',
+    accueil:'Accueil', qsn:'Qui sommes-nous', offres:'Offres', cas:'Cas clients',
+    principes:'Principes', formation:'Formation', recrutement:'Recrutement', rse:'RSE'
+  };
+  function item(sec) {
+    return '<div class="sidebar-item" data-sec="'+sec+'">'
+      +'<span style="font-size:1rem;width:20px;text-align:center;">'+icons[sec]+'</span>'
+      +'<span style="flex:1;">'+labels[sec]+'</span>'
+      +'<span class="dirty-dot"></span>'
+    +'</div>';
   }
-  html += '<div class="sidebar-section">Pages</div>';
+  var html = item('dashboard');
+  if (isAdmin) {
+    html += '<div class="sidebar-section" style="margin-top:1.2rem;">Paramètres</div>';
+    html += item('theme');
+    html += item('global');
+    html += item('resultats');
+    html += '<div class="sidebar-section" style="margin-top:1.2rem;">Médias</div>';
+    html += item('medias');
+    html += '<div class="sidebar-section" style="margin-top:1.2rem;">Équipe</div>';
+    html += item('users');
+  }
+  html += '<div class="sidebar-section" style="margin-top:1.2rem;">Pages du site</div>';
   ['accueil','qsn','offres','cas','principes','formation','recrutement','rse'].forEach(function(sec) {
-    var labels = {accueil:'Accueil',qsn:'Qui sommes-nous',offres:'Offres',cas:'Cas clients',principes:'Principes',formation:'Formation',recrutement:'Recrutement',rse:'RSE'};
-    html += '<div class="sidebar-item" data-sec="'+sec+'">'+labels[sec]+'</div>';
+    html += item(sec);
   });
   document.getElementById('sidebar').innerHTML = html;
 }
 
 function navTo(sec) {
+  // Avertir si changements non sauvegardés
+  if (_dirtySection && _dirtySection !== sec) {
+    if (!confirm('Vous avez des modifications non sauvegardées sur "'+_dirtySection+'". Quitter sans sauvegarder ?')) return;
+    clearDirty();
+  }
   document.querySelectorAll('.sidebar-item').forEach(function(i){ i.classList.remove('active'); });
   var el = document.querySelector('.sidebar-item[data-sec="'+sec+'"]');
   if (el) el.classList.add('active');
   loadSection(sec);
+}
+
+function rDashboard() {
+  var quickLinks = [
+    {sec:'accueil', icon:'🏠', title:'Accueil', desc:'Hero, tagline, cards piliers'},
+    {sec:'offres',  icon:'🛠️', title:'Offres', desc:'Cartes de service'},
+    {sec:'cas',     icon:'📁', title:'Cas clients', desc:'Études de cas détaillées'},
+    {sec:'qsn',     icon:'💡', title:'Qui sommes-nous', desc:'Mission, vision, histoire'},
+    {sec:'formation',icon:'🎓',title:'Formation', desc:'Catalogue Qualiopi'},
+    {sec:'recrutement',icon:'🤝',title:'Recrutement', desc:'Offres et processus'},
+    {sec:'rse',     icon:'🌱', title:'RSE', desc:'Engagements responsabilité'},
+    {sec:'medias',  icon:'🖼️', title:'Médias', desc:'Logos, photos, illustrations'},
+  ];
+  var isAdmin = session.role === 'admin';
+  if (isAdmin) {
+    quickLinks.unshift({sec:'theme', icon:'🎨', title:'Thème', desc:'Couleurs et typographie'});
+  }
+
+  var firstN = session.name ? session.name.split(' ')[0] : 'vous';
+  var hour = new Date().getHours();
+  var greeting = hour < 12 ? 'Bonjour' : hour < 18 ? 'Bon après-midi' : 'Bonsoir';
+
+  return '<div class="section-title dash-welcome">'+greeting+', '+firstN+' 👋</div>'
+    +'<p class="dash-sub">Que souhaitez-vous modifier aujourd'hui ?</p>'
+    +'<div class="dash-cards">'
+      +quickLinks.map(function(l){
+        return '<div class="dash-card" onclick="navTo(''+l.sec+'');">'
+          +'<div class="dash-card-icon">'+l.icon+'</div>'
+          +'<div class="dash-card-title">'+l.title+'</div>'
+          +'<div class="dash-card-desc">'+l.desc+'</div>'
+        +'</div>';
+      }).join('')
+    +'</div>'
+    +'<div class="dash-status-box">'
+      +'<div>'
+        +'<div class="dash-status-title">État du site</div>'
+        +'<div class="dash-last-deploy" id="dash-deploy-txt">Vérification en cours…</div>'
+      +'</div>'
+      +'<div style="display:flex;gap:.7rem;align-items:center;">'
+        +'<a href="https://llmdev-ops.github.io/" target="_blank" class="btn btn-sm btn-outline">Voir le site →</a>'
+        +'<button class="btn btn-sm btn-outline" onclick="checkDeployStatus();updateDashDeploy();">Actualiser</button>'
+      +'</div>'
+    +'</div>';
+}
+
+function updateDashDeploy() {
+  setTimeout(function(){
+    var lbl = document.getElementById('deploy-label');
+    var txt = document.getElementById('dash-deploy-txt');
+    if (txt && lbl) txt.textContent = lbl.textContent;
+  }, 500);
 }
 
 /* ══════════════════════════════════════════════════════
@@ -433,8 +584,14 @@ function navTo(sec) {
 ══════════════════════════════════════════════════════ */
 async function loadSection(sec) {
   state.section = sec;
-  document.getElementById('save-status').textContent = '';
+  clearDirty();
   document.getElementById('admin-main').innerHTML = '<div style="padding:2rem;color:#aaa;display:flex;align-items:center;gap:.8rem;"><div class="spin"></div>Chargement...</div>';
+  if (sec==='dashboard') {
+    document.getElementById('save-bar').style.display = 'none';
+    document.getElementById('admin-main').innerHTML = rDashboard();
+    checkDeployStatus(); updateDashDeploy();
+    return;
+  }
   if (sec==='medias') {
     document.getElementById('save-bar').style.display = 'none';
     document.getElementById('admin-main').innerHTML = rMedias();
@@ -462,17 +619,27 @@ async function loadSection(sec) {
    SAVE
 ══════════════════════════════════════════════════════ */
 async function doSave() {
-  const status = document.getElementById('save-status');
   document.getElementById('overlay').classList.add('on');
-  status.textContent=''; status.className='save-status';
   try {
-    const data = collect();
-    const newSha = await ghWrite(FILES[state.section], data, state.sha);
-    state.sha=newSha; state.data=data;
-    status.textContent='Enregistre — mise a jour dans ~30s';
-    status.className='save-status ok';
-  } catch(e) { status.textContent='Erreur : '+e.message; status.className='save-status err'; }
-  finally { document.getElementById('overlay').classList.remove('on'); }
+    var data = collect();
+    var newSha = await ghWrite(FILES[state.section], data, state.sha);
+    state.sha = newSha; state.data = data;
+    clearDirty();
+    updateSaveTimestamp();
+    toast('Enregistré · Site mis à jour dans ~30s', 'ok');
+    checkDeployStatus();
+  } catch(e) {
+    toast('Erreur : '+e.message, 'err');
+  } finally {
+    document.getElementById('overlay').classList.remove('on');
+  }
+}
+
+function discardChanges() {
+  if (!confirm('Annuler toutes les modifications de cette section ?')) return;
+  clearDirty();
+  render(state.section, state.data);
+  toast('Modifications annulées', 'info');
 }
 
 /* ══════════════════════════════════════════════════════
@@ -540,7 +707,7 @@ async function addUser() {
     const newSha = await ghWrite(FILES.users, updated, state.sha);
     state.sha=newSha; state.data=updated;
     document.getElementById('admin-main').innerHTML = rUsers(updated);
-    document.getElementById('user-msg') && showMsg(document.getElementById('user-msg'), name+' ajoute avec succes.', true);
+    toast(name+' ajouté avec succès ✓', 'ok');
   } catch(e){ showMsg(msg,'Erreur : '+e.message,false); }
   finally { document.getElementById('overlay').classList.remove('on'); }
 }
@@ -558,6 +725,87 @@ async function deleteUser(email) {
 }
 
 function showMsg(el,txt,ok) { el.textContent=txt; el.style.color=ok?'#16a34a':'#dc2626'; el.style.display='block'; }
+
+/* ══ TOAST SYSTEM ══ */
+function toast(msg, type) {
+  type = type||'ok';
+  var icons = {ok:'✓', err:'✕', info:'ℹ'};
+  var wrap = document.getElementById('toast-wrap');
+  var t = document.createElement('div');
+  t.className = 'toast toast-'+type;
+  t.innerHTML = '<span class="toast-icon">'+icons[type]+'</span><span>'+msg+'</span>';
+  wrap.appendChild(t);
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ t.classList.add('show'); }); });
+  setTimeout(function(){ t.classList.remove('show'); setTimeout(function(){ t.remove(); }, 400); }, 3200);
+}
+
+/* ══ DIRTY TRACKING ══ */
+var _dirtySection = null;
+function markDirty() {
+  var sec = state.section;
+  var bar = document.getElementById('save-bar');
+  var badge = document.getElementById('unsaved-badge');
+  var discard = document.getElementById('btn-discard');
+  if (bar) bar.classList.add('has-changes');
+  if (badge) badge.style.display = 'inline-block';
+  if (discard) discard.style.display = 'inline-block';
+  _dirtySection = sec;
+  var el = document.querySelector('.sidebar-item[data-sec="'+sec+'"]');
+  if (el) el.classList.add('dirty');
+}
+function clearDirty() {
+  var bar = document.getElementById('save-bar');
+  var badge = document.getElementById('unsaved-badge');
+  var discard = document.getElementById('btn-discard');
+  if (bar) bar.classList.remove('has-changes');
+  if (badge) badge.style.display = 'none';
+  if (discard) discard.style.display = 'none';
+  if (_dirtySection) {
+    var el = document.querySelector('.sidebar-item[data-sec="'+_dirtySection+'"]');
+    if (el) el.classList.remove('dirty');
+  }
+  _dirtySection = null;
+}
+function updateSaveTimestamp() {
+  var el = document.getElementById('save-last');
+  if (!el) return;
+  var now = new Date();
+  el.textContent = 'Sauvegardé à ' + now.toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'});
+}
+
+/* ══ DEPLOY STATUS ══ */
+var _deployTimer = null;
+async function checkDeployStatus() {
+  var pill = document.getElementById('deploy-status');
+  var lbl  = document.getElementById('deploy-label');
+  if (!pill || !lbl) return;
+  try {
+    var r = await fetch('https://api.github.com/repos/'+GH_USER+'/'+GH_REPO+'/actions/runs?per_page=3', {headers:ghH()});
+    if (!r.ok) throw new Error('HTTP '+r.status);
+    var d = await r.json();
+    var runs = (d.workflow_runs||[]).filter(function(run){ return run.name && run.name.includes('pages'); });
+    if (!runs.length && d.workflow_runs) runs = d.workflow_runs;
+    var latest = runs[0];
+    if (!latest) { pill.className='deploy-pill deploy-idle'; lbl.textContent='Pas de déploiement'; return; }
+    var status   = latest.status;
+    var conclusion = latest.conclusion;
+    var updated = latest.updated_at ? new Date(latest.updated_at).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}) : '';
+    if (status === 'in_progress' || status === 'queued') {
+      pill.className='deploy-pill deploy-run'; lbl.textContent='Publication en cours…';
+      pill.title='Déploiement en cours — rafraîchissement auto';
+      if (!_deployTimer) _deployTimer = setInterval(checkDeployStatus, 8000);
+    } else {
+      clearInterval(_deployTimer); _deployTimer = null;
+      if (conclusion === 'success') {
+        pill.className='deploy-pill deploy-ok'; lbl.textContent='Publié à '+updated;
+        pill.title='Dernière publication réussie à '+updated;
+      } else {
+        pill.className='deploy-pill deploy-err'; lbl.textContent='Échec déploiement';
+        pill.title='Dernier déploiement échoué — vérifiez GitHub Actions';
+      }
+    }
+  } catch(e) { pill.className='deploy-pill deploy-idle'; lbl.textContent='Statut indisponible'; }
+}
 
 /* ══════════════════════════════════════════════════════
    THEME
@@ -777,11 +1025,12 @@ async function uploadFiles(files) {
       var r = await fetch(ghUrl(path), {method:'PUT', headers:{...ghH(),'Content-Type':'application/json'}, body:JSON.stringify(body)});
       if (!r.ok) throw new Error('HTTP '+r.status);
       var resp = await r.json();
+      toast(file.name+' uploadé ✓', 'ok');
       if (!mediaFiles[mediaTab]) mediaFiles[mediaTab]=[];
       var idx = mediaFiles[mediaTab].findIndex(function(x){ return x.name===file.name; });
       var nf = {name:file.name, path:path, sha:resp.content.sha};
       if (idx>=0) mediaFiles[mediaTab][idx]=nf; else mediaFiles[mediaTab].push(nf);
-    } catch(e){ alert('Erreur upload '+file.name+' : '+e.message); }
+    } catch(e){ toast('Erreur upload '+file.name+' : '+e.message, 'err'); }
   }
   progress.classList.remove('on');
   renderMediaGrid(mediaTab);
@@ -795,7 +1044,8 @@ async function deleteMedia(path, sha) {
     if (!r.ok) throw new Error('HTTP '+r.status);
     mediaFiles[mediaTab] = (mediaFiles[mediaTab]||[]).filter(function(f){ return f.path!==path; });
     renderMediaGrid(mediaTab);
-  } catch(e){ alert('Erreur suppression : '+e.message); }
+    toast(name+' supprimé', 'info');
+  } catch(e){ toast('Erreur suppression : '+e.message, 'err'); }
 }
 
 function fileToBase64(file) {
@@ -827,10 +1077,13 @@ function fillFields() {
   });
 }
 function render(sec, d) {
-  _fv={};
+  _fv = {};
   var renderers = {theme:rTheme,global:rGlobal,resultats:rResultats,accueil:rAccueil,qsn:rQSN,offres:rOffres,cas:rCas,principes:rPrincipes,formation:rFormation,recrutement:rRecrutement,rse:rRSE};
   document.getElementById('admin-main').innerHTML = renderers[sec] ? renderers[sec](d) : '<p style="padding:2rem">Section inconnue</p>';
   fillFields();
+  // Réinitialiser la save bar
+  var saveLast = document.getElementById('save-last');
+  if (saveLast) saveLast.textContent = '';
 }
 
 /* ══════════════════════════════════════════════════════
