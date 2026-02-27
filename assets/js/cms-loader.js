@@ -114,7 +114,11 @@ async function loadCasClients() {
 
   c.addEventListener('click', function(e){
     var btn = e.target.closest('.btn-voir-cas');
-    if (btn) showCasDetail(_casData[parseInt(btn.dataset.cas,10)]);
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    var idx = parseInt(btn.dataset.cas, 10);
+    if (_casData[idx]) showCasDetail(_casData[idx]);
   });
 }
 
