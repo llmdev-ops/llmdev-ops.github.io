@@ -1,27 +1,40 @@
 {
+  "section_tag": "Nos offres de service",
+  "h2": "Plus que des promesses,<br/><em>des preuves concrètes.</em>",
+  "lead": "Nos clients sont notre priorité, et leurs succès sont notre fierté.",
+
+  "resultats_tag": "Résultats mesurés chez nos clients",
+
+  "cas_tag": "Études de cas",
+  "cas_h2": "Ils ont transformé leur <em>organisation avec nous</em>",
+
+  "cta_h2": "Ces résultats pourraient <em>être les vôtres.</em>",
+  "cta_desc": "Parlons de vos enjeux sans engagement.",
+  "cta_btn": "Démarrer l'échange",
+
   "items": [
     {
-      "categorie": "Accompagnements",
-      "titre": "Coaching & Conseil sur mesure",
-      "description": "Coaching Agile, conseil stratégique, Scrum Masters et Product Owners et des experts qui s'impliquent concrètement dans vos projets.",
-      "cta_label": "Voir le cas client"
+      "categorie": "Conseil",
+      "titre": "Transformation avec Résultats Mesurables",
+      "description": "Nous intervenons là où les pratiques agiles sont en place mais où les résultats concrets manquent. Notre approche itérative produit des impacts mesurables dès les premiers cycles.",
+      "cta_label": "En savoir plus"
     },
     {
-      "categorie": "Transformation",
-      "titre": "Résultats mesurables & ROI tangible",
-      "description": "Cycles courts de 4 semaines, points de mesure précis, décisions basées sur les données. Chaque étape produit des résultats quantifiables.",
-      "cta_label": "Voir le cas client"
+      "categorie": "Formation",
+      "titre": "Développement des Compétences Agile & Lean",
+      "description": "Des formations certifiantes et sur-mesure pour ancrer les compétences dans la durée. Organisme certifié Qualiopi.",
+      "cta_label": "Voir les formations"
     },
     {
-      "categorie": "Efficacité",
-      "titre": "Efficacité opérationnelle",
-      "description": "Fluidification des flux, optimisation des ressources, réduction des temps d'arrêt,  transformation orientée résultats concrets et observables.",
-      "cta_label": "Voir le cas client"
+      "categorie": "Coaching",
+      "titre": "Accompagnement des Équipes et Dirigeants",
+      "description": "Coachs agiles et experts Lean qui s'intègrent à vos équipes pour transférer les compétences et garantir l'autonomie.",
+      "cta_label": "En savoir plus"
     },
     {
-      "categorie": "Design & Portfolio",
-      "titre": "Design de service & PPM",
-      "description": "Repensez vos processus, vos expériences client et la gestion de votre portfolio produits/projets pour créer une valeur durable.",
+      "categorie": "Performance",
+      "titre": "Pilotage par la Valeur",
+      "description": "Mise en place d'indicateurs orientés valeur et de boucles d'apprentissage courtes pour piloter la transformation par les données.",
       "cta_label": "En savoir plus"
     }
   ]

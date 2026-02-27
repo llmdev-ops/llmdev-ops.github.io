@@ -1,39 +1,10 @@
 {
   "items": [
-    {
-      "icon": "📊",
-      "titre": "Valeur mesurable",
-      "description": "Chaque initiative est accompagnée de métriques précises pour évaluer le progrès et les performances de façon explicite."
-    },
-    {
-      "icon": "🔄",
-      "titre": "Valeur pérenne",
-      "description": "Nous accompagnons les individus et organisations vers l'autonomie dans la recherche continue de valeur sur le long terme."
-    },
-    {
-      "icon": "🌍",
-      "titre": "Valeur responsable",
-      "description": "Les enjeux sociétaux, économiques et environnementaux sont systématiquement intégrés à nos démarches."
-    },
-    {
-      "icon": "🧘",
-      "titre": "Sérénité",
-      "description": "Un environnement calme et équilibré, sans pression excessive, permettant à chacun d'apprendre, d'évoluer et de s'épanouir."
-    },
-    {
-      "icon": "🤝",
-      "titre": "Respect",
-      "description": "La diversité des compétences et des points de vue au cœur de nos interactions, favorisant collaboration et innovation."
-    },
-    {
-      "icon": "💡",
-      "titre": "Confiance",
-      "description": "Chaque membre se sent soutenu et motivé pour donner le meilleur de lui-même grâce à la confiance mutuelle."
-    },
-    {
-      "icon": "🔬",
-      "titre": "Droit à l'erreur",
-      "description": "Les erreurs sont des opportunités d'apprentissage et de croissance, avec des processus d'amélioration continue."
-    }
+    { "icon": "🎯", "titre": "Impact avant les pratiques", "description": "Nous ne déployons pas des méthodes pour les méthodes — chaque intervention vise un résultat mesurable." },
+    { "icon": "🤝", "titre": "Co-construction", "description": "Nous construisons avec vous, pas pour vous. L'appropriation est la condition de la durabilité." },
+    { "icon": "📊", "titre": "Pilotage par les données", "description": "Chaque décision s'appuie sur des indicateurs concrets, pas sur des intuitions." },
+    { "icon": "🔄", "titre": "Amélioration continue", "description": "Nous appliquons à nos propres pratiques les principes que nous enseignons à nos clients." },
+    { "icon": "🌱", "titre": "Durabilité", "description": "Une transformation réussie est celle qui tient dans le temps, sans nous — nous préparons votre autonomie." },
+    { "icon": "💡", "titre": "Pragmatisme", "description": "Nous adaptons les frameworks à votre contexte, jamais l'inverse." }
   ]
 }

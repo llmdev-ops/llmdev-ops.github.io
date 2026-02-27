@@ -1,36 +1,39 @@
 {
+  "section_tag": "Nous rejoindre",
   "titre": "Grandir, s'épanouir et innover ensemble.",
-  "soustitre": "Chez Zen Value, nous croyons en un environnement de travail où chacun·e trouve sa place, apprend et contribue avec enthousiasme.",
-  "intro": "Soyez acteur de votre performance et venez découvrir notre modèle basé sur la transparence, la co-construction, la valeur et le bien-être de nos collaborateurs.",
-  "tagline": "Let's find a Zen Way to Value – Ensemble, donnons du sens à la performance.",
+  "soustitre": "Rejoignez une communauté d'experts engagés, où chaque voix compte et où la performance rime avec bien-être.",
+  "intro": "Chez Zen Value, nous construisons une organisation apprenante, inclusive et tournée vers l'impact. Nous recrutons des consultant·es, coachs et formateurs qui partagent cette vision.",
+  "tagline": "\"Soyez acteur de votre performance.\"",
+
+  "engagements_tag": "Nos engagements pour vous",
+  "engagements_h2": "Ce qui nous rend <em>différents</em>",
+
+  "profils_tag": "Nos convictions",
+  "profils_h2": "Nous croyons en <em>l'inclusion et la diversité</em>",
+
+  "processus_tag": "Un processus humain et inclusif",
+  "processus_h2": "Notre processus de <em>recrutement</em>",
+
+  "cta_h2": "Prêt·e à grandir <em>avec nous ?</em>",
+  "cta_desc": "Rejoignez une communauté engagée.",
+  "cta_btn": "Postuler",
+
   "engagements": [
-    {
-      "icon": "🔍",
-      "titre": "Transparence & Équité",
-      "texte": "Rémunération basée sur un TJM transparent, connu de tous. Même responsabilité de rentabilité pour une rétribution juste et un équilibre entre réussite collective et bien-être individuel."
-    },
-    {
-      "icon": "📚",
-      "titre": "Développement continu",
-      "texte": "Formations internes deux vendredis après-midi par mois, mentoring sur mesure par vos pairs, parcours individualisé selon vos aspirations."
-    },
-    {
-      "icon": "🤝",
-      "titre": "Collaboration & Initiative",
-      "texte": "Votre voix compte. Participez aux fonctions internes (Recrutement, RSE, Business, Marketing…) et proposez des idées innovantes. L'initiative est valorisée."
-    }
+    { "icon": "🤝", "titre": "Co-construction", "texte": "Vous participez activement aux décisions qui vous concernent. Votre voix a du poids." },
+    { "icon": "📈", "titre": "Développement continu", "texte": "Formations, certifications, retours d'expérience — nous investissons dans votre montée en compétences." },
+    { "icon": "⚖️", "titre": "Équilibre vie pro/perso", "texte": "Flexibilité, télétravail, rythme choisi. La performance ne se fait pas au détriment du bien-être." }
   ],
   "profils": [
-    { "icon": "🧠", "titre": "Intuitifs",     "description": "Capables de comprendre et d'accompagner selon le contexte." },
-    { "icon": "🔍", "titre": "Curieux",       "description": "En quête constante de savoir et d'amélioration." },
-    { "icon": "💪", "titre": "Expérimentés",  "description": "Riches d'un vécu varié, de vrais doers sur le terrain." },
-    { "icon": "📣", "titre": "Pédagogues",    "description": "Animés par l'envie de transmettre et de faire grandir." }
+    { "icon": "🌍", "titre": "Profils internationaux", "description": "Toutes origines, toutes cultures — la diversité enrichit nos équipes et nos approches." },
+    { "icon": "♀️", "titre": "Femmes dans la tech", "description": "Nous encourageons activement la présence féminine dans nos équipes techniques et de conseil." },
+    { "icon": "🔄", "titre": "Reconversions", "description": "Votre parcours atypique est une force. Nous accueillons les reconversions avec enthousiasme." },
+    { "icon": "🎓", "titre": "Jeunes talents", "description": "Stage, alternance, premier emploi — nous formons la prochaine génération d'experts." }
   ],
   "processus": [
-    { "titre": "Qualification",  "description": "Premier échange pour faire connaissance et valider votre profil" },
-    { "titre": "Entretien 1",    "description": "Découverte de votre savoir-être et adéquation aux valeurs" },
-    { "titre": "Entretien 2",    "description": "Évaluation de votre savoir-faire à travers des cas concrets" },
-    { "titre": "Entretien 3",    "description": "Pour les profils experts, discussion approfondie si nécessaire" },
-    { "titre": "Satisfaction",   "description": "Votre retour pour améliorer continuellement notre processus" }
+    { "titre": "Candidature", "description": "Envoyez votre CV et une courte présentation de votre motivation." },
+    { "titre": "Échange RH", "description": "Un premier appel de 30 minutes pour mieux se connaître." },
+    { "titre": "Entretien métier", "description": "Discussion approfondie sur votre expertise et vos projets." },
+    { "titre": "Rencontre équipe", "description": "Un moment informel pour découvrir la culture Zen Value." },
+    { "titre": "Offre", "description": "Une proposition transparente, construite ensemble." }
   ]
 }
