@@ -67,15 +67,7 @@
   <link rel="stylesheet" href="assets/css/navigation.css" />
   <link rel="stylesheet" href="assets/css/animations.css" />
   <link rel="stylesheet" href="assets/css/forms.css" />
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => document.location.href = "/admin/");
-        }
-      });
-    }
-  </script>
+
 </head>
 <body>
 
@@ -161,7 +153,7 @@
   </div>
 
   <!-- Co-construction + RSE -->
-  <div class="section bg-yellow">
+  <div class="section bg-c1l">
     <div class="two-col-center">
       <div class="reveal">
         <div class="section-tag">Rejoignez l'aventure</div>
@@ -264,15 +256,15 @@
         <div class="section-tag reveal">Notre vision</div>
         <h2 class="reveal" style="font-size:clamp(1.5rem,2.1vw,2.1rem);">"<span data-cms="qsn.vision">Construire un avenir où les entreprises atteignent une performance mesurable et pérenne</span>"</h2>
         <p class="body-text reveal" data-cms="qsn.mission" style="margin-top:1rem;"></p>
-        <p style="font-size:1rem;font-weight:700;color:var(--zv-green);margin-top:1.4rem;" class="reveal">Let's find a Zen Way to Value.</p>
+        <p style="font-size:1rem;font-weight:700;color:var(--c1);margin-top:1.4rem;" class="reveal">Let's find a Zen Way to Value.</p>
       </div>
       <div>
         <div class="section-tag reveal">Nos outils</div>
         <h2 style="font-size:clamp(1.45rem,1.9vw,1.9rem);" class="reveal">Des frameworks reconnus,<br/><em>sans dogmatisme</em></h2>
         <div style="margin-top:1.4rem;" class="reveal">
-          <span class="tag-pill">Agile / Scrum</span><span class="tag-pill">Lean</span>
-          <span class="tag-pill">TLS</span><span class="tag-pill">DevOps</span>
-          <span class="tag-pill">Théorie des Contraintes</span><span class="tag-pill">Six Sigma</span>
+          <span class="tag-pill">Agile / Scrum</span><span class="tag-accent">Lean</span>
+          <span class="tag-pill">TLS</span><span class="tag-accent">DevOps</span>
+          <span class="tag-pill">Théorie des Contraintes</span><span class="tag-accent">Six Sigma</span>
         </div>
       </div>
     </div>
@@ -310,7 +302,7 @@
      PAGE FORMATION
 ═══════════════════════════════════════ -->
 <div class="page" id="page-formation">
-  <div class="section bg-dark">
+  <div class="section bg-dark-dk">
     <div class="section-tag muted reveal">Organisme de formation certifié</div>
     <h2 class="on-dark reveal" data-cms="formation.titre">Développez vos compétences avec Zen Value</h2>
     <p class="lead on-dark reveal" data-cms="formation.soustitre" style="margin-top:.7rem;"></p>
@@ -318,7 +310,7 @@
       <div class="qualiopi-badge-icon">🏅</div>
       <div class="qualiopi-badge-text">
         <strong>Certifié Qualiopi</strong>
-        <span style="color:rgba(255,255,255,.5);">Certification française de qualité des organismes de formation</span>
+        <span style="color:rgba(255,255,255,.55);">Certification française de qualité des organismes de formation</span>
       </div>
     </div>
   </div>
@@ -346,11 +338,11 @@
      PAGE RECRUTEMENT
 ═══════════════════════════════════════ -->
 <div class="page" id="page-recrutement">
-  <div class="section bg-dark">
+  <div class="section bg-dark-dk">
     <div class="section-tag muted reveal">Nous rejoindre</div>
     <h2 class="on-dark reveal" data-cms="recrutement.titre">Grandir, s'épanouir et innover ensemble.</h2>
     <p class="lead on-dark reveal" data-cms="recrutement.soustitre" style="margin-top:.7rem;"></p>
-    <p style="color:var(--zv-green);font-size:1rem;font-weight:700;margin-top:1.6rem;font-style:italic;" class="reveal" data-cms="recrutement.tagline"></p>
+    <p style="color:var(--c1);font-size:1rem;font-weight:700;margin-top:1.6rem;font-style:italic;" class="reveal" data-cms="recrutement.tagline"></p>
   </div>
 
   <div class="section bg-white">
@@ -359,7 +351,7 @@
     <div class="engagements-grid" id="engagements-container"></div>
   </div>
 
-  <div class="section bg-sage">
+  <div class="section bg-c3l">
     <div class="section-tag reveal">Nos convictions</div>
     <h2 class="reveal">Nous croyons en <em>l'inclusion et la diversité</em></h2>
     <div class="profils-grid" id="profils-container"></div>
@@ -383,7 +375,7 @@
      PAGE RSE
 ═══════════════════════════════════════ -->
 <div class="page" id="page-rse">
-  <div class="section bg-sage">
+  <div class="section bg-c3l">
     <div class="section-tag reveal">RSE</div>
     <h2 class="reveal" data-cms="rse.titre">Une performance durable va bien au-delà des chiffres.</h2>
     <p class="lead reveal" data-cms="rse.intro" style="margin-top:.7rem;"></p>
@@ -476,7 +468,7 @@
 
 <!-- ══════ SCRIPTS ══════ -->
 <!-- Theme loader en premier : surcharge les variables CSS avant le rendu -->
-<script src="assets/js/theme-loader.js?v=10"></script>
+<script src="assets/js/theme-loader.js?v=11"></script>
 <!-- Ordre important : animations en premier (observeReveals doit exister avant cms-loader) -->
 <script src="assets/js/animations.js"></script>
 <script src="assets/js/router.js"></script>
