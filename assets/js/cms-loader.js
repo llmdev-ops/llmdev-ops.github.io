@@ -108,19 +108,25 @@ async function loadCasClients() {
       +'<h3>'+(cas.titre||'')+'</h3>'
       +'<p class="cas-desc">'+(cas.description||'')+'</p>'
       +resultats
-      +'<button class="btn btn-outline" onclick="showCasDetail(window._casData['+i+'])" style="margin-top:1.2rem;width:auto;">Voir le cas client →</button>'
+      +'<button type="button" class="btn btn-outline zv-cas-btn" data-i="'+i+'" style="margin-top:1.2rem;width:auto;">Voir le cas client →</button>'
     +'</div>';
   }).join('');
-
-  c.addEventListener('click', function(e){
-    var btn = e.target.closest('.btn-voir-cas');
-    if (!btn) return;
-    e.preventDefault();
-    e.stopPropagation();
-    var idx = parseInt(btn.dataset.cas, 10);
-    if (_casData[idx]) showCasDetail(_casData[idx]);
-  });
 }
+
+/* Délégation au niveau document — zéro risque de timing ou de propagation */
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('.zv-cas-btn');
+  if (!btn) return;
+  e.preventDefault();
+  e.stopPropagation();
+  var idx = parseInt(btn.getAttribute('data-i'), 10);
+  var cas = window._casData[idx];
+  if (cas) {
+    window.showCasDetail(cas);
+  } else {
+    console.error('[ZV] Cas introuvable index', idx, '| _casData:', window._casData.length, 'items');
+  }
+});
 
 window.showCasDetail = function showCasDetail(cas) {
   function set(id, html){ var el=document.getElementById(id); if(el) el.innerHTML=html||''; }
