@@ -2,15 +2,45 @@
   "eyebrow": "Cabinet de conseil & organisme de formation",
   "tagline1": "Let's find a",
   "tagline2": "Zen Way to Value.",
-  "soustitre": "Performance opérationnelle, pérenne et responsable. Nous aidons les organisations à  délivrer plus de valeur  mesurable, durable, responsable.",
+  "soustitre": "Performance opérationnelle, pérenne et responsable.",
   "cta1": "Découvrez-nous",
   "cta2": "Nos offres",
   "badge": "Lean · Agile · TLS · DevOps",
-  "quote": "Etre performant et générer de la valeur n'a jamais été aussi <strong>Zen.</strong>",
+  "quote": "\"Être performant et générer de la valeur n'a jamais été aussi <strong>Zen.</strong>\"",
   "stat1_num": "+15",
   "stat1_label": "Ans d'expertise",
   "stat2_num": "50+",
   "stat2_label": "Organisations accompagnées",
   "stat3_num": "Qualiopi",
-  "stat3_label": "Certifié formation"
+  "stat3_label": "Certifié formation",
+
+  "piliers_tag": "Notre promesse",
+  "piliers_h2": "Maîtrisez votre <em>performance</em>",
+  "piliers_lead": "Une performance maîtrisée grâce à la mesure, pérenne et vous permettant d'adresser les grands enjeux sociétaux et environnementaux de demain.",
+  "piliers_cta": "Découvrez nos offres conseil et formation",
+
+  "card1_icon": "📐",
+  "card1_titre": "Excellence Opérationnelle",
+  "card1_texte": "Nous agissons concrètement sur le delivery — fiabilisation des engagements, accélération des cycles, amélioration de la qualité.",
+  "card2_icon": "♻️",
+  "card2_titre": "Pérennisation de la valeur",
+  "card2_texte": "Nous accompagnons le changement continu pour rendre les organisations autonomes dans leur création de valeur sur le long terme.",
+  "card3_icon": "🌱",
+  "card3_titre": "Responsabilité",
+  "card3_texte": "Parce que la performance ne peut pas être uniquement économique — nous intégrons les enjeux écologiques, éthiques et sociétaux.",
+
+  "coco_tag": "Rejoignez l'aventure",
+  "coco_h2": "Construisons <em>Zen Value</em> avec vous.",
+  "coco_lead": "Soyez acteur de votre performance et venez découvrir notre modèle basé sur la transparence, la co-construction et le bien-être.",
+  "coco_cta": "Rejoignez-nous",
+
+  "rse_tag": "RSE",
+  "rse_h2": "Vers une performance <em>toujours plus responsable</em>",
+  "rse_lead": "Parce que la performance ne peut pas être uniquement économique — elle doit également être sociétale et environnementale.",
+  "rse_cta": "Nos engagements RSE",
+
+  "cta_tag": "Passons à l'action",
+  "cta_h2": "Prêt à construire <em>votre réussite ?</em>",
+  "cta_desc": "Discutons de vos enjeux lors d'un premier échange sans engagement.",
+  "cta_btn": "Prendre contact"
 }

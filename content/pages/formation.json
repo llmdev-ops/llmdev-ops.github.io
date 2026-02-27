@@ -1,7 +1,14 @@
 {
+  "section_tag": "Organisme de formation certifié",
   "titre": "Développez vos compétences avec Zen Value",
-  "soustitre": "Des formations Agile, Lean et Leadership adaptées à vos enjeux, animées par nos experts de terrain. Éligibles aux financements OPCO et CPF.",
-  "texte1": "La certification Qualiopi est une certification française obligatoire pour les organismes de formation. Elle atteste de la qualité des processus mis en œuvre — une exigence qui s'inscrit dans notre ADN de performance mesurable.",
-  "texte2": "En choisissant Zen Value, vous bénéficiez de formations animées par des praticiens qui s'impliquent concrètement, alignées avec les standards de qualité les plus exigeants.",
+  "soustitre": "Des formations Agile, Lean, Leadership et TLS pour développer vos équipes et ancrer les compétences dans la durée.",
+  "qualiopi_tag": "Pourquoi Qualiopi ?",
+  "qualiopi_h2": "Un gage de <em>qualité reconnu</em>",
+  "texte1": "La certification Qualiopi garantit la qualité des processus mis en œuvre par les organismes de formation. Elle est obligatoire pour bénéficier des financements publics et mutualisés.",
+  "texte2": "Chez Zen Value, cette certification traduit notre engagement à offrir des formations rigoureuses, évaluées et en amélioration continue — cohérent avec les valeurs que nous transmettons.",
+  "catalogue_tag": "Notre catalogue complet",
+  "catalogue_h2": "Découvrez toutes <em>nos formations</em>",
+  "catalogue_desc": "Retrouvez l'ensemble de notre catalogue — Agile, Lean, Leadership, TLS et bien plus.",
+  "catalogue_btn": "Accéder au catalogue →",
   "catalogue_url": "https://zenvalue.catalogueformpro.com/"
 }

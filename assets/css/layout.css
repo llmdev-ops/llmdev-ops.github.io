@@ -7,33 +7,35 @@ html { scroll-behavior: smooth; }
 body {
   font-family: var(--ff);
   background: var(--zv-white);
-  color: var(--zv-dark);
+  color: var(--c2);
   overflow-x: hidden;
   line-height: 1.65;
   font-size: 16px;
 }
 
-/* Pages */
+/* ── Pages ── */
 .page { display: none; padding-top: var(--nav-h); min-height: 100vh; }
 .page.active { display: block; }
 
-/* Sections */
+/* ── Sections ── */
 .section    { padding: var(--space-xl) var(--gutter); }
 .section-sm { padding: var(--space-lg) var(--gutter); }
 
-/* Fonds */
-.bg-white   { background: var(--zv-white); }
-.bg-light   { background: var(--zv-light); }
-.bg-dark    { background: var(--zv-dark); }
-.bg-green   { background: var(--zv-green); }
+/* ── Fonds ── */
+.bg-white  { background: var(--zv-white); }
+.bg-light  { background: var(--zv-light); }
+.bg-dark   { background: var(--c2); }
+.bg-dark-dk{ background: var(--c2d); }
+.bg-c1     { background: var(--c1); }
+.bg-c1l    { background: var(--c1l); }
+.bg-c3l    { background: var(--c3l); }
+/* aliases anciens */
+.bg-green  { background: var(--c1); }
+.bg-yellow { background: var(--c1l); }
+.bg-accent { background: var(--c3l); }
+.bg-sage   { background: var(--c1l); }
 
-/* Ces deux classes répondent au choix de palette dans le CMS */
-.bg-yellow  { background: var(--accent-section); }
-.bg-sage    { background: var(--accent-section-alt); }
-.bg-accent  { background: var(--accent-section); }
-.bg-blue    { background: var(--cp-blue); }
-
-/* Hero */
+/* ── Hero ── */
 .hero {
   min-height: calc(100vh - var(--nav-h));
   display: grid;
@@ -47,7 +49,7 @@ body {
   padding: 6vw 4vw 6vw var(--gutter);
 }
 .hero-right {
-  background: var(--zv-dark);
+  background: var(--c2d);
   position: relative;
   overflow: hidden;
   min-height: 60vh;
@@ -59,12 +61,25 @@ body {
   justify-content: space-between;
   padding: 3.5rem 3.2rem;
 }
-/* Variantes fond hero-right selon thème */
-.hero-right.hero-bg-dark   { background: var(--zv-dark); }
-.hero-right.hero-bg-green  { background: var(--zv-green); }
-.hero-right.hero-bg-accent { background: var(--accent-section, var(--cp-yellow)); }
 
-.hero-right { background: var(--zv-dark); } /* fallback */
+/* Variantes fond hero-right */
+.hero-right.hero-bg-dark   { background: var(--c2d); }
+.hero-right.hero-bg-dark2  { background: var(--c2); }
+.hero-right.hero-bg-green  { background: var(--c1); }
+.hero-right.hero-bg-accent { background: var(--c3d); }
+
+/* Dégradé subtil hero gauche */
+.hero-left::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, var(--c1l));
+  opacity: .35;
+  pointer-events: none;
+}
+.hero { position: relative; }
 
 .hero-circle {
   position: absolute; top: -55px; right: -55px;
@@ -79,50 +94,89 @@ body {
   border: 1px solid var(--hero-circle-color-inner, rgba(170,195,53,.08));
 }
 
-/* Grilles */
-.two-col    { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-.two-col-center { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-.cards-3    { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 2.8rem; }
-.offres-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; margin-top: 2.8rem; }
-.cas-grid   { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; margin-top: 2.8rem; }
-.results-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 2.5rem; }
-.principes-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(235px,1fr)); gap: 2px; margin-top: 2.5rem; }
-.engagements-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 2.8rem; }
-.profils-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 2.5rem; }
-.rse-cards  { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 2.8rem; }
-.rse-mesures-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 2.5rem; }
+/* ── Grilles ── */
+.two-col             { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.two-col-center      { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.cards-3             { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 2.8rem; }
+.offres-grid         { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; margin-top: 2.8rem; }
+.cas-grid            { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; margin-top: 2.8rem; }
+.results-grid        { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 2.5rem; }
+.principes-grid      { display: grid; grid-template-columns: repeat(auto-fill,minmax(235px,1fr)); gap: 2px; margin-top: 2.5rem; }
+.engagements-grid    { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 2.8rem; }
+.profils-grid        { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 2.5rem; }
+.rse-cards           { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 2.8rem; }
+.rse-mesures-grid    { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 2.5rem; }
 
-/* CTA band */
+/* ── CTA band ── */
 .cta-band {
-  background: var(--zv-green);
+  background: linear-gradient(135deg, var(--c1) 0%, var(--c1d) 100%);
   padding: 4.5rem var(--gutter);
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 4rem;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-band::after {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.06);
+  pointer-events: none;
 }
 
-/* Results band */
-.results-band { background: var(--zv-dark); padding: 4.5rem var(--gutter); }
+/* ── Results band ── */
+.results-band {
+  background: linear-gradient(135deg, var(--c2) 0%, var(--c2d) 100%);
+  padding: 4.5rem var(--gutter);
+  position: relative;
+  overflow: hidden;
+}
+.results-band::before {
+  content: '';
+  position: absolute; bottom: -80px; left: -80px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: var(--c1);
+  opacity: .06;
+  pointer-events: none;
+}
 
-/* Discours */
-.discours-box { background: var(--zv-dark); padding: var(--space-xl) var(--gutter); }
+/* ── Discours ── */
+.discours-box {
+  background: linear-gradient(135deg, var(--c2d) 0%, var(--c2) 100%);
+  padding: var(--space-xl) var(--gutter);
+  position: relative;
+  overflow: hidden;
+}
+.discours-box::after {
+  content: '';
+  position: absolute; top: -40px; right: 5%;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: var(--c3);
+  opacity: .05;
+  pointer-events: none;
+}
 .discours-inner { max-width: 720px; margin: 0 auto; }
 
-/* Contact */
+/* ── Contact ── */
 .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
 
-/* Clients band */
+/* ── Clients band ── */
 .clients-band { background: var(--zv-light); padding: 2.8rem var(--gutter); text-align: center; }
 .clients-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.8rem 3.2rem; }
 
-/* Processus */
+/* ── Processus ── */
 .processus-steps { display: flex; margin-top: 2.5rem; flex-wrap: wrap; gap: 2px; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 960px) {
   .hero { grid-template-columns: 1fr; }
   .hero-left { padding: 4rem 6vw 3rem; }
+  .hero-left::after { display: none; }
   .hero-right { min-height: 270px; }
   .two-col, .two-col-center, .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .offres-grid, .cas-grid, .rse-cards { grid-template-columns: 1fr; }
