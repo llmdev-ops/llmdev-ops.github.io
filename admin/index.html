@@ -549,7 +549,7 @@ function rDashboard() {
   var greeting = hour < 12 ? 'Bonjour' : hour < 18 ? 'Bon après-midi' : 'Bonsoir';
 
   return '<div class="section-title dash-welcome">'+greeting+', '+firstN+' 👋</div>'
-    +'<p class="dash-sub">Que souhaitez-vous modifier aujourd'hui ?</p>'
+    +'<p class="dash-sub">Que souhaitez-vous modifier aujourd&#39;hui ?</p>'
     +'<div class="dash-cards">'
       +quickLinks.map(function(l){
         return '<div class="dash-card" onclick="navTo(''+l.sec+'');">'
