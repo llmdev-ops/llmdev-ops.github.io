@@ -2,38 +2,34 @@
   "section_tag": "Nos offres de service",
   "h2": "Plus que des promesses,<br/><em>des preuves concrètes.</em>",
   "lead": "Nos clients sont notre priorité, et leurs succès sont notre fierté.",
-
   "resultats_tag": "Résultats mesurés chez nos clients",
-
   "cas_tag": "Études de cas",
   "cas_h2": "Ils ont transformé leur <em>organisation avec nous</em>",
-
   "cta_h2": "Ces résultats pourraient <em>être les vôtres.</em>",
   "cta_desc": "Parlons de vos enjeux sans engagement.",
   "cta_btn": "Démarrer l'échange",
-
   "items": [
     {
       "categorie": "Conseil",
-      "titre": "Transformation avec Résultats Mesurables",
+      "titre": "Transformation avec résultats mesurables",
       "description": "Nous intervenons là où les pratiques agiles sont en place mais où les résultats concrets manquent. Notre approche itérative produit des impacts mesurables dès les premiers cycles.",
       "cta_label": "En savoir plus"
     },
     {
       "categorie": "Formation",
-      "titre": "Développement des Compétences Agile & Lean",
+      "titre": "Développement des compétences Agile & Lean",
       "description": "Des formations certifiantes et sur-mesure pour ancrer les compétences dans la durée. Organisme certifié Qualiopi.",
       "cta_label": "Voir les formations"
     },
     {
       "categorie": "Coaching",
-      "titre": "Accompagnement des Équipes et Dirigeants",
+      "titre": "Accompagnement des équipes et dirigeants",
       "description": "Coachs agiles et experts Lean qui s'intègrent à vos équipes pour transférer les compétences et garantir l'autonomie.",
       "cta_label": "En savoir plus"
     },
     {
       "categorie": "Performance",
-      "titre": "Pilotage par la Valeur",
+      "titre": "Pilotage par la valeur",
       "description": "Mise en place d'indicateurs orientés valeur et de boucles d'apprentissage courtes pour piloter la transformation par les données.",
       "cta_label": "En savoir plus"
     }
