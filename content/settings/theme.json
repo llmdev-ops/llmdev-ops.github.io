@@ -1,14 +1,14 @@
 {
   "preset": "zenvalue",
-  "c1": "#AAC335",
+  "c1":  "#AAC335",
   "c1d": "#6D7D22",
   "c1l": "#F1F6E2",
-  "c2": "#404041",
+  "c2":  "#404041",
   "c2d": "#14191E",
   "c2l": "#9CA3AF",
-  "c3": "#FF467C",
+  "c3":  "#FF467C",
   "c3d": "#9D174D",
   "c3l": "#FFF1F6",
-  "typographie": "montserrat",
+  "typographie": "jakarta",
   "rayon_boutons": 4
 }
