@@ -22,20 +22,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Formulaire contact — Netlify
-  const form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      try {
-        await fetch('/', { method: 'POST', body: data });
-        document.getElementById('form-success')?.classList.add('visible');
-        form.reset();
-      } catch {
-        document.getElementById('form-error')?.classList.add('visible');
-      }
-    });
-  }
 
 });
