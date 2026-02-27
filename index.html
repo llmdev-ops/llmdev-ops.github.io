@@ -68,6 +68,91 @@
   <link rel="stylesheet" href="assets/css/animations.css" />
   <link rel="stylesheet" href="assets/css/forms.css" />
 
+
+<style id="cas-detail-styles">
+/* ── CAS DETAIL PAGE ── */
+.cas-detail-hero {
+  background: linear-gradient(135deg, var(--c2d) 0%, var(--c2) 100%);
+  padding: calc(var(--nav-h) + 4rem) var(--gutter) 4rem;
+  position: relative; overflow: hidden;
+}
+.cas-detail-hero::before {
+  content: ''; position: absolute; top: -80px; right: -80px;
+  width: 360px; height: 360px; border-radius: 50%;
+  background: var(--c3); opacity: .05; pointer-events: none;
+}
+.cas-detail-hero::after {
+  content: ''; position: absolute; bottom: -60px; left: 10%;
+  width: 240px; height: 240px; border-radius: 50%;
+  background: var(--c1); opacity: .06; pointer-events: none;
+}
+.cas-detail-hero-inner { max-width: 760px; }
+.cas-back-btn {
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.7); font-family: var(--ff);
+  font-size: .75rem; font-weight: 600; letter-spacing: .06em;
+  padding: .45rem 1rem; border-radius: var(--radius); cursor: pointer;
+  margin-bottom: 1.8rem; display: inline-block; transition: all .2s;
+}
+.cas-back-btn:hover { background: rgba(255,255,255,.18); color: white; }
+.cas-detail-titre {
+  font-size: clamp(1.7rem, 3vw, 2.8rem); font-weight: 800;
+  color: white; line-height: 1.15; margin: .8rem 0 1.4rem;
+}
+.cas-detail-citation {
+  border-left: 3px solid var(--c3); padding-left: 1.2rem;
+  font-size: 1rem; font-style: italic; font-weight: 300;
+  color: rgba(255,255,255,.7); line-height: 1.7; max-width: 640px;
+}
+.cas-detail-body { max-width: 820px; margin: 0 auto; padding: 0 var(--gutter); }
+.cas-detail-section { padding: 3.5rem 0; border-bottom: 1px solid var(--zv-border); }
+.cas-detail-section:last-of-type { border-bottom: none; }
+.cas-detail-section-tag {
+  font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--c1); margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: .6rem;
+}
+.cas-detail-section-tag::before { content: ''; display: block; width: 20px; height: 2px; background: var(--c1); }
+.cas-detail-text { font-size: .95rem; font-weight: 300; color: var(--c2l); line-height: 1.85; }
+.cas-detail-text p { margin-bottom: .9rem; }
+.cas-detail-mission { font-size: .86rem; font-weight: 700; color: var(--c2); margin: 1.4rem 0 .7rem; }
+.cas-detail-list { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+.cas-detail-list li {
+  font-size: .9rem; font-weight: 300; color: var(--c2); line-height: 1.6;
+  padding-left: 1.4rem; position: relative;
+}
+.cas-detail-list li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--c1); font-weight: 700;
+}
+.cas-detail-section-accent { background: var(--c1l); border-radius: 8px; padding: 2.5rem; margin: 1rem -2.5rem; border-bottom: none; }
+.cas-detail-section-light  { background: var(--zv-light); border-radius: 8px; padding: 2.5rem; margin: 1rem -2.5rem; border-bottom: none; }
+.cas-resultats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+.cas-resultat-item {
+  background: white; border-radius: var(--radius); padding: 1.4rem 1.2rem;
+  border-top: 3px solid var(--c1); text-align: center;
+}
+.cas-resultat-chiffre { font-size: 1.8rem; font-weight: 800; color: var(--c3); line-height: 1; margin-bottom: .4rem; }
+.cas-resultat-texte { font-size: .78rem; font-weight: 400; color: var(--c2l); line-height: 1.4; }
+.cas-benefices-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin-top: .5rem; }
+.cas-benefice-item { background: white; border-radius: var(--radius); padding: 1.4rem; border-left: 3px solid var(--c1); }
+.cas-benefice-titre { font-size: .88rem; font-weight: 700; color: var(--c2); margin-bottom: .4rem; }
+.cas-benefice-texte { font-size: .83rem; font-weight: 300; color: var(--c2l); line-height: 1.65; }
+.cas-detail-conclusion {
+  padding: 3rem 0 2rem;
+}
+.cas-detail-conclusion-inner {
+  background: var(--c2d); border-radius: 8px; padding: 2rem 2.5rem;
+  border-left: 4px solid var(--c1);
+  font-size: .95rem; font-style: italic; font-weight: 300;
+  color: rgba(255,255,255,.8); line-height: 1.8;
+}
+@media (max-width: 768px) {
+  .cas-detail-section-accent, .cas-detail-section-light { margin: 1rem 0; }
+  .cas-resultats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+
 </head>
 <body>
 
@@ -137,16 +222,16 @@
 
   <!-- 3 Piliers -->
   <div class="section bg-white">
-    <div class="section-tag reveal">Notre promesse</div>
-    <h2 class="reveal">Maîtrisez votre <em>performance</em></h2>
-    <p class="lead reveal">Une performance maîtrisée grâce à la mesure, pérenne et vous permettant d'adresser les grands enjeux sociétaux et environnementaux de demain.</p>
+    <div class="section-tag reveal" data-cms="accueil.piliers_tag">Notre promesse</div>
+    <h2 class="reveal" data-cms="accueil.piliers_h2">Maîtrisez votre <em>performance</em></h2>
+    <p class="lead reveal" data-cms="accueil.piliers_lead">Une performance maîtrisée grâce à la mesure, pérenne et vous permettant d'adresser les grands enjeux sociétaux et environnementaux de demain.</p>
     <div class="cards-3">
-      <div class="card reveal"><div class="card-icon">📐</div><h3>Excellence Opérationnelle</h3><p>Nous agissons concrètement sur le delivery — fiabilisation des engagements, accélération des cycles, amélioration de la qualité.</p></div>
-      <div class="card reveal"><div class="card-icon">♻️</div><h3>Pérennisation de la valeur</h3><p>Nous accompagnons le changement continu pour rendre les organisations autonomes dans leur création de valeur sur le long terme.</p></div>
-      <div class="card reveal"><div class="card-icon">🌱</div><h3>Responsabilité</h3><p>Parce que la performance ne peut pas être uniquement économique — nous intégrons les enjeux écologiques, éthiques et sociétaux.</p></div>
+      <div class="card reveal"><div class="card-icon" data-cms="accueil.card1_icon">📐</div><h3 data-cms="accueil.card1_titre">Excellence Opérationnelle</h3><p data-cms="accueil.card1_texte">Nous agissons concrètement sur le delivery — fiabilisation des engagements, accélération des cycles, amélioration de la qualité.</p></div>
+      <div class="card reveal"><div class="card-icon" data-cms="accueil.card2_icon">♻️</div><h3 data-cms="accueil.card2_titre">Pérennisation de la valeur</h3><p data-cms="accueil.card2_texte">Nous accompagnons le changement continu pour rendre les organisations autonomes dans leur création de valeur sur le long terme.</p></div>
+      <div class="card reveal"><div class="card-icon" data-cms="accueil.card3_icon">🌱</div><h3 data-cms="accueil.card3_titre">Responsabilité</h3><p data-cms="accueil.card3_texte">Parce que la performance ne peut pas être uniquement économique — nous intégrons les enjeux écologiques, éthiques et sociétaux.</p></div>
     </div>
     <div style="text-align:center;margin-top:2.8rem;">
-      <a href="#" onclick="showPage('offres');return false;" class="btn btn-primary reveal">Découvrez nos offres conseil et formation</a>
+      <a href="#" onclick="showPage('offres');return false;" class="btn btn-primary reveal" data-cms="accueil.piliers_cta">Découvrez nos offres conseil et formation</a>
     </div>
   </div>
 
@@ -154,16 +239,16 @@
   <div class="section bg-c1l">
     <div class="two-col-center">
       <div class="reveal">
-        <div class="section-tag">Rejoignez l'aventure</div>
-        <h2>Construisons <em>Zen Value</em> avec vous.</h2>
-        <p class="lead" style="margin-top:.7rem;">Soyez acteur de votre performance et venez découvrir notre modèle basé sur la transparence, la co-construction et le bien-être.</p>
-        <a href="#" onclick="showPage('recrutement');return false;" class="btn btn-dark" style="margin-top:1.6rem;">Rejoignez-nous</a>
+        <div class="section-tag" data-cms="accueil.coco_tag">Rejoignez l'aventure</div>
+        <h2 data-cms="accueil.coco_h2">Construisons <em>Zen Value</em> avec vous.</h2>
+        <p class="lead" style="margin-top:.7rem;" data-cms="accueil.coco_lead">Soyez acteur de votre performance et venez découvrir notre modèle basé sur la transparence, la co-construction et le bien-être.</p>
+        <a href="#" onclick="showPage('recrutement');return false;" class="btn btn-dark" style="margin-top:1.6rem;" data-cms="accueil.coco_cta">Rejoignez-nous</a>
       </div>
       <div class="reveal">
-        <div class="section-tag">RSE</div>
-        <h2>Vers une performance <em>toujours plus responsable</em></h2>
-        <p class="lead" style="margin-top:.7rem;">Parce que la performance ne peut pas être uniquement économique — elle doit également être sociétale et environnementale.</p>
-        <a href="#" onclick="showPage('rse');return false;" class="btn btn-outline" style="margin-top:1.6rem;">Nos engagements RSE</a>
+        <div class="section-tag" data-cms="accueil.rse_tag">RSE</div>
+        <h2 data-cms="accueil.rse_h2">Vers une performance <em>toujours plus responsable</em></h2>
+        <p class="lead" style="margin-top:.7rem;" data-cms="accueil.rse_lead">Parce que la performance ne peut pas être uniquement économique — elle doit également être sociétale et environnementale.</p>
+        <a href="#" onclick="showPage('rse');return false;" class="btn btn-outline" style="margin-top:1.6rem;" data-cms="accueil.rse_cta">Nos engagements RSE</a>
       </div>
     </div>
   </div>
@@ -171,11 +256,11 @@
   <!-- CTA -->
   <div class="cta-band">
     <div class="reveal">
-      <div class="section-tag muted">Passons à l'action</div>
-      <h2>Prêt à construire <em>votre réussite ?</em></h2>
-      <p class="cta-desc">Discutons de vos enjeux lors d'un premier échange sans engagement.</p>
+      <div class="section-tag muted" data-cms="accueil.cta_tag">Passons à l'action</div>
+      <h2 data-cms="accueil.cta_h2">Prêt à construire <em>votre réussite ?</em></h2>
+      <p class="cta-desc" data-cms="accueil.cta_desc">Discutons de vos enjeux lors d'un premier échange sans engagement.</p>
     </div>
-    <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal">Prendre contact</a>
+    <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal" data-cms="accueil.cta_btn">Prendre contact</a>
   </div>
 
   <footer>
@@ -197,15 +282,15 @@
 ═══════════════════════════════════════ -->
 <div class="page" id="page-offres">
   <div class="section bg-white">
-    <div class="section-tag reveal">Nos offres de service</div>
-    <h2 class="reveal">Plus que des promesses,<br/><em>des preuves concrètes.</em></h2>
-    <p class="lead reveal">Nos clients sont notre priorité, et leurs succès sont notre fierté.</p>
+    <div class="section-tag reveal" data-cms="offres.section_tag">Nos offres de service</div>
+    <h2 class="reveal" data-cms="offres.h2">Plus que des promesses,<br/><em>des preuves concrètes.</em></h2>
+    <p class="lead reveal" data-cms="offres.lead">Nos clients sont notre priorité, et leurs succès sont notre fierté.</p>
     <!-- Injecté par cms-loader.js -->
     <div class="offres-grid" id="offres-container"></div>
   </div>
 
   <div class="results-band">
-    <div class="section-tag on-dark center reveal">Résultats mesurés chez nos clients</div>
+    <div class="section-tag on-dark center reveal" data-cms="offres.resultats_tag">Résultats mesurés chez nos clients</div>
     <div class="results-grid">
       <div class="result-item reveal"><div class="result-num" data-cms="resultats.r1_chiffre">-60%</div><div class="result-label" data-cms="resultats.r1_label">Time to market</div></div>
       <div class="result-item reveal"><div class="result-num" data-cms="resultats.r2_chiffre">+40%</div><div class="result-label" data-cms="resultats.r2_label">Vélocité Scrum</div></div>
@@ -215,15 +300,15 @@
   </div>
 
   <div class="section bg-light">
-    <div class="section-tag reveal">Études de cas</div>
-    <h2 class="reveal">Ils ont transformé leur <em>organisation avec nous</em></h2>
+    <div class="section-tag reveal" data-cms="offres.cas_tag">Études de cas</div>
+    <h2 class="reveal" data-cms="offres.cas_h2">Ils ont transformé leur <em>organisation avec nous</em></h2>
     <!-- Injecté par cms-loader.js -->
     <div class="cas-grid" id="cas-container"></div>
   </div>
 
   <div class="cta-band">
-    <div class="reveal"><h2>Ces résultats pourraient <em>être les vôtres.</em></h2><p class="cta-desc">Parlons de vos enjeux sans engagement.</p></div>
-    <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal">Démarrer l'échange</a>
+    <div class="reveal"><h2 data-cms="offres.cta_h2">Ces résultats pourraient <em>être les vôtres.</em></h2><p class="cta-desc" data-cms="offres.cta_desc">Parlons de vos enjeux sans engagement.</p></div>
+    <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal" data-cms="offres.cta_btn">Démarrer l'échange</a>
   </div>
   <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
 </div>
@@ -235,8 +320,8 @@
 <div class="page" id="page-qsn">
   <div class="discours-box">
     <div class="discours-inner">
-      <div class="section-tag on-dark reveal">Notre mission</div>
-      <h2 class="on-dark reveal">Le <em>Zen Way to Value</em></h2>
+      <div class="section-tag on-dark reveal" data-cms="qsn.mission_tag">Notre mission</div>
+      <h2 class="on-dark reveal" data-cms="qsn.mission_h2">Le <em>Zen Way to Value</em></h2>
       <p class="discours-p reveal" data-cms="qsn.discours1"></p>
       <p class="discours-p reveal" data-cms="qsn.discours2"></p>
       <div class="dim-row reveal">
@@ -251,14 +336,14 @@
   <div class="section bg-white">
     <div class="two-col">
       <div>
-        <div class="section-tag reveal">Notre vision</div>
+        <div class="section-tag reveal" data-cms="qsn.vision_tag">Notre vision</div>
         <h2 class="reveal" style="font-size:clamp(1.5rem,2.1vw,2.1rem);">"<span data-cms="qsn.vision">Construire un avenir où les entreprises atteignent une performance mesurable et pérenne</span>"</h2>
         <p class="body-text reveal" data-cms="qsn.mission" style="margin-top:1rem;"></p>
-        <p style="font-size:1rem;font-weight:700;color:var(--c1);margin-top:1.4rem;" class="reveal">Let's find a Zen Way to Value.</p>
+        <p style="font-size:1rem;font-weight:700;color:var(--c1);margin-top:1.4rem;" class="reveal" data-cms="qsn.vision_baseline">Let's find a Zen Way to Value.</p>
       </div>
       <div>
-        <div class="section-tag reveal">Nos outils</div>
-        <h2 style="font-size:clamp(1.45rem,1.9vw,1.9rem);" class="reveal">Des frameworks reconnus,<br/><em>sans dogmatisme</em></h2>
+        <div class="section-tag reveal" data-cms="qsn.outils_tag">Nos outils</div>
+        <h2 style="font-size:clamp(1.45rem,1.9vw,1.9rem);" class="reveal" data-cms="qsn.outils_h2">Des frameworks reconnus,<br/><em>sans dogmatisme</em></h2>
         <div style="margin-top:1.4rem;" class="reveal">
           <span class="tag-pill">Agile / Scrum</span><span class="tag-accent">Lean</span>
           <span class="tag-pill">TLS</span><span class="tag-accent">DevOps</span>
@@ -269,16 +354,16 @@
   </div>
 
   <div class="section bg-light">
-    <div class="section-tag reveal">Ce qui nous guide</div>
-    <h2 class="reveal">Nos principes <em>fondateurs</em></h2>
+    <div class="section-tag reveal" data-cms="qsn.principes_tag">Ce qui nous guide</div>
+    <h2 class="reveal" data-cms="qsn.principes_h2">Nos principes <em>fondateurs</em></h2>
     <!-- Injecté par cms-loader.js -->
     <div class="principes-grid" id="principes-container"></div>
   </div>
 
   <div class="section bg-white">
     <div style="max-width:740px;">
-      <div class="section-tag reveal">Notre histoire</div>
-      <h2 class="reveal">Une organisation <em>apprenante</em>, depuis le premier jour</h2>
+      <div class="section-tag reveal" data-cms="qsn.histoire_tag">Notre histoire</div>
+      <h2 class="reveal" data-cms="qsn.histoire_h2">Une organisation <em>apprenante</em>, depuis le premier jour</h2>
       <p class="body-text reveal" data-cms="qsn.histoire1"></p>
       <p class="body-text reveal" data-cms="qsn.histoire2"></p>
       <p class="body-text reveal" data-cms="qsn.histoire3"></p>
@@ -286,7 +371,7 @@
   </div>
 
   <div class="cta-band">
-    <div class="reveal"><h2>Envie de <em>construire avec nous ?</em></h2><p class="cta-desc">Découvrez nos offres ou rejoignez l'équipe Zen Value.</p></div>
+    <div class="reveal"><h2 data-cms="qsn.cta_h2">Envie de <em>construire avec nous ?</em></h2><p class="cta-desc" data-cms="qsn.cta_desc">Découvrez nos offres ou rejoignez l'équipe Zen Value.</p></div>
     <div class="cta-btns reveal">
       <a href="#" onclick="showPage('offres');return false;" class="btn btn-dark">Nos offres</a>
       <a href="#" onclick="showPage('recrutement');return false;" class="btn btn-ghost-dark">Nous rejoindre</a>
@@ -301,7 +386,7 @@
 ═══════════════════════════════════════ -->
 <div class="page" id="page-formation">
   <div class="section bg-dark-dk">
-    <div class="section-tag muted reveal">Organisme de formation certifié</div>
+    <div class="section-tag muted reveal" data-cms="formation.section_tag">Organisme de formation certifié</div>
     <h2 class="on-dark reveal" data-cms="formation.titre">Développez vos compétences avec Zen Value</h2>
     <p class="lead on-dark reveal" data-cms="formation.soustitre" style="margin-top:.7rem;"></p>
     <div class="qualiopi-badge reveal">
@@ -314,18 +399,18 @@
   </div>
   <div class="section bg-white">
     <div style="max-width:700px;">
-      <div class="section-tag reveal">Pourquoi Qualiopi ?</div>
-      <h2 class="reveal" style="font-size:clamp(1.55rem,2.2vw,2.2rem);">Un gage de <em>qualité reconnu</em></h2>
+      <div class="section-tag reveal" data-cms="formation.qualiopi_tag">Pourquoi Qualiopi ?</div>
+      <h2 class="reveal" style="font-size:clamp(1.55rem,2.2vw,2.2rem);" data-cms="formation.qualiopi_h2">Un gage de <em>qualité reconnu</em></h2>
       <p class="body-text reveal" data-cms="formation.texte1" style="margin-top:1rem;"></p>
       <p class="body-text reveal" data-cms="formation.texte2"></p>
     </div>
   </div>
   <div class="cta-band" style="grid-template-columns:1fr;text-align:center;">
     <div class="reveal">
-      <div class="section-tag muted center">Notre catalogue complet</div>
-      <h2>Découvrez toutes <em>nos formations</em></h2>
-      <p class="cta-desc" style="max-width:480px;margin:0 auto 2rem;">Retrouvez l'ensemble de notre catalogue — Agile, Lean, Leadership, TLS et bien plus.</p>
-      <a href="https://zenvalue.catalogueformpro.com/" target="_blank" data-cms-href="formation.catalogue" class="btn btn-dark">Accéder au catalogue →</a>
+      <div class="section-tag muted center" data-cms="formation.catalogue_tag">Notre catalogue complet</div>
+      <h2 data-cms="formation.catalogue_h2">Découvrez toutes <em>nos formations</em></h2>
+      <p class="cta-desc" style="max-width:480px;margin:0 auto 2rem;" data-cms="formation.catalogue_desc">Retrouvez l'ensemble de notre catalogue — Agile, Lean, Leadership, TLS et bien plus.</p>
+      <a href="https://zenvalue.catalogueformpro.com/" target="_blank" data-cms-href="formation.catalogue" class="btn btn-dark" data-cms="formation.catalogue_btn">Accéder au catalogue →</a>
     </div>
   </div>
   <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
@@ -337,33 +422,33 @@
 ═══════════════════════════════════════ -->
 <div class="page" id="page-recrutement">
   <div class="section bg-dark-dk">
-    <div class="section-tag muted reveal">Nous rejoindre</div>
+    <div class="section-tag muted reveal" data-cms="recrutement.section_tag">Nous rejoindre</div>
     <h2 class="on-dark reveal" data-cms="recrutement.titre">Grandir, s'épanouir et innover ensemble.</h2>
     <p class="lead on-dark reveal" data-cms="recrutement.soustitre" style="margin-top:.7rem;"></p>
     <p style="color:var(--c1);font-size:1rem;font-weight:700;margin-top:1.6rem;font-style:italic;" class="reveal" data-cms="recrutement.tagline"></p>
   </div>
 
   <div class="section bg-white">
-    <div class="section-tag reveal">Nos engagements pour vous</div>
-    <h2 class="reveal">Ce qui nous rend <em>différents</em></h2>
+    <div class="section-tag reveal" data-cms="recrutement.engagements_tag">Nos engagements pour vous</div>
+    <h2 class="reveal" data-cms="recrutement.engagements_h2">Ce qui nous rend <em>différents</em></h2>
     <div class="engagements-grid" id="engagements-container"></div>
   </div>
 
   <div class="section bg-c3l">
-    <div class="section-tag reveal">Nos convictions</div>
-    <h2 class="reveal">Nous croyons en <em>l'inclusion et la diversité</em></h2>
+    <div class="section-tag reveal" data-cms="recrutement.profils_tag">Nos convictions</div>
+    <h2 class="reveal" data-cms="recrutement.profils_h2">Nous croyons en <em>l'inclusion et la diversité</em></h2>
     <div class="profils-grid" id="profils-container"></div>
   </div>
 
   <div class="section bg-light">
-    <div class="section-tag reveal">Un processus humain et inclusif</div>
-    <h2 class="reveal">Notre processus de <em>recrutement</em></h2>
+    <div class="section-tag reveal" data-cms="recrutement.processus_tag">Un processus humain et inclusif</div>
+    <h2 class="reveal" data-cms="recrutement.processus_h2">Notre processus de <em>recrutement</em></h2>
     <div class="processus-steps" id="processus-container"></div>
   </div>
 
   <div class="cta-band">
-    <div class="reveal"><h2>Prêt·e à grandir <em>avec nous ?</em></h2><p class="cta-desc">Rejoignez une communauté engagée.</p></div>
-    <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal">Postuler</a>
+    <div class="reveal"><h2 data-cms="recrutement.cta_h2">Prêt·e à grandir <em>avec nous ?</em></h2><p class="cta-desc" data-cms="recrutement.cta_desc">Rejoignez une communauté engagée.</p></div>
+    <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal" data-cms="recrutement.cta_btn">Postuler</a>
   </div>
   <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
 </div>
@@ -374,7 +459,7 @@
 ═══════════════════════════════════════ -->
 <div class="page" id="page-rse">
   <div class="section bg-c3l">
-    <div class="section-tag reveal">RSE</div>
+    <div class="section-tag reveal" data-cms="rse.section_tag">RSE</div>
     <h2 class="reveal" data-cms="rse.titre">Une performance durable va bien au-delà des chiffres.</h2>
     <p class="lead reveal" data-cms="rse.intro" style="margin-top:.7rem;"></p>
     <div class="rse-cards">
@@ -384,14 +469,14 @@
   </div>
 
   <div class="section bg-white">
-    <div class="section-tag reveal">Nos actions concrètes depuis 2024</div>
-    <h2 class="reveal">Des mesures <em>tangibles</em> pour le bien-être</h2>
+    <div class="section-tag reveal" data-cms="rse.mesures_tag">Nos actions concrètes depuis 2024</div>
+    <h2 class="reveal" data-cms="rse.mesures_h2">Des mesures <em>tangibles</em> pour le bien-être</h2>
     <div class="rse-mesures-grid" id="mesures-container"></div>
   </div>
 
   <div class="cta-band">
-    <div class="reveal"><h2>La performance responsable,<br/><em>c'est notre engagement.</em></h2><p class="cta-desc">En travaillant avec nous, vous accompagnez une organisation qui intègre ces valeurs au quotidien.</p></div>
-    <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal">Discutons-en</a>
+    <div class="reveal"><h2 data-cms="rse.cta_h2">La performance responsable,<br/><em>c'est notre engagement.</em></h2><p class="cta-desc" data-cms="rse.cta_desc">En travaillant avec nous, vous accompagnez une organisation qui intègre ces valeurs au quotidien.</p></div>
+    <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal" data-cms="rse.cta_btn">Discutons-en</a>
   </div>
   <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
 </div>
@@ -461,6 +546,64 @@
     </div>
   </div>
   <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a><a href="#">Cookies</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE CAS CLIENT DETAIL
+═══════════════════════════════════════ -->
+<div class="page" id="page-cas-detail">
+  <div class="cas-detail-hero">
+    <div class="cas-detail-hero-inner">
+      <button class="cas-back-btn" onclick="showPage('offres');return false;">← Retour aux cas clients</button>
+      <div class="section-tag muted reveal" id="cd-categorie">Cas client</div>
+      <h1 class="cas-detail-titre reveal" id="cd-titre"></h1>
+      <blockquote class="cas-detail-citation reveal" id="cd-citation"></blockquote>
+    </div>
+  </div>
+
+  <div class="cas-detail-body">
+
+    <div class="cas-detail-section reveal" id="cd-contexte-block">
+      <div class="cas-detail-section-tag">Contexte</div>
+      <div class="cas-detail-text" id="cd-contexte"></div>
+    </div>
+
+    <div class="cas-detail-section reveal" id="cd-enjeu-block">
+      <div class="cas-detail-section-tag">Enjeu</div>
+      <div class="cas-detail-text" id="cd-enjeu"></div>
+      <div class="cas-detail-mission" id="cd-mission-label">Notre mission :</div>
+      <ul class="cas-detail-list" id="cd-enjeu-mission"></ul>
+    </div>
+
+    <div class="cas-detail-section cas-detail-section-accent reveal" id="cd-approche-block">
+      <div class="cas-detail-section-tag">Notre approche</div>
+      <div class="cas-detail-text" id="cd-approche"></div>
+      <ul class="cas-detail-list" id="cd-approche-points"></ul>
+    </div>
+
+    <div class="cas-detail-section reveal" id="cd-resultats-block">
+      <div class="cas-detail-section-tag">Résultats obtenus</div>
+      <p class="cas-detail-text" style="margin-bottom:1.5rem;">Les premiers cycles ont permis d'obtenir des améliorations significatives :</p>
+      <div class="cas-resultats-grid" id="cd-resultats"></div>
+    </div>
+
+    <div class="cas-detail-section cas-detail-section-light reveal" id="cd-benefices-block">
+      <div class="cas-detail-section-tag">Bénéfices durables</div>
+      <div class="cas-benefices-grid" id="cd-benefices"></div>
+    </div>
+
+    <div class="cas-detail-conclusion reveal" id="cd-conclusion-block">
+      <div class="cas-detail-conclusion-inner" id="cd-conclusion"></div>
+    </div>
+
+  </div>
+
+  <div class="cta-band">
+    <div class="reveal"><h2>Ces résultats pourraient <em>être les vôtres.</em></h2><p class="cta-desc">Discutons de votre transformation.</p></div>
+    <a href="#" onclick="showPage('contact');return false;" class="btn btn-dark reveal">Prendre contact</a>
+  </div>
+  <footer><a href="#" class="footer-logo" onclick="showPage('accueil');return false;"><img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" /></a><div class="footer-links"><a href="#">Politique de confidentialité</a><a href="#">CGV</a><a href="#">Mentions légales</a></div><div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div></footer>
 </div>
 
 
