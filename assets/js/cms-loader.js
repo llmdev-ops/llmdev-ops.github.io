@@ -173,9 +173,32 @@ async function loadRSE() {
   }
 }
 
+
+async function loadLogosClients() {
+  var container = document.getElementById('clients-logos');
+  if (!container) return;
+  try {
+    var res = await fetch('https://api.github.com/repos/llmdev-ops/llmdev-ops.github.io/contents/assets/images/logos-clients');
+    if (!res.ok) return;
+    var files = await res.json();
+    var exts = ['jpg','jpeg','png','webp','svg','avif','gif'];
+    var logos = files.filter(function(f) {
+      return exts.includes(f.name.split('.').pop().toLowerCase());
+    });
+    if (!logos.length) return; // garde les placeholders
+    container.innerHTML = logos.map(function(f) {
+      var url = 'https://llmdev-ops.github.io/' + f.path;
+      var name = f.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+      return '<img class="client-logo" src="' + url + '" alt="' + name + '" loading="lazy" />';
+    }).join('');
+  } catch(e) {
+    // réseau KO : placeholders restent affichés
+  }
+}
 async function initCMS() {
   await Promise.all([
     loadGlobal(),
+    loadLogosClients(),
     loadAccueil(),
     loadResultats(),
     loadQSN(),
