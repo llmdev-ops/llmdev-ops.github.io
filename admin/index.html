@@ -552,7 +552,7 @@ function rDashboard() {
     +'<p class="dash-sub">Que souhaitez-vous modifier aujourd&#39;hui ?</p>'
     +'<div class="dash-cards">'
       +quickLinks.map(function(l){
-        return '<div class="dash-card" onclick="navTo(''+l.sec+'');">'
+        return '<div class="dash-card" data-action="dash-nav" data-sec="'+l.sec+'">'
           +'<div class="dash-card-icon">'+l.icon+'</div>'
           +'<div class="dash-card-title">'+l.title+'</div>'
           +'<div class="dash-card-desc">'+l.desc+'</div>'
@@ -1291,6 +1291,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   document.getElementById('sidebar') && document.getElementById('sidebar').addEventListener('click', function(e){
     var item=e.target.closest('.sidebar-item'); if(item&&item.dataset.sec) navTo(item.dataset.sec);
+  });
+  document.getElementById('admin-main').addEventListener('click', function(e){
+    var card=e.target.closest('[data-action="dash-nav"]'); if(card&&card.dataset.sec) navTo(card.dataset.sec);
   });
 
   // Restore session
