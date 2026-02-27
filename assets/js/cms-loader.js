@@ -93,11 +93,11 @@ async function loadOffres() {
 }
 
 /* ══ CAS CLIENTS ══ */
-var _casData = [];
+window._casData = [];
 
 async function loadCasClients() {
   var d = await loadJSON('content/pages/cas-clients.json'); if (!d||!d.items) return;
-  _casData = d.items;
+  window._casData = d.items;
   var c = document.getElementById('cas-container'); if (!c) return;
   c.innerHTML = d.items.map(function(cas, i){
     var resultats = (cas.resultats||[]).map(function(r){
@@ -108,7 +108,7 @@ async function loadCasClients() {
       +'<h3>'+(cas.titre||'')+'</h3>'
       +'<p class="cas-desc">'+(cas.description||'')+'</p>'
       +resultats
-      +'<button class="btn btn-outline btn-voir-cas" data-cas="'+i+'" style="margin-top:1.2rem;width:auto;">Voir le cas client →</button>'
+      +'<button class="btn btn-outline" onclick="showCasDetail(window._casData['+i+'])" style="margin-top:1.2rem;width:auto;">Voir le cas client →</button>'
     +'</div>';
   }).join('');
 
@@ -122,7 +122,7 @@ async function loadCasClients() {
   });
 }
 
-function showCasDetail(cas) {
+window.showCasDetail = function showCasDetail(cas) {
   function set(id, html){ var el=document.getElementById(id); if(el) el.innerHTML=html||''; }
 
   set('cd-titre',    cas.titre||'');
@@ -142,7 +142,7 @@ function showCasDetail(cas) {
 
   showPage('cas-detail');
   window.scrollTo({top:0,behavior:'smooth'});
-}
+};
 
 /* ══ FORMATION ══ */
 async function loadFormation() {
