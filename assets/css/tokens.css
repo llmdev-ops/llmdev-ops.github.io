@@ -1,40 +1,41 @@
 /* ══════════════════════════════════════════
-   TOKENS — Systeme 9 couleurs v4
+   TOKENS — Système 9 couleurs v4
+   Injectées dynamiquement par theme-loader.js
    ══════════════════════════════════════════ */
 :root {
-  /* Couleur 1 (principale / action) */
-  --c1:  #AAC335;
-  --c1d: #6D7D22;
-  --c1l: #F1F6E2;
+  /* ── 9 couleurs thème ── */
+  --c1:  #AAC335;   /* principale action     */
+  --c1d: #6D7D22;   /* foncée                */
+  --c1l: #F1F6E2;   /* claire / fond         */
 
-  /* Couleur 2 (structure / texte) */
-  --c2:  #404041;
-  --c2d: #14191E;
-  --c2l: #9CA3AF;
+  --c2:  #404041;   /* structure / titres    */
+  --c2d: #14191E;   /* très sombre           */
+  --c2l: #9CA3AF;   /* texte secondaire      */
 
-  /* Couleur 3 (accent / energie) */
-  --c3:  #FF467C;
-  --c3d: #9D174D;
-  --c3l: #FFF1F6;
+  --c3:  #FF467C;   /* accent / énergie      */
+  --c3d: #9D174D;   /* accent foncé          */
+  --c3l: #FFF1F6;   /* accent fond très clair*/
 
-  /* Aliases compatibilite */
+  /* ── Aliases compatibilité ── */
   --zv-green:    var(--c1);
   --zv-green-dk: var(--c1d);
   --zv-green-bg: var(--c1l);
   --zv-dark:     var(--c2);
+  --zv-dark-dk:  var(--c2d);
   --zv-gray:     var(--c2l);
   --accent:      var(--c3);
   --accent-dk:   var(--c3d);
   --accent-lt:   var(--c3l);
 
-  /* Fixes */
-  --zv-light: #f8f8f8;
+  /* ── Fixes neutres ── */
   --zv-white: #ffffff;
+  --zv-light: #f8f9fa;
+  --zv-border: rgba(65,65,66,.1);
 
-  /* Typographie */
+  /* ── Typographie ── */
   --ff: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
 
-  /* Espacement */
+  /* ── Espacement ── */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
@@ -42,8 +43,12 @@
   --space-xl: 5.5rem;
   --gutter:   8vw;
 
-  /* Misc */
+  /* ── Misc ── */
   --radius: 4px;
   --shadow: 0 2px 24px rgba(65,65,66,.08);
   --nav-h:  70px;
+
+  /* ── Cercles hero ── */
+  --hero-circle-color:       rgba(170,195,53,.16);
+  --hero-circle-color-inner: rgba(170,195,53,.08);
 }
