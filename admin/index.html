@@ -1664,11 +1664,76 @@ function rRSE(d) {
     +card('CTA',f('Titre','cta_h2',d.cta_h2)+frow(f('Description','cta_desc',d.cta_desc),f('Bouton','cta_btn',d.cta_btn)))
     +listCard('Mesures concretes','list-mesures',d.mesures||[],['icon','titre','texte'],'mesures');
 }
+function offreItemHtml(o, i) {
+  var dem = (o.demarche||[]).concat([{},{},{},{}]).slice(0,4);
+  var demHtml = dem.map(function(e,j){
+    return '<div class="field-group" style="background:var(--surface);border-radius:6px;padding:.8rem;margin-bottom:.5rem;">'
+      +'<div style="font-size:.7rem;font-weight:700;color:var(--gray);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;">Étape '+(j+1)+'</div>'
+      +frow(
+        f('Titre','list-offres.'+i+'.demarche.'+j+'.etape', e.etape||''),
+        f('Description','list-offres.'+i+'.demarche.'+j+'.desc', e.desc||'', 'textarea')
+      )
+      +'</div>';
+  }).join('');
+
+  var header = '0'+(i+1)+' — '+esc(o.categorie||'')+' : '+esc(o.titre||'Nouvelle offre');
+  return '<div class="list-item">'
+    +'<div class="list-item-header" data-action="toggle-body">'
+      +'<span>'+header+'</span>'
+      +'<div class="item-actions">'
+        +'<button class="btn-icon" data-action="move-up" title="Monter">↑</button>'
+        +'<button class="btn-icon" data-action="move-dn" title="Descendre">↓</button>'
+        +'<button class="btn-icon" data-action="del-item" title="Supprimer">✕</button>'
+      +'</div>'
+    +'</div>'
+    +'<div class="list-item-body">'
+
+      +card('Identité',
+        frow(f('ID (slug)','list-offres.'+i+'.id', o.id||''), f('Catégorie','list-offres.'+i+'.categorie', o.categorie||''))
+        +f('Titre','list-offres.'+i+'.titre', o.titre||'')
+        +f('Description courte (carte accueil)','list-offres.'+i+'.description', o.description||'', 'textarea')
+        +frow(f('Label bouton','list-offres.'+i+'.cta_label', o.cta_label||'En savoir plus'), f('Durée','list-offres.'+i+'.duree', o.duree||''))
+      )
+      +card('Page détail — Cible & résultat',
+        f('Cible','list-offres.'+i+'.cible', o.cible||'', 'textarea')
+        +f('Résultat attendu','list-offres.'+i+'.resultat_attendu', o.resultat_attendu||'', 'textarea')
+      )
+      +card('Problèmes résolus <span style="font-size:.72rem;font-weight:400;color:var(--gray);">— 1 problème par ligne</span>',
+        f('Problèmes','list-offres.'+i+'.problemes_raw', (o.problemes||[]).join('\n'), 'textarea')
+      )
+      +card('Notre démarche — 4 étapes', demHtml)
+      +'<div class="field-row">'
+        +card('Livrables <span style="font-size:.72rem;font-weight:400;color:var(--gray);">— 1 par ligne</span>',
+          f('Livrables','list-offres.'+i+'.livrables_raw', (o.livrables||[]).join('\n'), 'textarea'))
+        +card('Prérequis <span style="font-size:.72rem;font-weight:400;color:var(--gray);">— 1 par ligne</span>',
+          f('Prérequis','list-offres.'+i+'.prerequis_raw', (o.prerequis||[]).join('\n'), 'textarea'))
+      +'</div>'
+      +card('Cas clients liés <span style="font-size:.72rem;font-weight:400;color:var(--gray);">— index séparés par virgule ex: 0, 1</span>',
+        f('Index cas clients','list-offres.'+i+'.cas_ids_raw', (o.cas_ids||[]).join(', '))
+      )
+
+    +'</div>'
+  +'</div>';
+}
+
 function rOffres(d) {
+  var itemsHtml = (d.items||[]).map(function(o,i){ return offreItemHtml(o,i); }).join('');
   return '<div class="section-title">Offres</div>'
-    +card('En-tetes sections',frow(f('Tag','section_tag',d.section_tag),f('Titre','h2',d.h2))+f('Lead','lead',d.lead,'textarea')+frow(f('Tag resultats','resultats_tag',d.resultats_tag),f('Tag cas','cas_tag',d.cas_tag))+f('Titre cas clients','cas_h2',d.cas_h2))
-    +card('Bande CTA',f('Titre','cta_h2',d.cta_h2)+frow(f('Description','cta_desc',d.cta_desc),f('Bouton','cta_btn',d.cta_btn)))
-    +listCard('Offres de service','list-offres',d.items||[],['categorie','titre','description','cta_label'],'offres');
+    +card('En-têtes sections',
+      frow(f('Tag','section_tag',d.section_tag), f('Titre','h2',d.h2))
+      +f('Lead','lead',d.lead,'textarea')
+      +frow(f('Tag résultats','resultats_tag',d.resultats_tag), f('Tag cas','cas_tag',d.cas_tag))
+      +f('Titre cas clients','cas_h2',d.cas_h2)
+    )
+    +card('Bande CTA',
+      f('Titre','cta_h2',d.cta_h2)
+      +frow(f('Description','cta_desc',d.cta_desc), f('Bouton','cta_btn',d.cta_btn))
+    )
+    +'<div class="form-card">'
+      +'<div class="form-card-title">Offres de service</div>'
+      +'<div class="list-items" id="list-offres">'+itemsHtml+'</div>'
+      +'<button class="add-btn" data-action="add-offre">+ Ajouter une offre</button>'
+    +'</div>';
 }
 function rCas(d) {
   return '<div class="section-title">Cas clients</div>'
@@ -1717,6 +1782,20 @@ function listCard(title, listId, items, fields, addKey) {
   +'</div>';
 }
 
+function addOffreItem() {
+  var container = document.getElementById('list-offres');
+  if (!container) return;
+  var i = container.querySelectorAll(':scope > .list-item').length;
+  var blank = { id:'nouvelle-offre', categorie:'', titre:'', description:'', cta_label:'En savoir plus',
+    duree:'', cible:'', resultat_attendu:'', problemes:[], demarche:[], livrables:[], prerequis:[], cas_ids:[] };
+  container.insertAdjacentHTML('beforeend', offreItemHtml(blank, i));
+  // Ouvrir le body du nouvel item
+  var items = container.querySelectorAll(':scope > .list-item');
+  var last = items[items.length-1];
+  if (last) { var body = last.querySelector('.list-item-body'); if(body) body.classList.add('open'); }
+  markDirty();
+}
+
 function addListItem(listId, fields) {
   var labels={icon:'Icone (emoji)',titre:'Titre',description:'Description',texte:'Texte',categorie:'Categorie',cta_label:'Label bouton',citation:'Citation'};
   var fieldsHtml = fields.map(function(fk){
@@ -1761,7 +1840,7 @@ function collect() {
     else data[n]=el.value;
   });
   var sec=state.section;
-  if (sec==='offres')      data.items       = collectList('list-offres',      ['categorie','titre','description','cta_label']);
+  if (sec==='offres')      data.items       = collectListOffres('list-offres');
   if (sec==='cas')         data.items       = collectListCas('list-cas');
   if (sec==='principes')   data.items       = collectList('list-principes',   ['icon','titre','description']);
   if (sec==='rse')         data.mesures     = collectList('list-mesures',     ['icon','titre','texte']);
@@ -1774,6 +1853,90 @@ function collectList(listId, fields) {
     var obj={}, inputs=item.querySelectorAll('input[type=text],textarea');
     fields.forEach(function(fk,i){ if(inputs[i]) obj[fk]=inputs[i].value; });
     return obj;
+  });
+}
+
+function collectListOffres(listId) {
+  var container = document.getElementById(listId); if (!container) return [];
+  return Array.from(container.querySelectorAll(':scope > .list-item')).map(function(item) {
+    // Récupérer toutes les inputs nommées dans cet item
+    var namedInputs = {};
+    item.querySelectorAll('input[name],textarea[name]').forEach(function(el) {
+      var name = el.getAttribute('name');
+      if (name) namedInputs[name] = el.value;
+    });
+
+    // Helper pour lire un champ nommé avec préfixe list-offres.i.
+    function get(suffix) {
+      // Chercher dans namedInputs les clés qui se terminent par suffix
+      var keys = Object.keys(namedInputs);
+      for (var k = 0; k < keys.length; k++) {
+        var parts = keys[k].split('.');
+        if (parts[parts.length-1] === suffix || keys[k].endsWith('.'+suffix)) return namedInputs[keys[k]] || '';
+      }
+      return '';
+    }
+    function getNested(suffix) {
+      var result = {};
+      Object.keys(namedInputs).forEach(function(k) {
+        if (k.includes(suffix)) result[k] = namedInputs[k];
+      });
+      return result;
+    }
+
+    // Demarche : 4 étapes {etape, desc}
+    var demarche = [0,1,2,3].map(function(j){
+      var etape = '', desc = '';
+      Object.keys(namedInputs).forEach(function(k){
+        if (k.includes('.demarche.'+j+'.etape')) etape = namedInputs[k];
+        if (k.includes('.demarche.'+j+'.desc'))  desc  = namedInputs[k];
+      });
+      return etape || desc ? { etape: etape, desc: desc } : null;
+    }).filter(Boolean);
+
+    // Tableaux 1 par ligne
+    function toLines(raw) {
+      return (raw||'').split('\n').map(function(l){ return l.trim(); }).filter(Boolean);
+    }
+    function toCasIds(raw) {
+      return (raw||'').split(',').map(function(s){ return parseInt(s.trim(),10); }).filter(function(n){ return !isNaN(n); });
+    }
+
+    var problemes_raw = '', livrables_raw = '', prerequis_raw = '', cas_ids_raw = '';
+    var id='', categorie='', titre='', description='', cta_label='', duree='', cible='', resultat_attendu='';
+    Object.keys(namedInputs).forEach(function(k){
+      var p = k.split('.');
+      var last = p[p.length-1];
+      if (last==='id')               id              = namedInputs[k];
+      if (last==='categorie')        categorie       = namedInputs[k];
+      if (last==='titre')            titre           = namedInputs[k];
+      if (last==='description')      description     = namedInputs[k];
+      if (last==='cta_label')        cta_label       = namedInputs[k];
+      if (last==='duree')            duree           = namedInputs[k];
+      if (last==='cible')            cible           = namedInputs[k];
+      if (last==='resultat_attendu') resultat_attendu= namedInputs[k];
+      if (last==='problemes_raw')    problemes_raw   = namedInputs[k];
+      if (last==='livrables_raw')    livrables_raw   = namedInputs[k];
+      if (last==='prerequis_raw')    prerequis_raw   = namedInputs[k];
+      if (last==='cas_ids_raw')      cas_ids_raw     = namedInputs[k];
+    });
+
+    return {
+      id:               id,
+      categorie:        categorie,
+      titre:            titre,
+      description:      description,
+      cta_label:        cta_label || 'En savoir plus',
+      cta_page:         'offre-detail',
+      duree:            duree,
+      cible:            cible,
+      resultat_attendu: resultat_attendu,
+      problemes:        toLines(problemes_raw),
+      demarche:         demarche,
+      livrables:        toLines(livrables_raw),
+      prerequis:        toLines(prerequis_raw),
+      cas_ids:          toCasIds(cas_ids_raw)
+    };
   });
 }
 
