@@ -153,6 +153,148 @@
 }
 </style>
 
+<style id="offre-detail-styles">
+/* ── OFFRE DETAIL PAGE ── */
+.od-hero {
+  background: linear-gradient(135deg, var(--c1d) 0%, var(--c1) 60%, var(--c1l) 100%);
+  padding: calc(var(--nav-h) + 4rem) var(--gutter) 4rem;
+  position: relative; overflow: hidden;
+}
+.od-hero::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: white; opacity: .04; pointer-events: none;
+}
+.od-hero-inner { max-width: 800px; }
+.od-back-btn {
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.8); font-family: var(--ff);
+  font-size: .75rem; font-weight: 600; letter-spacing: .06em;
+  padding: .45rem 1rem; border-radius: var(--radius); cursor: pointer;
+  margin-bottom: 1.8rem; display: inline-block; transition: all .2s;
+}
+.od-back-btn:hover { background: rgba(255,255,255,.22); color: white; }
+.od-categorie {
+  font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.6); margin-bottom: .8rem;
+}
+.od-titre {
+  font-size: clamp(1.7rem, 3vw, 2.8rem); font-weight: 800;
+  color: white; line-height: 1.15; margin: 0 0 1.6rem;
+}
+.od-meta-bar {
+  display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.6rem;
+}
+.od-meta-pill {
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18);
+  border-radius: 40px; padding: .4rem 1rem;
+  font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.85);
+  display: flex; align-items: center; gap: .4rem;
+}
+.od-meta-pill span { opacity: .65; font-weight: 400; }
+
+/* ── Body ── */
+.od-body { max-width: 820px; margin: 0 auto; padding: 0 var(--gutter); }
+.od-section { padding: 3.5rem 0; border-bottom: 1px solid var(--zv-border); }
+.od-section:last-of-type { border-bottom: none; }
+.od-section-tag {
+  font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--c1); margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: .6rem;
+}
+.od-section-tag::before { content: ''; display: block; width: 20px; height: 2px; background: var(--c1); }
+.od-text { font-size: .95rem; font-weight: 300; color: var(--c2l); line-height: 1.85; }
+
+/* Cible */
+.od-cible-box {
+  background: var(--zv-light); border-radius: 8px; padding: 1.4rem 1.6rem;
+  border-left: 4px solid var(--c1); font-size: .9rem; font-weight: 300;
+  color: var(--c2); line-height: 1.7;
+}
+
+/* Problèmes */
+.od-problemes { display: flex; flex-direction: column; gap: .7rem; margin-top: .5rem; }
+.od-probleme-item {
+  display: flex; align-items: flex-start; gap: .9rem;
+  font-size: .9rem; font-weight: 300; color: var(--c2); line-height: 1.65;
+}
+.od-probleme-item::before {
+  content: '✗'; color: var(--c3); font-weight: 700; font-size: .95rem;
+  flex-shrink: 0; margin-top: .05rem;
+}
+
+/* Démarche */
+.od-demarche { display: flex; flex-direction: column; gap: 0; margin-top: .5rem; position: relative; }
+.od-demarche::before {
+  content: ''; position: absolute; left: 16px; top: 28px;
+  width: 2px; bottom: 28px; background: var(--zv-border);
+}
+.od-etape {
+  display: flex; gap: 1.4rem; align-items: flex-start;
+  padding: 1.2rem 0;
+}
+.od-etape-num {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--c1); color: white;
+  font-size: .75rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; position: relative; z-index: 1;
+}
+.od-etape-content { flex: 1; padding-top: .3rem; }
+.od-etape-titre { font-size: .9rem; font-weight: 700; color: var(--c2); margin-bottom: .3rem; }
+.od-etape-desc { font-size: .85rem; font-weight: 300; color: var(--c2l); line-height: 1.7; }
+
+/* Livrables & prérequis */
+.od-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .6rem; margin-top: .5rem; }
+.od-list li {
+  font-size: .9rem; font-weight: 300; color: var(--c2); line-height: 1.6;
+  padding-left: 1.5rem; position: relative;
+}
+.od-list.livrables li::before { content: '✓'; position: absolute; left: 0; color: var(--c1); font-weight: 700; }
+.od-list.prerequis li::before  { content: '·'; position: absolute; left: .2rem; color: var(--c2l); font-weight: 700; font-size: 1.2rem; line-height: 1; }
+
+/* Résultat attendu */
+.od-resultat-box {
+  background: var(--c2d); border-radius: 8px; padding: 1.8rem 2rem;
+  border-left: 4px solid var(--c1);
+}
+.od-resultat-label { font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--c1); margin-bottom: .7rem; }
+.od-resultat-text { font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,.85); line-height: 1.7; }
+
+/* Cas clients liés */
+.od-cas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin-top: .5rem; }
+.od-cas-card {
+  background: var(--zv-light); border-radius: 8px; padding: 1.4rem;
+  border-top: 3px solid var(--c1); cursor: pointer;
+  transition: box-shadow .2s, transform .2s;
+  display: flex; flex-direction: column; gap: .7rem;
+}
+.od-cas-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.09); transform: translateY(-2px); }
+.od-cas-card-titre { font-size: .9rem; font-weight: 700; color: var(--c2); line-height: 1.4; }
+.od-cas-card-resultats { display: flex; flex-wrap: wrap; gap: .4rem; }
+.od-cas-chip {
+  background: white; border: 1px solid var(--zv-border);
+  border-radius: 4px; padding: .2rem .6rem;
+  font-size: .72rem; font-weight: 700; color: var(--c3);
+}
+.od-cas-cta { font-size: .78rem; font-weight: 600; color: var(--c1); margin-top: auto; }
+
+/* CTA final */
+.od-cta-section {
+  background: var(--c2d); padding: 4rem var(--gutter);
+  text-align: center; margin-top: 2rem;
+}
+.od-cta-titre { font-size: clamp(1.3rem, 2.5vw, 2rem); font-weight: 800; color: white; margin-bottom: .8rem; }
+.od-cta-desc { font-size: .95rem; font-weight: 300; color: rgba(255,255,255,.7); margin-bottom: 2rem; }
+
+@media (max-width: 768px) {
+  .od-meta-bar { gap: .6rem; }
+  .od-demarche::before { display: none; }
+  .od-cas-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+
 </head>
 <body>
 
@@ -552,6 +694,90 @@
 <!-- ═══════════════════════════════════════
      PAGE CAS CLIENT DETAIL
 ═══════════════════════════════════════ -->
+<div class="page" id="page-offre-detail">
+  <!-- Hero -->
+  <div class="od-hero">
+    <div class="od-hero-inner">
+      <button class="od-back-btn" onclick="showPage('offres');return false;">← Retour aux offres</button>
+      <div class="od-categorie" id="od-categorie">Conseil</div>
+      <h1 class="od-titre" id="od-titre"></h1>
+      <div class="od-meta-bar">
+        <div class="od-meta-pill">🎯 <span>Cible :</span> <span id="od-cible-pill"></span></div>
+        <div class="od-meta-pill">⏱ <span>Durée :</span> <span id="od-duree-pill"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="od-body">
+
+    <!-- Description + cible -->
+    <div class="od-section reveal">
+      <div class="od-section-tag">L'offre</div>
+      <p class="od-text" id="od-description"></p>
+      <div class="od-cible-box" id="od-cible"></div>
+    </div>
+
+    <!-- Résultat attendu -->
+    <div class="od-section reveal">
+      <div class="od-section-tag">Ce que vous obtiendrez</div>
+      <div class="od-resultat-box">
+        <div class="od-resultat-label">Résultat attendu</div>
+        <div class="od-resultat-text" id="od-resultat"></div>
+      </div>
+    </div>
+
+    <!-- Problèmes résolus -->
+    <div class="od-section reveal">
+      <div class="od-section-tag">Problèmes que nous résolvons</div>
+      <div class="od-problemes" id="od-problemes"></div>
+    </div>
+
+    <!-- Notre démarche -->
+    <div class="od-section reveal">
+      <div class="od-section-tag">Notre démarche</div>
+      <div class="od-demarche" id="od-demarche"></div>
+    </div>
+
+    <!-- Livrables & prérequis côte à côte -->
+    <div class="od-section reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
+      <div>
+        <div class="od-section-tag">Livrables</div>
+        <ul class="od-list livrables" id="od-livrables"></ul>
+      </div>
+      <div>
+        <div class="od-section-tag">Prérequis</div>
+        <ul class="od-list prerequis" id="od-prerequis"></ul>
+      </div>
+    </div>
+
+    <!-- Cas clients liés -->
+    <div class="od-section reveal" id="od-cas-section">
+      <div class="od-section-tag">Cas clients associés</div>
+      <div class="od-cas-grid" id="od-cas-grid"></div>
+    </div>
+
+  </div>
+
+  <!-- CTA final -->
+  <div class="od-cta-section">
+    <div class="od-cta-titre">Prêt à transformer votre organisation ?</div>
+    <div class="od-cta-desc">Parlons de vos enjeux, sans engagement.</div>
+    <a href="#" onclick="showPage('contact');return false;" class="btn btn-primary">Démarrer l'échange →</a>
+  </div>
+
+  <footer>
+    <a href="#" class="footer-logo" onclick="showPage('accueil');return false;">
+      <img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="footer-logo-img" />
+    </a>
+    <div class="footer-links">
+      <a href="#">Politique de confidentialité</a>
+      <a href="#">CGV</a>
+      <a href="#">Mentions légales</a>
+    </div>
+    <div class="footer-copy" data-cms="global.copyright">© Zen Value 2025</div>
+  </footer>
+</div>
+
 <div class="page" id="page-cas-detail">
   <div class="cas-detail-hero">
     <div class="cas-detail-hero-inner">
