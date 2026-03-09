@@ -840,19 +840,24 @@ function discardChanges() {
 function rUsers(d) {
   const users = d.users||[];
   let rows = users.map(function(u) {
-    const isSelf = u.email===session.email;
-    const delBtn = isSelf ? '' : '<button class="btn btn-sm btn-danger" data-action="del-user" data-email="'+esc(u.email)+'">Supprimer</button>';
-    const self = isSelf ? ' <span style="font-size:.7rem;color:var(--green);">(vous)</span>' : '';
-    const roleCls   = u.role==='admin' ? 'role-admin' : 'role-redacteur';
-    const roleLabel  = u.role==='admin' ? 'Admin' : 'Redacteur';
-    const isExpired  = u.firstLogin && u.inviteExpiry && new Date() > new Date(u.inviteExpiry);
-    const statusBadge = u.firstLogin ? '<span class="role-badge" style="background:'+(isExpired?'#fee2e2':'#fef9c3')+';color:'+(isExpired?'#b91c1c':'#854d0e')+';">'+(isExpired?'Expire':'En attente')+'</span>' : '';
-    const reInviteBtn = (u.firstLogin && !isSelf) ? '<button class="btn btn-sm btn-outline" data-action="reinvite-user" data-email="'+esc(u.email)+'" style="font-size:.65rem;margin-right:.3rem;">Renouveler</button>' : '';
-      +'<td><strong>'+esc(u.name)+'</strong>'+self+'</td>'
-      +'<td>'+esc(u.email)+'</td>'
-      +'<td><span class="role-badge '+roleCls+'">'+roleLabel+'</span> '+statusBadge+'</td>'
-      +'<td>'+reInviteBtn+delBtn+'</td>'
-      +'</tr>';
+    var isSelf      = u.email === session.email;
+    var roleCls     = u.role === 'admin' ? 'role-admin' : 'role-redacteur';
+    var roleLabel   = u.role === 'admin' ? 'Admin' : 'Redacteur';
+    var isExpired   = u.firstLogin && u.inviteExpiry && new Date() > new Date(u.inviteExpiry);
+    var selfTag     = isSelf ? ' <span style="font-size:.7rem;color:var(--green);">(vous)</span>' : '';
+    var statusBadge = u.firstLogin
+      ? '<span class="role-badge" style="background:' + (isExpired ? '#fee2e2' : '#fef9c3') + ';color:' + (isExpired ? '#b91c1c' : '#854d0e') + ';">' + (isExpired ? 'Expire' : 'En attente') + '</span>'
+      : '';
+    var reInviteBtn = (u.firstLogin && !isSelf)
+      ? '<button class="btn btn-sm btn-outline" data-action="reinvite-user" data-email="' + esc(u.email) + '" style="font-size:.65rem;margin-right:.3rem;">Renouveler</button>'
+      : '';
+    var delBtn = isSelf ? '' : '<button class="btn btn-sm btn-danger" data-action="del-user" data-email="' + esc(u.email) + '">Supprimer</button>';
+    return '<tr' + (isSelf ? ' class="user-self"' : '') + '>'
+      + '<td><strong>' + esc(u.name) + '</strong>' + selfTag + '</td>'
+      + '<td>' + esc(u.email) + '</td>'
+      + '<td><span class="role-badge ' + roleCls + '">' + roleLabel + '</span> ' + statusBadge + '</td>'
+      + '<td>' + reInviteBtn + delBtn + '</td>'
+      + '</tr>';
   }).join('');
 
   return '<div class="section-title">Gestion des utilisateurs</div>'
