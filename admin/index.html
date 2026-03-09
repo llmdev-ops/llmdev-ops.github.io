@@ -204,6 +204,19 @@
     /* ── HEADER EXTRAS ── */
     .header-center { display:flex; align-items:center; gap:.8rem; }
 
+    /* ── ÉCRAN PREMIÈRE CONNEXION ── */
+    .first-login-screen { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:2rem; background:#f8f8f8; }
+    .setup-steps { display:flex; gap:.5rem; margin-bottom:2rem; }
+    .setup-step { flex:1; height:4px; border-radius:2px; background:var(--border); }
+    .setup-step.done { background:var(--green); }
+    .setup-step.active { background:var(--green); opacity:.5; }
+    .invite-code-field { font-family:monospace; font-size:.78rem; word-break:break-all; }
+    .pwd-rules { margin-top:.6rem; display:flex; flex-direction:column; gap:.2rem; }
+    .pwd-rule { font-size:.74rem; display:flex; align-items:center; gap:.4rem; color:var(--gray); }
+    .pwd-rule.ok { color:#16a34a; }
+    .pwd-rule::before { content:'○'; font-size:.6rem; }
+    .pwd-rule.ok::before { content:'✓'; }
+
     /* ── FORCE MOT DE PASSE ── */
     .pwd-strength { margin-top:.4rem; }
     .pwd-bar { height:4px; border-radius:2px; background:var(--border); margin-bottom:.3rem; overflow:hidden; }
@@ -249,12 +262,7 @@
     <input id="login-email" class="auth-input" type="email" placeholder="prenom@zenvalue.fr" autocomplete="email" />
     <label class="auth-label">Mot de passe</label>
     <input id="login-pwd" class="auth-input" type="password" placeholder="••••••••" autocomplete="current-password" />
-    <span class="code-toggle" id="code-toggle-btn">Premiere connexion ? Entrez votre code d'acces</span>
-    <div class="code-block" id="code-block">
-      <p>Votre administrateur vous a transmis un code d'acces. Saisissez-le ci-dessous — il ne sera demande qu'une seule fois sur cet appareil.</p>
-      <label class="auth-label">Code d'acces</label>
-      <input id="login-code" class="auth-input" type="password" placeholder="Collez le code ici" />
-    </div>
+    <p style="text-align:center;margin-bottom:1rem;"><a href="#" id="fl-link" style="font-size:.82rem;color:var(--green);">Premiere connexion ? Activer mon invitation →</a></p>
     <button class="btn btn-primary" id="btn-login">Connexion</button>
     <div class="auth-error" id="login-err"></div>
   </div>
@@ -282,6 +290,56 @@
 
 <!-- TOAST CONTAINER -->
 <div class="toast-wrap" id="toast-wrap"></div>
+
+<!-- ÉCRAN : PREMIÈRE CONNEXION -->
+<div id="first-login-screen" class="first-login-screen" style="display:none;">
+  <div class="auth-box">
+    <img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="auth-logo" />
+    <div class="setup-steps">
+      <div class="setup-step done" id="fl-step1"></div>
+      <div class="setup-step active" id="fl-step2"></div>
+      <div class="setup-step" id="fl-step3"></div>
+    </div>
+    <h1>Première connexion</h1>
+    <p style="font-size:.87rem;color:#6b6b6d;margin-bottom:1.8rem;">Entrez votre email et le code reçu par email. Vous choisirez ensuite votre mot de passe.</p>
+    <label class="auth-label">Email</label>
+    <input id="fl-email" class="auth-input" type="email" placeholder="prenom@zenvalue.fr" autocomplete="email" />
+    <label class="auth-label">Code d'invitation</label>
+    <textarea id="fl-code" class="auth-input invite-code-field" rows="3" placeholder="Collez ici le code reçu dans l'email d'invitation" style="resize:none;font-family:monospace;font-size:.75rem;"></textarea>
+    <button class="btn btn-primary" id="btn-first-login">Valider mon invitation →</button>
+    <div class="auth-error" id="fl-err"></div>
+    <p style="margin-top:1.2rem;text-align:center;"><span style="font-size:.8rem;color:var(--gray);">Déjà un compte ? </span><a href="#" id="fl-back" style="font-size:.8rem;color:var(--green);">Connexion normale</a></p>
+  </div>
+</div>
+
+<!-- ÉCRAN : CHOISIR MOT DE PASSE -->
+<div id="set-pwd-screen" class="first-login-screen" style="display:none;">
+  <div class="auth-box">
+    <img src="/assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="auth-logo" />
+    <div class="setup-steps">
+      <div class="setup-step done"></div>
+      <div class="setup-step done"></div>
+      <div class="setup-step active"></div>
+    </div>
+    <h1>Choisissez votre mot de passe</h1>
+    <p style="font-size:.87rem;color:#6b6b6d;margin-bottom:1.8rem;">Bienvenue <strong id="set-pwd-name"></strong> ! Définissez un mot de passe personnel sécurisé.</p>
+    <label class="auth-label">Nouveau mot de passe</label>
+    <div style="position:relative;">
+      <input id="set-pwd-input" class="auth-input" type="password" placeholder="Minimum 10 caractères" autocomplete="new-password" oninput="checkSetPwd(this.value)" />
+      <button type="button" id="set-pwd-eye" onclick="document.getElementById('set-pwd-input').type=document.getElementById('set-pwd-input').type==='password'?'text':'password';this.textContent=document.getElementById('set-pwd-input').type==='password'?'👁':'🙈';" style="position:absolute;right:.7rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:.95rem;">👁</button>
+    </div>
+    <label class="auth-label" style="margin-top:.8rem;">Confirmer le mot de passe</label>
+    <input id="set-pwd-confirm" class="auth-input" type="password" placeholder="Répétez le mot de passe" autocomplete="new-password" oninput="checkSetPwd(null)" />
+    <div class="pwd-rules" id="set-pwd-rules">
+      <div class="pwd-rule" id="rule-len">10 caractères minimum</div>
+      <div class="pwd-rule" id="rule-upper">Une majuscule</div>
+      <div class="pwd-rule" id="rule-num">Un chiffre</div>
+      <div class="pwd-rule" id="rule-match">Les deux mots de passe correspondent</div>
+    </div>
+    <button class="btn btn-primary" id="btn-set-pwd" style="margin-top:1.4rem;" disabled>Définir mon mot de passe →</button>
+    <div class="auth-error" id="set-pwd-err"></div>
+  </div>
+</div>
 
 <!-- MODAL INVITATION -->
 <div class="invite-modal-bg" id="invite-modal-bg">
@@ -531,28 +589,14 @@ async function doLogin() {
 
   var email = document.getElementById('login-email').value.trim().toLowerCase();
   var pwd   = document.getElementById('login-pwd').value;
-  var codeEl = document.getElementById('login-code');
-  var code  = codeEl ? codeEl.value.trim() : '';
-
   if (!email||!pwd){ showErr('login-err','Email et mot de passe requis.'); return; }
 
-  // Gestion du token GitHub
-  if (code) {
-    var decoded = decodeToken(code);
-    if (!decoded||!decoded.startsWith('ghp_')){
-      showErr('login-err','Code acces invalide.');
-      return;
-    }
-    GH_TOKEN = decoded;
-    localStorage.setItem('zv_token', encodeToken(decoded));
-  } else {
-    var stored = localStorage.getItem('zv_token');
-    if (!stored){
-      showErr('login-err','Premiere connexion : cliquez sur Premiere connexion et entrez votre code acces.');
-      return;
-    }
-    GH_TOKEN = decodeToken(stored);
+  var stored = localStorage.getItem('zv_token');
+  if (!stored) {
+    showErr('login-err', 'Aucun acces configure. Utilisez votre lien d\'invitation.');
+    return;
   }
+  GH_TOKEN = decodeToken(stored);
 
   var loginBtn = document.getElementById('btn-login');
   if (loginBtn) { loginBtn.disabled = true; loginBtn.textContent = 'Connexion...'; }
@@ -594,12 +638,13 @@ function doLogout() {
 }
 
 function showScreen(name) {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('setup-screen').style.display = 'none';
-  document.getElementById('admin-screen').style.display = 'none';
-  if (name==='login') document.getElementById('login-screen').style.display = 'flex';
-  if (name==='setup') document.getElementById('setup-screen').style.display = 'flex';
-  if (name==='admin') document.getElementById('admin-screen').style.display = 'block';
+  var screens = ['login-screen','setup-screen','admin-screen','first-login-screen','set-pwd-screen'];
+  screens.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  var target = document.getElementById(name+'-screen');
+  if (target) target.style.display = (name === 'admin') ? 'block' : 'flex';
 }
 
 function startAdmin() {
@@ -799,13 +844,15 @@ function rUsers(d) {
     const isSelf = u.email===session.email;
     const delBtn = isSelf ? '' : '<button class="btn btn-sm btn-danger" data-action="del-user" data-email="'+esc(u.email)+'">Supprimer</button>';
     const self = isSelf ? ' <span style="font-size:.7rem;color:var(--green);">(vous)</span>' : '';
-    const roleCls = u.role==='admin' ? 'role-admin' : 'role-redacteur';
-    const roleLabel = u.role==='admin' ? 'Admin' : 'Redacteur';
-    return '<tr'+(isSelf?' class="user-self"':'')+'>'
+    const roleCls   = u.role==='admin' ? 'role-admin' : 'role-redacteur';
+    const roleLabel  = u.role==='admin' ? 'Admin' : 'Redacteur';
+    const isExpired  = u.firstLogin && u.inviteExpiry && new Date() > new Date(u.inviteExpiry);
+    const statusBadge = u.firstLogin ? '<span class="role-badge" style="background:'+(isExpired?'#fee2e2':'#fef9c3')+';color:'+(isExpired?'#b91c1c':'#854d0e')+';">'+(isExpired?'Expire':'En attente')+'</span>' : '';
+    const reInviteBtn = (u.firstLogin && !isSelf) ? '<button class="btn btn-sm btn-outline" data-action="reinvite-user" data-email="'+esc(u.email)+'" style="font-size:.65rem;margin-right:.3rem;">Renouveler</button>' : '';
       +'<td><strong>'+esc(u.name)+'</strong>'+self+'</td>'
       +'<td>'+esc(u.email)+'</td>'
-      +'<td><span class="role-badge '+roleCls+'">'+roleLabel+'</span></td>'
-      +'<td>'+delBtn+'</td>'
+      +'<td><span class="role-badge '+roleCls+'">'+roleLabel+'</span> '+statusBadge+'</td>'
+      +'<td>'+reInviteBtn+delBtn+'</td>'
       +'</tr>';
   }).join('');
 
@@ -862,42 +909,186 @@ function togglePwdVisibility() {
   if (eye) eye.textContent = inp.type === 'password' ? '👁' : '🙈';
 }
 
-function showInviteModal(name, email, pwd, role) {
-  var adminUrl = SITE_URL + '/admin/';
-  var code     = encodeToken(GH_TOKEN);
-  var roleLabel = role === 'admin' ? 'Administrateur' : 'Rédacteur';
+/* ══════════════════════════════════════════════════════
+   INVITATION — CODE UNIQUE PAR UTILISATEUR
+   Format: base64(siteToken + ':invite:' + UUID)
+   - siteToken : token GitHub dédié au site (≠ token perso admin)
+   - UUID      : code usage unique, expirant 48h, stocké hashé
+══════════════════════════════════════════════════════ */
+function generateUUID() {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random()*16|0;
+    return (c==='x' ? r : (r&0x3|0x8)).toString(16);
+  });
+}
 
-  // Résumé chips
+function buildInviteCode(uuid) {
+  var siteToken = decodeToken(localStorage.getItem('zv_token') || '');
+  return btoa(siteToken + ':invite:' + uuid);
+}
+
+function parseInviteCode(code) {
+  try {
+    var raw = atob(code.trim());
+    var idx = raw.indexOf(':invite:');
+    if (idx === -1) return null;
+    var siteToken = raw.substring(0, idx);
+    var uuid      = raw.substring(idx + 8);
+    if (!siteToken.startsWith('ghp_') || !uuid) return null;
+    return { siteToken: siteToken, uuid: uuid };
+  } catch(e) { return null; }
+}
+
+/* ── Première connexion : valider invitation ── */
+var _pendingFirstLogin = null; // { userData, usersData, usersSha, siteToken }
+
+async function doFirstLogin() {
+  hideErr('fl-err');
+  var email = document.getElementById('fl-email').value.trim().toLowerCase();
+  var code  = document.getElementById('fl-code').value.trim();
+  if (!email || !code) { showErr('fl-err', 'Email et code requis.'); return; }
+
+  var parsed = parseInviteCode(code);
+  if (!parsed) { showErr('fl-err', 'Code invalide. Verifiez que vous avez copie le code complet.'); return; }
+
+  var btn = document.getElementById('btn-first-login');
+  btn.disabled = true; btn.textContent = 'Verification...';
+
+  try {
+    GH_TOKEN = parsed.siteToken;
+    var result = await ghRead(FILES.users);
+    var user = (result.data.users||[]).find(function(u){ return u.email === email; });
+
+    if (!user)                 { showErr('fl-err', 'Aucun compte trouve pour cet email.'); return; }
+    if (!user.firstLogin)      { showErr('fl-err', 'Ce compte a deja ete active. Utilisez la connexion normale.'); return; }
+    if (!user.inviteTokenHash) { showErr('fl-err', 'Invitation invalide ou deja utilisee.'); return; }
+
+    // Verifier expiration
+    if (user.inviteExpiry && new Date() > new Date(user.inviteExpiry)) {
+      showErr('fl-err', 'Ce code a expire (valable 48h). Demandez une nouvelle invitation a votre administrateur.');
+      return;
+    }
+
+    // Verifier UUID
+    var uuidHash = await sha256(parsed.uuid);
+    if (uuidHash !== user.inviteTokenHash) { showErr('fl-err', 'Code incorrect.'); return; }
+
+    // Stocker le token site
+    localStorage.setItem('zv_token', encodeToken(parsed.siteToken));
+
+    // Garder le contexte pour doSetPwd
+    _pendingFirstLogin = {
+      user: user,
+      usersData: result.data,
+      usersSha: result.sha
+    };
+
+    // Passer a l ecran de choix de mot de passe
+    document.getElementById('set-pwd-name').textContent = user.name.split(' ')[0];
+    showScreen('set-pwd');
+
+  } catch(e) {
+    showErr('fl-err', 'Erreur : ' + e.message);
+  } finally {
+    btn.disabled = false; btn.textContent = 'Valider mon invitation →';
+  }
+}
+
+/* ── Validation règles mot de passe ── */
+function checkSetPwd(pwd) {
+  if (pwd === null) pwd = document.getElementById('set-pwd-input').value;
+  var confirm = document.getElementById('set-pwd-confirm').value;
+  function rule(id, ok) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('ok', ok); }
+    return ok;
+  }
+  var r1 = rule('rule-len',   pwd.length >= 10);
+  var r2 = rule('rule-upper', /[A-Z]/.test(pwd));
+  var r3 = rule('rule-num',   /[0-9]/.test(pwd));
+  var r4 = rule('rule-match', pwd.length > 0 && pwd === confirm);
+  var btn = document.getElementById('btn-set-pwd');
+  if (btn) btn.disabled = !(r1 && r2 && r3 && r4);
+}
+
+/* ── Définir le mot de passe après invitation ── */
+async function doSetPwd() {
+  if (!_pendingFirstLogin) { showScreen('login'); return; }
+  hideErr('set-pwd-err');
+  var pwd     = document.getElementById('set-pwd-input').value;
+  var confirm = document.getElementById('set-pwd-confirm').value;
+  if (pwd !== confirm)  { showErr('set-pwd-err', 'Les mots de passe ne correspondent pas.'); return; }
+  if (pwd.length < 10)  { showErr('set-pwd-err', 'Minimum 10 caracteres.'); return; }
+  if (!/[A-Z]/.test(pwd)) { showErr('set-pwd-err', 'Ajoutez au moins une majuscule.'); return; }
+  if (!/[0-9]/.test(pwd)) { showErr('set-pwd-err', 'Ajoutez au moins un chiffre.'); return; }
+
+  var btn = document.getElementById('btn-set-pwd');
+  btn.disabled = true; btn.textContent = 'Enregistrement...';
+
+  try {
+    var newHash = await sha256(pwd);
+    var pending = _pendingFirstLogin;
+    var updatedUsers = (pending.usersData.users||[]).map(function(u) {
+      if (u.email !== pending.user.email) return u;
+      return {
+        email: u.email, name: u.name, role: u.role,
+        passwordHash: newHash,
+        firstLogin: false,
+        inviteTokenHash: null,
+        inviteExpiry: null,
+        createdAt: u.createdAt,
+        activatedAt: new Date().toISOString()
+      };
+    });
+    var updated = { users: updatedUsers };
+    await ghWrite(FILES.users, updated, pending.usersSha);
+
+    _pendingFirstLogin = null;
+    session = createSession(pending.user);
+    saveSession(session);
+    toast('Bienvenue ' + pending.user.name.split(' ')[0] + ' !', 'ok');
+    startAdmin();
+
+  } catch(e) {
+    showErr('set-pwd-err', 'Erreur : ' + e.message);
+    btn.disabled = false; btn.textContent = 'Definir mon mot de passe →';
+  }
+}
+
+function showInviteModal(name, email, role, inviteCode) {
+  var adminUrl  = SITE_URL + '/admin/';
+  var roleLabel = role === 'admin' ? 'Administrateur' : 'Redacteur';
+
   document.getElementById('invite-summary').innerHTML =
     '<div class="invite-chip"><span>Nom</span>'+name+'</div>'
-    +'<div class="invite-chip"><span>Rôle</span>'+roleLabel+'</div>'
-    +'<div class="invite-chip"><span>Email</span>'+email+'</div>';
+    +'<div class="invite-chip"><span>Role</span>'+roleLabel+'</div>'
+    +'<div class="invite-chip"><span>Email</span>'+email+'</div>'
+    +'<div class="invite-chip" style="background:#fef9c3;border-color:#fde68a;color:#854d0e;"><span>Expire dans</span>48h</div>';
 
-  // Message email pré-rédigé
   var prenom = name.split(' ')[0];
   var lines = [
     'Bonjour ' + prenom + ',',
     '',
-    'Tu as ete invite(e) a rejoindre l\'espace d\'administration du site Zen Value',
+    'Tu es invite(e) a rejoindre l\'espace d\'administration Zen Value',
     'en tant que ' + roleLabel + '.',
     '',
-    '--- Tes identifiants de connexion ---',
-    'Acces  : ' + adminUrl,
-    'Email  : ' + email,
-    'Mot de passe : [celui choisi lors de la creation de ton compte]',
+    '--- Acces ---',
+    'Lien : ' + adminUrl,
+    'Email : ' + email,
     '',
-    '--- Code d\'acces (premiere connexion uniquement) ---',
-    code,
+    '--- Code d\'invitation (usage unique, expire dans 48h) ---',
+    inviteCode,
     '',
-    'Pour te connecter la premiere fois :',
+    'Comment activer ton compte :',
     '1. Ouvre le lien ci-dessus',
-    '2. Saisis ton email et le mot de passe communique separement',
-    '3. Clique sur "Premiere connexion" et colle le code d\'acces ci-dessus',
-    '4. Le code ne sera demande qu\'une seule fois sur cet appareil',
+    '2. Clique sur "Premiere connexion"',
+    '3. Saisis ton email et colle le code ci-dessus',
+    '4. Choisis ton mot de passe personnel',
     '',
-    'N\'hesite pas a me contacter si tu as la moindre question.',
+    '/!\ Ce code est a usage unique et expire dans 48h.',
+    'En cas de probleme, contacte ton administrateur.',
     '',
-    'Bonne journee,',
     session.name
   ];
   var msg = lines.join('\n');
@@ -920,23 +1111,39 @@ function showInviteModal(name, email, pwd, role) {
 async function addUser() {
   var name  = document.getElementById('new-name').value.trim();
   var email = document.getElementById('new-email').value.trim().toLowerCase();
-  var pwd   = document.getElementById('new-pwd').value;
   var role  = document.getElementById('new-role').value;
   var msg   = document.getElementById('user-msg');
   msg.style.display = 'none';
-  if (!name||!email||!pwd){ showMsg(msg,'Tous les champs sont requis.',false); return; }
-  if (!email.endsWith('@zenvalue.fr')){ showMsg(msg,'Email doit être @zenvalue.fr',false); return; }
-  if (pwd.length<8){ showMsg(msg,'Mot de passe minimum 8 caractères.',false); return; }
-  if ((state.data.users||[]).find(function(u){ return u.email===email; })){ showMsg(msg,'Cet email existe déjà.',false); return; }
-  var hash = await sha256(pwd);
-  var updated = { users:(state.data.users||[]).concat([{email,name,role,passwordHash:hash,createdAt:new Date().toISOString()}]) };
+  if (!name || !email) { showMsg(msg, 'Nom et email requis.', false); return; }
+  if (!email.endsWith('@zenvalue.fr')) { showMsg(msg, 'Email doit etre @zenvalue.fr', false); return; }
+  if ((state.data.users||[]).find(function(u){ return u.email===email; })) {
+    showMsg(msg, 'Cet email existe deja.', false); return;
+  }
+
+  var uuid          = generateUUID();
+  var inviteCode    = buildInviteCode(uuid);
+  var inviteHash    = await sha256(uuid);
+  var inviteExpiry  = new Date(Date.now() + 48*3600000).toISOString();
+
+  var newUser = {
+    email: email,
+    name: name,
+    role: role,
+    passwordHash: null,
+    firstLogin: true,
+    inviteTokenHash: inviteHash,
+    inviteExpiry: inviteExpiry,
+    createdAt: new Date().toISOString()
+  };
+  var updated = { users: (state.data.users||[]).concat([newUser]) };
+
   try {
     document.getElementById('overlay').classList.add('on');
     var newSha = await ghWrite(FILES.users, updated, state.sha);
     state.sha = newSha; state.data = updated;
     document.getElementById('admin-main').innerHTML = rUsers(updated);
-    showInviteModal(name, email, pwd, role);
-  } catch(e){ showMsg(msg,'Erreur : '+e.message,false); }
+    showInviteModal(name, email, role, inviteCode);
+  } catch(e) { showMsg(msg, 'Erreur : '+e.message, false); }
   finally { document.getElementById('overlay').classList.remove('on'); }
 }
 
@@ -982,6 +1189,32 @@ async function changePwd() {
     showMsg(msg,'Mot de passe mis a jour.', true);
     toast('Mot de passe mis a jour !', 'ok');
   } catch(e){ showMsg(msg,'Erreur : '+e.message, false); }
+  finally { document.getElementById('overlay').classList.remove('on'); }
+}
+
+async function reInviteUser(email) {
+  var user = (state.data.users||[]).find(function(u){ return u.email === email; });
+  if (!user) { toast('Utilisateur introuvable', 'err'); return; }
+  if (!user.firstLogin) { toast('Cet utilisateur a deja active son compte.', 'info'); return; }
+  if (!confirm('Regenerer une invitation pour ' + user.name + ' ?')) return;
+
+  var uuid         = generateUUID();
+  var inviteCode   = buildInviteCode(uuid);
+  var inviteHash   = await sha256(uuid);
+  var inviteExpiry = new Date(Date.now() + 48*3600000).toISOString();
+
+  var updated = { users: (state.data.users||[]).map(function(u) {
+    if (u.email !== email) return u;
+    return Object.assign({}, u, { inviteTokenHash: inviteHash, inviteExpiry: inviteExpiry });
+  })};
+  try {
+    document.getElementById('overlay').classList.add('on');
+    var newSha = await ghWrite(FILES.users, updated, state.sha);
+    state.sha = newSha; state.data = updated;
+    document.getElementById('admin-main').innerHTML = rUsers(updated);
+    showInviteModal(user.name, user.email, user.role, inviteCode);
+    toast('Nouvelle invitation generee pour ' + user.name, 'ok');
+  } catch(e) { toast('Erreur : ' + e.message, 'err'); }
   finally { document.getElementById('overlay').classList.remove('on'); }
 }
 
@@ -1528,6 +1761,7 @@ document.addEventListener('click', function(e) {
   if (action==='pick-preset')  { selectPreset(el.dataset.preset); return; }
   if (action==='del-user')     { deleteUser(el.dataset.email); return; }
     if (action==='change-pwd')   { changePwd(); return; }
+    if (action==='reinvite-user') { reInviteUser(el.dataset.email); return; }
   if (action==='add-user')     { addUser(); return; }
   if (action==='copy-code')    { navigator.clipboard.writeText(document.getElementById('access-code').textContent).then(function(){ el.classList.add('copied'); setTimeout(function(){ el.classList.remove('copied'); },2000); }); return; }
   if (action==='media-tab')    { switchMediaTab(el.dataset.key); return; }
@@ -1556,7 +1790,9 @@ document.addEventListener('input', function(e) {
 
 /* STATIC BUTTONS */
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('btn-login')  && document.getElementById('btn-login').addEventListener('click', doLogin);
+  document.getElementById('btn-login')       && document.getElementById('btn-login').addEventListener('click', doLogin);
+  document.getElementById('btn-first-login') && document.getElementById('btn-first-login').addEventListener('click', doFirstLogin);
+  document.getElementById('btn-set-pwd')     && document.getElementById('btn-set-pwd').addEventListener('click', doSetPwd);
   document.getElementById('btn-setup')  && document.getElementById('btn-setup').addEventListener('click', doSetup);
   document.getElementById('btn-logout') && document.getElementById('btn-logout').addEventListener('click', doLogout);
   document.getElementById('btn-save')   && document.getElementById('btn-save').addEventListener('click', doSave);
