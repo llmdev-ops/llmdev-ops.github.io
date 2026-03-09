@@ -10,32 +10,148 @@
   "cta_btn": "Démarrer l'échange",
   "items": [
     {
+      "id": "conseil",
       "categorie": "Conseil",
       "titre": "Transformation avec Résultats Mesurables",
       "description": "Nous intervenons là où les pratiques agiles sont en place mais où les résultats concrets manquent. Notre approche itérative produit des impacts mesurables dès les premiers cycles.",
       "cta_label": "En savoir plus",
-      "cta_page": "contact"
+      "cta_page": "offre-detail",
+      "cible": "DSI, Directeurs de transformation, Responsables PMO dans des organisations ayant déjà engagé une démarche agile sans résultats probants.",
+      "resultat_attendu": "Des indicateurs de performance mesurables dès le premier cycle : time-to-market réduit, prédictibilité améliorée, NPS en hausse.",
+      "duree": "3 à 6 mois — cycles de 4 semaines",
+      "livrables": [
+        "Diagnostic de maturité et cartographie des flux de valeur",
+        "Tableau de bord des indicateurs de performance clés",
+        "Plan de transformation priorisé par impact",
+        "Rapport de résultats à chaque fin de cycle",
+        "Documentation des pratiques et transfert de compétences"
+      ],
+      "prerequis": [
+        "Pratiques agiles déjà en place (Scrum, Kanban, SAFe…)",
+        "Sponsor exécutif identifié et engagé",
+        "Accès aux données de performance existantes"
+      ],
+      "problemes": [
+        "Transformation agile lancée depuis 12+ mois sans résultats quantifiables",
+        "Équipes qui 'font du Scrum' mais les livraisons glissent toujours",
+        "Incapacité à démontrer le ROI de la transformation aux parties prenantes",
+        "Décalage entre les pratiques sur le terrain et les ambitions stratégiques"
+      ],
+      "demarche": [
+        { "etape": "Diagnostic", "desc": "Évaluation de la maturité, cartographie des flux, identification des goulots. Livrable : rapport d'audit partagé avec toutes les parties prenantes." },
+        { "etape": "Cadrage", "desc": "Définition des indicateurs de valeur prioritaires et du plan de transformation. Chaque action est liée à un résultat mesurable attendu." },
+        { "etape": "Cycles d'impact", "desc": "Sprints de 4 semaines avec mesure systématique des gains. Ajustement en continu basé sur les données, pas sur les intuitions." },
+        { "etape": "Ancrage", "desc": "Transfert des pratiques en interne. L'objectif est votre autonomie, pas votre dépendance à nos consultants." }
+      ],
+      "cas_ids": [0, 1]
     },
     {
+      "id": "formation",
       "categorie": "Formation",
       "titre": "Développement des Compétences Agile & Lean",
       "description": "Des formations certifiantes et sur-mesure pour ancrer les compétences dans la durée. Organisme certifié Qualiopi.",
       "cta_label": "Voir les formations",
-      "cta_page": "formation"
+      "cta_page": "offre-detail",
+      "cible": "Équipes produit, managers de proximité, coachs internes, Scrum Masters, Product Owners souhaitant monter en compétence ou obtenir une certification reconnue.",
+      "resultat_attendu": "Des compétences ancrées dans la pratique réelle, transférables immédiatement. Certifications reconnues par les pairs et les recruteurs.",
+      "duree": "1 à 5 jours selon le programme — formats inter ou intra-entreprise",
+      "livrables": [
+        "Programme de formation sur-mesure adapté au contexte",
+        "Supports pédagogiques et ressources post-formation",
+        "Certification reconnue (PSM, PSPO, SAFe, Lean…)",
+        "Plan de mise en pratique individuel",
+        "Accès à la communauté Zen Value pendant 6 mois"
+      ],
+      "prerequis": [
+        "Aucun prérequis pour les formations fondamentales",
+        "Expérience terrain recommandée pour les niveaux avancés",
+        "Groupe de 6 à 16 participants pour les formats intra"
+      ],
+      "problemes": [
+        "Formations génériques qui ne tiennent pas compte du contexte réel de l'entreprise",
+        "Compétences acquises en salle mais non transférées sur le terrain",
+        "Difficultés à mesurer l'impact des formations sur la performance",
+        "Besoin de certifications reconnues pour légitimer les pratiques internes"
+      ],
+      "demarche": [
+        { "etape": "Analyse des besoins", "desc": "Entretien avec les commanditaires et les futurs participants pour adapter le programme au contexte et aux objectifs réels." },
+        { "etape": "Programme sur-mesure", "desc": "Construction d'un parcours qui alterne théorie, cas pratiques issus de votre secteur et mises en situation." },
+        { "etape": "Formation en situation", "desc": "Sessions interactives avec des exercices ancrés dans votre réalité opérationnelle. Pas de slides théoriques sans application." },
+        { "etape": "Suivi post-formation", "desc": "Séances de suivi à 30 et 60 jours pour mesurer le transfert des compétences et lever les obstacles à la mise en pratique." }
+      ],
+      "cas_ids": [3]
     },
     {
+      "id": "coaching",
       "categorie": "Coaching",
       "titre": "Accompagnement des Équipes et Dirigeants",
       "description": "Coachs agiles et experts Lean qui s'intègrent à vos équipes pour transférer les compétences et garantir l'autonomie.",
       "cta_label": "En savoir plus",
-      "cta_page": "contact"
+      "cta_page": "offre-detail",
+      "cible": "Équipes en transition, managers souhaitant développer leur leadership agile, dirigeants engagés dans une transformation culturelle durable.",
+      "resultat_attendu": "Des équipes autonomes, un leadership aligné sur la valeur, une culture de l'amélioration continue ancrée dans les pratiques quotidiennes.",
+      "duree": "3 à 12 mois — présence terrain hebdomadaire",
+      "livrables": [
+        "Plan d'accompagnement individualisé par équipe",
+        "Tableau de progression des compétences",
+        "Feuille de route vers l'autonomie",
+        "Rapport mensuel de progression",
+        "Kit d'outils et pratiques adapté au contexte"
+      ],
+      "prerequis": [
+        "Volonté réelle de transformation — pas uniquement un mandat top-down",
+        "Disponibilité des équipes pour le coaching en situation",
+        "Engagement du management de proximité"
+      ],
+      "problemes": [
+        "Équipes qui subissent la transformation au lieu de la porter",
+        "Managers dépassés par le changement de posture attendu",
+        "Agilité adoptée en surface sans changement culturel profond",
+        "Dépendance persistante aux consultants externes après 2 ans de transformation"
+      ],
+      "demarche": [
+        { "etape": "Immersion", "desc": "Nos coachs s'intègrent aux équipes en situation réelle. Observation des dynamiques, identification des blocages, création de la relation de confiance." },
+        { "etape": "Accompagnement", "desc": "Coaching individuel et collectif en situation de travail. Chaque intervention est ancrée dans un contexte réel, pas dans un exercice théorique." },
+        { "etape": "Transfert", "desc": "Progressivement, nos coachs se retirent pour laisser les équipes piloter elles-mêmes. L'autonomie est l'objectif, pas la performance du coach." },
+        { "etape": "Consolidation", "desc": "Bilan de compétences, célébration des progrès, identification des prochaines étapes. L'organisation continue sans nous." }
+      ],
+      "cas_ids": [2, 3]
     },
     {
+      "id": "performance",
       "categorie": "Performance",
       "titre": "Pilotage par la Valeur",
       "description": "Mise en place d'indicateurs orientés valeur et de boucles d'apprentissage courtes pour piloter la transformation par les données.",
       "cta_label": "En savoir plus",
-      "cta_page": "contact"
+      "cta_page": "offre-detail",
+      "cible": "Directeurs de la performance, CFO, COO cherchant à connecter les initiatives de transformation à des résultats business mesurables.",
+      "resultat_attendu": "Un système de pilotage orienté valeur opérationnel, des décisions basées sur des données fiables, une corrélation visible entre actions et résultats business.",
+      "duree": "2 à 4 mois — mise en place + 3 mois de stabilisation",
+      "livrables": [
+        "Cartographie des flux de valeur de bout en bout",
+        "Référentiel d'indicateurs orientés valeur (OKR, KPI, métriques Lean)",
+        "Dashboard de pilotage temps réel",
+        "Cadence de revue des performances et rituels de pilotage",
+        "Formation des équipes à la lecture et l'utilisation des indicateurs"
+      ],
+      "prerequis": [
+        "Accès aux données opérationnelles existantes",
+        "Implication du COMEX ou CODIR dans la définition des objectifs",
+        "Outils de suivi minimaux en place (tableur ou outil dédié)"
+      ],
+      "problemes": [
+        "Nombreux reportings mais aucun ne permet de prendre des décisions rapides",
+        "Décalage entre les indicateurs suivis et les priorités stratégiques réelles",
+        "Transformations lancées sans mesure d'impact prédéfinie",
+        "Direction et terrain ne parlent pas le même langage de la performance"
+      ],
+      "demarche": [
+        { "etape": "Audit des indicateurs", "desc": "Inventaire des métriques existantes, évaluation de leur pertinence et de leur utilisation réelle. Identification des angles morts." },
+        { "etape": "Conception du référentiel", "desc": "Co-construction avec les parties prenantes d'un système d'indicateurs cohérent, du terrain au COMEX. Chaque métrique a un propriétaire et un objectif." },
+        { "etape": "Déploiement", "desc": "Mise en place des tableaux de bord, formation des équipes, intégration dans les rituels existants. Aucun outil supplémentaire si non nécessaire." },
+        { "etape": "Stabilisation", "desc": "3 mois d'accompagnement pour s'assurer que le système vit et évolue. Ajustements basés sur l'usage réel." }
+      ],
+      "cas_ids": [0, 1]
     }
   ]
 }
