@@ -203,6 +203,24 @@
 
     /* ── HEADER EXTRAS ── */
     .header-center { display:flex; align-items:center; gap:.8rem; }
+
+    /* ── MODAL INVITATION ── */
+    .invite-modal-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:9000; align-items:center; justify-content:center; padding:1.5rem; }
+    .invite-modal-bg.open { display:flex; }
+    .invite-modal { background:white; border-radius:14px; width:100%; max-width:520px; box-shadow:0 20px 60px rgba(0,0,0,.2); overflow:hidden; }
+    .invite-modal-header { background:var(--green); color:white; padding:1.3rem 1.6rem; display:flex; align-items:center; justify-content:space-between; }
+    .invite-modal-header h2 { font-size:1rem; font-weight:800; margin:0; }
+    .invite-modal-close { background:none; border:none; color:white; font-size:1.3rem; cursor:pointer; opacity:.8; padding:.2rem; }
+    .invite-modal-close:hover { opacity:1; }
+    .invite-modal-body { padding:1.6rem; }
+    .invite-summary { display:flex; gap:1rem; margin-bottom:1.2rem; flex-wrap:wrap; }
+    .invite-chip { background:#f3f7e0; border:1px solid #d4e68a; border-radius:20px; padding:.3rem .8rem; font-size:.78rem; font-weight:600; color:#4a5e0a; }
+    .invite-chip span { opacity:.6; font-weight:400; margin-right:.3rem; }
+    .invite-email-preview { background:#fafafa; border:1.5px solid var(--border); border-radius:8px; padding:1.1rem 1.2rem; font-size:.83rem; line-height:1.7; color:#333; white-space:pre-wrap; font-family:inherit; margin-bottom:1.2rem; max-height:240px; overflow-y:auto; user-select:all; }
+    .invite-actions { display:flex; gap:.7rem; }
+    .invite-copied { color:#16a34a; font-size:.8rem; font-weight:600; opacity:0; transition:opacity .3s; margin-left:auto; align-self:center; }
+    .invite-copied.show { opacity:1; }
+
   </style>
 </head>
 <body>
@@ -252,6 +270,26 @@
 
 <!-- TOAST CONTAINER -->
 <div class="toast-wrap" id="toast-wrap"></div>
+
+<!-- MODAL INVITATION -->
+<div class="invite-modal-bg" id="invite-modal-bg">
+  <div class="invite-modal">
+    <div class="invite-modal-header">
+      <h2>✉️ Invitation prête à envoyer</h2>
+      <button class="invite-modal-close" id="invite-modal-close">✕</button>
+    </div>
+    <div class="invite-modal-body">
+      <div class="invite-summary" id="invite-summary"></div>
+      <p style="font-size:.77rem;color:var(--gray);margin-bottom:.6rem;">Copiez ce message et envoyez-le par email à la personne invitée :</p>
+      <div class="invite-email-preview" id="invite-email-preview"></div>
+      <div class="invite-actions">
+        <button class="btn btn-primary" id="invite-copy-btn" style="width:auto;padding:.7rem 1.6rem;">📋 Copier le message</button>
+        <button class="btn btn-sm btn-outline" id="invite-close-btn">Fermer</button>
+        <span class="invite-copied" id="invite-copied">Copié !</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ADMIN -->
 <div id="admin-screen">
@@ -702,25 +740,91 @@ function rUsers(d) {
     +'</div>';
 }
 
+function showInviteModal(name, email, pwd, role) {
+  var adminUrl = SITE_URL + '/admin/';
+  var code     = encodeToken(GH_TOKEN);
+  var roleLabel = role === 'admin' ? 'Administrateur' : 'Rédacteur';
+
+  // Résumé chips
+  document.getElementById('invite-summary').innerHTML =
+    '<div class="invite-chip"><span>Nom</span>'+name+'</div>'
+    +'<div class="invite-chip"><span>Rôle</span>'+roleLabel+'</div>'
+    +'<div class="invite-chip"><span>Email</span>'+email+'</div>';
+
+  // Message email pré-rédigé
+  var msg = 'Bonjour '+name.split(' ')[0]+',
+
+'
+    +'Tu as été invité(e) à rejoindre l'espace d'administration du site Zen Value '
+    +'en tant que '+roleLabel+'.
+
+'
+    +'━━━ Tes identifiants de connexion ━━━
+'
+    +'🔗 Accès : '+adminUrl+'
+'
+    +'📧 Email : '+email+'
+'
+    +'🔑 Mot de passe : '+pwd+'
+
+'
+    +'━━━ Code d'accès (première connexion uniquement) ━━━
+'
+    +code+'
+
+'
+    +'Pour te connecter la première fois :
+'
+    +'1. Ouvre le lien ci-dessus
+'
+    +'2. Saisis ton email et ton mot de passe
+'
+    +'3. Clique sur "Première connexion" et colle le code d'accès
+'
+    +'4. Le code ne sera demandé qu'une seule fois sur cet appareil
+
+'
+    +'N'hésite pas à me contacter si tu as la moindre question.
+
+'
+    +'Bonne journée,
+'
+    +session.name;
+
+  document.getElementById('invite-email-preview').textContent = msg;
+  document.getElementById('invite-modal-bg').classList.add('open');
+  document.getElementById('invite-copied').classList.remove('show');
+
+  // Bouton copier
+  document.getElementById('invite-copy-btn').onclick = function() {
+    navigator.clipboard.writeText(msg).then(function() {
+      var c = document.getElementById('invite-copied');
+      c.classList.add('show');
+      toast('Message copié — colle-le dans ton email ✓', 'ok');
+      setTimeout(function(){ c.classList.remove('show'); }, 2500);
+    });
+  };
+}
+
 async function addUser() {
-  const name=document.getElementById('new-name').value.trim();
-  const email=document.getElementById('new-email').value.trim().toLowerCase();
-  const pwd=document.getElementById('new-pwd').value;
-  const role=document.getElementById('new-role').value;
-  const msg=document.getElementById('user-msg');
-  msg.style.display='none';
+  var name  = document.getElementById('new-name').value.trim();
+  var email = document.getElementById('new-email').value.trim().toLowerCase();
+  var pwd   = document.getElementById('new-pwd').value;
+  var role  = document.getElementById('new-role').value;
+  var msg   = document.getElementById('user-msg');
+  msg.style.display = 'none';
   if (!name||!email||!pwd){ showMsg(msg,'Tous les champs sont requis.',false); return; }
-  if (!email.endsWith('@zenvalue.fr')){ showMsg(msg,'Email doit etre @zenvalue.fr',false); return; }
-  if (pwd.length<8){ showMsg(msg,'Mot de passe minimum 8 caracteres.',false); return; }
-  if ((state.data.users||[]).find(u=>u.email===email)){ showMsg(msg,'Cet email existe deja.',false); return; }
-  const hash = await sha256(pwd);
-  const updated = { users:(state.data.users||[]).concat([{email,name,role,passwordHash:hash,createdAt:new Date().toISOString()}]) };
+  if (!email.endsWith('@zenvalue.fr')){ showMsg(msg,'Email doit être @zenvalue.fr',false); return; }
+  if (pwd.length<8){ showMsg(msg,'Mot de passe minimum 8 caractères.',false); return; }
+  if ((state.data.users||[]).find(function(u){ return u.email===email; })){ showMsg(msg,'Cet email existe déjà.',false); return; }
+  var hash = await sha256(pwd);
+  var updated = { users:(state.data.users||[]).concat([{email,name,role,passwordHash:hash,createdAt:new Date().toISOString()}]) };
   try {
     document.getElementById('overlay').classList.add('on');
-    const newSha = await ghWrite(FILES.users, updated, state.sha);
-    state.sha=newSha; state.data=updated;
+    var newSha = await ghWrite(FILES.users, updated, state.sha);
+    state.sha = newSha; state.data = updated;
     document.getElementById('admin-main').innerHTML = rUsers(updated);
-    toast(name+' ajouté avec succès ✓', 'ok');
+    showInviteModal(name, email, pwd, role);
   } catch(e){ showMsg(msg,'Erreur : '+e.message,false); }
   finally { document.getElementById('overlay').classList.remove('on'); }
 }
