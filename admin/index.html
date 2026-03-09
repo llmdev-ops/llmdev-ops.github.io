@@ -839,7 +839,6 @@ function discardChanges() {
 ══════════════════════════════════════════════════════ */
 function rUsers(d) {
   const users = d.users||[];
-  const code = encodeToken(GH_TOKEN);
   let rows = users.map(function(u) {
     const isSelf = u.email===session.email;
     const delBtn = isSelf ? '' : '<button class="btn btn-sm btn-danger" data-action="del-user" data-email="'+esc(u.email)+'">Supprimer</button>';
@@ -859,26 +858,32 @@ function rUsers(d) {
   return '<div class="section-title">Gestion des utilisateurs</div>'
     +'<div class="section-desc">Invitez des collaborateurs Zen Value et gerez leurs acces.</div>'
     +'<div class="form-card">'
-      +'<div class="form-card-title">Code d\'acces a partager</div>'
-      +'<p style="font-size:.84rem;color:var(--gray);margin-bottom:.8rem;">Transmettez ce code par email a chaque nouvel utilisateur pour sa premiere connexion.</p>'
-      +'<div class="code-box" id="access-code" data-action="copy-code">'+code+'</div>'
-      +'<p style="font-size:.74rem;color:var(--gray);">Cliquez pour copier.</p>'
+      +'<div class="form-card-title">Utilisateurs ('+users.length+')</div>'
+      +(users.length===0 ? '<p style="color:var(--gray);font-size:.85rem;">Aucun utilisateur.</p>'
+        : '<table class="user-table"><thead><tr><th>Nom</th><th>Email</th><th>Role</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>')
     +'</div>'
     +'<div class="form-card">'
-      +'<div class="form-card-title">Utilisateurs</div>'
-      +'<table class="user-table"><thead><tr><th>Nom</th><th>Email</th><th>Role</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>'
+      +'<div class="form-card-title">Changer mon mot de passe</div>'
+      +'<div class="field-row">'
+        +'<div class="field"><label>Mot de passe actuel</label><input type="password" id="cp-old" placeholder="Mot de passe actuel" /></div>'
+        +'<div class="field"><label>Nouveau mot de passe</label><input type="password" id="cp-new" placeholder="Min. 10 caracteres" oninput="checkPwdStrength2(this.value)" /></div>'
+      +'</div>'
+      +'<div class="pwd-strength" id="pwd-strength2" style="display:none;">'
+        +'<div class="pwd-bar"><div class="pwd-bar-fill" id="pwd-bar-fill2"></div></div>'
+        +'<span class="pwd-label" id="pwd-label2"></span>'
+      +'</div>'
+      +'<button class="btn btn-primary" data-action="change-pwd" style="width:auto;padding:.7rem 2rem;margin-top:1rem;">Mettre a jour</button>'
+      +'<div id="cp-msg" style="margin-top:.8rem;font-size:.84rem;display:none;"></div>'
     +'</div>'
     +'<div class="form-card">'
-      +'<div class="form-card">'      +'<div class="form-card-title">Changer mon mot de passe</div>'      +'<div class="field-row">'        +'<div class="field"><label>Mot de passe actuel</label><input type="password" id="cp-old" placeholder="Mot de passe actuel" /></div>'        +'<div class="field"><label>Nouveau mot de passe</label><input type="password" id="cp-new" placeholder="Min. 8 caracteres" oninput="checkPwdStrength2(this.value)" /></div>'      +'</div>'      +'<div class="pwd-strength" id="pwd-strength2" style="display:none;">'        +'<div class="pwd-bar"><div class="pwd-bar-fill" id="pwd-bar-fill2"></div></div>'        +'<span class="pwd-label" id="pwd-label2"></span>'      +'</div>'      +'<button class="btn btn-primary" data-action="change-pwd" style="width:auto;padding:.7rem 2rem;margin-top:1rem;">Mettre a jour</button>'      +'<div id="cp-msg" style="margin-top:.8rem;font-size:.84rem;display:none;"></div>'    +'</div>'      +'<div class="form-card-title">Ajouter un utilisateur</div>'
+      +'<div class="form-card-title">Inviter un utilisateur</div>'
       +'<div class="field-row">'
         +'<div class="field"><label>Nom complet</label><input type="text" id="new-name" placeholder="Prenom Nom" /></div>'
         +'<div class="field"><label>Email</label><input type="email" id="new-email" placeholder="prenom@zenvalue.fr" /></div>'
       +'</div>'
-      +'<div class="field-row">'
-        +'<div class="field"><label>Mot de passe temporaire</label><input type="password" id="new-pwd" placeholder="Min. 8 caracteres" /></div>'
-        +'<div class="field"><label>Role</label><select id="new-role"><option value="redacteur">Redacteur</option><option value="admin">Admin</option></select></div>'
-      +'</div>'
-      +'<button class="btn btn-primary" data-action="add-user" style="width:auto;padding:.7rem 2rem;margin-top:.5rem;">Ajouter</button>'
+      +'<div class="field"><label>Role</label><select id="new-role"><option value="redacteur">Redacteur</option><option value="admin">Admin</option></select></div>'
+      +'<p style="font-size:.78rem;color:var(--gray);background:#f3f7e0;padding:.7rem 1rem;border-radius:6px;margin:.8rem 0;">Un code invitation unique (48h) sera genere. L\'utilisateur choisira son mot de passe.</p>'
+      +'<button class="btn btn-primary" data-action="add-user" style="width:auto;padding:.7rem 2rem;">Envoyer l\'invitation</button>'
       +'<div id="user-msg" style="margin-top:.8rem;font-size:.84rem;display:none;"></div>'
     +'</div>';
 }
