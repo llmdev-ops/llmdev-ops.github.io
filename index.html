@@ -295,15 +295,20 @@
 </style>
 
 
+  <!-- Accessibilite & PWA -->
+  <meta name="theme-color" content="#AAC335" />
+  <meta name="color-scheme" content="light" />
+  <link rel="manifest" href="/manifest.json" />
 </head>
 <body>
+<a href="#page-accueil" class="skip-link">Aller au contenu principal</a>
 
 <!-- ══════ NAVIGATION ══════ -->
 <nav id="navbar">
-  <a href="#" class="logo" onclick="showPage('accueil');return false;">
+  <a href="#" class="logo" onclick="showPage('accueil');return false;" aria-label="Zen Value — Accueil">
     <img src="assets/images/logo/logo_zen-value_H.avif" alt="Zen Value" class="nav-logo-img" />
   </a>
-  <ul class="nav-links" id="navLinks">
+  <ul class="nav-links" id="navLinks" aria-label="Navigation principale">
     <li><a href="#" onclick="showPage('offres');return false;"       data-page="offres">Nos Offres</a></li>
     <li><a href="#" onclick="showPage('qsn');return false;"          data-page="qsn">Qui sommes-nous</a></li>
     <li><a href="#" onclick="showPage('formation');return false;"    data-page="formation">Formation</a></li>
@@ -318,7 +323,7 @@
 <!-- ═══════════════════════════════════════
      PAGE ACCUEIL
 ═══════════════════════════════════════ -->
-<div class="page active" id="page-accueil">
+<div class="page active" id="page-accueil" role="main">
 
   <div class="hero">
     <div class="hero-left">
@@ -835,7 +840,9 @@
 
 <!-- ══════ SCRIPTS ══════ -->
 <!-- Theme loader en premier : surcharge les variables CSS avant le rendu -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/site-config.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><!-- Plausible Analytics — RGPD friendly, sans cookie -->
+<script defer data-domain="zenvalue.fr" src="https://plausible.io/js/script.js"></script>
+<script src="assets/js/site-config.js"></script>
 <script src="assets/js/theme-loader.js?v=11"></script>
 <!-- Ordre important : animations en premier (observeReveals doit exister avant cms-loader) -->
 <script src="assets/js/animations.js?v=14"></script>

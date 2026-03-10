@@ -1,0 +1,12 @@
+{
+  "name": "Zen Value",
+  "short_name": "Zen Value",
+  "description": "Cabinet de conseil et organisme de formation certifié Qualiopi — Lean, Agile, Performance",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#AAC335",
+  "icons": [
+    { "src": "/assets/images/logo/logo_zen-value_H.avif", "sizes": "any", "type": "image/avif" }
+  ]
+}
